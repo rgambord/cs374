@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8.2785511in"
+   height="7.0189486in"
+   viewBox="0 0 210.2752 178.28129"
+   version="1.1"
+   id="svg16973"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="cmd_language.svg"
+   inkscape:export-filename="cmd_language.png"
+   inkscape:export-xdpi="120"
+   inkscape:export-ydpi="120"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview16975"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:connector-spacing="30"
+     inkscape:zoom="1.2938725"
+     inkscape:cx="452.90398"
+     inkscape:cy="385.27753"
+     inkscape:window-width="2560"
+     inkscape:window-height="1543"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g18327"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid18315"
+       originx="-11.466811"
+       originy="-19.025389" />
+  </sodipodi:namedview>
+  <defs
+     id="defs16970">
+    <marker
+       style="overflow:visible"
+       id="marker20475"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path20473" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2.7636765,-5.2832031)">
+    <path
+       id="rect19516-9-4-6"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 20.851468,37.42618 c 0,4.727864 0,9.455729 0,14.183593 55.371745,0 110.743482,0 166.115232,0 0,-4.904296 0,-9.808593 0,-14.71289 -55.37175,0 -110.743487,0 -166.115232,0 0,0.176432 0,0.352864 0,0.529297 z" />
+    <path
+       id="rect19516-9-5"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 6.4687546,69.648262 c 1e-7,4.74088 0,9.48177 0,14.22265 25.2864584,0 50.5729164,10e-6 75.8593744,0 0,-4.91731 0,-9.83463 0,-14.75195 -25.286458,0 -50.572916,0 -75.8593744,0 0,0.17643 1e-7,0.35287 0,0.5293 z" />
+    <path
+       id="rect19516-6"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 128.51055,65.852363 c 0,7.27148 0,14.54297 0,21.81445 25.93425,0 51.86849,0 77.80274,0 0,-7.44792 0,-14.89583 0,-22.34375 -25.93425,0 -51.86849,0 -77.80274,0 0,0.17643 0,0.35286 0,0.5293 z" />
+    <path
+       id="rect19516-9-9-3"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 12.3252,101.9094 c 0,4.72786 0,9.45573 0,14.18359 21.382161,0 42.764323,0 64.146484,0 0,-4.9043 0,-9.80859 0,-14.71289 -21.382161,0 -42.764323,0 -64.146484,0 0,0.17643 0,0.35286 0,0.5293 z" />
+    <path
+       id="rect19516-9-9-0-9"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 125.49004,101.99241 c 0,4.67252 0,9.34505 0,14.01758 27.94792,0 55.89583,0 83.84375,0 0,-4.84896 0,-9.69792 0,-14.54688 -27.94792,0 -55.89583,0 -83.84375,0 0,0.17643 0,0.35287 0,0.5293 z" />
+    <path
+       id="rect19516-9-9-9-4"
+       style="fill:none;stroke:#000000;stroke-width:0.267691;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 69.658203,130.30664 c 0,7.02995 0,14.0599 0,21.08984 22.833984,0 45.667967,0 68.501957,0 0,-7.20638 0,-14.41276 0,-21.61914 -22.83399,0 -45.667972,0 -68.501957,0 0,0.17644 0,0.35287 0,0.5293 z" />
+    <path
+       id="rect19516-9-9-9-1-8"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 21.984282,165.60942 c 0,4.75 0,9.5 0,14.25 54.616536,0 109.233068,0 163.849608,0 0,-4.92643 0,-9.85286 0,-14.7793 -54.61654,0 -109.233072,1e-5 -163.849608,0 0,0.17644 0,0.35287 0,0.5293 z" />
+    <path
+       id="rect19516-9-4-7-1"
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 86.073048,9.5175781 c 0,4.5553389 0,9.1106769 0,13.6660159 11.923177,0 23.846362,0 35.769532,0 0,-4.731771 0,-9.463542 0,-14.1953128 -11.92317,0 -23.846355,1e-7 -35.769532,0 0,0.1764323 0,0.3528646 0,0.5292969 z" />
+    <g
+       id="g20410"
+       inkscape:connector-avoid="true"
+       transform="translate(-0.45126571,-46.552336)">
+      <g
+         id="g19307"
+         transform="translate(-0.09506265,19.332251)">
+        <g
+           id="g18382"
+           transform="translate(14.722977,49.78626)">
+          <text
+             xml:space="preserve"
+             style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+             x="9.4089117"
+             y="20.461729"
+             id="text18141"><tspan
+               sodipodi:role="line"
+               id="tspan18139"
+               style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+               x="9.4089117"
+               y="20.461729">compound-list</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+             x="9.4089117"
+             y="25.193169"
+             id="text18145"><tspan
+               sodipodi:role="line"
+               id="tspan18143"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+               x="9.4089117"
+               y="25.193169"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18163">and-or-list</tspan> [(&quot;;&quot; | &quot;&amp;&quot; | &lt;newline&gt;...) <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18165">and-or-list</tspan>]... [&quot;;&quot; | &quot;&amp;&quot; | &lt;newline&gt;...]</tspan></text>
+        </g>
+      </g>
+      <path
+         id="rect19516-9-4"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 17.597656,80.273438 c 0,7.197916 0,14.395833 0,21.593752 57.841797,0 115.683594,0 173.525394,0 0,-7.374351 0,-14.7487 0,-22.123049 -57.8418,0 -115.683597,0 -173.525394,0 0,0.176432 0,0.352864 0,0.529297 z" />
+    </g>
+    <g
+       id="g20296"
+       inkscape:connector-avoid="true"
+       transform="translate(-0.44140156,-53.082209)">
+      <g
+         id="g18374"
+         transform="translate(0.30393725,80.454096)">
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="47.91629"
+           id="text18133"><tspan
+             sodipodi:role="line"
+             id="tspan18131"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="47.91629">and-or-list</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="52.647728"
+           id="text18137"><tspan
+             sodipodi:role="line"
+             id="tspan18135"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="52.647728"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18167">pipeline</tspan> [(&quot;&amp;&amp;&quot; | &quot;||&quot;) <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18169">pipeline</tspan>]...</tspan></text>
+      </g>
+      <path
+         id="rect19516-9"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 3.2050781,119.02539 c 0,7.21094 0,14.42188 0,21.63281 27.7565109,0 55.5130209,0 83.2695309,0 0,-7.38737 0,-14.77474 0,-22.16211 -27.75651,0 -55.51302,0 -83.2695309,0 0,0.17644 0,0.35287 0,0.5293 z" />
+    </g>
+    <g
+       id="g20314"
+       inkscape:connector-avoid="true"
+       transform="translate(-3.6164017,-53.089047)">
+      <g
+         id="g18340"
+         transform="translate(125.7183,-33.469495)">
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="157.73453"
+           id="text18157"><tspan
+             sodipodi:role="line"
+             id="tspan18155"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="157.73453">compound-command</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="162.46609"
+           id="text18161"><tspan
+             sodipodi:role="line"
+             id="tspan18159"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="162.46609"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18187">subshell</tspan>   | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18189">brace-group</tspan> |</tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="166.43484"
+             id="tspan18807"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18191">while-loop</tspan> | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18193">until-loop</tspan>  | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18195">for-loop</tspan> |<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18197" /></tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="170.40359"
+             id="tspan18814"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18816">if-clause</tspan>  | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18199">case-clause</tspan></tspan></text>
+      </g>
+      <path
+         id="rect19516"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 128.42188,115.23633 c 0,9.74153 -10e-6,19.48307 0,29.22461 28.40429,0 56.80859,0 85.21289,0 0,-9.91797 0,-19.83594 0,-29.75391 -28.4043,0 -56.8086,0 -85.21289,0 0,0.17643 0,0.35287 0,0.5293 z" />
+    </g>
+    <g
+       id="g20349"
+       transform="translate(5.4814501,-59.651148)"
+       inkscape:connector-avoid="true">
+      <g
+         id="g18366"
+         transform="translate(0.28765916,91.789715)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="80.102287"
+           id="text18125"><tspan
+             sodipodi:role="line"
+             id="tspan18123"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="80.102287">[&quot;!&quot;] <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18171">command</tspan> [&quot;|&quot; <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18173">command</tspan>]...</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="75.37085"
+           id="text18129"><tspan
+             sodipodi:role="line"
+             id="tspan18127"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="75.37085">pipeline</tspan></text>
+      </g>
+      <path
+         id="rect19516-9-9"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 3.1386719,157.85547 c 0,7.19792 0,14.39583 0,21.59375 23.8522131,0 47.7044271,0 71.5566401,0 10e-7,-7.37435 0,-14.7487 0,-22.12305 -23.852213,0 -47.704427,0 -71.5566401,0 0,0.17643 0,0.35287 0,0.5293 z" />
+    </g>
+    <g
+       id="g20324"
+       transform="translate(-6.6232366,-59.650173)"
+       inkscape:connector-avoid="true">
+      <g
+         id="g18349"
+         transform="translate(125.51986,36.971224)">
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="130.27997"
+           id="text18149"><tspan
+             sodipodi:role="line"
+             id="tspan18147"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="130.27997">function-definition</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="135.01154"
+           id="text18153"><tspan
+             sodipodi:role="line"
+             id="tspan18151"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="135.01154">fname() <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18183">compound-command</tspan> [ <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18185">redirection</tspan> ]</tspan></text>
+      </g>
+      <path
+         id="rect19516-9-9-0"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 128.4082,157.9375 c 0,7.14258 0,14.28516 0,21.42773 30.41797,0 60.83594,0 91.25391,0 0,-7.31901 0,-14.63802 0,-21.95703 -30.41797,0 -60.83594,0 -91.25391,0 0,0.17644 0,0.35287 0,0.5293 z" />
+    </g>
+    <g
+       id="g18358"
+       transform="translate(62.961789,32.788652)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+         x="9.4089117"
+         y="107.55686"
+         id="text18121"><tspan
+           sodipodi:role="line"
+           id="tspan18119"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+           x="9.4089117"
+           y="107.55686"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18175">simple-command</tspan>                 | </tspan><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+           x="9.4089117"
+           y="111.52561"
+           id="tspan19074"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan19076">compound-command</tspan> [<tspan
+   style="fill:#1a5fb4"
+   id="tspan23117">redirection</tspan>] | </tspan><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+           x="9.4089117"
+           y="115.49436"
+           id="tspan19079"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             id="tspan19081">function-definition</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+         x="9.4089117"
+         y="102.82541"
+         id="text18117"><tspan
+           sodipodi:role="line"
+           id="tspan18115"
+           style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+           x="9.4089117"
+           y="102.82541">command</tspan></text>
+    </g>
+    <path
+       id="rect19516-9-9-9"
+       style="fill:none;stroke:none;stroke-width:0.26862;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+       d="m 66.876953,154.17578 c 24.6875,0 49.374997,0 74.062497,0 0,-9.05989 0,-18.11979 0,-27.17969 -24.6875,0 -49.374997,0 -74.062497,0 0,9.0599 0,18.1198 0,27.17969 z" />
+    <g
+       id="g20383"
+       inkscape:connector-avoid="true"
+       transform="translate(-0.34188971,-73.497999)">
+      <g
+         id="g18327"
+         transform="translate(15.488293,59.551736)">
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="185.18909"
+           id="text18107"><tspan
+             sodipodi:role="line"
+             id="tspan18105"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="185.18909">simple-command</tspan><tspan
+             sodipodi:role="line"
+             style="stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="189.81931"
+             id="tspan18109" /></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="189.92065"
+           id="text18113"><tspan
+             sodipodi:role="line"
+             id="tspan18111"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="189.92065">[<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18201">assignment-word</tspan> | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18203">redirection</tspan>]... [<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18205">command-name</tspan> [<tspan
+   style="fill:#1a5fb4"
+   id="tspan525">command-word</tspan> | <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18209">redirection</tspan>]...]</tspan></text>
+      </g>
+      <path
+         id="rect19516-9-9-9-1"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 18.621094,235.40234 c 0,7.22006 0,14.44011 0,21.66016 57.086588,0 114.173176,0 171.259766,0 0,-7.39648 0,-14.79297 0,-22.18945 -57.08659,0 -114.173178,0 -171.259766,0 0,0.17643 0,0.35286 0,0.52929 z" />
+    </g>
+    <g
+       id="g20369"
+       inkscape:connector-avoid="true"
+       transform="translate(0.3093763)">
+      <g
+         id="g18382-1"
+         transform="translate(79.338577,-5.6482852)">
+        <text
+           xml:space="preserve"
+           style="font-size:3.70417px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono';text-decoration-color:#000000;word-spacing:0px;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="20.461729"
+           id="text18141-7"><tspan
+             sodipodi:role="line"
+             id="tspan18139-2"
+             style="font-weight:bold;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="20.461729">Shell Program</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;word-spacing:0px;fill:#000000;stroke:none;stroke-width:0.265;stroke-dasharray:none;stop-color:#000000"
+           x="9.4089117"
+           y="25.193169"
+           id="text18145-7"><tspan
+             sodipodi:role="line"
+             id="tspan18143-2"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+             x="9.4089117"
+             y="25.193169">[<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'SF Mono';-inkscape-font-specification:'SF Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a5fb4;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+   id="tspan18163-2">compound-list</tspan>]</tspan></text>
+      </g>
+      <path
+         id="rect19516-9-4-7"
+         style="fill:none;stroke:none;stroke-width:0.264583;stroke-dasharray:none;paint-order:fill markers stroke;stop-color:#000000"
+         d="m 82.058594,5.8125 c 0,7.025391 0,14.050781 0,21.076172 14.393229,0 28.786456,0 43.179686,0 0,-7.201823 0,-14.403646 0,-21.6054689 -14.39323,0 -28.786457,0 -43.179686,0 0,0.1764323 0,0.3528646 0,0.5292969 z" />
+    </g>
+    <g
+       id="g20429"
+       style="stroke-width:0.264583;stroke-dasharray:none">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="m 167.41192,91.371893 v 6.386134"
+         id="path20385" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="M 124.80547,76.494938 H 103.90909 V 126.10121"
+         id="path20387" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="m 145.52287,119.71506 -16.41163,8.23129"
+         id="path20389" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="M 78.706938,127.09841 65.066517,119.79807"
+         id="path20391" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="M 44.398442,97.675022 V 87.575991"
+         id="path20393" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="M 64.85154,65.413881 83.492038,55.314854"
+         id="path20412" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="m 125.69578,55.314854 12.4146,6.303129"
+         id="path20414" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="m 103.92822,33.191805 0.0109,-6.303133"
+         id="path20416" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker20475)"
+         d="m 103.90909,161.37505 v -6.30314"
+         id="path20418" />
+    </g>
+  </g>
+</svg>

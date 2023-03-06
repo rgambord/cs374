@@ -1,0 +1,109 @@
+<head>
+
+<style>
+table {
+  margin: auto;
+}
+
+td, th {
+  padding: 1px 20px;
+  text-align: left;
+}
+
+
+#mode {
+  font-family: monospace;
+}
+#modestr {
+  font-family: monospace;
+}
+</style>
+<script>
+   function update_mode() {
+      mdiv = document.getElementById("mode");
+      msdiv = document.getElementById("modestr");
+
+      ft    =  document.getElementById("filetype").value;
+      suid  =  document.getElementById("suid").checked;
+      sgid  =  document.getElementById("sgid").checked;
+      svxt  =  document.getElementById("svxt").checked;
+      ur    =  document.getElementById("ur").checked;
+      uw    =  document.getElementById("uw").checked;
+      ux    =  document.getElementById("ux").checked;
+      gr    =  document.getElementById("gr").checked;
+      gw    =  document.getElementById("gw").checked;
+      gx    =  document.getElementById("gx").checked;
+      or    =  document.getElementById("or").checked;
+      ow    =  document.getElementById("ow").checked;
+      ox    =  document.getElementById("ox").checked;
+
+      msdiv.innerHTML = ft + 
+         (ur ? "r" : "-") + (uw ? "w" : "-") +
+         (ux ? (suid ? "s" : "x") : (suid ? "S" : "-")) +
+         (gr ? "r" : "-") + (gw ? "w" : "-") +
+         (gx ? (sgid ? "s" : "x") : (sgid ? "S" : "-")) +
+         (or ? "r" : "-") + (ow ? "w" : "-") +
+         (ox ? (svxt ? "t" : "x") : (svxt ? "T" : "-"))
+
+      mdiv.innerHTML =
+         ((suid << 11) +
+            (sgid << 10) +
+            (svxt << 9) +
+            (ur << 8) +
+            (uw << 7) +
+            (ux << 6) +
+            (gr << 5) +
+            (gw << 4) +
+            (gx << 3) +
+            (or << 2) +
+            (ow << 1) +
+            ox).toString(8).padStart(4, '0');
+   }
+   window.addEventListener("load", update_mode);
+</script>
+</head>
+<form onchange="update_mode()">
+  <div style="margin: auto; width: max-content;"><label>File Type
+    <select id="filetype">
+      <option value="-">Regular File</option>
+      <option value="d">Directory</option>
+      <option value="l">Symbolic Link</option>
+      <option value="c">Character Device</option>
+      <option value="b">Block Device</option>
+      <option value="p">FIFO</option>
+    </select></label>
+  </div>
+    <hr />
+  <table>
+   <tr>
+     <th><label>Special</label></th>
+     <th><label>User</label></th>
+     <th><label>Group</label></th>
+     <th><label>Other</label></th>
+   </tr>
+    
+   <tr>
+   <td><label><input id='suid' type="checkbox">SUID</label></td>
+   <td><label><input id='ur' type="checkbox">Read</label></td>
+   <td><label><input id='gr' type="checkbox">Read</label></td>
+   <td><label><input id='or' type="checkbox">Read</label></td>
+   
+   </tr><tr>
+   <td><label><input id='sgid' type="checkbox">GUID</label></td>
+   <td><label><input id='uw' type="checkbox">Write</label></td>
+   <td><label><input id='gw' type="checkbox">Write</label></td>
+   <td><label><input id='ow' type="checkbox">Write</label></td>
+   </tr><tr>
+   <td><label><input id='svxt' type="checkbox">Sticky</label></td>
+   <td><label><input id='ux' type="checkbox">Execute</label></td>
+   <td><label><input id='gx' type="checkbox">Execute</label></td>
+   <td><label><input id='ox' type="checkbox">Execute</label></td>
+   </tr>
+  </table>
+</form>
+<hr />
+<table>
+  <tr><th>Mode</th><th>Modestring</th></tr>
+  <tr><td id="mode"></td><td id="modestr"></td></tr>
+</table>
+

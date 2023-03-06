@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS 344 Setup Guide (eCampus) &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operating Systems Fundamentals" href="../modules/01/index.html" />
+    <link rel="prev" title="CS374 - Operating Systems I" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CS 344 Setup Guide (eCampus)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="CS374 - Operating Systems I" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/01/index.html" class="btn btn-neutral float-right" title="Operating Systems Fundamentals" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cs-344-setup-guide-ecampus">
+<h1>CS 344 Setup Guide (eCampus)<a class="headerlink" href="#cs-344-setup-guide-ecampus" title="Link to this heading"></a></h1>
+<p>In this course, you will complete your coursework on a linux server called <strong>os1</strong>, which is hosted on the OSU network.</p>
+<ul class="simple">
+<li><p><strong>os1</strong> has a specially configured environment for this course, which is not available on other school servers or your local machine.</p></li>
+<li><p>Students in this class often test code which can cause server instability; you are prohibited by IT from working on assignments in this class on other servers, such as <strong>flip</strong>. Violating this policy can result in suspension of your access to the OSU network!</p></li>
+</ul>
+<p>Remote development work through a command-line interface is a <em>fundamental</em> skill in software development. You may be evaluated on your proficiency with the tools of the trade that we introduce in this class.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Connecting to <strong>os1</strong> with the vscode remote SSH extension is prohibited. Aside from sidestepping course learning objectives, vscode server threatens the stability of <strong>os1</strong> for other users. Students caught running instances of vscode server on os1 will face disciplinary action.</p>
+</div>
+<section id="pre-setup">
+<h2>Pre-Setup<a class="headerlink" href="#pre-setup" title="Link to this heading"></a></h2>
+<p>You may need to create an engineering account on T.E.A.C.H. in order to access the school servers. This is an older system that was used to manage user accounts before ONID. These accounts are now unified, but you’ll need to <a class="reference external" href="https://teach.engr.oregonstate.edu/aup.php">activate your T.E.A.C.H account</a> if you haven’t already done so in a previous class.</p>
+<p>After logging into T.E.A.C.H, please navigate to the <a class="reference external" href="https://teach.engr.oregonstate.edu/teach.php?type=change_shell">“Change Unix Shell”</a> resource under “Account Tools” on the right-side navigation menu. Ensure that your shell is set to <strong class="program">bash</strong>. If it is not set to <strong class="program">bash</strong>, change it, and then wait at least 15 minutes before continuing with the rest of the configuration, because it seems to take some time to propagate to the servers.</p>
+</section>
+<section id="configuration-process-overview">
+<h2>Configuration Process Overview<a class="headerlink" href="#configuration-process-overview" title="Link to this heading"></a></h2>
+<p>Configuring your environment to do software development on <strong>os1</strong> has only a few major steps, but it is important to understand what you are doing and why in order to solve any problems you run into along the way. You will:</p>
+<ul class="simple">
+<li><p>Install a modern terminal emulator application.</p></li>
+<li><p>Install and configure necessary utilities on the <em>local</em> machine in order to connect to the <strong>os1</strong> server.</p></li>
+<li><p>Configure your OSU user account in order to access resources provided on <strong>os1</strong>.</p></li>
+</ul>
+</section>
+<section id="installing-a-terminal-emulator">
+<h2>Installing a Terminal Emulator<a class="headerlink" href="#installing-a-terminal-emulator" title="Link to this heading"></a></h2>
+<p>A terminal emulator is an application that emulates a physical terminal device (teletype keyboard and display). The terminal emulator provides a window that captures mouse and keyboard input to send to another terminal-based application, and which displays output from that application.</p>
+<p><strong>os1</strong> was configured and tested with <strong class="program">kitty</strong><a class="footnote-reference brackets" href="#kitty" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, a fast, feature-rich, GPU based terminal emulator. I highly recommend using <strong class="program">kitty</strong>, if you are able, in order to experience the course as intended. How you go about installing a terminal emulator depends on the operating system on your local machine.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>Windows users will need to install Linux in order to run a functioning terminal emulator. You have three options:</p>
+<ol class="arabic simple">
+<li><p>Install a Linux distribution on a separate partition. Some of the most popular and beginner friendly are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ubuntu.com/">Ubuntu</a></p></li>
+<li><p><a class="reference external" href="https://archlinux.org/">Arch</a></p></li>
+<li><p><a class="reference external" href="https://www.debian.org/">Debian</a></p></li>
+<li><p><a class="reference external" href="https://www.gentoo.org/">Gentoo</a></p></li>
+<li><p><a class="reference external" href="https://fedoraproject.org/">Fedora</a></p></li>
+<li><p>Find the perfect distro for yourself at <a class="reference external" href="https://distrowatch.com/">distrowatch</a></p></li>
+</ul>
+</li>
+<li><p>Install Windows Subsystem for Linux with a GUI desktop environment: <a class="reference external" href="https://www.kali.org/docs/wsl/win-kex/">Win-Kex</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.cygwin.com/">Cygwin</a></p></li>
+</ol>
+<section id="option-1">
+<h4>Option 1<a class="headerlink" href="#option-1" title="Link to this heading"></a></h4>
+<p>Installing Linux as a native operating system is strongly recommended for the best user experience. Ubuntu is the most beginner friendly option.</p>
+<p>After installing linux, continue to <a class="reference internal" href="#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></p>
+</section>
+</section>
+<section id="option-2">
+<h3>Option 2<a class="headerlink" href="#option-2" title="Link to this heading"></a></h3>
+<p>Installing Linux under WSL is recommended only if you are unable or unwilling to install a standalone Linux distribution on your personal system. The quality of WSL improves each term, but it is still fairly unstable and many students have found it practically unusable–switching to a full linux install in the middle of the term is not uncommon.</p>
+<p>There are several pitfalls with WSL:</p>
+<ul class="simple">
+<li><p>In order to run WSL, your system must support hardware virtualization. Several students have had to enable this option in their motherboard’s firmware (BIOS/UEFI).</p></li>
+<li><p>You cannot simultaneously use the OSU VPN while also using WSL to access the internet, due to a #wontfix bug in WSL.</p></li>
+<li><p>Moving files between WSL and Windows can be confusing. Submitting assignments can be frustrating</p></li>
+<li><p>Some students have found that WSL does not support graphics acceleration for their particular GPUs, resulting in black screens, random crashes, and other display issues. Often students end up having to use outdated terminal emulators as a result.</p></li>
+</ul>
+<p>After <a class="reference external" href="https://www.kali.org/docs/wsl/win-kex/">installing WSL with Win-Kex</a> continue to <a class="reference internal" href="#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></p>
+<section id="option-3">
+<h4>Option 3<a class="headerlink" href="#option-3" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://www.cygwin.com/">Installing Cygwin</a> is recommended as a last resort because it is horrendously unpleasant.</p>
+<ul class="simple">
+<li><p>Cygwin is extremely unstable and crashes constantly.</p></li>
+<li><p>There is no uninstaller for Cygwin. The many files it installs must be manually removed. Some people consider it malware for this reason alone.</p></li>
+<li><p>Cygwin has no package manager. Installing additional software packages requires completely reinstalling Cygwin.</p></li>
+<li><p>Cygwin does not support graphics acceleration, forcing students to use outdated terminal emulators.</p></li>
+<li><p>Cygwin uses noncompliant versions of standard utilities that often do not work properly.</p></li>
+</ul>
+<p>The default Cygwin terminal emulator, Mintty, is the best you will get with Cygwin, and it does not work very well.</p>
+</section>
+</section>
+<section id="macos-linux-bsd-etc">
+<h3>MacOS, Linux, BSD, etc.<a class="headerlink" href="#macos-linux-bsd-etc" title="Link to this heading"></a></h3>
+<p>Install <strong class="program">kitty</strong><a class="footnote-reference brackets" href="#kitty" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> terminal emulator. If, for some reason, <strong class="program">kitty</strong> does not work properly (such as if your system does not support GPU acceleration), the following terminal emulators are suggested as acceptable alternatives:</p>
+<ul class="simple">
+<li><p>Alacritty</p></li>
+<li><p>Gnome Terminal</p></li>
+<li><p>Foot</p></li>
+<li><p>iTerm2</p></li>
+</ul>
+<p>The following terminal emulators are known to have major issues:</p>
+<ul class="simple">
+<li><p>Terminal.app (MacOS)</p></li>
+<li><p>Terminator</p></li>
+<li><p>ConEmu</p></li>
+<li><p>MobaXterm</p></li>
+<li><p>PuTTY</p></li>
+<li><p>CMD.exe</p></li>
+<li><p>Windows Terminal</p></li>
+<li><p>Xterm</p></li>
+</ul>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="kitty" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p><a class="reference external" href="https://sw.kovidgoyal.net/kitty/">https://sw.kovidgoyal.net/kitty/</a></p>
+</aside>
+</aside>
+</section>
+</section>
+<section id="local-setup">
+<h2>Local Setup<a class="headerlink" href="#local-setup" title="Link to this heading"></a></h2>
+<p>In order to connect to the remote server, you will need an SSH client, <strong class="program">ssh</strong>. It is also recommended that you install a text editor (<strong class="program">vim</strong> or <strong class="program">nvim</strong>), and <strong class="program">git</strong>.</p>
+<p>These should all be available through the appropriate package manager for your system;</p>
+<dl>
+<dt>Debian/Ubuntu/Kali</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kitty<span class="w"> </span>openssh-client<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+<dt>Arch</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syu<span class="w"> </span>kitty<span class="w"> </span>openssh<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+<dt>Gentoo</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>emerge<span class="w"> </span>--ask<span class="w"> </span>x11-terms/kitty<span class="w"> </span>net-misc/openssh<span class="w"> </span>app-editors/neovim<span class="w"> </span>dev-vcs/git
+</pre></div>
+</div>
+</dd>
+<dt>Brew</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>kitty<span class="w"> </span>openssh<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Next, you need to set up your ssh client to connect to os1,</p>
+<ol class="arabic simple">
+<li><p>Generate public/private key pair</p></li>
+<li><p>Install keys to OSU network account</p></li>
+<li><p>Create ssh config</p></li>
+</ol>
+<section id="generate-public-private-key-pair">
+<h3>Generate Public/Private Key Pair<a class="headerlink" href="#generate-public-private-key-pair" title="Link to this heading"></a></h3>
+<p>You will connect to OSU servers using public key cryptography. The way this works is you generate a pair of keys which are symmetric: a message encrypted with one key can be decrypted with the other. One of these keys will be a private (secret) key, and the other public (published). You confirm your identity by decrypting a challenge message that was encrypted with your public key; this has several major advantages:</p>
+<ul class="simple">
+<li><p>Public key cryptography is convenient, allowing passwordless logins.</p></li>
+<li><p>Your private key is never exposed, allowing it to be used everywhere, unlike a password.</p></li>
+<li><p>Each local device has its own private key. If a device is compromised, that credential can be revoked without having to update a master password on every other device.</p></li>
+</ul>
+<p>Generate a keypair with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+</pre></div>
+</div>
+<p>This will ask you a series of questions, and then generate your two key files.</p>
+<p>If you choose to enter a password, the password will be used to encrypt your private key file. This is unrelated to your ONID password. The password will be required to be entered each time the private key file is used to authenticate; you can later change or remove this password. The risk of not having a password is that the key file is stored unencrypted on the disk, where an attacker with physical access or remote administrative access could retrieve it. For most students, this is an unnecessary level of security. If you use a password, you may want to install an ssh-agent service which stores your decrypted private keys in memory to be reused on subsequent connections without requiring password reentry; this is beyond the scope of this guide.</p>
+<p>If you chose the default file locations, <code class="file docutils literal notranslate"><span class="pre">~/.ssh/id_ed25519</span></code> is your private key and <code class="file docutils literal notranslate"><span class="pre">~/.ssh/id_ed25519.pub</span></code> is your public key. The private key is a secret. Do not share it with anyone.</p>
+</section>
+<section id="register-public-key-credential-with-server">
+<h3>Register Public Key Credential with Server<a class="headerlink" href="#register-public-key-credential-with-server" title="Link to this heading"></a></h3>
+<p>Next you need to log into a school server (using your ONID password and DUO), and copy your public key to the <code class="file docutils literal notranslate"><span class="pre">authorized_keys</span></code> file on the server. The following command automates this and ensures that the files on the remote system are created with appropriate permissions to work properly:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh-copy-id<span class="w"> </span>your-onid-username@access.engr.oregonstate.edu
+</pre></div>
+</div>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">your-onid-username</span></code> should be replaced with <em>your onid username</em>.</p>
+<p>You should be prompted for your ONID password. Then it will ask you to authenticate with DUO. If you have a phone registered, you should be able to send a push notification with <code class="docutils literal notranslate"><span class="pre">1</span></code>, or you can directly enter a 6-digit temporary PIN generated by your hardware token or DUO app.</p>
+<p><strong class="program">ssh-copy-id</strong> will then copy your public key(s) to the remote server and attempt to log in with them. You may be asked to enter a password to decrypt your private key file if you entered a password during the key creation step.</p>
+</section>
+<section id="confirm-key-registration">
+<h3>Confirm Key Registration<a class="headerlink" href="#confirm-key-registration" title="Link to this heading"></a></h3>
+<p>You should now be able to log in without entering your ONID password and using DUO:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>your-onid-username@access.engr.oregonstate.edu
+</pre></div>
+</div>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">your-onid-username</span></code> should be replaced with <em>your onid username</em>.</p>
+<p>As before, you may need to enter in a password to decrypt your private key file, if you entered one during key generation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you see a message about an unknown terminal “xterm-kitty”, logout and reconnect with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>kitty<span class="w"> </span>+kitten<span class="w"> </span>ssh<span class="w"> </span>your-onid-username@access.engr.oregonstate.edu
+</pre></div>
+</div>
+<p>This will install the terminfo for kitty to your user account. This will be likely be necessary until the servers are updated.</p>
+</div>
+</section>
+<section id="configure-ssh-client">
+<h3>Configure SSH Client<a class="headerlink" href="#configure-ssh-client" title="Link to this heading"></a></h3>
+<p>You have successfully installed your keys on <strong>flip</strong> which is the bastion server accessed via access.engr.oregonstate.edu. The <strong>os1</strong> server is not public-facing and can only be accessed from within the OSU network. If you are on the VPN or physically connected to OSU’s network, you may be able to access <strong>os1</strong> directly.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You are creating a file on your <strong>local</strong> machine to configure your <strong>local</strong> ssh client. If you are still logged into <strong>flip</strong> from the previous step, <strong>log out</strong> (<code class="code highlight shell docutils literal highlight-shell"><span class="nb">logout</span></code>). <strong>Confirm</strong> that you are <strong>not</strong> logged into a school server with the <strong class="program">hostname</strong> command before proceeding:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hostname
+<span class="go">flip2.engr.oregonstate.edu</span>
+<span class="gp">$ </span><span class="nb">logout</span>
+<span class="gp">$ </span>hostname
+<span class="go">bennyb-laptop</span>
+</pre></div>
+</div>
+</div>
+<p>Edit/create <code class="file docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> to have the following entries:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host *
+   ServerAliveInterval 10
+   ServerAliveCountMax 6
+
+Host flip os1
+  User your-onid-username
+  LogLevel=error
+
+Host flip
+  Hostname access.engr.oregonstate.edu
+
+Host os1
+  ProxyJump flip
+</pre></div>
+</div>
+<p>You can use a graphical text editor to do this, if you are uncomfortable using something like <strong class="program">vim</strong> or <strong class="program">nano</strong> in the terminal.</p>
+<p>You should now be able to connect directly to <strong>os1</strong> without entering your ONID password,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>os1
+<span class="gp">$ </span>hostname
+<span class="go">os1.engr.oregonstate.edu</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="remote-setup">
+<h2>Remote Setup<a class="headerlink" href="#remote-setup" title="Link to this heading"></a></h2>
+<p>Now that you are able to log into <strong>os1</strong>, you will need to configure your account to be able to use the customized software packages installed on the server.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You must perform these steps on <strong>os1</strong>! Ensure you are logged into <strong>os1</strong> with the <strong class="program">hostname</strong> command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hostname
+<span class="go">os1.engr.oregonstate.edu</span>
+</pre></div>
+</div>
+</div>
+<p>While logged into <strong>os1</strong>, run the following script:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/class/cs344/setup.sh
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="CS374 - Operating Systems I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/01/index.html" class="btn btn-neutral float-right" title="Operating Systems Fundamentals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

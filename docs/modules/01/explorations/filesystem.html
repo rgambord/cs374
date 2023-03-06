@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Systems &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Terminal Interface" href="terminal.html" />
+    <link rel="prev" title="Programs and Processes" href="processes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processes.html">Programs and Processes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">File Systems</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="processes.html" class="btn btn-neutral float-left" title="Programs and Processes" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terminal.html" class="btn btn-neutral float-right" title="Terminal Interface" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-systems">
+<h1>File Systems<a class="headerlink" href="#file-systems" title="Link to this heading"></a></h1>
+<p>One of the fundamental philosophies of UNIX is that “everything is a file”; in other words, most data, devices, and various aspects operating system interfaces, can be accessed as files in the file system.</p>
+<p>At its core, a file is an abstraction - a way to represent and manage data in a structured and meaningful way. It is a software construct that provides a consistent interface for working with data, regardless of how that data is physically stored or accessed.</p>
+<p>While many people tend to think of files as physical entities that exist on a disk, this is actually an oversimplification. In reality, a file is not a physical object at all - it is simply an abstract representation of data that can be accessed and manipulated using software.</p>
+<p>One important aspect of this abstraction is that files can be implemented in different ways depending on the needs of the system. For example, not all files correspond to data that is stored on a disk. Some files may represent data that is stored in memory, or data that is generated on the fly by a software application.</p>
+<p>Another important aspect of the file abstraction is that it can be overridden to provide additional functionality beyond simple data storage and retrieval. For example, a hardware device driver might expose a file-like interface to allow software to interact with the device in a standardized way. In this case, the file abstraction serves as a useful tool for providing a consistent and predictable interface to software that needs to interact with the device.</p>
+<p>Overall, the key takeaway is that a file is not a physical entity, but rather an abstraction that provides a standard interface for working with data. By understanding this abstraction, we can better appreciate the flexibility and power of modern computing systems, and how they are able to manipulate and manage data in a wide variety of ways.</p>
+<section id="file-system-structure">
+<h2>File System Structure<a class="headerlink" href="#file-system-structure" title="Link to this heading"></a></h2>
+<p>Early operating systems implemented Flat file systems, where all files were stored in a single logical location. Flat file systems were simple, but not very practical for organizing large amounts of data. They could quickly become cluttered and difficult to navigate. The introduction of a hierarchical file system, with directories nested within other directories, made it much easier to organize and manage large amounts of data. This innovation paved the way for the modern file systems that we use today, which are much more complex and sophisticated than those of the early computer era.</p>
+<p>In Unix-based operating systems, a directory is a special type of file that contains a list of other files and directories, called directory entries. Directories are used to organize and manage files on a Unix system. Each directory entry contains a filename and a pointer to the corresponding inode for the file or directory it represents.</p>
+<p>An inode, or index node, is a data structure that contains metadata about a file, such as its type, owner, permissions, and timestamps, along with a pointer to the location of the actual underlying data for the file in question. In Unix, every file is represented by an inode, and each file system includes an inode table.</p>
+<section id="mounting-and-unmounting-file-systems">
+<h3>Mounting and Unmounting File systems<a class="headerlink" href="#mounting-and-unmounting-file-systems" title="Link to this heading"></a></h3>
+<p>File systems may physically exist in many forms, such as data stored on a disk in a particular file system format, as data generated on-the-fly by the operating system, as data stored only in volatile memory (RAM), as data stored remotely over a network, and so on. In order to interact with a particular file system, an operating system has hardware-and-file system specific driver code which interacts directly with hardware on one end, and provides a uniform, abstract interface for accessing that particular file system on the other end.</p>
+<p>Each physical file system has a “root” directory, from which all other files and directories within that file system can be accessed. To create a logical (virtual) file system, the operating system combines multiple physical file systems into a single hierarchical tree structure. Each physical file system’s root directory is bound to a specific path within that tree, known as its mount point.</p>
+<p>The file system that contains the core components of the operating system is mounted at a special path called the root directory, which is represented by a forward slash (<code class="file docutils literal notranslate"><span class="pre">/</span></code>). This is the starting point for navigating the logical file system hierarchy, and all other files and directories are located somewhere beneath it. Additional file systems can be mounted to other paths within this logical file system, appearing as virtual subdirectories within the existing structure.</p>
+<p>For example, user data is usually stored in a separate physical file system from the system data, and is mounted to a path called <code class="file docutils literal notranslate"><span class="pre">/home/</span></code>. This allows user data to be easily separated from system data, making it easier to manage these files. It also makes user data portable; if a user installs a different operating system on their computer, they can simply mount the existing user data file system on the appropriate mount point in the new system and have seamless access to their files and settings.</p>
+<p>Mounting file systems at specific paths allows the operating system to create a unified and organized file system hierarchy that provides easy access to data, while also maintaining the flexibility of multiple discrete file systems to separately maintain that data.</p>
+</section>
+<section id="links">
+<h3>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h3>
+<p>A file in a file system can be accessed from multiple locations, with each access point referred to as a link. Unix-based systems have two types of links: hard links and symbolic links. A hard link is a directory entry that directly references a file’s inode, as previously mentioned. On the other hand, a symbolic link is a special type of file that contains a plaintext path string as its contents.</p>
+<section id="hard-links">
+<h4>Hard Links<a class="headerlink" href="#hard-links" title="Link to this heading"></a></h4>
+<p>When a file is first created, a single directory entry is created in its parent directory; this is its first hard link. Additional hard links can be created by simply copying the inode reference of an existing hard link into a new directory entry elsewhere, allowing any file to be accessed from multiple directories and under different names. It is impossible to determine the “original” name of a file when multiple hard links to it exist – from the perspective of the file system, all hard links are functionally identical.</p>
+<p>Reference counting is used to keep track of the number of hard links that point to a given inode; the link count of an inode is incremented and decremented when hard links to it are created or destroyed. When the count reaches 0, no more hard links to the inode exist, and any resources as-associated with it can be reclaimed by the system.</p>
+<p>There are restrictions on hard links that limit their applicability. First, a hard link created in one file system can’t refer to files in another file system. This if fundamentally due to the fact that a hard link contains no file system specifier, only an inode identifier, and every hard link is implicitly assumed to refer to an inode within the same file system that the hard link is a part of. This also ensures that file systems are internally consistent and self-contained; if hard links to a particular file were able to exist in other file systems, each of those file systems would need to be mounted in order to be able to fully delete the file. Otherwise the file could be left with dangling reference counts.</p>
+<p>Second, there is no technical reason directories cannot be hard linked, yet most modern systems now disallow hard linking to directories, or require explicit root (administrator) user action to do so. This is because allowing hard links to directories could lead to problems with circular references and other issues. For example, if a directory contained a hard link to itself, all other hard links to it could be deleted while it would continue to exist. Since it would only be accessible from within itself, the directory would become orphaned and no longer accessible via the file system root.</p>
+<p>While it’s not common for a typical file to be hard linked from multiple locations at once, there are some use cases where this functionality can be useful. For example, if a file needs to be shared between multiple users, hard linking can ensure that the file will continue to exist until all users have deleted their own hard links to it, even if some users delete their hard links. This can be particularly useful in situations where a file is critical to the operation of multiple systems or applications, and deleting it could cause serious problems. By using hard links, multiple users can access and modify the file as needed, while also ensuring its continued existence and availability.</p>
+<p>Common file system operations such as deleting, moving, and renaming files are actually manipulating the underlying hard links that point to the files. We have already discussed how a file is deleted (by removing all hard links to it). Similarly, a file is moved or renamed by simply creating a new hard link at the new location and then removing the old hard link, without having to move or copy any actual data. This makes file system operations efficient and fast, which is essential to dealing with large numbers of files and directories.</p>
+<p>Modifying and manipulating files referenced by multiple hard links can lead to surprising behavior. Modifications made to a file through one hard link are visible through all other hard links to the same file, since they all point to the same data. However, a user might attempt to replace a file with a new version by deleting the original file and renaming the new version to replace it. However, this operation actually removes one hard link to the file and replaces it with a hard link to a different file, leaving any other hard links intact and pointing to the original file. This can cause confusion and unexpected results, something symbolic links can help avoid.</p>
+</section>
+<section id="symbolic-links">
+<h4>Symbolic Links<a class="headerlink" href="#symbolic-links" title="Link to this heading"></a></h4>
+<p>Unix offers another type of link called a symbolic link, or symlink, for short; these are also referred to as soft links in contrast to the hard links mentioned above. A symbolic link is a special type of file which stores a path string to another file or directory as its contents. Symlinks don’t increment the reference count of the file they reference, and they can become broken if the file they reference doesn’t exist or is removed; in other words, symlinks follow paths, not files. However, since they are stored as a path string and don’t affect reference counting, they aren’t limited in the ways hard links are: they can refer to directories as well as to files in other mounted file systems.</p>
+<p>System interfaces that work with paths treat symbolic links differently than other types of files. When performing common file operations, such as opening a file, the operating system will transparently follow symbolic links to the underlying file, following chains of links across multiple levels of indirection as needed. If the system reaches a predefined recursion limit while following a link, such as if a link points to itself, it will return an error to the calling program. Since a symbolic link is just a file with an associated inode and path data, special interfaces are also provided to work directly with the link’s metadata, rather than the file it references. Many system utilities that work with files and directories also include option parameters to direct how they interact with symbolic links.</p>
+</section>
+</section>
+</section>
+<section id="access-permissions">
+<h2>Access Permissions<a class="headerlink" href="#access-permissions" title="Link to this heading"></a></h2>
+<p>Now that we’ve discussed the basic structure of a file system, let’s move on to access permissions. Access permissions are a set of rules that determine who can interact with a file or directory and what operations they can perform. These permissions are crucial for maintaining system security, ensuring privacy, and preventing unauthorized access to sensitive data.</p>
+<p>A file’s access permissions are stored in a 12-bit value called its mode; the first three bits are special file access modifier bits called the Set-User ID, Set-Group ID, and Sticky bits. Next come three sets of three access bits (read, write, and execute), for each of the file ownership classes: user, group, and other.</p>
+<section id="file-ownership">
+<h3>File Ownership<a class="headerlink" href="#file-ownership" title="Link to this heading"></a></h3>
+<p>Each file is independently owned by a user and group; these values are set to the user id and primary group id of the user that creates the file. The owner of a file can change the file’s group to any group that user is a member of, but administrator capabilities are required to change a file’s user, or to change its group to one that its owner is not a member of.</p>
+<p>A user can belong to one or more groups. When a user is created, it must be assigned a primary group; generally, a group with the same name as the new user is simultaneously created and assigned as a user’s primary group, of which they are the only member. An administrator can then add the user to additional groups, and that user may freely change its own primary group to any group it belongs to.</p>
+<p>Group ownership serves two primary purposes in Unix: facilitating file sharing among a group of users, such as a project team, and providing a convenient way to manage access to system resources without the need to manually manage individual user permissions for each resource.</p>
+<p>For instance, to access a system’s sound and video devices, users typically need to belong to the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">audio</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">video</span></code> groups, respectively. Additionally, many Unix systems have a special <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wheel</span></code><a class="footnote-reference brackets" href="#wheel" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> group, which grants its members superuser status. This allows them to masquerade as any other user on the system, including the root user, on demand.</p>
+<p>If a process’s EUID is the owner of a file, its access permissions are determined by the “user” mode bits. If it is not the owner of a file, but its EGID matches the group which owns it, its access permissions are determined by the “group” mode bits. Finally, if neither applies, permissions are determined by the “other” mode bits. Notice that permissions do not stack, meaning the first applicable set of permissions (user, group, or other) is used.</p>
+<p>In general, the “user” permissions are at least as permissive as “group” permissions, and “other” permissions tend to be the least permissive. However, there are situations where it might be desirable to set permissions differently; for example, the root user might unset the user execute permission on a utility they own and manage, but set the other execute permission. This might be the case if the utility were meant to be run by regular users but would be dangerous if accidentally run by the root user.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="wheel" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The origin of the term “wheel” is uncertain, but it is believed to derive from the slang term “big wheel,” which refers to a powerful or influential person.</p>
+</aside>
+</aside>
+</section>
+<section id="special-permission-bits">
+<h3>Special Permission Bits<a class="headerlink" href="#special-permission-bits" title="Link to this heading"></a></h3>
+<p>There are three additional special permission bits that can be set on files and directories:</p>
+<ul class="simple">
+<li><p>Set User ID (SUID): When the SUID bit is set on an executable file, the process runs with the privileges of the file’s owner, rather than the user who started the process.</p></li>
+<li><p>Set Group ID (SGID): When the SGID bit is set on an executable file, the process runs with the privileges of the file’s group, rather than the user’s group. When set on a directory, it ensures that new files and directories inherit the group ownership of the parent directory.</p></li>
+<li><p>Sticky Bit: When the sticky bit is set on a directory, only the owner of a file within that directory can delete or rename their file, even if other users have write access to the directory.</p></li>
+</ul>
+<section id="set-user-id-bit">
+<h4>Set User ID Bit<a class="headerlink" href="#set-user-id-bit" title="Link to this heading"></a></h4>
+<p>The SUID bit is often used to allow users to run certain programs with elevated privileges without needing to have those privileges themselves. For example, all user passwords are stored in a single system password file which is owned by the root user. In order to change their passwords, users can run the <strong class="command">passwd</strong> utility, which is owned by the root user and has its SUID bit set. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">passwd</span></code> utility is then able to access and modify the password file without exposing other users’ passwords to an user. SUID programs can be a security risk if they are not properly designed and implemented, as they can be used to gain elevated privileges and execute unauthorized actions.</p>
+<p>The way this works is that the file in question is executed so that the resulting process has a UID equal to its parent process, but with an EUID that is set to the user ID that owns the executable. A process can swap its UID and EUID back and forth to perform tasks as either of the two users. It can also elevate itself and fully become the other user by setting its UID to match the EUID, or it can drop privileges by setting its EUID back to the real user ID.</p>
+</section>
+<section id="set-group-id-bit">
+<h4>Set Group ID Bit<a class="headerlink" href="#set-group-id-bit" title="Link to this heading"></a></h4>
+<p>The SGID bit is usually used to ensure that files created in a directory inherit the group ownership of that directory, rather than the group ownership of the user who created the file. This can be useful in situations where multiple users need to work on files in a shared directory, and those files need to be accessible to all users in a particular group.</p>
+<p>For example, consider a directory shared by the members of a project team. The directory can be owned by a project group, and the SGID bit can be set on the directory. When a user creates a new file in the directory, the file will be owned by the project group instead of the user’s personal group. This ensures that all team members can access the file, even if they are not members of the user’s personal group.</p>
+<p>The SGID bit is also used on executable files in the same way that the SUID bit is, and results in the GID matching the parent process, but the EGID matching the group ID that owns the file in question.</p>
+</section>
+<section id="sticky-bit">
+<h4>Sticky Bit<a class="headerlink" href="#sticky-bit" title="Link to this heading"></a></h4>
+<p>The sticky bit is often used on directories that are shared among multiple users, such as the <code class="file docutils literal notranslate"><span class="pre">/tmp</span></code> directory, to prevent users from accidentally deleting or modifying files owned by other users. By setting the sticky bit on the <code class="file docutils literal notranslate"><span class="pre">/tmp</span></code> directory, each user can write to the directory in order to create temporary files, but they cannot delete or modify files created by other users.</p>
+<p>The sticky bit is only meaningful when set on a directory, and is also known as the restricted deletion bit.</p>
+</section>
+</section>
+<section id="representation-of-file-mode">
+<h3>Representation of File Mode<a class="headerlink" href="#representation-of-file-mode" title="Link to this heading"></a></h3>
+<p>The mode of a file can be expressed in both a numeric octal representation and in human readable textual format.</p>
+<p>In the octal representation, the mode is usually expressed as a 3-digit octal number, where each digit corresponds to the permissions for the owner, the group, and others, respectively. Each digit is a three-bit value with each bit representing read, write, and execute permissions, respectively. A fourth (leftmost) digit represents the special permission bits, which is often omitted if none are set.</p>
+<p>In the human-readable representation, the mode is expressed as a 10-character string, called a modestring, where the first character indicates the file type (e.g., ‘-’ for regular files, ‘d’ for directories, and ‘l’ (el) for symbolic links). The remaining nine characters represent the permissions for the owner, the group, and others, in groups of three characters each. An ‘r’, ‘w’, or ‘x’ appearing in each position indicates the corresponding read, write, or execute permission is set, while a ‘-’ indicates that it is unset.</p>
+<p>Unlike with the octal representation, additional characters are not used to represent special permissions. Instead, the ‘x’ position’s character is changed to a different letter. For the SUID and SGID bits, it’s changed to ‘s’ for owner and group classes, respectively. For the sticky bit, it is changed to a ‘t’ for the other class. For any of these classes, if the execute permission isn’t set, but the corresponding special bit is, then a capital ‘S’ or ‘T’ is used, instead.</p>
+<p>You can explore how the different mode bits are reflected in both representations, in this interactive exploration,</p>
+<iframe style="border: 1px solid grey; border-radius: 5px;" src="../../../_static/modules/01/mode.html" width="100%" height="230px"></iframe></section>
+<section id="permissions-and-special-files">
+<h3>Permissions and Special Files<a class="headerlink" href="#permissions-and-special-files" title="Link to this heading"></a></h3>
+<p>Access permissions can work differently for special files like symlinks and directories.</p>
+<p>Access permissions affect the behavior of directories in the following ways:</p>
+<dl class="simple">
+<dt>Read (r)</dt><dd><p>Allows processes to list the contents of the directory.</p>
+</dd>
+<dt>Write (w)</dt><dd><p>Allows processes to create, delete, or modify files and directories within the directory.</p>
+</dd>
+<dt>Execute (x)</dt><dd><p>Allows processs to access files and directories within the directory and change to it as their working directory.</p>
+</dd>
+</dl>
+<p>A process that has read (r) permissions, but not execute (x) permissions, on a directory can see the names of files in the directory but cannot access (change into) the directory or list the contents with details. In contrast, a process that has execute (x) permissions, but not read (r) permissions, on a directory can access (change into) the directory and interact with its files, provided they know the exact filenames, but they are unable to list the names of the files within the directory. This is sometimes used as a very rudimentary secret file-sharing mechanism, where the name of a file is a secret that is hard to guess, so only authorized users can access it by knowing its name; however, it is not very secure.</p>
+<p>Permissions aren’t settable on a symlink. A symlink can be created, modified, or destroyed based on the permissions of the parent directory, just like with a hard link. A symlink always shows permissions as “lrwxrwxrwx”, but these permissions do not have any real impact because the actual permissions of the file that it references are what determine access privileges once the symlink has been followed to the target.</p>
+</section>
+<section id="alternative-access-control">
+<h3>Alternative Access Control<a class="headerlink" href="#alternative-access-control" title="Link to this heading"></a></h3>
+<p>Unix also permits alternative access control mechanisms on top of what is described above. For example, Access Control Lists (ACLs) are a flexible and fine-grained approach to managing file permissions in Unix-based systems. They provide a way to set permissions on a per-user or per-group basis, rather than relying solely on the traditional owner, group, and other permissions model. ACLs allow administrators to grant or deny access to specific users or groups, enabling more control over file and directory access.</p>
+<p>An ACL consists of a set of entries, each defining the access permissions for a specific user or group. The entries can grant or deny read, write, or execute permissions. ACLs can be applied to both files and directories, and they are typically used in situations where the traditional Unix file permissions model is insufficient or too restrictive. In addition to the standard Unix permissions, ACLs provide a more customizable and precise way to manage access control in complex environments.</p>
+<p>Alternative access mechanisms add an 11th character to a mode string. For example, if ACL is enabled on a filesystem, an 11th character is added to the mode string to indicate the presence of an ACL for that file. This 11th character is “+” if an ACL is present for that file, or “.” if there is no ACL for that file.</p>
+</section>
+</section>
+<section id="additional-file-metadata">
+<h2>Additional File Metadata<a class="headerlink" href="#additional-file-metadata" title="Link to this heading"></a></h2>
+<p>In addition to the file type, ownership, access permissions, and reference count metadata that we discussed above, files can contain a wealth of other information that can be useful for various purposes. One such set of information is the creation, access, and modified timestamps, which are stored as metadata in the file system and are abbreviated as ctime, atime, and mtime respectively.</p>
+<p>The ctime, or “change time,” represents the time when the file’s inode was last modified, such as when the file’s permissions were changed or the file was moved or renamed. The atime, or “access time,” indicates the last time the file was accessed, such as when it was opened or read. Finally, the mtime, or “modification time,” represents the time when the file’s content was last modified.</p>
+<p>In addition to these standard timestamp fields, some file systems allow for additional metadata fields to be added to inodes or even allow for custom-defined metadata fields to be added for different file types. For example, a digital image file may have additional metadata fields such as the image resolution or color profile stored in its inode. Other types of files may have metadata fields such as author, description, or keywords.</p>
+<p>These additional metadata fields can be useful for various purposes such as search indexing, file organization, and metadata-based filtering or sorting. They can also provide additional information about the file that may be useful for applications that interact with the file. However, it’s important to note that not all file systems support custom metadata fields and that different file systems may store metadata differently, so it’s important to understand the specific file system being used when working with non-standard metadata.</p>
+</section>
+<section id="the-filesystem-hierarchy-standard">
+<h2>The Filesystem Hierarchy Standard<a class="headerlink" href="#the-filesystem-hierarchy-standard" title="Link to this heading"></a></h2>
+<p>One of the biggest challenges facing portable software is the wide variation in filesystem layout across different operating systems. Each operating system has its own conventions and standards, making it difficult for developers to write software that can run on multiple platforms without modification.</p>
+<p>In the case of Linux, the situation was particularly complicated due to the large number of distributions, each with its own unique filesystem layout. This led to the development of the Filesystem Hierarchy Standard (FHS) by the Linux maintainers, which aimed to establish a standard directory structure for Linux systems.</p>
+<p>The FHS was developed to resolve the problem of incompatible filesystem layouts and to make it easier for software developers to write applications that could be run on multiple Linux distributions. The standard has been widely adopted by many Linux distributions, and has also been partially or fully adopted by other operating systems.</p>
+<p>Some of the operating systems that have adopted the FHS, either partially or in full, include FreeBSD, NetBSD, OpenBSD, Solaris, and macOS.</p>
+<section id="the-fhs-directory-structure">
+<h3>The FHS Directory Structure<a class="headerlink" href="#the-fhs-directory-structure" title="Link to this heading"></a></h3>
+<p>The FHS specifies a standard directory structure for Linux systems, with the following top-level directory structure:</p>
+<dl class="option-list">
+<dt><kbd><span class="option">/bin</span></kbd></dt>
+<dd><p>This directory contains essential user command binaries that must be available in single-user mode.</p>
+</dd>
+<dt><kbd><span class="option">/boot</span></kbd></dt>
+<dd><p>This directory contains files necessary to boot the system, including the kernel, initial ramdisk image, and bootloader configuration files.</p>
+</dd>
+<dt><kbd><span class="option">/dev</span></kbd></dt>
+<dd><p>This directory contains device files for all hardware devices connected to the system, including virtual devices.</p>
+</dd>
+<dt><kbd><span class="option">/etc</span></kbd></dt>
+<dd><p>This directory contains system configuration files that are specific to the local system.</p>
+</dd>
+<dt><kbd><span class="option">/home</span></kbd></dt>
+<dd><p>This directory contains home directories for all non-system users.</p>
+</dd>
+<dt><kbd><span class="option">/lib</span></kbd></dt>
+<dd><p>This directory contains shared libraries that are needed by the essential binaries in the /bin and /sbin directories.</p>
+</dd>
+<dt><kbd><span class="option">/media</span></kbd></dt>
+<dd><p>This directory contains mount points for removable media, such as USB drives and optical discs.</p>
+</dd>
+<dt><kbd><span class="option">/mnt</span></kbd></dt>
+<dd><p>This directory is used as a mount point for temporarily mounted filesystems.</p>
+</dd>
+<dt><kbd><span class="option">/opt</span></kbd></dt>
+<dd><p>This directory is used for installing optional software packages.</p>
+</dd>
+<dt><kbd><span class="option">/proc</span></kbd></dt>
+<dd><p>This directory contains a virtual filesystem that provides information about running processes and system resources.</p>
+</dd>
+<dt><kbd><span class="option">/root</span></kbd></dt>
+<dd><p>This directory contains the home directory for the root user.</p>
+</dd>
+<dt><kbd><span class="option">/run</span></kbd></dt>
+<dd><p>This directory contains runtime data that should be preserved between reboots.</p>
+</dd>
+<dt><kbd><span class="option">/sbin</span></kbd></dt>
+<dd><p>This directory contains essential system binaries that must be available in single-user mode.</p>
+</dd>
+<dt><kbd><span class="option">/srv</span></kbd></dt>
+<dd><p>This directory contains data for services provided by the system.</p>
+</dd>
+<dt><kbd><span class="option">/sys</span></kbd></dt>
+<dd><p>This directory contains a virtual filesystem that provides information about the system’s hardware devices and drivers.</p>
+</dd>
+<dt><kbd><span class="option">/tmp</span></kbd></dt>
+<dd><p>This directory contains temporary files that are deleted upon reboot.</p>
+</dd>
+<dt><kbd><span class="option">/usr</span></kbd></dt>
+<dd><p>This directory contains user binaries, libraries, and header files.</p>
+</dd>
+<dt><kbd><span class="option">/var</span></kbd></dt>
+<dd><p>This directory contains variable data files, such as log files and spool directories for printing and mail.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="additional-file-system-concepts">
+<h2>Additional File System Concepts<a class="headerlink" href="#additional-file-system-concepts" title="Link to this heading"></a></h2>
+<p>When working with file systems, there are several special concepts that are worth understanding in order to more effectively manage files and directories. These concepts include dot and dot-dot hard links, hidden files, special device files, and the home directory.</p>
+<section id="hidden-files-dotfiles">
+<h3>Hidden Files (Dotfiles)<a class="headerlink" href="#hidden-files-dotfiles" title="Link to this heading"></a></h3>
+<p>In Unix, files that begin with a dot (.) are considered hidden files. These files are typically used for configuration data, and are not displayed by default in directory listings. Wildcard filename expansion also doesn’t produce the names of hidden files, by default, except when a leading dot is explicitly provided (e.g. <code class="file docutils literal notranslate"><span class="pre">.*</span></code> matches hidden files, but <code class="file docutils literal notranslate"><span class="pre">*</span></code> does not).</p>
+</section>
+<section id="dot-and-dot-dot">
+<h3>Dot (<code class="file docutils literal notranslate"><span class="pre">.</span></code>) and Dot-Dot (<code class="file docutils literal notranslate"><span class="pre">..</span></code>)<a class="headerlink" href="#dot-and-dot-dot" title="Link to this heading"></a></h3>
+<p>As mentioned above, most modern file systems do not allow the creation of additional hard links to directories, as this could result in circular references which would lead to orphaned directory nodes. It also ensures that every directory has exactly one parent directory (note, the <code class="file docutils literal notranslate"><span class="pre">/</span></code> root directory is its own parent!).</p>
+<p>Within every directory, two special system-managed hard links are created, called dot (<code class="file docutils literal notranslate"><span class="pre">.</span></code>), which points at the directory, and dot-dot (<code class="file docutils literal notranslate"><span class="pre">..</span></code>), which points at the parent directory. These don’t have any of the issues that arbitrary hard links to directories would have, since they are managed automatically by the system. When a directory is removed, the system deletes these two links before unlinking the directory from its parent directory, ensuring that reference counts are handled correctly.</p>
+<p>These files can be very useful to navigate a directory structure, since moving up to a parent directory would otherwise require entering in the entire path to the parent directory again. The dot directory is also useful for explicitly specifying a path relative to the current directory. For example, the command <strong class="command">test</strong> runs the system utility <strong class="command">test</strong>, while the command <strong class="command">./test</strong> runs the program named “test” in the current directory.</p>
+</section>
+<section id="special-device-files">
+<h3>Special Device Files<a class="headerlink" href="#special-device-files" title="Link to this heading"></a></h3>
+<p>special device files are used to provide access to hardware devices and other system resources. These files are located in the /dev directory and are implemented as driver code in the kernel. When a program reads from or writes to a device file, the kernel calls the driver’s custom read and write methods to process the data. This allows programs to interact with devices using the same methods used to read and write regular files.</p>
+<p>Device files make it easier for developers to access and manage hardware devices and system resources by abstracting the underlying implementation details of the device. Instead of having to write custom code to communicate with each device, developers can use the standard file I/O operations that are familiar to them. This makes it easier to write portable and maintainable code that can work with a wide range of hardware devices and system resources.</p>
+<p>Many device files represent a one-to-one relationship with a piece of physical hardware, but many others are actually entirely virtual, emulated devices, that exist only as driver code. Their contents are generated on-the-fly. These devices are frequently encountered by regular users, so they are worth mentioning.</p>
+<dl class="simple">
+<dt>/dev/zero</dt><dd><p>This device generates an endless stream of null (zero) bytes, and discards any bytes written to it. This is useful for initializing files to a certain size, overwrite a file with all zeros, and to test programs with large inputs.</p>
+</dd>
+<dt>/dev/random</dt><dd><p>This device generates an endless stream of random bytes, and discards any data written to it. This is useful for generating cryptographic keys. <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code> takes entropy from various sources like keyboard and mouse events, disk activity, and other hardware-based random noise. Because of this, it’s a good source of cryptographically secure data, but it can be slow to read from when it runs out of entropy and needs to accumulate more.</p>
+</dd>
+<dt>/dev/urandom</dt><dd><p>This device works just like <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code>, except that it does not wait for entropy to accumulate – it will produce more random bytes using a deterministic pseudo-random number generation algorithm when available entropy runs out. This makes it a faster, but theoretically less secure, source of randomness. This is often used to generate things like temporary file names or to test random inputs to programs, but should probably not be used for high-security cryptographic purposes.</p>
+</dd>
+<dt>/dev/null</dt><dd><p>This device always returns eof (end-of-file) when read from, and discards data written to it. It’s commonly nicknamed the “black hole” device. <code class="file docutils literal notranslate"><span class="pre">/dev/null</span></code> is used very frequently to discard the output of a program or to feed an “empty” file to a program that requires a file to read from.</p>
+</dd>
+<dt>/dev/pts/*</dt><dd><p>The device files in this directory are pseudo-terminal slave (PTS) devices. Various applications need to emulate the behavior of an old-school physical terminal – notably, terminal emulators. We will learn more about how this works later in the course.</p>
+</dd>
+</dl>
+</section>
+<section id="home-directory">
+<h3>Home Directory (<code class="file docutils literal notranslate"><span class="pre">~/</span></code>)<a class="headerlink" href="#home-directory" title="Link to this heading"></a></h3>
+<p>The tilde (<code class="file docutils literal notranslate"><span class="pre">~</span></code>) is shorthand for the current user’s home directory. This is the default location for storing user-specific files, and regular users have very limited permissions outside of their home directories.</p>
+<p>Note that the expansion of <code class="file docutils literal notranslate"><span class="pre">~</span></code> into a user’s home directory path is actually handled by the shell before it runs a command, so it’s not a true file path that other system interfaces and utilities understand directly.</p>
+<p>A less well-known feature of tilde expansion is that it can be used to locate other user’s home directories by appending their username after the tilde. For example, <code class="file docutils literal notranslate"><span class="pre">~root</span></code> expands to the root user’s home directory, which is typically <code class="file docutils literal notranslate"><span class="pre">/root</span></code>. This is often used by system administrators to quickly access other users’ directories without having to navigate through the file system.</p>
+<p>Now, why <code class="file docutils literal notranslate"><span class="pre">~</span></code>, of all characters? For that we have to go all the way back to the ADM-3A terminal of 1976, an influential terminal that was used by many of the people who developed Unix and the programs that would eventually become part of the operating system. Here is a diagram of the ADM-3A keyboard layout; notice that the <code class="docutils literal notranslate"><span class="pre">Home</span></code> key in the upper right hand corner doubles as the <code class="docutils literal notranslate"><span class="pre">~</span></code> key:</p>
+<figure><a title="No machine-readable author provided. StuartBrady assumed (based on copyright claims)., CC BY-SA 3.0 &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:KB_Terminal_ADM3A.svg"><img width="512" alt="KB Terminal ADM3A" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/KB_Terminal_ADM3A.svg/512px-KB_Terminal_ADM3A.svg.png"></a><figcaption>ADM-3A Terminal Keyboard Layout</figcaption></figure></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="processes.html" class="btn btn-neutral float-left" title="Programs and Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terminal.html" class="btn btn-neutral float-right" title="Terminal Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

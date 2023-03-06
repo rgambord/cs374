@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statements and Structure &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Statements and Structure</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="statements-and-structure">
+<h1>Statements and Structure<a class="headerlink" href="#statements-and-structure" title="Link to this heading"></a></h1>
+<p>At the top-level, a C program is nothing more than a series of external object and function definitions–remember, in this context “external” means “top-level”, not linkage! Within each function definition, procedural units of code called statements are used to evaluate expressions, organize the program into blocks, and control program flow.</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">expression-statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">labeled-statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">compound-statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">selection-statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">iteration-statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">jump-statement</span></p>
+</div>
+</div>
+</div>
+<section id="expression-statements">
+<h2>Expression Statements<a class="headerlink" href="#expression-statements" title="Link to this heading"></a></h2>
+<p>An expression statement takes the form,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">expression-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p>[ <span class="syn-nonterm">expression</span> ]</p>
+<p><span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+<p>An expression statement simply evaluates the provided expression and discards any resulting value.</p>
+<p>If <em>expression</em> is omitted, it is also called a null statement, which does nothing.</p>
+</section>
+<section id="labeled-statements">
+<h2>Labeled Statements<a class="headerlink" href="#labeled-statements" title="Link to this heading"></a></h2>
+<p>Any statement can be labeled,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">label-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">label</span></p>
+<p><span class="syn-term">:</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+</div>
+</div>
+<p>A labeled statement constitutes a declaration of that label; unlike other types of declarations, a label has function-scope, which means it is visible for the entire function it is declared in <em>including</em> any portion of that function body before the label.</p>
+<p>There are two special types of labels which can only appear inside a switch statement,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">label-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">case</span></p>
+<p><span class="syn-nonterm">constant-expression</span></p>
+<p><span class="syn-term">:</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">default</span></p>
+<p><span class="syn-term">:</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+</div>
+</div>
+<p>Since neither of these forms declares an identifier, the only way that these labels are jumped to is based on the controlling expression of a switch statement, as described below.</p>
+</section>
+<section id="compound-statements">
+<h2>Compound Statements<a class="headerlink" href="#compound-statements" title="Link to this heading"></a></h2>
+<p>One or more statements may be grouped together into a compound statement,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">compound-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">{</span></p>
+<p><span class="syn-nonterm">statement</span>…</p>
+<p><span class="syn-term">}</span></p>
+</div>
+</div>
+</div>
+<p>Each compound statement is also called a <em>block</em> and introduces a new block scope that extends to the closing curly brace. Automatic variables declared within a block are scoped to that block, and are destroyed at the end of the block when going out of scope.</p>
+</section>
+<section id="selection-statements">
+<h2>Selection Statements<a class="headerlink" href="#selection-statements" title="Link to this heading"></a></h2>
+<p>There are two selection statements–the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">if</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">switch</span></code> statements,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">selection-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">if</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">if</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+<p><span class="syn-term">else</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">switch</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+</div>
+</div>
+<p>The controlling expression of an if statement is a scalar value; the first substatement is executed if the controlling expression compares unequal to 0. In the else form, the second substatement is executed if the controlling expression evaluates equal to 0.</p>
+<div class="compound">
+<p>As the if statement is, itself, a statement, multiple if statements can be chained together, as shown below,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="cm">/* condition */</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* ... */</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="cm">/* condition */</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* ... */</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="compound">
+<p>The controlling expression of a switch statement is an integer value. In practice, the switch statement subexpression, called the switch body, is a compound statement containing case and/or default labeled statements. The switch statement causes a jump to the first matching case statement, or the default statement, if present. For example,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+<span class="w">   </span><span class="cm">/* ... */</span>
+<span class="w">   </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">   </span><span class="cm">/* ... */</span>
+<span class="w">   </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="mi">-1</span><span class="p">:</span>
+<span class="w">   </span><span class="cm">/* ... */</span>
+<span class="w">   </span><span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+<span class="w">   </span><span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Notice the use of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">break</span></code> statements to exit the switch body before each new label. These may be omitted, in which case execution <em>falls through</em> into subsequent statements.</p>
+</section>
+<section id="iteration-statements">
+<h2>Iteration Statements<a class="headerlink" href="#iteration-statements" title="Link to this heading"></a></h2>
+<p>There are three iteration, or <em>loop</em>, statements in C, the while loop, the do-while loop, and the for loop,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">selection-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">while</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">do</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+<p><span class="syn-term">while</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression</span></p>
+<p><span class="syn-term">)</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">for</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">clause-1</span></p>
+<p><span class="syn-term">;</span></p>
+<p><span class="syn-nonterm">expression-2</span></p>
+<p><span class="syn-term">;</span></p>
+<p><span class="syn-nonterm">expression-3</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+</div>
+</div>
+</div>
+<p>An iteration statement executes its substatement, called the loop body, repeatedly until the controlling expression compares equal to 0. The while and for loops evaluate this expression before each execution of the loop body, while the do-while loop evaluates it at the end of the loop body.</p>
+<p>The for loop exits as a shorthand for a while loop with an iteration variable, and is exactly equivalent to,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">{</span></p>
+<p><span class="syn-nonterm">clause-1</span></p>
+<p><span class="syn-term">;</span></p>
+<p><span class="syn-term">while</span></p>
+<p><span class="syn-term">(</span></p>
+<p><span class="syn-nonterm">expression-2</span></p>
+<p><span class="syn-term">)</span></p>
+<p><span class="syn-term">{</span></p>
+<p><span class="syn-nonterm">statement</span></p>
+<p><span class="syn-nonterm">expression-3</span></p>
+<p><span class="syn-term">;</span></p>
+<p><span class="syn-term">}</span></p>
+<p><span class="syn-term">}</span></p>
+</div>
+</div>
+</div>
+<p>In other words, <span class="syn-nonterm">clause-1</span>, which may be a declaration or statement, is executed once before the loop. Typically, this is used to declare iteration variable(s). The controlling expression, <span class="syn-nonterm">expression-2</span> is evaluated each time before the loop body is executed, as with the while loop. At the end of the loop body, and before evaluating the controlling expression, <span class="syn-nonterm">expression-3</span> is evaluated. A typical usage pattern to iterate over an array of known size would be,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">array_size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similarly, for loops are frequently used with pointers rather than indices, such as when working with null-terminated strings,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Convert a string to uppercase */</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">str_toupper</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="o">*</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toupper</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="compound">
+<p>Any of <span class="syn-nonterm">clause-1</span>, <span class="syn-nonterm">expression-2</span>, and <span class="syn-nonterm">expression-3</span> may be omitted from a for loop. If <span class="syn-nonterm">expression-2</span> is omitted, then it is replaced with a non-zero value–i.e. an unconditional loop. The traditional convention is to use for loops with no controlling expression to denote unconditional loops in C,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/* Loop forever */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="jump-statements">
+<h2>Jump statements<a class="headerlink" href="#jump-statements" title="Link to this heading"></a></h2>
+<div class="compound">
+<p>Jump statements are used to unconditionally jump to a labeled statement,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">jump-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">goto</span></p>
+<p><span class="syn-nonterm">label</span></p>
+<p><span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+<p>immediately jump to the end of a loop body to execute another iteration,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">jump-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">continue</span></p>
+<p><span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+<p>break out of a loop or switch statement body,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">jump-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">break</span></p>
+<p><span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+<p>or return from a function,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">jump-statement</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">return</span></p>
+<p>[ <span class="syn-nonterm">expression</span> ]</p>
+<p><span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

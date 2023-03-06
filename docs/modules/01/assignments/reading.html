@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assigned Reading &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Assigned Viewing" href="viewing.html" />
+    <link rel="prev" title="Software Development in Vim" href="../explorations/vim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Assigned Reading</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../explorations/vim.html" class="btn btn-neutral float-left" title="Software Development in Vim" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viewing.html" class="btn btn-neutral float-right" title="Assigned Viewing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="assigned-reading">
+<h1>Assigned Reading<a class="headerlink" href="#assigned-reading" title="Link to this heading"></a></h1>
+<section id="posix-standard">
+<h2>POSIX Standard<a class="headerlink" href="#posix-standard" title="Link to this heading"></a></h2>
+<p>Ensure that you are referring to the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/">POSIX.1-2008</a> version of the standard.</p>
+<p class="rubric">Within the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/idx/xbd.html">Base Definitions</a> volume, read:</p>
+<ul>
+<li><p>Section 5: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap05.html">File Format Notation</a></p></li>
+<li><p>Section 8: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap08.html">Environment Variables</a>.</p>
+<ul class="simple">
+<li><p><strong>Skip</strong> <em>8.2 Internationalization Variables</em>.</p></li>
+</ul>
+</li>
+<li><p>Section 9: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap09.html">Regular Expressions</a>.</p>
+<ul class="simple">
+<li><p><strong>Skip</strong> <em>9.5 Regular Expression Grammar</em>;</p></li>
+</ul>
+</li>
+<li><p>Section 11: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap11.html">General Terminal Interface</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Skip</strong> <em>11.1.1 Opening a Terminal Device File</em>. Managing terminals is an advanced topic.</p></li>
+<li><p><strong>Skip</strong> <em>11.1.3 The Controlling Terminal</em>; a controlling terminal is just the terminal that a process is associated with. Managing terminals is an advanced topic.</p></li>
+<li><p>In <em>11.2 Parameters that Can be Set</em>, <strong>only</strong> read about the following terminal flags:</p>
+<ul>
+<li><p><em>11.2.2 Input Modes</em>: BRKINT, IXANY, IXOFF, and IXON</p></li>
+<li><p><em>11.2.5 Local Modes</em>: ECHO, ICANON, and TOSTOP</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Section 12: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap12.html">Utility Conventions</a></p></li>
+</ul>
+<p class="rubric">Within the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/idx/xcu.html">Shell &amp; Utilities</a> volume, read:</p>
+<ul class="simple">
+<li><p>Section 1.4: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/utilities/V3_chap01.html#tag_17_04">Utility Description Defaults</a></p></li>
+</ul>
+</section>
+<section id="man-pages">
+<h2>Man Pages<a class="headerlink" href="#man-pages" title="Link to this heading"></a></h2>
+<p>Always read manpages <em>on</em> the <strong>os1</strong> server, since they are specific to a particular system and its software versions! Manpages are written in the form <em class="manpage">name(section)</em>. To view a particular man page run the command <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>man<span class="w"> </span>-s<span class="w"> </span>section<span class="w"> </span>name</code>. The section number and page name are case-insensitive.</p>
+<p>In general, it is appropriate to skim over <em>SYNOPSIS</em>, <em>OPTIONS</em>, <em>ENVIRONMENT</em> sections, and ignore the <em>VERSIONS</em>, <em>CONFORMING TO</em>, <em>AUTHORS</em> sections. Any other sections should generally be read fully as they contain important information about usage, exit status or return value, and other important notes.</p>
+<ul class="simple">
+<li><p>Read the man page for <strong class="program">man</strong> itself, <em class="manpage">MAN(1)</em> (<code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>man<span class="w"> </span>-s<span class="w"> </span><span class="m">1</span><span class="w"> </span>man</code>). This page explains in detail the functionalities that <strong class="program">man</strong> offers as well as the basic layout of information in manpages.</p></li>
+<li><p>Read the POSIX shell manpage, <em class="manpage">SH(1P)</em> (<code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>man<span class="w"> </span>-s<span class="w"> </span>1p<span class="w"> </span>sh</code>). Skip the <em>EXTENDED DESCRIPTION</em> section; you won’t be using vi-mode. Bash and most other shells implement their own line editing functionality that is more intuitive for modern users, using control-characters.</p></li>
+</ul>
+<p>Also, if you are working on an assignment inside <strong class="program">vim</strong>, you can easily open a manpage with <strong class="program">vim</strong>’s internal manpage viewer with the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command. Run <code class="docutils literal notranslate"><span class="pre">:h</span> <span class="pre">Man</span></code> in <strong class="program">vim</strong> to see more about its usage. Note that the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command is capitalized in <strong class="program">vim</strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../explorations/vim.html" class="btn btn-neutral float-left" title="Software Development in Vim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viewing.html" class="btn btn-neutral float-right" title="Assigned Viewing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File System Concepts &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File System Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-system-concepts">
+<h1>File System Concepts<a class="headerlink" href="#file-system-concepts" title="Link to this heading"></a></h1>
+<p>A file system is a method of organizing and representing data in an operating system. This data might come from a variety of sources, the most well-known of which is a hard disk or other mass-storage device. However, files also represent other types of data, such as data stored remotely over a network and data produced dynamically by hardware drivers or by the operating system itself. In fact, <em>all</em> files and file system structure is dynamically generated by the operating system. While data may be physically stored on a disk, a hardware driver must provide an interface to access that raw data as a sequence of bytes, and a file system driver must interpret that raw data according to a file system format specification and implement the abstract system call interface that user-land software interacts with.</p>
+<section id="file-system-history">
+<h2>File System History<a class="headerlink" href="#file-system-history" title="Link to this heading"></a></h2>
+<p>In early computers, mass storage was extremely expensive and limited, and computer programming was largely focused on working with plain text, human-readable data, which heavily influenced early file system design. While programs consisted of binary machine instructions with a word size determined by the processor architecture, text data was often stored in 6-bit encodings–enough for the 26 letters of the alphabet, 10 digits and 28 additional punctuation and control characters, which was plenty for early computing needs. Instruction data also tends to be accessed in a read-only mode with a largely linear pattern, while text data is often accessed in a read-write mode with random access characteristics. The different word sizes and access characteristics led to a natural division between “program” and “data” storage, which was reflected at all levels–storage, memory, and CPU cache. Although this division has disappeared over time, modern processor caches are still divided into instruction (iCache) and data (dCache) at the lowest levels, due to the differences in access access characteristics.</p>
+<p>Due to the limited storage available at the time, early systems tended to implement non-hierarchical file systems with all files arranged in a single location with globally unique names. Related files would be stored on removable media, which was organized physically, rather than digitally. Over time, file system development was heavily influenced by the increased availability of storage space, the proliferation of different file formats, and the advent of the multi-user environment. Each of these led to a need for increased organizational capabilities,  meta-data storage, and access control, which were first implemented in the Multics file system in the mid 1960s.</p>
+<p>Modern file systems are heavily influenced by the pioneering work of Peter Neumann and Bob Daley, who together invented the <a class="reference external" href="../../../_static/modules/04/Multics-File-System.pdf">Multics file system</a> in 1965. The Multics file system popularized the notion of symbolic file addressing with hierarchical structure, independent of the underlying physical storage devices and file system storage format. The operating system took on the role of implementing this abstraction by dynamically and seamlessly translating the underlying physical data into a symbolic file system. The authors also introduced the concepts of access control and data integrity as core file system services.</p>
+</section>
+<section id="file-system-structure">
+<h2>File System Structure<a class="headerlink" href="#file-system-structure" title="Link to this heading"></a></h2>
+<p>The file system is organized into three layers–physical, virtual, and logical. Each layer builds upon the previous, with increasing degree of abstraction.</p>
+<section id="physical-layer">
+<h3>Physical Layer<a class="headerlink" href="#physical-layer" title="Link to this heading"></a></h3>
+<p>The physical layer is responsible for handling the actual storage and retrieval of data; it consists of kernel drivers that interface with hardware and expose each file system as raw data. Common physical layer services include full-disk encryption, data mirroring, interfacing with network devices, and interpretation of partition tables.</p>
+</section>
+<section id="virtual-layer">
+<h3>Virtual Layer<a class="headerlink" href="#virtual-layer" title="Link to this heading"></a></h3>
+<p>The virtual layer is responsible for providing the file system interface for user-space programs, and for allowing multiple physical file systems to coexist; it consists of kernel drivers that interpret the contents of a raw file system, according to its particular format, and exposes an interface consisting of four types of entities: superblocks, inodes, files, and dentries. These entities exist in memory, and act as proxies for data actually stored to disk or which exists in a pseudo file system.</p>
+<p>Most file systems designed for POSIX compatibility, such as the ext (extended file system) family of file systems, represent these entities directly, while others require significant translation by the associated kernel driver.</p>
+<p class="rubric">Superblock</p>
+<p>Each virtual file system has one superblock, which contains implementation details such as block size and maximum filename lengths, the locations of inodes and blocks, and the location of the root directory inode for the file system.</p>
+<p class="rubric">Inode</p>
+<p>An inode (index node) object contains information about a particular file, including its type, size, access rights, ownership, timestamps, and the location of its data as a list of block pointers. There is one inode for every file in the system, which is uniquely identified by its inode number.</p>
+<p>Inodes 0 through 10 are reserved for special purposes; in particular, inode 2 is the root directory of the file system.</p>
+<figure class="align-center" id="id1" style="width: 70%">
+<img alt="Inode Table Diagram" src="../../../_images/inode_table.svg" /><figcaption>
+<p><span class="caption-text">Each inode contains metadata and data block pointers for a particular file.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p class="rubric">Dentry</p>
+<p>A dentry (directory entry) associates an inode number with a particular file name. Each element of a path corresponds to a dentry object, and the set of dentries forms a spanning tree covering the entire file system.</p>
+<p class="rubric">File</p>
+<p>A file object represents an open file; it contains a pointer to the corresponding inode structure, as well as the file cursor position and access rights.</p>
+</section>
+<section id="logical-layer">
+<h3>Logical Layer<a class="headerlink" href="#logical-layer" title="Link to this heading"></a></h3>
+<p>The logical layer is the user-facing interface of the file system, which is represented as a rooted tree denoted by hierarchical file paths. File paths are strings consisting of path components, separated by delimiters (/), where each path component represents a file or directory.</p>
+<section id="logical-file-types">
+<h4>Logical File Types<a class="headerlink" href="#logical-file-types" title="Link to this heading"></a></h4>
+<p>In the logical file system, there are four main types of files–regular files, directories, symbolic links, and special files.</p>
+<p class="rubric">Regular Files</p>
+<p>A regular file is a data storage unit that remains unchanged unless modified. Regular files support operations such as reading, writing, and seeking. This type of file is commonly used to store various types of data, such as text, images, or program code.</p>
+<p class="rubric">Directories</p>
+<p>A directory is a type of file that contains other files. Directories specialize the read operation to view their contents; the write operation to create, delete, rename, and move files; and the execute operation to access files.</p>
+<p class="rubric">Symbolic Links</p>
+<p>A symbolic link is a type of file that contains a pathname and act as logical references to other files. Symbolic links transparently forward normal file operation to the pointed-at file. Special additional operations are provided for accessing the symbolic link, itself.</p>
+<p>One limitation of directories is that they can only contain files <em>within the same virtual file system</em>. This is because directory entries reference files directly, by their inode numbers, which are a virtual file system construct. Since symbolic links contain pathnames, they uniquely identify files within the unified logical file system, and do not have this limitation. A consequence of this is that soft links can be <em>broken</em>, if they refer to a non-existent file. On the other hand, directories hold owning references over their files.</p>
+<p>For this reason, directory entries are also referred to as <em>hard</em> links, while symbolic links are called <em>soft</em> links. This is also reflected in file system operations–deleting a file from a directory is called <em>unlinking</em> it.</p>
+<p class="rubric">Special Files</p>
+<p>Special files are similar to regular files, except that they override the normal file operations with custom driver code for each operation such as read, write, and seek. Individual devices, including physical file systems, are represented as special files, each generated by a driver for that particular device. Special files may proxy real physical hardware, but can also be entirely virtually emulated.</p>
+<p>For example, the pseudo terminal device, <code class="file docutils literal notranslate"><span class="pre">/dev/pty</span></code>, used by a terminal emulator is fully emulated by a driver in the kernel–it creates a master and slave device file, where the slave side emulates a terminal interface and the master side provides an interface for terminal emulators to interact with.</p>
+<p>Another example is the random device files, <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code> and <code class="file docutils literal notranslate"><span class="pre">/dev/urandom</span></code>, which each provide an endless stream of random data. A kernel driver dynamically generates the contents of these files as they are read, using entropy from various hardware devices as the seed of a random number generator.</p>
+</section>
+<section id="mounting-file-systems">
+<h4>Mounting File Systems<a class="headerlink" href="#mounting-file-systems" title="Link to this heading"></a></h4>
+<p>The root directory of the logical file system is represented as <code class="file docutils literal notranslate"><span class="pre">/</span></code>, and the root directory of each virtual file system is mapped, or <em>mounted</em>, at a particular path accessible within the logical file system. One file system is mounted to <code class="file docutils literal notranslate"><span class="pre">/</span></code>, and called the system, or root, file system, and all others are mounted to paths within that hierarchy.</p>
+<p>For example, a typical installation might be spread across each of a boot, system, and user data partition. Additionally, the kernel generates several pseudo file systems to represent things like virtual and physical hardware devices, running processes, and runtime data. These are all mounted within the logical file system, typically with the following paths,</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File System</p></th>
+<th class="head"><p>Mount Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>system</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>boot</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/boot/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>devices</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/dev/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>user data</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/home/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>running processes</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/proc/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>runtime data</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/run/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Mounting during system startup</p>
+<p>When a system is booted, the bootloader executes the kernel, which is located in the boot partition. The kernel first loads a compressed file system image, called the <em>initramfs</em>, into memory and mounts it as the root file system. The initramfs contains loadable kernel drivers, called modules, which are used to initialize the rest of the system and construct virtual and physical file systems; it also contains some simple utilities, like a recovery shell, which can be used to recover from a failed boot.</p>
+<p>Once the kernel is done initializing, it mounts the system file system as its root file system, which was specified earlier as a kernel parameter by the bootloader. Next, it reads a file, <code class="file docutils literal notranslate"><span class="pre">/etc/fstab</span></code>, which contains a file system table specifying additional file systems to mount, and mounts those files systems. Finally, it executes the <strong class="program">init</strong> process, typically <code class="file docutils literal notranslate"><span class="pre">/bin/init</span></code>, which completes the boot process and hands control of the system to user-space programs.</p>
+<p class="rubric">Mounting dynamically</p>
+<p>File systems can be mounted and unmounted in a running system with the <strong class="program">mount</strong> and <strong class="program">umount</strong> utilities, which are simple wrappers around the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">mount</span><span class="p">()</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">umount</span><span class="p">()</span></code> system calls. All of these operations normally require system administrator privileges, although there are methods for allowing unprivileged user-space mounting and unmounting of preconfigured file systems.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

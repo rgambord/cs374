@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Interface &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Utilities" href="utilities.html" />
+    <link rel="prev" title="File Systems" href="filesystem.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html">File Systems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Terminal Interface</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="filesystem.html" class="btn btn-neutral float-left" title="File Systems" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="terminal-interface">
+<h1>Terminal Interface<a class="headerlink" href="#terminal-interface" title="Link to this heading"></a></h1>
+<p>The terminal interface is an essential component of modern operating systems. It is the primary interface for interacting with the system, and it provides users with a command-line interface for executing commands and running applications.</p>
+<p>The concept of the terminal interface dates back to the early days of computing when computers were large, expensive machines that were only accessible to a select few individuals. These individuals would interact with the computer through a teletype machine, which was essentially an electronic typewriter connected to the computer via a UART controller. The teletype machine would print out the results of the user’s commands (on paper!) and allow them to enter input via an electromechanical keyboard.</p>
+<p>As computer technology advanced, the teletype machine was replaced by the video display terminal (VDT), which used a cathode-ray tube (CRT) to display text on a screen. The VDT was a significant improvement over the teletype machine as it allowed for faster and more interactive communication with the computer. These devices implemented the same interface as the earlier teletype machines in order to allow for backwards compatibility.</p>
+<p>With the advent of personal computers in the 1970s and 1980s, the terminal interface became a standard component of operating systems. The terminal provided users with a command-line interface for executing commands and running applications, and it allowed for more efficient and powerful interaction with the system.</p>
+<p>Today, the terminal interface is still an essential component of modern operating systems, and it is typically emulated in software. The terminal emulator software emulates the behavior of a physical terminal, allowing users to interact with the system through a command-line interface in a graphical desktop environment.</p>
+<p>Modern terminal emulators typically provide a range of features, such as the ability to customize the appearance of the terminal and support for advanced text manipulation and formatting. They also typically provide additional features such as access to the system clipboard, integrations with popular shell programs, and so on.</p>
+<p>The terminal interface has a rich history that dates back to the early days of computing, and it has evolved over time to become an essential component of modern operating systems. While the physical terminals of the past may no longer be in use, the terminal interface remains an essential tool for system administrators, developers, and power users.</p>
+<section id="terminal-operating-modes">
+<h2>Terminal Operating Modes<a class="headerlink" href="#terminal-operating-modes" title="Link to this heading"></a></h2>
+<p>Terminal behavior varies based on a set of configurable terminal parameters. There are five classes of terminal parameters,</p>
+<ul class="simple">
+<li><p>Control Characters</p></li>
+<li><p>Input Modes</p></li>
+<li><p>Output Modes</p></li>
+<li><p>Control Modes</p></li>
+<li><p>Local Modes</p></li>
+</ul>
+<p>The input, output, and control mode settings are fairly irrelevant in a modern terminal interface. We will discuss just a handful of relevant control characters and local mode settings, which you will want to be familiar with, below.</p>
+<section id="local-modes">
+<h3>Local Modes<a class="headerlink" href="#local-modes" title="Link to this heading"></a></h3>
+<p>Local modes control the local behavior of the terminal; i.e. what the user sees, and what the terminal does with input <em>before</em> sending it to applications. Many applications change these settings, and they are relevant to your use of an interactive terminal. There are three that are particularly important:</p>
+<dl class="simple">
+<dt>ECHO</dt><dd><p>If set, input characters are <em>visually</em> printed to the terminal. Commonly turned off to capture and process input without displaying it to the screen, such as when entering passwords, or in an interactive application.</p>
+</dd>
+<dt>ICANON</dt><dd><p>Controls whether the terminal is in canonical mode or non-canonical mode. In canonical mode, input is buffered into units of lines, and applications can read up to the end of a line in a single read operation. In non-canonical mode, input is available for reading immediately as soon as it is entered. This is called a terminal’s line discipline.</p>
+</dd>
+<dt>ISIG</dt><dd><p>Controls whether the signal control characters send signals or not.</p>
+</dd>
+<dt>IXON/IXOFF</dt><dd><p>Controls whether flow control is enabled. Flow control allows input or output to be temporarily frozen so that users can stop and read fast moving output, among other things.</p>
+</dd>
+</dl>
+<p>The terminal is usually switched between two modes, called “raw” and “cooked”. In raw mode, these flags are disabled, along with some other settings. In cooked mode, all of these flags are enabled. When entering input into the command line, your terminal is in cooked mode; when working inside an interactive text editor like <strong class="program">vim</strong>, your terminal is in raw mode and the text editor is processing your input on a character-by-character basis.</p>
+</section>
+<section id="control-characters">
+<h3>Control Characters<a class="headerlink" href="#control-characters" title="Link to this heading"></a></h3>
+<p>Control characters are a set of specially recognized characters; listed below are their names, default values, and description. You should be familiar with these characters in order to properly use a terminal interface.</p>
+</section>
+<section id="input-characters-which-generate-signals">
+<h3>Input characters which generate signals<a class="headerlink" href="#input-characters-which-generate-signals" title="Link to this heading"></a></h3>
+<p>These characters are relevant when signal mode (ISIG) is turned on.</p>
+<dl class="simple">
+<dt>INTR &lt;ctrl-c&gt;</dt><dd><p>A SIGINT (interrupt) signal is sent to the foreground process group.</p>
+</dd>
+<dt>QUIT &lt;ctrl-\&gt;</dt><dd><p>A SIGQUIT (quit) signal is sent to the foreground process group.</p>
+</dd>
+<dt>SUSP (ctrl-z)</dt><dd><p>A SIGTSTP (terminal stop) signal is sent to the foreground process group.</p>
+</dd>
+</dl>
+</section>
+<section id="input-characters-which-control-the-line-buffer">
+<h3>Input characters which control the line buffer<a class="headerlink" href="#input-characters-which-control-the-line-buffer" title="Link to this heading"></a></h3>
+<p>These characters are relevant when canonical mode (ICANON) is turned on.</p>
+<dl class="simple">
+<dt>ERASE &lt;backspace&gt;</dt><dd><p>Erases the previous character in the line buffer up to most recent NL, EOF, or EOL character.</p>
+</dd>
+<dt>KILL &lt;ctrl-u&gt;</dt><dd><p>Erases the entire line buffer up to the most recent NL, EOF, or EOL character.</p>
+</dd>
+<dt>EOF &lt;ctrl-d&gt;</dt><dd><p>All waiting bytes in the line buffer are immediately passed to the application without waiting for a &lt;newline&gt;. If there are no bytes waiting, this causes the application to read zero bytes, which represents end-of-file.</p>
+</dd>
+<dt>NL &lt;newline&gt;</dt><dd><p>This is the line delimiter &lt;newline&gt;. It causes the current line to be available to the application for reading. It cannot be changed.</p>
+</dd>
+<dt>EOL</dt><dd><p>This is a secondary custom line delimiter character. Usually unset.</p>
+</dd>
+</dl>
+</section>
+<section id="flow-control-characters">
+<h3>Flow control characters<a class="headerlink" href="#flow-control-characters" title="Link to this heading"></a></h3>
+<p>These characters are relevant when flow control (IXON/IXOFF) is turned on.</p>
+<dl class="simple">
+<dt>STOP (ctrl-s)</dt><dd><p>Suspends output temporarily (freezes the terminal). Used to prevent output from disappearing before it can be read. Unwary programmers often freeze their terminals when pressing ctrl-s to instinctively save an open text file. Input and output is buffered while the terminal is frozen, not lost.</p>
+</dd>
+<dt>START (ctrl-q)</dt><dd><p>Resume output (unfreezes the terminal). You’ll want to remember this one.</p>
+</dd>
+</dl>
+</section>
+<section id="terminal-demonstration">
+<h3>Terminal Demonstration<a class="headerlink" href="#terminal-demonstration" title="Link to this heading"></a></h3>
+<p>You can explore how the “cooked” vs “raw” setting, as well as how the “echo” flag affects the behavior of a terminal. The below example shows what is displayed to the user, what is sent to the program, and the contents of the line buffer as input is entered.</p>
+<iframe style="border: none;" src="../../../_static/modules/01/terminal.html" width="100%" height="700px"></iframe><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some browsers intercept certain control keys. Manual buttons are provided to simulate control-key events.</p>
+</div>
+</section>
+</section>
+<section id="control-codes">
+<h2>Control Codes<a class="headerlink" href="#control-codes" title="Link to this heading"></a></h2>
+<p>Another important terminal concept is control sequences, also called ANSI escape sequences, EMCA-48, or VT100 codes. An application can write certain sequences of characters to a terminal output, which the terminal recognizes as a control sequence. The control sequence causes the terminal to change some aspect of its state without being printed to the terminal output; this is called in-band signaling, because the signal is carried in normal output. There are a great many control sequences, which are used to do things like change text decoration and cursor position, clear the screen, reset the terminal, change character encodings, and so on.</p>
+<p>Two important control codes to be aware of are called <code class="docutils literal notranslate"><span class="pre">smcup</span></code> and <code class="docutils literal notranslate"><span class="pre">rmcup</span></code> which mean “save memory cursor position”, and “restore memory cursor position”. These are used by terminal emulators to switch between two different screen buffers, known as the “alternate screen” and the “normal screen”. The normal screen acts like a stream of paper and allows the user to scroll back through previous output, while the alternate screen acts more like a fixed grid of display characters and doesn’t support scrollback. The normal screen is usually used by the command-line interface and other programs that produce streams of output, while the alternate screen is used by applications that want to draw an interface of some sort to the screen, such as text editors.</p>
+<p>The state of the normal and alternate screens are saved and restored when switching to and fro, allowing an application to draw to the alternate screen without overwriting the contents of the scrollback buffer. When the application, such as <strong class="program">vim</strong>, is exited, it switches back to the normal screen during cleanup to return to the command-line interface.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="filesystem.html" class="btn btn-neutral float-left" title="File Systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

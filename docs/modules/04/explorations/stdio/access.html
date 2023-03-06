@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Access and Operations &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File Access and Operations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-access-and-operations">
+<h1>File Access and Operations<a class="headerlink" href="#file-access-and-operations" title="Link to this heading"></a></h1>
+<p>As mentioned previously, files are referred to by their filenames–arbitrary strings–with no concept of multi-component paths or any other file system structure.</p>
+<section id="removing-and-renaming-files">
+<h2>Removing and Renaming Files<a class="headerlink" href="#removing-and-renaming-files" title="Link to this heading"></a></h2>
+<p>A file may be removed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">);</span></code> function, and renamed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">oldname</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">newname</span><span class="p">);</span></code> function.</p>
+<p>Either function returns zero on success, and a non-zero value on failure.</p>
+</section>
+<section id="temporary-files">
+<h2>Temporary Files<a class="headerlink" href="#temporary-files" title="Link to this heading"></a></h2>
+<p>An unnamed temporary file may be created with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">tmpfile</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span></code> function. This function returns a pointer to the stream (<code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span></code> object) that it created. The file created by <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpfile</span></code> is removed when the program exits.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="nf">tmpnam</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span></code> function may be used to generate a unique, valid file name that is not the same name as any existing file. If its argument <em>s</em> is a null pointer, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code> returns a pointer to the generated filename in an internal static object, which may be modified by a subsequent call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code>. Otherwise, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code> stores the result in the object pointed at by <em>s</em>, which must be an array of at least <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">L_tmpnam</span></code> <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code>, and returns a pointer to that object.</p>
+<p>Both functions return a null pointer on failure–typically a result of resource exhaustion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code> function is subject to a race condition. Between the time that a filename is generated and the time that the program opens that file, another process could potentially create a file with the same name, leading to conflicts. Safer alternatives are often provided as system-specific functions, such as the POSIX <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">mkstemp</span></code> function, which atomically creates <em>and</em> opens a temporary file with a unique name.</p>
+</div>
+</section>
+<section id="opening-and-closing-files">
+<h2>Opening and Closing Files<a class="headerlink" href="#opening-and-closing-files" title="Link to this heading"></a></h2>
+<p>Files may be opened using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">)</span></code> function. The access mode is a string, with the following significance,</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode string</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;r&quot;</span></code></p></td>
+<td><p>Open a file for reading</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;w&quot;</span></code></p></td>
+<td><p>Truncate (or create) a file for writing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a&quot;</span></code></p></td>
+<td><p>Open (or create) a file for appending</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;r+&quot;</span></code></p></td>
+<td><p>Open a file for read/write</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;w+&quot;</span></code></p></td>
+<td><p>Truncate (or create) a file for read/write</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a+&quot;</span></code></p></td>
+<td><p>Open (or create) a file for read/appending</p></td>
+</tr>
+</tbody>
+</table>
+<p>When a file is opened in append mode, the position is always set to the end of the file before a write operation. The meaning of reading on a file opened with <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a+&quot;</span></code> is not well-specified, and varies.</p>
+<p>In speech, the modes are typically referred to as “read”, “write”, and “append”, while the modes with a ‘+’ are referred to as “extended read”, “extended write”, and “extended append”.</p>
+<p>An additional ‘b’ may be added to any of the above mode strings, such as “rb” or “rb+”. This sets the stream to binary mode; otherwise the stream is in text mode. A binary mode stream treats its contents as a sequence of bytes, while a text mode stream treats its contents as a series of lines, and may discard non-text bytes and whitespace at the end of a line. Binary mode is almost always preferred since it does not discard data.</p>
+<p>The returned <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="o">*</span></code> points to an opaque data structure, or handle, which is used internally by other stdio functions. On failure, a null pointer is returned.</p>
+<section id="standard-streams">
+<h3>Standard Streams<a class="headerlink" href="#standard-streams" title="Link to this heading"></a></h3>
+<p>The standard streams are already opened and ready to be accessed when a program is invoked, and need not be closed when a program exits. These are accessed via the <em>macros</em> <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdout</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code> which expand to expressions of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="o">*</span></code> just as any other stream. Importantly, these are <em>not</em> variables–they are macros–and do not necessarily expand to <em>lvalues</em> that can be directly modified. Attempting to reassign one of the standard streams–e.g. <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fopen</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span></code>–will result in undefined behavior.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">freopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">)</span></code> function is provided specifically to handle this situation. Rather than allocate a new <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span></code> object, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">freopen</span></code> closes <em>stream</em> and opens the specified file <em>in-place</em> on the given <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span></code> object, as in <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">freopen</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">stdin</span><span class="p">)</span></code>.</p>
+<p>As with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fopen</span></code>, the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">freopen</span></code> function returns a pointer to the open stream, or null on failure.</p>
+</section>
+</section>
+<section id="closing-a-file">
+<h2>Closing a file<a class="headerlink" href="#closing-a-file" title="Link to this heading"></a></h2>
+<p>An open file may be closed by passing it as an argument to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fclose</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">)</span></code>. Note that, because streams use buffers, opening a file involves allocating a buffer behind the scenes, and thus can produce memory leaks if the file is not closed before a program terminates!</p>
+</section>
+<section id="stream-status-indicators">
+<h2>Stream Status Indicators<a class="headerlink" href="#stream-status-indicators" title="Link to this heading"></a></h2>
+<p>Streams have two status indicators–error and end-of-file. Many file i/o operations can fail; for example, several functions return a special (and unfortunately named) <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">EOF</span></code> macro to indicate failure. Others return null pointers, where a non-null pointer was expected, or return a short item count, when reading or writing a fixed number of items. In any case, none of those functions indicate the cause of the failure, and it must instead be evaluated by querying these status indicators,</p>
+<ul class="simple">
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">feof</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> queries the end-of-file indicator, which is set when an i/o function fails due to reaching the end of input.</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">ferror</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> queries the error indicator, which is set when an i/o function fails for another internal reason; for example, exhaustion of resources, parsing error, etc.</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">void</span><span class="w"> </span><span class="nf">clearerr</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> unsets both indicators, and is the <em>only</em> mechanism by which these indicators can be reset, once set.</p></li>
+</ul>
+<p>These functions never fail and do not modify <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code>, so it is safe to check the error indicator on a stream before checking <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> for any additional implementation-defined error information.</p>
+</section>
+<section id="buffering">
+<h2>Buffering<a class="headerlink" href="#buffering" title="Link to this heading"></a></h2>
+<p>As mentioned previously, standard i/o streams use an i/o buffer to move data between program memory and the external environment in large, efficient chunks.</p>
+<section id="buffering-modes">
+<h3>Buffering Modes<a class="headerlink" href="#buffering-modes" title="Link to this heading"></a></h3>
+<p>There are three buffering modes that a stream can have–fully buffered, line buffered, and unbuffered. In fully buffered mode, a stream has a fixed-size output buffer which is automatically flushed to external storage whenever it is filled; this is also referred to as <em>block</em> buffering, because data is written in large blocks. Line buffering is the same as full buffering, except that output is also automatically flushed whenever a newline (<code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;n&#39;</span></code>) character is written to the stream. In unbuffered mode, data is written to external storage as soon as it is available.</p>
+<p>When a file is opened, as with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fopen</span></code>, it is buffered by default. If it refers to an interactive device, such as a terminal, it is line buffered; otherwise, it is fully buffered. The standard streams <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdout</span></code> are also line buffered, while <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code> is unbuffered, by default.</p>
+<p>After a file is opened, but <strong>before</strong> any other operations have been performed on it, its buffering mode may be modified with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">setvbuf</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span></code> function.</p>
+<p>The <em>mode</em> argument must be either, <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOFBF</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOLBF</span></code>, or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IONBF</span></code>, each of which causes i/o to be fully buffered, line buffered, or unbuffered, respectively. If <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOFBF</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOLBF</span></code> is specified, the <em>buf</em> argument should point to a buffer of at least <em>size</em> bytes, which will be used as the buffer. It may also be a null pointer, in which case the library will allocate a suitable buffer on the next i/o operation. The contents of the buffer while it is in use are indeterminate.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">setvbuf</span></code> is used to assign a buffer to a stream, that buffer must have a lifetime that extends at least until the stream is closed; otherwise the behavior is undefined.</p>
+</div>
+<p>An additional <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">setbuf</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span></code> convenience function is exactly equivalent to,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">setbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">setvbuf</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">_IOFBF</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">_IONBF</span><span class="p">,</span><span class="w"> </span><span class="n">BUFSIZ</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In other words, if <em>buf</em> is null, the stream is set to unbuffered mode. Otherwise, <em>buf</em> must be at least <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">BUFSIZ</span></code> bytes, and the stream is set to fully buffered mode.</p>
+<p>Both functions return 0 on success, non-zero on failure.</p>
+</section>
+<section id="alternating-i-o">
+<h3>Alternating I/O<a class="headerlink" href="#alternating-i-o" title="Link to this heading"></a></h3>
+<p>One important thing to note is that the same buffer is used for <em>both</em> input <em>and</em> output. Stream input methods will cause any buffered output to be flushed, and then the buffer will be filled with input data from the external storage. Similarly, stream output methods will <em>discard</em> any buffered input before placing the output data in the buffer. There is no difference between line and full buffering when the buffer is used for input–it is always completely filled with input data whenever it is depleted.</p>
+<p>Because of input prefetching, the <em>real</em> file position can move ahead of the <em>perceived</em> file position. This only becomes a problem if an output method is used after an input method, and data is discarded from the buffer–those discarded bytes represent the difference between the real and perceived file positions.</p>
+<p>If the underlying file supports seeking, then the library will update the real file position to the perceived position when switching the buffer from input to output. However, not all file types support seeking, such as a terminal device file, and will result in errors due to the failed seek operations. For this reason, it is generally unsafe to perform an output operation after an input operation on a buffered stream.</p>
+</section>
+<section id="flushing-a-buffer">
+<h3>Flushing a Buffer<a class="headerlink" href="#flushing-a-buffer" title="Link to this heading"></a></h3>
+<p>At any time, the contents of a buffer can be explicitly flushed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">fflush</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> function, which returns 0 on success, and non-zero if an error occurs.</p>
+</section>
+</section>
+<section id="repositioning">
+<h2>Repositioning<a class="headerlink" href="#repositioning" title="Link to this heading"></a></h2>
+<p>Streams support a very basic positioning mechanism, which, as mentioned above, may not be available if the underlying storage does not support seeking.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span><span class="w"> </span><span class="nf">ftell</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> function returns the value of the file position indicator, or returns -1 and sets <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> to an implementation-defined value on failure.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">fseek</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">whence</span><span class="p">);</span></code> function sets the file position indicator relative to <em>whence</em>, which may be <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_SET</span></code>–the beginning of the file; <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_CUR</span></code>–the current position; or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_END</span></code>–the end of the file. It returns non-zero on failure. Text mode streams can only be repositioned with an offset of 0 or with an offset equal to the return value of a previous <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">ftell</span></code>, with <em>whence</em> set to <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_SET</span></code>.</p>
+<p>On POSIX systems, seeking past the end of the file and then performing a write operation will zero-fill the intervening space.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">void</span><span class="w"> </span><span class="nf">rewind</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span></code> function seeks to the beginning of a file and clears the error indicator. It is equivalent to <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fseek</span><span class="p">(</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="mf">0L</span><span class="p">,</span><span class="w"> </span><span class="no">SEEK_SET</span><span class="p">);</span><span class="w"> </span><span class="nf">clearerr</span><span class="p">(</span><span class="nf">stream</span><span class="p">);</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="compound">
+<p>Some online resources demonstrate querying the size of a file by repositioning to the end of a file, querying the position, and then rewinding the file,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="mf">0L</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_END</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ftell</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="w">   </span><span class="n">rewind</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>This is generally a poor programming practice, since the availability of stream positioning is not a valid assumption.</p>
+</div>
+<section id="wide-streams">
+<h3>Wide Streams<a class="headerlink" href="#wide-streams" title="Link to this heading"></a></h3>
+<p>As an extension to the standard i/o library, streams can support multi-byte, or <em>wide</em>, character encodings such as unicode. The methods for this are exposed through the additional <code class="file docutils literal notranslate"><span class="pre">whchar.h</span></code> header, and most are direct analogues of the <em>byte</em>-oriented methods that will be covered in this module; for example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">wchar_t</span><span class="w"> </span><span class="nf">getwchar</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span></code> is the wide-oriented analogue of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">getchar</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span></code> byte-oriented method. Wide streams have an associated parse state, so simply using the above repositioning methods could cause the stream to be repositioned to a location where the current parse state is invalid; it is only safe to rewind a wide stream using these methods.</p>
+<p>A pair of functions <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">fgetpos</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="n">pos</span><span class="p">);</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="nf">fsetpos</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="n">pos</span><span class="p">);</span></code> are provided as a means to save and then restore a file position <em>and</em> its parse state; both functions return 0 on success, and non-zero on failure. Additionally, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> is set to an implementation-defined positive value on failure. These are the only safe mechanism for seeking to a location that is not the beginning of a wide stream.</p>
+<p>Wide streams are an advanced topic that will not be discussed further in this course.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

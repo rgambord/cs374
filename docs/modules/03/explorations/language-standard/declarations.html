@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declarations &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Declarations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="declarations">
+<h1>Declarations<a class="headerlink" href="#declarations" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Now that we understand the basics of the C type system and the categories and properties of identifiers, let’s take a look at the fundamental building block of a C program: <em>declarations</em>. A declaration is a phrase which introduces a set of one or more identifiers, all of which share several common properties, including a base <em>type category</em>, but each of which may also independently undergo <em>type derivation</em> and <em>initialization</em> within the declaration.</p>
+<p>Every translation unit consists entirely of a sequence of <em>external declarations</em>, so-called because they are declarations which appear outside of any enclosing block (not to be confused with external linkage of identifiers). External declarations declare and/or define objects with static storage duration, user-defined types, and functions; every other semantic structure of the language, such as expressions, statements, non-static declarations, and so on, is nested within these external declarations, and so understanding declarations is the first step to understanding C.</p>
+<p>Syntactically, a declaration is a list of <em>declaration specifiers</em> followed
+by a comma-separated list of <em>declarators</em> (the <em>init-declarator list</em>), terminated by a semicolon:</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declaration</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declaration-specifiers</span> <span class="syn-nonterm">init-declarator-list</span><span class="syn-opt">opt</span> <span class="syn-term">;</span></p>
+</div>
+</div>
+</div>
+<p class="rubric">General Rules</p>
+<p>Some important things to keep in mind as you work through the following content:</p>
+<ul class="simple">
+<li><p>As a general rule, the same identifier can be declared multiple times, as
+long as subsequent declarations are consistent with previous declarations.</p>
+<ul>
+<li><p>Identifiers with no linkage (i.e. block-scope variable names) may only be declared once.</p></li>
+<li><p>Initializion may only occur once across all declarations of the same object.</p></li>
+</ul>
+</li>
+<li><p>Declaration semantics are sensitive to the following contextual information:</p>
+<ul>
+<li><p>Whether the declaration occurs at file-scope (external declaration), or
+whether it appears within a block-scope.</p></li>
+<li><p>Whether a previous declaration of the same identifier is visible</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="declaration-specifiers">
+<h2>Declaration Specifiers<a class="headerlink" href="#declaration-specifiers" title="Link to this heading"></a></h2>
+<p>The declaration specifiers indicate the various shared properties of the
+identifiers that appear in the init declarator list. Declaration specifiers are
+an assortment of <em>type specifiers</em>, <em>type qualifiers</em>, <em>storage class
+specifiers</em> and <em>function specifiers</em>, in any order.</p>
+<section id="type-specifiers">
+<h3>Type Specifiers<a class="headerlink" href="#type-specifiers" title="Link to this heading"></a></h3>
+<p>The type specifiers are required, and introduce a <em>type category</em>. This type category may be:</p>
+<ul class="simple">
+<li><p>a <em>struct or union specifier</em>;</p></li>
+<li><p>an <em>enum specifier</em>;</p></li>
+<li><p>a <em>typedef name</em></p></li>
+</ul>
+<p>We will discuss the latter categories in more detail on their own; for now,
+just understand that a declaration specifies a fundamental type category; in our examples,
+we will simply refer to this type as <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>.</p>
+</section>
+<section id="type-qualifiers">
+<h3>Type Qualifiers<a class="headerlink" href="#type-qualifiers" title="Link to this heading"></a></h3>
+<p>The specified type category may also be qualified with any combination of the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code> keywords. This is referred to as
+<em>cvr-qualification</em>.</p>
+<section id="const">
+<h4>const<a class="headerlink" href="#const" title="Link to this heading"></a></h4>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code> keyword is used to qualify a type such that modification of a
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualified object is undefined behavior (most compilers produce an error
+if a program modifies a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualified object). Functions will often take
+pointers to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualified objects as arguments, as a promise that they will
+read, but not modify, the pointed-to objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualified objects are <em>not</em> immutable! Think of
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualification as <em>read-only</em>. We often see <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span>
+<span class="k">volatile</span></code>-qualified objects that refer to read-only data which is modified
+by something <em>outside</em> the program. Examples would be read-only registers
+and read-only access to shared memory with another process.</p>
+</div>
+</section>
+<section id="volatile">
+<h4>volatile<a class="headerlink" href="#volatile" title="Link to this heading"></a></h4>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code> keyword indicates that <em>accessing</em> a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code>-qualified object
+is a side-effect (i.e. reading the value of the object changes te
+program), and forces the compiler to follow strict access rules to reflect this
+property. This is often required for objects which might be modified
+asynchronously, such as within a signal handler, an action taken by the
+operating system, or a hardware event corresponding to a memory-mapped-IO
+object. We generally won’t come across <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code> objects until later in the
+course when we study asynchronous signal handling.</p>
+</section>
+<section id="restrict">
+<h4>restrict<a class="headerlink" href="#restrict" title="Link to this heading"></a></h4>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code> keyword has a particular use with pointer types, and establishes
+a promise: if a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code>-qualified pointer is used to access an object that
+is ever modified, no other pointer will be used to access the same object. The
+purpose of this is to facilitate compiler optimizations by explicitly
+prohibiting modification through <em>aliased</em> pointers. Pointer aliasing is when
+two pointers refer to the same object, which means modifying the object through
+one pointer might change the result of any expression that accesses that same
+object through the other pointer. We will explore the use-cases of
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code>-qualification more when we explore optimization.</p>
+</section>
+</section>
+<section id="storage-class-specifiers">
+<h3>Storage-Class Specifiers<a class="headerlink" href="#storage-class-specifiers" title="Link to this heading"></a></h3>
+<p>All identifiers introduced in a declaration have the same storage class,
+denoted with the inclusion of no more than one of: <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">auto</span></code> or
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">register</span></code>, or implicitly deduced by the location in which the declaration
+appears. The storage class of an identifier determines its linkage. If the
+identifier refers to an object, the storage class also determines that object’s
+storage duration (lifetime).</p>
+<p>The semantics of storage class specifiers are fairly strange, and sensitive to
+the context in which they appear.</p>
+<section id="typedef">
+<h4>typedef<a class="headerlink" href="#typedef" title="Link to this heading"></a></h4>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code> keword is special, and we will discuss it on its own. It’s used
+to declare identifiers that are aliases (typedef names) for other types. It is
+included in the list of storage class specifiers only for syntactic convenience,
+to prevent type aliases from including any other storage class properties.</p>
+</section>
+<section id="extern">
+<h4>extern<a class="headerlink" href="#extern" title="Link to this heading"></a></h4>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code> storage-class specifier declares an identifier with external
+linkage, with one exception: if a prior declaration of the same identifier is
+visible, and that prior declaration specified the identifier as having internal
+linkage, then the identifier remains internally linked.</p>
+</section>
+</section>
+</section>
+<section id="id1">
+<h2>Declarations<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>A declaration in introduces one or more identifiers and associates each with a type.</p>
+<section id="basic-type-declarations">
+<h3>Basic Type Declarations<a class="headerlink" href="#basic-type-declarations" title="Link to this heading"></a></h3>
+<p>A declaration consists of two main components: the <em>declaration specifiers</em> and
+an <em>init-declarator list</em>. The declaration specifiers name a type and
+optionally qualify and modify that type. The init-declarator list is a
+comma-separated list of declarators, which optionally assign a value (called
+initialization). The declaration is terminated by a semicolon.</p>
+<p>Here is a simple example which declares two objects, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">x</span></code> , and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">y</span></code>, which are of
+type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code></p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In this example, the declaration specifiers contains only one specifier, the type specifier: <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>. The init-declarator list contains two init-declarators: <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">x</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">y</span></code>, separated by a comma. The declaration is terminated with a semicolon.</p>
+<p>We can add additional terms to a declaration to qualify or modify the type and specify its storage class. Here is the list of all of these keywords:</p>
+<ul class="simple">
+<li><p>Type Qualifiers</p>
+<ul>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code> (can only be used to qualify pointers)</p></li>
+</ul>
+</li>
+<li><p>Storage Class Specifiers</p>
+<ul>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">register</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code></p></li>
+</ul>
+</li>
+<li><p>Function Specifier:</p>
+<ul>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">inline</span></code> (can only be used to qualify functions)</p></li>
+</ul>
+</li>
+</ul>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code> keyword qualifies the type as a constant type, which means its value cannot
+be modified. Const-qualification is used frequently in C programming to designate an object
+as read-only.</p>
+<p>The storage class specifiers <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code> can be a bit confusing because they affect
+both storage duration of objects and linkage of identifiers.</p>
+<p>Linkage:</p>
+<ul class="simple">
+<li><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code> keyword prevents identifier(s) from having external linkage. At file-scope,
+this hides a declaration from the global namespace. At block-scope, identifiers don’t have
+linkage, so it has no effect.</p></li>
+<li><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code> keyword declares that the identifier(s) are externally linked <em>and</em> defined
+elsewhere in another translation unit.</p></li>
+</ul>
+<p>Storage duration:</p>
+<ul class="simple">
+<li><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code> keyword causes any declared objects to have static storage duration. All objects
+declared at file scope already have static storage duration (because they always have linkage),
+so this only affects objects declared at block-scope. At block-scope, this causes the object
+to continue to exist and retain its value, even when it is not in scope (after the block it is
+declared in ends). This is commonly used to have functions track internal state between successive
+calls.</p></li>
+</ul>
+<p>Some additional examples with these keywords are shown below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>declaration-specifiers</strong></p></th>
+<th class="head"><p><strong>init-declarator-list</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>char</p></td>
+<td><p>c</p></td>
+</tr>
+<tr class="row-odd"><td><p>int const</p></td>
+<td><p>x, y</p></td>
+</tr>
+<tr class="row-even"><td><p>static int</p></td>
+<td><p>lo, mid, hi</p></td>
+</tr>
+<tr class="row-odd"><td><p>extern long</p></td>
+<td><p>big_counter</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arrays">
+<h3>Arrays<a class="headerlink" href="#arrays" title="Link to this heading"></a></h3>
+<p>We can add square brackets to the right side of a declarator to produce an
+array: <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x[10]</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as an array of 10 <code class="docutils literal notranslate"><span class="pre">int</span></code>. Additional sets of
+brackets may be added to introduce multi-dimensional arrays; <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x[10][5]</span></code>
+declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as an array of <code class="docutils literal notranslate"><span class="pre">10</span></code> arrays of 5 <code class="docutils literal notranslate"><span class="pre">int</span></code>. In this example, <code class="docutils literal notranslate"><span class="pre">x</span></code> has
+type <code class="docutils literal notranslate"><span class="pre">int[10][5]</span></code>, while <code class="docutils literal notranslate"><span class="pre">x[0]</span></code> has type <code class="docutils literal notranslate"><span class="pre">int[5]</span></code>, and <code class="docutils literal notranslate"><span class="pre">x[0][0]</span></code> has type <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+<p>Notice that we read off the type of the array by working our way <em>outwards</em>
+from the identifier. <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x[a][b]</span></code> is an array of <code class="docutils literal notranslate"><span class="pre">a</span></code> arrays of <code class="docutils literal notranslate"><span class="pre">b</span></code> <code class="docutils literal notranslate"><span class="pre">int</span></code>, not
+an array of <code class="docutils literal notranslate"><span class="pre">b</span></code> arrays of <code class="docutils literal notranslate"><span class="pre">a</span></code> <code class="docutils literal notranslate"><span class="pre">int</span></code>!</p>
+</section>
+<section id="pointers">
+<h3>Pointers<a class="headerlink" href="#pointers" title="Link to this heading"></a></h3>
+<p>We can add ‘*’ to the left side of a declarator to produce a pointer to that
+type; <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*x</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as a pointer to <code class="docutils literal notranslate"><span class="pre">int</span></code>. Additional ‘*’ introduce
+additional levels of indirection; <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">**x</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as a pointer to a
+pointer to an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Pointers may optionally also include cvr-qualifiers (<code class="docutils literal notranslate"><span class="pre">const</span></code>, <code class="docutils literal notranslate"><span class="pre">volatile</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">restrict</span></code>), which bind to the ‘*’ to their left. For example, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*const</span> <span class="pre">x</span></code>
+declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as a constant pointer to an <code class="docutils literal notranslate"><span class="pre">int</span></code>. This means <code class="docutils literal notranslate"><span class="pre">x</span></code> cannot be
+modified to point somewhere else, but the data it points <em>to</em> is mutable.
+Similarly, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*const</span> <span class="pre">*</span> <span class="pre">x</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as a pointer to a constant pointer to
+an <code class="docutils literal notranslate"><span class="pre">int</span></code>, and so on. Keep in mind that cvr-qualifiers can appear to the left of
+any ‘*’ in which case they are actually part of the
+<strong>declaration-specifiers</strong>, such as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">const</span> <span class="pre">*x</span></code> which declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as a
+pointer to a constant <code class="docutils literal notranslate"><span class="pre">int</span></code>, meaning <code class="docutils literal notranslate"><span class="pre">x</span></code> can be reassigned to point elsewhere,
+but the data pointed at by <code class="docutils literal notranslate"><span class="pre">x</span></code> is immutable.</p>
+<div class="notebox">
+
+**Where do spaces go around asterisks?**
+
+Notice that the '\*' binds to whatever appears to its right side. This is why
+we write `int *x` and not `int* x`. Parentheses can be used to explicitly group
+terms of a declarator together; if we do this to show the implicit binding
+affinities, we arrive at `int (*x)` vs `int(* x)`. As you can see, one is
+clearly semantically incorrect. Now you are ready to dive into some juicy
+arguments on the internet!
+
+Writing the asterisk on the wrong side often confuses students because they
+mistakenly believe that the asterisk applies to the type described in the
+**declaration-specifiers**. Notice the difference between these two statements,
+and how a novice might interpret them based on the formatting:
+
+```c
+int* x, y;
+int *x, y;
+```
+
+The first line misleadingly appears to declare `x` and `y` as pointers to
+`int`. The second line clearly declares `x` as a pointer to `int`, and `y` as a
+simple `int`. Syntactically, both are identical, but semantically one is very
+confusing.
+
+We also prefer to avoid putting extra space on the right side of the asterisk.
+This is because the asterisk does double duty as the pointer dereference
+operator and as the mulitiplication operator. We try to mirror in our
+declarations the appearance of the operator as used later in expressions. In
+the example below, the second line is confusing and appears to be a typo at
+first glance, while the third line clearly shows that the value 1 is being
+added to the value that `y` points at:
+
+```c
+int *y;
+1 + * y;
+1 + *y;
+```
+</div></section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<p>Functions are introduced by adding parentheses to the right of the declarator,
+which may optionally contain a list of parameters, which themselves look a lot
+like declarations. For example, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">f(int</span> <span class="pre">a,</span> <span class="pre">char</span> <span class="pre">b,</span> <span class="pre">int</span> <span class="pre">*xyz);</span></code> declares a
+function <code class="docutils literal notranslate"><span class="pre">f</span></code> which accepts parameters <code class="docutils literal notranslate"><span class="pre">a</span></code> of type <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> of type <code class="docutils literal notranslate"><span class="pre">char</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">xyz</span></code> of type pointer to <code class="docutils literal notranslate"><span class="pre">int</span></code>, and returns an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+</section>
+<section id="further-derived-types">
+<h3>Further derived types<a class="headerlink" href="#further-derived-types" title="Link to this heading"></a></h3>
+<p>Each of these derived types can be mixed and matched in surprising ways. For example,
+we could declare a as array of 20 pointers to functions taking no parameters and return a pointer
+to an array of 100 pointer to pointer to constant pointer to char:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">20</span><span class="p">])(</span><span class="kt">void</span><span class="p">))[</span><span class="mi">100</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Notice that we read first to the right, then to the left of the identifier,
+moving outwards. This is called the “right-to-left” rule. Parentheses are
+sometimes needed to bind a pointer tighter than something that appears to the
+right side of the identifier. Knowing this, let’s deconstruct the declaration
+shown above:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">20</span><span class="p">])(</span><span class="kt">void</span><span class="p">))[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="cm">/* a as an array of 20 */</span><span class="p">)(</span><span class="kt">void</span><span class="p">))[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="cm">/* a as an array of 20 pointers to */</span><span class="p">)(</span><span class="kt">void</span><span class="p">))[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters */</span><span class="p">)[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters and return a pointer to */</span><span class="p">)[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters and return a pointer to an array of 100 */</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters and return a pointer to an array of 100 pointers to */</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters and return a pointer to an array of 100 pointers to pointers to */</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="cm">/* a as an array of 20 pointers to functions that take no parameters and return a pointer to an array of 100 pointers to pointers to constant pointers to */</span><span class="p">;</span>
+<span class="cm">/* declare a as an array of 20 pointers to functions that take no parameters and return a pointer to an array of 100 pointers to pointers to constant pointers to char */</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Activity</strong></p>
+<p>Practice deducing the following
+type declarations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">const</span> <span class="pre">**bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">(*f)(int</span> <span class="pre">a,</span> <span class="pre">char</span> <span class="pre">b)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">const</span> <span class="pre">int</span> <span class="pre">long</span> <span class="pre">*const</span> <span class="pre">a[12]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*p[100]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">(*p)[100]</span></code></p></li>
+</ul>
+<p>Next, visit the cdecl translator: <a class="reference external" href="https://cdecl.org/">cdecl: C gibberish ↔
+English</a> and check your work!</p>
+</section>
+</section>
+<section id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h2>
+<p>Each declarator may also initialize the object it creates. For simple scalar
+types line <code class="docutils literal notranslate"><span class="pre">char</span></code> and <code class="docutils literal notranslate"><span class="pre">int</span></code>, and pointers, this works exactly the same as a
+simple assignment, as we will cover later when we talk about operators, and is
+fairly intuitive. For example, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x=12,</span> <span class="pre">y,</span> <span class="pre">z=11;</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as an <code class="docutils literal notranslate"><span class="pre">int</span></code> with
+value <code class="docutils literal notranslate"><span class="pre">12</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> as an <code class="docutils literal notranslate"><span class="pre">int</span></code> with an indeterminate value, and <code class="docutils literal notranslate"><span class="pre">z</span></code> as an <code class="docutils literal notranslate"><span class="pre">int</span></code> with value <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p>
+<p>However, initialization provides an opportunity to also initialize
+aggregate types such as arrays. Outside of its declaration, an array may only
+be assigned by assigning to each of its elements individually. However, in a
+declaration, the special <em>brace-enclosed-list</em> initializer can be used to
+assign an entire array in a single operation.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[10]</span> <span class="pre">=</span> <span class="pre">{1,</span> <span class="pre">2};</span></code> initializes <code class="docutils literal notranslate"><span class="pre">arr[0]</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr[2]</span></code>
+to <code class="docutils literal notranslate"><span class="pre">2</span></code>. The remaining elements of the array that are not explicitly initialized
+in the brace-enclosed-list are assigned a value of <code class="docutils literal notranslate"><span class="pre">0</span></code>. Specific indices can
+also be assigned, such as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[10]</span> <span class="pre">=</span> <span class="pre">{[4]=3}</span></code> which initializes <code class="docutils literal notranslate"><span class="pre">arr[4]</span></code> to
+<code class="docutils literal notranslate"><span class="pre">3</span></code> and the remaining elements to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Commonly, arrays are zero-initialized by
+explicitly initializing the first element to <code class="docutils literal notranslate"><span class="pre">0</span></code>, and allowing the remaining
+elements to implicitly initialize to <code class="docutils literal notranslate"><span class="pre">0</span></code> as well: <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[10]</span> <span class="pre">=</span> <span class="pre">{0};</span></code>
+initializes all the elements of <code class="docutils literal notranslate"><span class="pre">arr</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>When a brace-enclosed-list is provided, the dimensions of the outermost array
+may be ommitted, and will be calculated by the compiler for you: <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[]</span> <span class="pre">=</span>
+<span class="pre">{0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3};</span></code> produces an array of four integers. Note that for nested arrays,
+this only works for the outermost level: <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[10][]</span> <span class="pre">=</span> <span class="pre">{{1,2,3},</span> <span class="pre">{4,5,6}};</span></code>
+produces an array of two arrays of ten integers, which have their first three
+values intialized to <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">3</span></code>, and <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, and <code class="docutils literal notranslate"><span class="pre">6</span></code>, respectively,
+with the remaining elements zero-initialized.</p>
+<section id="special-case-string-literal-initialization">
+<h3>Special Case: String-literal initialization<a class="headerlink" href="#special-case-string-literal-initialization" title="Link to this heading"></a></h3>
+<p>A <em>special case</em> exists for an array of <code class="docutils literal notranslate"><span class="pre">char</span></code>. A <strong>string-literal</strong> can be used
+to initialize such an array, and it works just as it would if the characters of the
+string literal were split into a brace-enclosed-list of character constants. The
+following two initializations are equivalent:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;!&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>One special thing to note is that, if the array is declared with an unknown
+size and initialized with a string literal, an additional <code class="docutils literal notranslate"><span class="pre">'\0'</span></code> null byte
+will be added to the end of the array to terminate the string. The following
+two initializations are equivalent, and result in an array of length 13,
+<strong>not</strong> 12:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;!&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<div class="notebox">
+
+**Strings and null terminators**
+
+Strings are sequences of characters (`char`) that are terminated with a null
+byte (`'\0'`). An object that is an array of `char` can contain zero, one, or
+several strings. Every character position in a string is also, by definition,
+the start of a string, itself, since it is the beginning of a sequence of
+characters that ends in a null byte. String manipulation is a significant
+aspect of systems programming, and we will spend quite a bit of time learning
+tools and techniques for doing this.
+
+In the example with a fixed-size array, the null byte was implicitly added
+simply because the array was explicitly sized larger than the number of
+characters in the string, thus the remaining elements were zero-initialized. If
+the explicit size does not leave room for a null byte, it will not be present
+in the array! This is a **common** mistake! Because the length of a string is
+determined by the location of the first null byte, a missing null byte can
+easily result in buffer overflows &ndash; reading past the end of the object
+that the "string" appears in &ndash; which represent a major source of security
+vulnerabilities and bugs.
+</div></section>
+<section id="implicit-initialization">
+<h3>Implicit Initialization<a class="headerlink" href="#implicit-initialization" title="Link to this heading"></a></h3>
+<p>If a declaration does not include an initializer:</p>
+<ul class="simple">
+<li><p>Objects with automatic storage duration are initialized with indeterminate
+values. Using such a value may result in undefined behavior!</p></li>
+<li><p>Objects with static storage duration are empty-initialized.</p>
+<ul>
+<li><p>pointers are initialized to the null pointer value of their type</p></li>
+<li><p>integers are initialized to unsigned zero</p></li>
+<li><p>floats are initialized to <code class="docutils literal notranslate"><span class="pre">+0</span></code></p></li>
+<li><p>aggregate types are recursively empty-initialized and any padding bits are
+initialized to zero.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

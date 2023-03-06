@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Control Operations &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File Control Operations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-control-operations">
+<h1>File Control Operations<a class="headerlink" href="#file-control-operations" title="Link to this heading"></a></h1>
+<p>The <code class="file docutils literal notranslate"><span class="pre">fcntl.h</span></code> header exposes the underlying system calls required to open and close files, and offers more fine-grained control over file access permissions (called a file mode), creation, truncation, and other functionalities that are not exposed by the C library interfaces.</p>
+<section id="opening-a-file">
+<h2>Opening a File<a class="headerlink" href="#opening-a-file" title="Link to this heading"></a></h2>
+<p>Files are opened via the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="o">...</span><span class="p">);</span></code> system call, which returns an integer file descriptor number that is passed to other system calls to perform operations on the open file.</p>
+<p>The <em>flags</em> argument is the bitwise-OR of various flag bits; <em>flags</em> must specify exactly one of the following access modes,</p>
+<dl class="simple">
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_RDONLY</span></code></dt><dd><p>Open file for reading only.</p>
+</dd>
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_WRONLY</span></code></dt><dd><p>Open file for writing only.</p>
+</dd>
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_RDWR</span></code></dt><dd><p>Open file for reading and writing; unspecified result if applied to a FIFO (special file type).</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Two additional access mode flags, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_EXEC</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_SEARCH</span></code> are specified in POSIX, but they are <strong>not</strong> implemented on many operating systems such as Linux and MacOS.</p>
+</div>
+<p>Additionally, the following optional values may be specified,</p>
+<dl>
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_APPEND</span></code></dt><dd><p>Prior to each write, set the file offset to the end of the file.</p>
+</dd>
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_CREAT</span></code></dt><dd><p>If the file does not exist, it is created, with the following properties:</p>
+<ul class="simple">
+<li><p>User ID: Set to the effective user ID of the process</p></li>
+<li><p>Group ID Set to the group ID of the parent directory, or the effective group ID of the process (implementation defined).</p></li>
+<li><p>Access Permissions Bits: Set to the value of a variadic <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">mode_t</span></code> <em>mode</em> argument, bitwise-ANDed with the complement of the <em>umask</em> value for the process.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_CREAT</span></code> flag is specified, a third <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">mode_t</span></code> <em>mode</em> argument <strong>must</strong> be supplied–it is a very common mistake to forget to supply a <em>mode</em> argument. Additionally, because is is passed as a variadic argument, the value must be of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">mode_t</span></code> or the behavior is undefined. A <em>very</em> common misuse that invokes undefined behavior is to call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">open</span></code> with an integer constant value, such as: <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;file.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_CREAT</span><span class="p">,</span><span class="w"> </span><span class="mo">0777</span><span class="p">);</span></code>. In this example, the value <code class="code highlight c c99 docutils literal highlight-c99"><span class="mo">0777</span></code> is an integer literal with type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>, not <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">mode_t</span></code>. It must be explicitly cast for correctness, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;file.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_CREAT</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">mode_t</span><span class="p">)</span><span class="w"> </span><span class="mo">0777</span><span class="p">);</span></code></p>
+</div>
+<p>The <code class="file docutils literal notranslate"><span class="pre">sys/stat.h</span></code> header defines several macros which can be used to construct the <em>mode</em> parameter; these are defined with specific numeric values of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">mode_t</span></code>, so they do not need to be explicitly cast,</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Numeric Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IRWXU</span></code></p></td>
+<td><p>0700</p></td>
+<td><p>Read, write, execute/search by owner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IRUSR</span></code></p></td>
+<td><p>0400</p></td>
+<td><p>Read permission, owner.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IWUSR</span></code></p></td>
+<td><p>0200</p></td>
+<td><p>Write permission, owner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IXUSR</span></code></p></td>
+<td><p>0100</p></td>
+<td><p>Execute/search permission, owner.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IRWXG</span></code></p></td>
+<td><p>070</p></td>
+<td><p>Read, write, execute/search by group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IRGRP</span></code></p></td>
+<td><p>040</p></td>
+<td><p>Read permission, group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IWGRP</span></code></p></td>
+<td><p>020</p></td>
+<td><p>Write permission, group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IXGRP</span></code></p></td>
+<td><p>010</p></td>
+<td><p>Execute/search permission, group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IRWXO</span></code></p></td>
+<td><p>07</p></td>
+<td><p>Read, write, execute/search by others.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IROTH</span></code></p></td>
+<td><p>04</p></td>
+<td><p>Read permission, others.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IWOTH</span></code></p></td>
+<td><p>02</p></td>
+<td><p>Write permission, others.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_IXOTH</span></code></p></td>
+<td><p>01</p></td>
+<td><p>Execute/search permission, others.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_ISUID</span></code></p></td>
+<td><p>04000</p></td>
+<td><p>Set-user-ID on execution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_ISGID</span></code></p></td>
+<td><p>02000</p></td>
+<td><p>Set-group-ID on execution.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">S_ISVTX</span></code></p></td>
+<td><p>01000</p></td>
+<td><p>On directories, restricted deletion flag.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_TRUNC</span></code></dt><dd><p>May only be used with <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_RDWR</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">O_WRONLY</span></code>–if the file exists, truncate it, setting its size to 0.</p>
+</dd>
+</dl>
+<p>Several additional optional flags are available, as described in <em class="manpage">OPEN(2)</em>.</p>
+<p>The returned file descriptor integer is the lowest number available; if an error occurs, -1 is returned, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> is set. The errors which can occur are described in detail in <em class="manpage">OPEN(2)</em>.</p>
+</section>
+<section id="closing-files">
+<h2>Closing Files<a class="headerlink" href="#closing-files" title="Link to this heading"></a></h2>
+<p>An open file can be closed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="n">close</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">)</span></code> system call, returning 0 on success, -1 on failure, with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> set to indicate the error. See <em class="manpage">CLOSE(2)</em> for more information.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

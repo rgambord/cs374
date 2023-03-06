@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<head>
+
+<style>
+table {
+  margin: auto;
+}
+
+td, th {
+  padding: 1px 20px;
+  text-align: left;
+}
+
+
+#mode {
+  font-family: monospace;
+}
+#modestr {
+  font-family: monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "left right"
+    "bottom bottom";
+}
+
+.grid2 {
+  display: grid;
+  grid-template-areas:
+    "cooked raw"
+    "echo reset";
+  width: max-content;
+  grid-gap: 0 10px;
+}
+ 
+textarea {
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow: auto;
+}
+
+</style>
+</head>
+  <form onsubmit="return false;">
+<div style="padding: 0; margin: auto;" class="grid">
+    <fieldset style="grid-area: top" onchange="update()">
+      <legend>Mode</legend>
+      <div class="grid2">
+      <label><input type="radio" name="mode" id="cooked" value="cooked" checked>Cooked</input></label>
+      <label style="display: inline-block;"><input type="checkbox" id="echo" checked>Echo</input></label>
+      <label><input type="radio" name="mode" id="raw" value="raw">Raw</input></label>
+      <button onclick="reset()">reset</button>
+      </div>
+    </fieldset>
+    <fieldset style="grid-area: left;">
+      <legend>Input to Terminal</legend>
+      <textarea rows="23" style="resize: none; width: 100%;" id="input-box"></textarea>
+      <label>Line Buffer<textarea rows="1" style="resize: none; width: 100%" id="linebuffer-box" readonly disabled></textarea></label>
+    </fieldset>
+    <fieldset style="grid-area: right;">
+      <legend>Output to Application</legend>
+      <textarea rows="23" style="resize: none; width: 100%;" id="output-box" readonly disabled></textarea>
+      <label>Signals<textarea rows="1" style="resize: none; width: 100%;" id="signal-box" readonly disabled></textarea></label>
+    </fieldset>
+    <fieldset style="grid-area: bottom; display: grid; grid-template-columns: auto auto auto auto;">
+      <legend>Send Control Keys</legend>
+      <button onclick="do_input('c', true)" name="Interrupt">  Ctrl-c (INTR)</button>
+      <button onclick="do_input('\\', true)" name="Quit">      Ctrl-\ (QUIT)</button>
+      <button onclick="do_input('z', true)" name="Suspend">    Ctrl-z (SUSP)</button>
+      <button onclick="do_input('u', true)" name="Kill">       Ctrl-u (KILL)</button>
+      <button onclick="do_input('d', true)" name="End of File">Ctrl-d (EOF)</button>
+      <button onclick="do_input('s', true)" name="Stop">       Ctrl-s (STOP)</button>
+      <button onclick="do_input('q', true)" name="Start">      Ctrl-q (START)</button>
+    </fieldset>
+</div>
+</form>
+<script>
+  function printable(c) {
+    if (c.length == 1) {
+      return true;
+    } else if (c == "Enter") {
+      return true;
+    } else if (c == "Backspace") {
+      return true;
+    }
+  };
+
+
+  echo = document.getElementById("echo")
+  cooked = document.getElementById("cooked")
+
+  input = document.getElementById("input-box")
+  output = document.getElementById("output-box")
+  linebuffer = document.getElementById("linebuffer-box")
+  signal = document.getElementById("signal-box")
+
+  echoed_input = ""
+  frozen = false
+
+  function update() {
+    cooked_on = cooked.checked
+    if (!cooked_on) {
+      if (echo_on) echoed_input += linebuffer.value
+      output.value += linebuffer.value
+      linebuffer.value = ""
+    }
+    echo_on = echo.checked
+    if (!frozen) {
+      if (echo_on) {
+        input.value = echoed_input + linebuffer.value
+      } else {
+        input.value = echoed_input
+      }
+    }
+  }
+
+  function reset() {
+    console.log("reset")
+    cooked.checked = true
+    echo.checked = true
+    input.value = ""
+    linebuffer.value = ""
+    output.value = ""
+    signal.value = ""
+    signal.placeholder = ""
+    update()
+  }
+
+  function do_input(c, ctrl) {
+    console.log("do_input(%s, %s)", c, ctrl ? "true" : "false")
+    signal.value = ""
+
+    if (cooked_on) {
+      if (ctrl) {
+        if (c == 'c') {
+          signal.value = "SIGINT (Interrupt)"
+          linebuffer.value = ""
+        } else if (c == 'z') {
+          signal.value = "SIGTSTP (Terminal Stop)"
+        } else if (c == '\\') {
+          signal.value = "SIGQUIT (Quit)"
+          linebuffer.value = ""
+        } else if (c == 's') {
+          signal.placeholder = "Terminal Frozen (Press ctrl-q to resume)"
+          input.style.background = "#c8c8c8"
+          frozen = true
+        } else if (c == 'u') {
+          linebuffer.value = ""
+        }else if (c == 'd') {
+          if (echo_on) echoed_input += linebuffer.value
+          output.value += linebuffer.value
+          linebuffer.value = ""
+        } else if (c == 'q') {
+          input.style.background = ""
+          signal.placeholder = ""
+          signal.value = "Terminal Unfrozen"
+          frozen = false
+        } else {
+          signal.value = "Unrecognized ctrl sequence"
+        }
+      } else {
+        if (c.length == 1) {
+          linebuffer.value += c
+        } else if (c == "Enter") {
+          linebuffer.value += '\n'
+          if (echo_on) {
+            echoed_input += linebuffer.value
+          }
+          output.value += linebuffer.value
+          linebuffer.value = ""
+        } else if (c == "Backspace") {
+          linebuffer.value = linebuffer.value.slice(0, -1)
+        }
+      }
+    } else {
+      if (!ctrl) {
+        if (c.length == 1) linebuffer.value += c;
+        else {
+          if (c == 'Enter') linebuffer.value += '^M';
+          else if (c == 'Backspace') linebuffer.value += '^?';
+        }
+      } else {
+        linebuffer.value += '^' + c.toUpperCase()
+      }
+      output.value += linebuffer.value
+      if (echo_on) echoed_input += linebuffer.value
+      linebuffer.value = ''
+    }
+    if (!frozen) {
+      if (echo_on) {
+        input.value = echoed_input + linebuffer.value
+      } else {
+        input.value = echoed_input
+      }
+    }
+  }
+
+  input.addEventListener("keydown", function(event) {
+    c = event.key
+    ctrl = event.ctrlKey
+
+    if (!printable(c)) return;
+
+    event.stopPropagation()
+    event.preventDefault()
+    
+    do_input(c, ctrl)
+  })
+
+  reset()
+</script>

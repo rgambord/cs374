@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Development in Vim &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Assigned Reading" href="../assignments/reading.html" />
+    <link rel="prev" title="Background Commands" href="shell/background.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Software Development in Vim</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="shell/background.html" class="btn btn-neutral float-left" title="Background Commands" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../assignments/reading.html" class="btn btn-neutral float-right" title="Assigned Reading" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-development-in-vim">
+<h1>Software Development in Vim<a class="headerlink" href="#software-development-in-vim" title="Link to this heading"></a></h1>
+<p>The vast majority of remote development targets have <strong class="program">vim</strong> installed alongside the POSIX standard utility <strong class="program">vi</strong>. Proficiency in <strong class="program">vim</strong> is not only an important skill to develop in order to become a more versatile software developer, but it will also introduce you to an unusual but amazingly pervasive and influential interface paradigm.</p>
+<p>As you begin to master <strong class="program">vim</strong>, you may find yourself instinctively hammering out commands in other applications. You’ll certainly experience a new feeling of frustration that you have to delete your mess of keystrokes, reach for your mouse, and do things <em>the slow way</em>. But, there will be sublime moments when you hit <kbd class="kbd docutils literal notranslate">/</kbd> in your web browser and a search box pops up, or <kbd class="kbd docutils literal notranslate">k</kbd> in your email client and the next email opens. You’ll have learned an almost secret language, and once you’ve really learned it, it’ll be such a pleasure to use the software that speaks it–and torture to use that which doesn’t.</p>
+<p>In this course we use a popular ground-up re-implementation of Vim called NeoVim (<strong class="program">nvim</strong>). The two are very similar from an end-user perspective, but NeoVim has a Lua based API for plugins and configuration, rather than the domain-specific <em>vim script</em>, and is designed for modern systems without a lot of arcane baggage associated with the older <strong class="program">vim</strong>. This has led to its widespread adoption, supplanting <strong class="program">vim</strong> as a primary IDE among systems programmers over the last few years. Unfortunately, it won’t be pre-installed on most rem  ote systems, but any skills you learn with NeoVim will translate nicely to any of the times you come across <strong class="program">vim</strong> or <strong class="program">vi</strong> in the wild.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On <strong>os1</strong>, once you’ve got your environment set up correctly, <strong class="program">vim</strong> is a soft-link to <strong class="program">nvim</strong>, so you should be able to run NeoVim with <code class="code highlight shell docutils literal highlight-shell">vim</code>. You can confirm that you are set up correctly by checking the version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>vim<span class="w"> </span>--version
+<span class="go">NVIM v0.8.0</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</div>
+<p>Vim has a notoriously steep learning curve, but it’s more of a running joke than a reality. It takes most users no more than few hours to start to learn the basics that allow them to edit text nearly as quickly as on a more typical editor. We also have a nicely setup configuration with lots of plugins (such as code completion and an LSP server) to make the environment friendlier and easier for a beginner.</p>
+<section id="vimtutor">
+<h2>Vimtutor<a class="headerlink" href="#vimtutor" title="Link to this heading"></a></h2>
+<p>The first place to start is with the comprehensive <strong class="program">vimtutor</strong>, which is actually just a text file that you open in <strong class="program">vim</strong>. It will walk you through many of the basic <strong class="program">vim</strong> features. By the end of it, you should be able to perform basic editing tasks.</p>
+<p>To get started, log into <strong>os1</strong>, and run <strong class="program">vimtutor</strong>!</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../../_images/vimtutor.png"><img alt="Vimtutor screenshot" src="../../../_images/vimtutor.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong class="program">vimtutor</strong> opens an interactive text file in <strong class="program">vim</strong> so you can lean by doing!</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="other-tips">
+<h2>Other tips<a class="headerlink" href="#other-tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Leaving <strong class="program">vim</strong> to do something in the shell, like test your code? Instead of <code class="docutils literal notranslate"><span class="pre">:wq</span></code> and then having to reopen your file after, try <code class="docutils literal notranslate"><span class="pre">:w</span></code> and then press <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> to stop <strong class="program">vim</strong> in the background. When you’re ready to return to editing, execute the <strong class="program">fg</strong> utility to move <strong class="program">vim</strong> back into the foreground without losing your place.</p></li>
+<li><p>You can access <strong class="program">man</strong> pages directly from inside <strong class="program">vim</strong>, with the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command (note, capital ‘M’), such as <code class="docutils literal notranslate"><span class="pre">:Man</span> <span class="pre">vim</span></code>.</p></li>
+<li><p>Want to focus on writing instead of formatting? Type up your C program and then press <code class="docutils literal notranslate"><span class="pre">\f</span></code> in normal mode to run the language server formatter (clang format) and reformat your code to a consistent style. If you want to customize the automatic formatting, you can create a file in your home directory or root of your project called <code class="file docutils literal notranslate"><span class="pre">.clang-format</span></code> with options you can find in the <strong class="program">clang-format</strong> documentation online.</p></li>
+<li><p>Scrolling up and down a lot to reference an earlier part of your code? Open a split (<code class="docutils literal notranslate"><span class="pre">:sp</span></code>) of the current buffer. Now you can simultaneously view two locations of the same file.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shell/background.html" class="btn btn-neutral float-left" title="Background Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../assignments/reading.html" class="btn btn-neutral float-right" title="Assigned Reading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

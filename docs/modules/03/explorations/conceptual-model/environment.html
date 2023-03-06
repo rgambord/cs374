@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environment &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/brand.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3b5cce75"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Start Here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start_here/setup_guide.html">CS 344 Setup Guide (eCampus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#pre-setup">Pre-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#configuration-process-overview">Configuration Process Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#installing-a-terminal-emulator">Installing a Terminal Emulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-1">Option 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-2">Option 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../start_here/setup_guide.html#option-3">Option 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#macos-linux-bsd-etc">MacOS, Linux, BSD, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#local-setup">Local Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#generate-public-private-key-pair">Generate Public/Private Key Pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#register-public-key-credential-with-server">Register Public Key Credential with Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#confirm-key-registration">Confirm Key Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start_here/setup_guide.html#configure-ssh-client">Configure SSH Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start_here/setup_guide.html#remote-setup">Remote Setup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01/index.html">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/introduction.html">Introduction to Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/processes.html">Programs and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/filesystem.html">File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/terminal.html">Terminal Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/shell.html">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/simple_commands.html">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/quoting.html">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/expansion.html">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/variable_assignment_and_redirection.html">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/command_execution.html">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/explorations/shell/background.html">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/explorations/vim.html">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/reading.html">Assigned Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/viewing.html">Assigned Viewing</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Course Meta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#braces">Braces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#spacing">Spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#naming">Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#exiting-from-functions">Exiting from Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#commenting">Commenting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#variable-length-arrays">Variable Length Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#declarations">Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#the-compiler-is-not-magic">“The Compiler is not Magic”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/style.html#general-layout">General Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Environment</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="environment">
+<h1>Environment<a class="headerlink" href="#environment" title="Link to this heading"></a></h1>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/12/index.html#id1" title="(in C99 Language Standard)"><span class="xref std std-ref">implementation</span></a> is the (set of) software that facilitates <em>translation</em> of C source code into an executable format, and the subsequent <em>execution</em> of functions in the translated executable. The contexts in which these two tasks are accomplished are called the <em>translation environment</em> and the <em>execution environment</em>.</p>
+<p>In many cases, a single system encompasses both of these environments, but in others they may be separated and further divided across two or more systems, such as when building software on a development machine (translation environment) that is meant to be deployed on a separate embedded system (execution environment) that lacks its own facilities to translate code into executables.</p>
+<p>The distinction between the translation and execution environments is one of the reasons C is such a versatile language – many other high level languages like Python and Java require runtime support, such as an interpreter, which may be infeasible to deploy onto a resource constrained target system such as an embedded device.</p>
+<section id="the-translation-environment">
+<h2>The Translation Environment<a class="headerlink" href="#the-translation-environment" title="Link to this heading"></a></h2>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/1/index.html#id1" title="(in C99 Language Standard)"><span class="xref std std-ref">translation environment</span></a> is the portion of the implementation that supports conversion of C source code into an executable that can be run on the target system (the execution environment). Translation begins with a C source file and any other associated source files, libraries, and header files, which are collectively called a <em>preprocessing translation unit</em>. There are <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/1/2/index.html#id1" title="(in C99 Language Standard)"><span class="xref std std-ref">eight phases</span></a> of translation, but they can be grouped into three main stages: preprocessing, compilation, and linking.</p>
+<p class="rubric">Preprocessing</p>
+<p>The first six translation phases involve various text-processing steps that operate on the preprocessing translation unit in a purely syntactic manner, such as replacing comments with spaces, concatenating adjacent string literals, evaluating preprocessing directives, and performing pre-processor macro expansions. The output of this stage is called the <em>translation unit</em>, consisting of a sequence of syntactic <em>preprocessor tokens</em>, grouped into categories such as <em>identifiers</em>, <em>numbers</em>, <em>strings</em>, <em>punctuations</em>, and so on.</p>
+<p>Preprocessing is a form of meta-programming, which has three main uses:</p>
+<ul class="simple">
+<li><p>Injecting the contents of other source files directly into the current translation unit, using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="cp">#include</span></code> directive.</p></li>
+<li><p>Injecting compile-time configuration parameters into source code, using preprocessor macros, such as to inject version information.</p></li>
+<li><p>Conditionally compiling code in response to configuration parameters, such as to target a particular operating system.</p></li>
+<li><p>Generating C source code at compile-time using macros.</p></li>
+</ul>
+<p class="rubric">Compilation</p>
+<p>In the seventh phase translation phase, the syntactic tokens are further reinterpreted semantically as elements of the C programming <em>language</em>; compilation takes place, producing a <em>compiled translation unit</em>. The output of this stage is native machine bytecode, which is also known as <em>object code</em>.</p>
+<p>Object code may contain references to identifiers that have been declared as external to the current translation unit, and are instead defined in another translation unit; these references remain unresolved following compilation, and prevent execution of functions which depend on them.</p>
+<p class="rubric">Linking</p>
+<p>In the final phase, compiled translation units and library components needed to satisfy external references are collected to form a <em>program image</em> that contains all the information needed for execution in its execution environment. In other words, this produces an executable, or <em>loadable</em>, program from the pieces contained in object files that compilation produced.</p>
+</section>
+<section id="the-execution-environment">
+<h2>The Execution Environment<a class="headerlink" href="#the-execution-environment" title="Link to this heading"></a></h2>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/2/index.html#id1" title="(in C99 Language Standard)"><span class="xref std std-ref">execution environment</span></a> is the system on which the compiled program is actually run. This more or less refers to the operating system (or lack thereof), and any additional support utilities (such as a loader/dynamic linker) or other running programs that affect the execution of a program. The most fundamental property of the execution environment is whether it is <em>hosted</em> or <em>freestanding</em>.</p>
+<p class="rubric">Hosted execution environment</p>
+<p>A hosted environment provides an operating system along with a full implementation of the C standard library. A hosted environment manages program startup by calling into the standardized <em>entry point</em> of the program, a function called <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code>, which is passed a list of strings, called its argument vector. The hosted environment also supports program termination and allows the program to return an <em>exit</em> status to the environment when it does so. This is generally facilitated by a small amount of system-specific code written in assembly, which handles the entry and exit of a C program, called the C-runtime (CRT).</p>
+<p class="rubric">Freestanding execution environment</p>
+<p>On the other hand, a freestanding environment provides only a minimal subset of the standard library, and the entry point of a program is defined by the implementation. This allows for C programs to be written for a wide variety of systems, including embedded systems, where an operating system is not present. In fact, operating systems, themselves, are written for, and execute within, the context of a freestanding environment. This high degree of control and flexibility is what earned C the moniker “portable assembly”, and led to its widespread adoption as the <em>de facto</em> systems programming language.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
