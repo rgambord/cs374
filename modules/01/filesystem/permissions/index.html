@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Permissions &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Metadata" href="../metadata/" />
+    <link rel="prev" title="Structure" href="../structure/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">File Systems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../structure/">Structure</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">File Systems</a></li>
+      <li class="breadcrumb-item active">Permissions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../structure/" class="btn btn-neutral float-left" title="Structure" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../metadata/" class="btn btn-neutral float-right" title="Metadata" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="permissions">
+<h1>Permissions<a class="headerlink" href="#permissions" title="Link to this heading"></a></h1>
+<p>Now that we’ve discussed the basic structure of a file system, let’s move on to access permissions. Access permissions are a set of rules that determine who can interact with a file or directory and what operations they can perform. These permissions are crucial for maintaining system security, ensuring privacy, and preventing unauthorized access to sensitive data.</p>
+<p>A file’s access permissions are stored in a 12-bit value called its mode; the first three bits are special file access modifier bits called the Set-User ID, Set-Group ID, and Sticky bits. Next come three sets of three access bits (read, write, and execute), for each of the file ownership classes: user, group, and other.</p>
+<section id="file-ownership">
+<h2>File Ownership<a class="headerlink" href="#file-ownership" title="Link to this heading"></a></h2>
+<p>Each file is independently owned by a user and group; these values are set to the user id and primary group id of the user that creates the file. The owner of a file can change the file’s group to any group that user is a member of, but administrator capabilities are required to change a file’s user, or to change its group to one that its owner is not a member of.</p>
+<p>A user can belong to one or more groups. When a user is created, it must be assigned a primary group; generally, a group with the same name as the new user is simultaneously created and assigned as a user’s primary group, of which they are the only member. An administrator can then add the user to additional groups, and that user may freely change its own primary group to any group it belongs to.</p>
+<p>Group ownership serves two primary purposes in Unix: facilitating file sharing among a group of users, such as a project team, and providing a convenient way to manage access to system resources without the need to manually manage individual user permissions for each resource.</p>
+<p>For instance, to access a system’s sound and video devices, users typically need to belong to the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">audio</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">video</span></code> groups, respectively. Additionally, many Unix systems have a special <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wheel</span></code><a class="footnote-reference brackets" href="#wheel" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> group, which grants its members superuser status. This allows them to masquerade as any other user on the system, including the root user, on demand.</p>
+<p>If a process’s EUID is the owner of a file, its access permissions are determined by the “user” mode bits. If it is not the owner of a file, but its EGID matches the group which owns it, its access permissions are determined by the “group” mode bits. Finally, if neither applies, permissions are determined by the “other” mode bits. Notice that permissions do not stack, meaning the first applicable set of permissions (user, group, or other) is used.</p>
+<p>In general, the “user” permissions are at least as permissive as “group” permissions, and “other” permissions tend to be the least permissive. However, there are situations where it might be desirable to set permissions differently; for example, the root user might unset the user execute permission on a utility they own and manage, but set the other execute permission. This might be the case if the utility were meant to be run by regular users but would be dangerous if accidentally run by the root user.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="wheel" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The origin of the term “wheel” is uncertain, but it is believed to derive from the slang term “big wheel,” which refers to a powerful or influential person.</p>
+</aside>
+</aside>
+</section>
+<section id="special-permission-bits">
+<h2>Special Permission Bits<a class="headerlink" href="#special-permission-bits" title="Link to this heading"></a></h2>
+<p>There are three additional special permission bits that can be set on files and directories:</p>
+<ul class="simple">
+<li><p>Set User ID (SUID): When the SUID bit is set on an executable file, the process runs with the privileges of the file’s owner, rather than the user who started the process.</p></li>
+<li><p>Set Group ID (SGID): When the SGID bit is set on an executable file, the process runs with the privileges of the file’s group, rather than the user’s group. When set on a directory, it ensures that new files and directories inherit the group ownership of the parent directory.</p></li>
+<li><p>Sticky Bit: When the sticky bit is set on a directory, only the owner of a file within that directory can delete or rename their file, even if other users have write access to the directory.</p></li>
+</ul>
+<section id="set-user-id-bit">
+<h3>Set User ID Bit<a class="headerlink" href="#set-user-id-bit" title="Link to this heading"></a></h3>
+<p>The SUID bit is often used to allow users to run certain programs with elevated privileges without needing to have those privileges themselves. For example, all user passwords are stored in a single system password file which is owned by the root user. In order to change their passwords, users can run the <strong class="command">passwd</strong> utility, which is owned by the root user and has its SUID bit set. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">passwd</span></code> utility is then able to access and modify the password file without exposing other users’ passwords to an user. SUID programs can be a security risk if they are not properly designed and implemented, as they can be used to gain elevated privileges and execute unauthorized actions.</p>
+<p>The way this works is that the file in question is executed so that the resulting process has a UID equal to its parent process, but with an EUID that is set to the user ID that owns the executable. A process can swap its UID and EUID back and forth to perform tasks as either of the two users. It can also elevate itself and fully become the other user by setting its UID to match the EUID, or it can drop privileges by setting its EUID back to the real user ID.</p>
+</section>
+<section id="set-group-id-bit">
+<h3>Set Group ID Bit<a class="headerlink" href="#set-group-id-bit" title="Link to this heading"></a></h3>
+<p>The SGID bit is usually used to ensure that files created in a directory inherit the group ownership of that directory, rather than the group ownership of the user who created the file. This can be useful in situations where multiple users need to work on files in a shared directory, and those files need to be accessible to all users in a particular group.</p>
+<p>For example, consider a directory shared by the members of a project team. The directory can be owned by a project group, and the SGID bit can be set on the directory. When a user creates a new file in the directory, the file will be owned by the project group instead of the user’s personal group. This ensures that all team members can access the file, even if they are not members of the user’s personal group.</p>
+<p>The SGID bit is also used on executable files in the same way that the SUID bit is, and results in the GID matching the parent process, but the EGID matching the group ID that owns the file in question.</p>
+</section>
+<section id="sticky-bit">
+<h3>Sticky Bit<a class="headerlink" href="#sticky-bit" title="Link to this heading"></a></h3>
+<p>The sticky bit is often used on directories that are shared among multiple users, such as the <code class="file docutils literal notranslate"><span class="pre">/tmp</span></code> directory, to prevent users from accidentally deleting or modifying files owned by other users. By setting the sticky bit on the <code class="file docutils literal notranslate"><span class="pre">/tmp</span></code> directory, each user can write to the directory in order to create temporary files, but they cannot delete or modify files created by other users.</p>
+<p>The sticky bit is only meaningful when set on a directory, and is also known as the restricted deletion bit.</p>
+</section>
+</section>
+<section id="representation-of-file-mode">
+<h2>Representation of File Mode<a class="headerlink" href="#representation-of-file-mode" title="Link to this heading"></a></h2>
+<p>The mode of a file can be expressed in both a numeric octal representation and in human readable textual format.</p>
+<p>In the octal representation, the mode is usually expressed as a 3-digit octal number, where each digit corresponds to the permissions for the owner, the group, and others, respectively. Each digit is a three-bit value with each bit representing read, write, and execute permissions, respectively. A fourth (leftmost) digit represents the special permission bits, which is often omitted if none are set.</p>
+<p>In the human-readable representation, the mode is expressed as a 10-character string, called a modestring, where the first character indicates the file type (e.g., ‘-’ for regular files, ‘d’ for directories, and ‘l’ (el) for symbolic links). The remaining nine characters represent the permissions for the owner, the group, and others, in groups of three characters each. An ‘r’, ‘w’, or ‘x’ appearing in each position indicates the corresponding read, write, or execute permission is set, while a ‘-’ indicates that it is unset.</p>
+<p>Unlike with the octal representation, additional characters are not used to represent special permissions. Instead, the ‘x’ position’s character is changed to a different letter. For the SUID and SGID bits, it’s changed to ‘s’ for owner and group classes, respectively. For the sticky bit, it is changed to a ‘t’ for the other class. For any of these classes, if the execute permission isn’t set, but the corresponding special bit is, then a capital ‘S’ or ‘T’ is used, instead.</p>
+<p>You can explore how the different mode bits are reflected in both representations, in this interactive exploration,</p>
+<template id="mode-example">
+<style>
+table {
+  margin: auto;
+}
+
+td, th {
+  padding: 1px 20px;
+  text-align: left;
+}
+
+
+#mode {
+  font-family: monospace;
+}
+#modestr {
+  font-family: monospace;
+}
+</style>
+<form id="mode-form">
+  <div style="margin: auto; width: max-content;"><label>File Type
+    <select id="filetype">
+      <option value="-">Regular File</option>
+      <option value="d">Directory</option>
+      <option value="l">Symbolic Link</option>
+      <option value="c">Character Device</option>
+      <option value="b">Block Device</option>
+      <option value="p">FIFO</option>
+    </select></label>
+  </div>
+    <hr />
+  <table>
+   <tr>
+     <th><label>Special</label></th>
+     <th><label>User</label></th>
+     <th><label>Group</label></th>
+     <th><label>Other</label></th>
+   </tr>
+    
+   <tr>
+   <td><label><input id='suid' type="checkbox">SUID</label></td>
+   <td><label><input id='ur' type="checkbox">Read</label></td>
+   <td><label><input id='gr' type="checkbox">Read</label></td>
+   <td><label><input id='or' type="checkbox">Read</label></td>
+   
+   </tr><tr>
+   <td><label><input id='sgid' type="checkbox">GUID</label></td>
+   <td><label><input id='uw' type="checkbox">Write</label></td>
+   <td><label><input id='gw' type="checkbox">Write</label></td>
+   <td><label><input id='ow' type="checkbox">Write</label></td>
+   </tr><tr>
+   <td><label><input id='svxt' type="checkbox">Sticky</label></td>
+   <td><label><input id='ux' type="checkbox">Execute</label></td>
+   <td><label><input id='gx' type="checkbox">Execute</label></td>
+   <td><label><input id='ox' type="checkbox">Execute</label></td>
+   </tr>
+  </table>
+</form>
+<hr />
+<table>
+  <tr><th>Mode</th><th>Modestring</th></tr>
+  <tr><td id="mode"></td><td id="modestr"></td></tr>
+</table>
+</template>
+<script>
+  customElements.define(
+  "mode-example",
+  class extends HTMLElement {
+    constructor() {
+      super();
+      let template = document.getElementById("mode-example");
+      let templateContent = template.content;
+
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(templateContent.cloneNode(true));
+      function update_mode() {
+          console.log(shadowRoot.getElementById("mode"));
+          let mdiv = shadowRoot.getElementById("mode");
+          let msdiv = shadowRoot.getElementById("modestr");
+
+          let ft    =  shadowRoot.getElementById("filetype").value;
+          let suid  =  shadowRoot.getElementById("suid").checked;
+          let sgid  =  shadowRoot.getElementById("sgid").checked;
+          let svxt  =  shadowRoot.getElementById("svxt").checked;
+          let ur    =  shadowRoot.getElementById("ur").checked;
+          let uw    =  shadowRoot.getElementById("uw").checked;
+          let ux    =  shadowRoot.getElementById("ux").checked;
+          let gr    =  shadowRoot.getElementById("gr").checked;
+          let gw    =  shadowRoot.getElementById("gw").checked;
+          let gx    =  shadowRoot.getElementById("gx").checked;
+          let or    =  shadowRoot.getElementById("or").checked;
+          let ow    =  shadowRoot.getElementById("ow").checked;
+          let ox    =  shadowRoot.getElementById("ox").checked;
+
+          msdiv.innerHTML = ft + 
+            (ur ? "r" : "-") + (uw ? "w" : "-") +
+            (ux ? (suid ? "s" : "x") : (suid ? "S" : "-")) +
+            (gr ? "r" : "-") + (gw ? "w" : "-") +
+            (gx ? (sgid ? "s" : "x") : (sgid ? "S" : "-")) +
+            (or ? "r" : "-") + (ow ? "w" : "-") +
+            (ox ? (svxt ? "t" : "x") : (svxt ? "T" : "-"))
+
+          mdiv.innerHTML =
+            ((suid << 11) +
+                (sgid << 10) +
+                (svxt << 9) +
+                (ur << 8) +
+                (uw << 7) +
+                (ux << 6) +
+                (gr << 5) +
+                (gw << 4) +
+                (gx << 3) +
+                (or << 2) +
+                (ow << 1) +
+                ox).toString(8).padStart(4, '0');
+      }
+      shadowRoot.getElementById ("mode-form").addEventListener("change", update_mode);
+      update_mode();
+    }
+  },
+);
+</script>
+<mode-example></mode-example>
+</section>
+<section id="permissions-and-special-files">
+<h2>Permissions and Special Files<a class="headerlink" href="#permissions-and-special-files" title="Link to this heading"></a></h2>
+<p>Access permissions can work differently for special files like symlinks and directories.</p>
+<p>Access permissions affect the behavior of directories in the following ways:</p>
+<dl class="simple">
+<dt>Read (r)</dt><dd><p>Allows processes to list the contents of the directory.</p>
+</dd>
+<dt>Write (w)</dt><dd><p>Allows processes to create, delete, or modify files and directories within the directory.</p>
+</dd>
+<dt>Execute (x)</dt><dd><p>Allows processs to access files and directories within the directory and change to it as their working directory.</p>
+</dd>
+</dl>
+<p>A process that has read (r) permissions, but not execute (x) permissions, on a directory can see the names of files in the directory but cannot access (change into) the directory or list the contents with details. In contrast, a process that has execute (x) permissions, but not read (r) permissions, on a directory can access (change into) the directory and interact with its files, provided they know the exact filenames, but they are unable to list the names of the files within the directory. This is sometimes used as a very rudimentary secret file-sharing mechanism, where the name of a file is a secret that is hard to guess, so only authorized users can access it by knowing its name; however, it is not very secure.</p>
+<p>Permissions aren’t settable on a symlink. A symlink can be created, modified, or destroyed based on the permissions of the parent directory, just like with a hard link. A symlink always shows permissions as “lrwxrwxrwx”, but these permissions do not have any real impact because the actual permissions of the file that it references are what determine access privileges once the symlink has been followed to the target.</p>
+</section>
+<section id="alternative-access-control">
+<h2>Alternative Access Control<a class="headerlink" href="#alternative-access-control" title="Link to this heading"></a></h2>
+<p>Unix also permits alternative access control mechanisms on top of what is described above. For example, Access Control Lists (ACLs) are a flexible and fine-grained approach to managing file permissions in Unix-based systems. They provide a way to set permissions on a per-user or per-group basis, rather than relying solely on the traditional owner, group, and other permissions model. ACLs allow administrators to grant or deny access to specific users or groups, enabling more control over file and directory access.</p>
+<p>An ACL consists of a set of entries, each defining the access permissions for a specific user or group. The entries can grant or deny read, write, or execute permissions. ACLs can be applied to both files and directories, and they are typically used in situations where the traditional Unix file permissions model is insufficient or too restrictive. In addition to the standard Unix permissions, ACLs provide a more customizable and precise way to manage access control in complex environments.</p>
+<p>Alternative access mechanisms add an 11th character to a mode string. For example, if ACL is enabled on a filesystem, an 11th character is added to the mode string to indicate the presence of an ACL for that file. This 11th character is “+” if an ACL is present for that file, or “.” if there is no ACL for that file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../structure/" class="btn btn-neutral float-left" title="Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../metadata/" class="btn btn-neutral float-right" title="Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

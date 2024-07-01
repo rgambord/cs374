@@ -1,0 +1,231 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+}
+
+.sig {
+  font-weight: bold;
+}
+
+.wy-nav-content {
+  overflow-x: auto;
+}
+
+.wy-table-responsive * {
+  white-space: normal;
+}
+.rst-content {
+  position: relative;
+}
+
+a {
+  color: #3344dd;
+}
+
+img.logo {
+  max-width: 60%;
+}
+
+.rst-content code.literal {
+  color: black;
+}
+
+.syntax-block {
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.syntax-block * {
+  display: inline;
+  margin: 0;
+}
+
+/* BEGIN Syntax Tables */
+.syntax-rule-tbl {
+  display: table;
+  border-spacing: 20px 0;
+  border-collapse: separate;
+  margin: 0 -20px;
+  padding-left: 5px;
+}
+
+.syntax-rule-tbl .syntax-rule {
+  
+  display: table-row;
+}
+
+.syntax-rule-tbl .syntax-rule > p {
+}
+
+.syntax-rule-tbl .syntax-rule > p > *  {
+  display: table-cell;
+}
+/* END Syntax Tables */
+
+.syntax-definition {
+  display: flex;
+  flex-direction: row;
+  text-decoration: underline;
+}
+
+.syntax-rule {
+  margin-left: 25px;
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 1ch;
+  white-space: nowrap;
+}
+
+
+.syn-term {
+  font-weight: bold;
+  display: inline;
+}
+
+.syn-nonterm {
+  font-style: italic;
+  display: inline;
+}
+
+.syntax-text-rule {
+  margin-left: 65px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.syntax-text-rule > :first-child {
+  margin-left: -40px;
+}
+
+.syn-opt {
+  vertical-align: sub;
+  font-size: 80%;
+  font-style: italic;
+}
+
+
+.snum {
+  position: absolute;
+  left: -10px;
+  width: 0;
+  white-space: nowrap;
+  text-align: right
+}
+
+.snum > *{
+  position: absolute;
+  right: 0;
+}
+
+.context-highlighting {
+  font-family: monospace;
+  /* font-weight: bold; */
+  font-size: smaller;
+  background: #f7f7f7;
+  border: 1px solid rgb(100, 100, 0, 0.1);
+  padding: 0 0.25ch;
+  margin: 0 0.25ch
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+figure img {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+figure {
+  border-radius: 5px;
+}
+
+figcaption > p {
+  margin: 0;
+  padding-left: 2em;
+}
+
+.grammar-def {
+  font-family: monospace;
+  display: inline-block;
+  white-space: pre-wrap;
+  text-indent: -4ch;
+  font-size: smaller;
+  color: #555555;
+  
+  background: #f7f7f7;
+  border: 1px solid rgb(100, 100, 0, 0.1);
+  border-radius: 3px;
+  padding: 0 0.25ch;
+  padding-left: 4.25ch;
+}
+
+.grammar-def > strong {
+  font-weight: 900;
+  color: #000000;
+}
+
+.grammar-def > em {
+  color: #005051;
+}
+
+.compound > :not(:first-child) {
+  margin-top: 4px !important;
+}
+
+.compound > :not(:last-child) {
+  margin-bottom: 4px !important;
+}
+
+.wy-nav-content {
+  max-width: 100ch;
+}
+
+.manpage {
+  color: #9C40B3;
+  font-size: smaller;
+  font-family: monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.rst-content .admonition-code-smell {
+  background: #EBD7BE;
+}
+
+.rst-content .admonition-code-smell > .admonition-title {
+  background: #865E3C;
+}
+
+.rst-content .admonition-code-smell > .admonition-title::before {
+  content: "👃";
+}
+
+.rst-content .admonition-implementation-detail > .admonition-title::before {
+   content: "🤓";
+}
+
+.rst-content .admonition-implementation-detail > .admonition-title {
+   background: #6E4578;
+}
+
+.rst-content .admonition-implementation-detail {
+   background: #DECCE1;
+}
+
+.framed img {
+  object-fit: cover;
+  filter: drop-shadow(5px 5px #c0c0c0);
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.noselect {
+  user-select: none;
+}

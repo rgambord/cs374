@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Style &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Operating Systems Fundamentals" href="../../modules/01/" />
+    <link rel="prev" title="OS1 Server Setup Guide" href="../os1_setup/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Coding Style</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../os1_setup/" class="btn btn-neutral float-left" title="OS1 Server Setup Guide" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../modules/01/" class="btn btn-neutral float-right" title="Operating Systems Fundamentals" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="coding-style">
+<h1>Coding Style<a class="headerlink" href="#coding-style" title="Link to this heading"></a></h1>
+<p>Coding style is highly personal, and you should experiment with what works well for you. The following document should serve as a guide of some “sane” default coding conventions in C. When editing on <strong>os1</strong> in <strong class="command">vim</strong>, you can auto-format your code from normal mode using the <kbd class="kbd docutils literal notranslate">\</kbd>-<kbd class="kbd docutils literal notranslate">f</kbd> shortcut. This is one major advantage that C has over python–whitespace has no significance; this means you can move around code without having to manually adjust indentation levels, and then run it through a formatter in a single keystroke. Not bad!</p>
+<p>This coding style is loosely based off of the
+<a class="reference external" href="https://kernel.org/doc/html/latest/process/coding-style.html" rel="noopener noreferrer" target="_blank" title="(in The Linux Kernel v6.10.0-rc6)"><span>Linux kernel coding style</span></a>.</p>
+<section id="indentation">
+<h2>Indentation<a class="headerlink" href="#indentation" title="Link to this heading"></a></h2>
+<p>Indentation may be 2, 4, or 8 spaces, or one tab.</p>
+<p>Do not put multiple statements on a single line:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Do not leave whitespace at the end of lines.</p>
+</section>
+<section id="line-length">
+<h2>Line Length<a class="headerlink" href="#line-length" title="Link to this heading"></a></h2>
+<p>The preferred limit on the length of a single line is 100 columns. If a
+statement, expression, or declaration spans multiple lines, use a
+hanging-indent that is not easily confused with indented block-level code.</p>
+</section>
+<section id="braces">
+<h2>Braces<a class="headerlink" href="#braces" title="Link to this heading"></a></h2>
+<p>Function blocks begin and end with a single brace in column 0:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* do something */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Selection and Iteration statements have the opening brace at the end of the
+line, and the closing brace at the same indentation level as the surrounding
+code. The closing brace should appear on its own line, except in the case where
+it is followed by the continuation of the same statement, such as with a
+do-while loop or an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">else</span></code> in an if-statement, like so:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">..</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">....</span>
+<span class="p">}</span>
+
+<span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="spacing">
+<h2>Spacing<a class="headerlink" href="#spacing" title="Link to this heading"></a></h2>
+<p>Use spaces between control statement keywords, the parenthesized expressions, and the opening brace;</p>
+<p>Good:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="cm">/* etc. */</span>
+</pre></div>
+</div>
+<p>Bad:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>
+
+<span class="k">while</span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>
+
+<span class="cm">/* etc. */</span>
+</pre></div>
+</div>
+<p>Do not add spaces around (inside) parenthesized expressions. This example is <strong>bad</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use one space between most binary/ternary operators and their operands:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="o">:</span>
+</pre></div>
+</div>
+<p>but no space between these unary operators and their operands:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">+-</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="o">--</span>
+</pre></div>
+</div>
+<p>or around the <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">.</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">-&gt;</span></code> structure member operators.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code> operator should always be followed by a space. It is not a function; do not
+mistake it for one!</p>
+<p>Good:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">++</span><span class="n">x</span><span class="p">;</span>
+<span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">sizeof</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Bad:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">++</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="n">y</span><span class="o">=</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="k">sizeof</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This also applies to the asterisk in a pointer declarator, which is intended to mimic exactly
+its usage as a unary dereference operator, and which binds <em>to the right</em>:</p>
+<p>Correct: <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="w"> </span><span class="o">*</span><span class="n">P</span></code></p>
+<p>Incorrect: <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="o">*</span><span class="w"> </span><span class="n">P</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">P</span></code></p>
+<p>Explicit parentheses can illustrate this point more clearly:</p>
+<p>Correct: <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">P</span><span class="p">)</span></code></p>
+<p>Incorrect: <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="p">)</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="p">)</span></code></p>
+</section>
+<section id="naming">
+<h2>Naming<a class="headerlink" href="#naming" title="Link to this heading"></a></h2>
+<p>Do not smushwordstogether or UseCamelCase. Abbreviations are perfectly fine, but
+global variables must be named descriptively. Do not encode the type of a variable
+in its name (Hungarian Notation), such as <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">szName</span></code>.</p>
+<p><strong>All</strong> object-like macros should be named in UPPER_CASE_SNAKE_CASE.
+Function-like macros that include an argument that is evaluated more than once
+<strong>must</strong> be in UPPER_CASE_SNAKE_CASE; otherwise they can be in lower-case.</p>
+<p>Good:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MAX_ARGS 1024</span>
+<span class="cp">#define MAX(a, b) (a &gt; b ? a : b)</span>
+<span class="cp">#define hi(x) (x &amp; 0xF0) </span><span class="c1">// Ok, x evaluated only once</span>
+<span class="cp">#define array_len(x) (sizeof (x) / sizeof (*x))   </span><span class="c1">// sizeof does not evaluate its expression</span>
+<span class="cp">#define ARRAY_LEN(x) (sizeof (x) / sizeof (*x))   </span><span class="c1">// Also ok</span>
+</pre></div>
+</div>
+<p>Bad:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define max_args 1024</span>
+<span class="cp">#define MaxArgs 1024</span>
+<span class="cp">#define max(a, b) (a &gt; b ? a : b)</span>
+</pre></div>
+</div>
+<p><strong>ALL</strong> enumeration constants should be written in UPPER_CASE_SNAKE_CASE.</p>
+<p>Good:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">COLOR_RED</span><span class="p">,</span>
+<span class="w">   </span><span class="n">COLOR_BLUE</span><span class="p">,</span>
+<span class="w">   </span><span class="n">COLOR_GREEN</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>All</strong> other identifiers should be written in snake_case (i.e. lower-case
+alphanumerics and underscores separating words). This includes function names,
+variable names, tag names, and typedef names.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Common short variable names/affixes</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Loop Counters</p></td>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">i</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">j</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">k</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Coordinates</p></td>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">x</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">y</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">z</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Short-lived variables</p></td>
+<td><ul class="simple">
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">c</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">ch</span></code> for a character</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">s</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">str</span></code> for strings</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">n</span></code> for integers</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">p</span></code> for <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">void</span><span class="w"> </span><span class="o">*</span></code></p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">buf</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">arr</span></code> for a buffer/array</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">fp</span></code> for an open <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="w"> </span><span class="o">*</span></code> stream</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">fd</span></code> for an open file descriptor</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">tmp</span></code> for anything</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>Functions should be short and do one thing. A function should generally be less
+than 50 lines, with its length inversely proportional to its complexity – a
+logically simple function can be much longer than a complex one.</p>
+<p>As a rule of thumb, you should try not to use more than 10 local variables in a
+function, since that’s about the limit of what most people can keep track of at
+once.</p>
+<p>Include parameter names with data types in function declarations/prototypes.</p>
+<p>This does not apply to the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code> function, which may be fairly complex depending on program structure.</p>
+</section>
+<section id="exiting-from-functions">
+<h2>Exiting from Functions<a class="headerlink" href="#exiting-from-functions" title="Link to this heading"></a></h2>
+<p>A function may return directly at any point as long as it has only modified
+local variables. Once a function does anything that changes program state
+(modifies a global variable, modifies objects passed by reference, successfully
+allocates memory, etc.), all exit paths must pass through a single centralized
+cleanup-and-exit at the end of the function.</p>
+<p>For functions that return a value indicating success or failure:</p>
+<ul class="simple">
+<li><p>If the name of a function is an action or an imperative command, the function
+should return a negative value on failure, and 0 on success.</p></li>
+<li><p>If the name is a predicate, the function should return a boolean (<code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">1</span></code> = true,
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">0</span></code> = false).</p></li>
+</ul>
+<p>For functions that return pointers to objects, they should return <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">NULL</span></code> on failure.</p>
+</section>
+<section id="commenting">
+<h2>Commenting<a class="headerlink" href="#commenting" title="Link to this heading"></a></h2>
+<p><strong>Every</strong> function (except <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code> should be documented using <a class="reference external" href="https://www.doxygen.nl/manual/docblocks.html" rel="noopener noreferrer" target="_blank">doxygen</a>/Javacdoc style block comments:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* ... text ...</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p>At a minimum, a brief description of the function, each of its parameters, and
+its return value is necessary:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Registers a student into the course roster</span>
+<span class="cm"> * @param name the student&#39;s name</span>
+<span class="cm"> * @param email the student&#39;s email</span>
+<span class="cm"> * @param id the student&#39;s 9-digit ONID</span>
+<span class="cm"> * @return the index of the student in the course roster, or -1 on failure</span>
+<span class="cm"> */</span>
+<span class="k">int</span><span class="w"> </span><span class="n">register_student</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Function bodies should generally have few comments; when used, they should
+describe <strong>why</strong> you are doing, not <strong>how</strong>. Anyone can read your code
+to see how it works, but they want to know <em>why</em> you are doing what you are
+doing.</p>
+<p>Do not commit/submit commented-out <em>code</em>. We do not accept
+draft work. Use preprocessor conditional compilation to remove debugging code
+from the release version of your program, using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">NDEBUG</span></code> macro:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef NDEBUG</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;This is a debugging message!&quot;</span><span class="p">)</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-length-arrays">
+<h2>Variable Length Arrays<a class="headerlink" href="#variable-length-arrays" title="Link to this heading"></a></h2>
+<p>Do not ever use VLAs (variable length arrays). These are arrays that are
+declared using a variable for the size of the array, instead of a compile-time
+constant expression. VLAs are widely considered a mistake in the language and
+create all kinds of unexpected problems and have weird edge cases, including stack overflows.</p>
+<p>An example of a VLA:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Use dynamic allocation (<code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">malloc</span><span class="p">()</span></code>, etc.) when you need dynamically sized arrays.</p>
+</section>
+<section id="declarations">
+<h2>Declarations<a class="headerlink" href="#declarations" title="Link to this heading"></a></h2>
+<p>Declarations always follow the following order:</p>
+<ol class="arabic simple">
+<li><p>Storage class specifiers</p></li>
+<li><p>Function specifiers</p></li>
+<li><p>Type specifiers</p></li>
+<li><p>Type qualifiers</p></li>
+</ol>
+<p>Type specifiers should be written using the shortest canonical name of the
+respective type. For example, use <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">short</span></code> in preference to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">short</span><span class="w"> </span><span class="k">int</span></code>; do not
+use the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">signed</span></code> keyword except for <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">signed</span><span class="w"> </span><span class="k">char</span></code>, and don’t switch up the
+order, such as <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="k">signed</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="k">unsigned</span></code>.</p>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h2>
+<p>Use <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code> only for holding ASCII text character data.</p>
+<p>Use <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">unsigned</span><span class="w"> </span><span class="k">char</span></code> when working with raw bytes of data.</p>
+<p>Use <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> for generic integers that are known not to exceed the range ±32767.</p>
+<p>Use <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">float</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">double</span></code> for floating point values. Exact ratios should be stored as two integers to avoid rounding errors.</p>
+<p>All other types should be used only in specific situations. For example,</p>
+<ul class="simple">
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">short</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">signed</span><span class="w"> </span><span class="k">char</span></code> are sometimes used in large arrays of integers with a restricted range to improve cache performance when there is a memory bottleneck. These are generally less efficient than a plain <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and should be avoided otherwise.</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span><span class="w"> </span><span class="k">long</span></code> are sometimes used when a larger range than <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> guarantees is desired. They are generally less efficient than a plain <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and should be avoided otherwise.</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">size_t</span></code> for array indices and loop counting. It’s perfectly fine to use a plain <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> if you <strong>know</strong> that it won’t overflow; otherwise use <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">size_t</span></code> which is generally less efficient than an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>.</p></li>
+<li><p>The fixed width types in <code class="file docutils literal notranslate"><span class="pre">stdint.h</span></code> should generally only be used when working with data where the exact width is relevant to a particular algorithm or format specification. These are used more ubiquitously in embedded systems to control memory usage.</p></li>
+</ul>
+</section>
+<section id="the-compiler-is-not-magic">
+<h2>“The Compiler is not Magic”<a class="headerlink" href="#the-compiler-is-not-magic" title="Link to this heading"></a></h2>
+<p>Do not assume the compiler will fix your mistakes or lazy/poor coding habits. For example,
+do not call costly functions over and over in a loop to calculate a result you <em>know</em>
+shouldn’t change. The following is <strong>horrifically</strong> bad:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>vs,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first example can easily be 1000’s of times less performant, with a run-time complexity
+of O(n^2) compared to O(n) in the second example. Unless <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">str</span></code> is changing length, don’t
+ever do the first example!</p>
+<p>Other common bad practices:</p>
+<ul class="simple">
+<li><p>Using I/O system calls to read/write data in many small chunks instead of one large request</p></li>
+<li><p>Not checking return values of functions to verify success or handle failure</p></li>
+<li><p>Using absurdly large arrays to avoid dealing with dynamic allocation</p></li>
+</ul>
+</section>
+<section id="general-layout">
+<h2>General Layout<a class="headerlink" href="#general-layout" title="Link to this heading"></a></h2>
+<p>The general layout of a C source file should be,</p>
+<ol class="arabic simple">
+<li><p>Feature-test macros</p></li>
+<li><p>Include directives</p></li>
+<li><p>Macro definitions</p></li>
+<li><p>Externally linked object definitions</p></li>
+<li><p>Internal types</p></li>
+<li><p>Internal object declarations</p></li>
+<li><p>Internal function prototypes</p></li>
+<li><p>Function definitions, starting with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code>, if present</p></li>
+</ol>
+<p>The following example illustrates this layout,</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">my_project/my_program.c</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#define _POSIX_C_SOURCE 200809L </span><span class="cm">/* Feature test macro */</span>
+<span class="cm">/* System headers first */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="cm">/* Then project headers */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_project/global_counter.h&quot;</span>
+
+<span class="cm">/* Finally, the header for *this* source file */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_project/my_program.h&quot;</span>
+
+<span class="cm">/* Macro definitions */</span>
+<span class="cp">#define ARRAY_SIZE 100</span>
+<span class="cp">#define sum(a, b) (a + b)</span>
+
+<span class="cm">/* Define externally linked objects */</span>
+<span class="k">int</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">magic_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+
+<span class="cm">/* Define internally used types */</span>
+<span class="k">enum</span><span class="w"> </span><span class="n">counter_state</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CS_RUNNING</span><span class="p">,</span><span class="w"> </span><span class="n">CS_STOPPED</span><span class="w"> </span><span class="p">};</span>
+
+<span class="cm">/* Define internally linked objects */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="n">internal_counter</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">counter_state</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+
+<span class="cm">/* Prototype all internal functions */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="n">increment_internal_counter</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">start_counter</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">stop_counter</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+
+<span class="cm">/* always put main() first if it is present */</span>
+<span class="k">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* ... */</span>
+<span class="p">}</span>
+
+<span class="cm">/* Next, any externally linked function definitions */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">set_global_counter_to_internal_counter</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">global_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">internal_counter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* Then, internal function definitions */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">increment_internal_counter</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CS_RUNNING</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">internal_counter</span><span class="p">;</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">global_counter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal_counter</span><span class="p">)</span><span class="w"> </span><span class="n">set_global_counter_to_internal_counter</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">start_counter</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CS_RUNNING</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">stop_counter</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CS_STOPPED</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>If a source file defines any externally linked functions (besides <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code>) these should be prototyped in a separate header and included in the source file. This ensures that there is one consistent function signature shared between users and the implementation. Additionally, any external object definitions should be represented as <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span><span class="w"> </span><span class="o">...</span></code> declarations in the header, for the same reasons.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">my_project/my_program.h</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">magic_numer</span><span class="p">;</span>
+<span class="k">int</span><span class="w"> </span><span class="n">set_global_counter_to_internal_counter</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../os1_setup/" class="btn btn-neutral float-left" title="OS1 Server Setup Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../modules/01/" class="btn btn-neutral float-right" title="Operating Systems Fundamentals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

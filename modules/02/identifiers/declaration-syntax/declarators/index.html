@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declarators &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../../search/" />
+    <link rel="next" title="Practical Declarations" href="../../practical-declarations/" />
+    <link rel="prev" title="Declaration Specifiers" href="../declaration-specifiers/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../object-model/">Object Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">Identifiers</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../">Declaration Syntax</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../">Introduction to C Programming</a></li>
+          <li class="breadcrumb-item"><a href="../../">Identifiers</a></li>
+          <li class="breadcrumb-item"><a href="../">Declaration Syntax</a></li>
+      <li class="breadcrumb-item active">Declarators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../declaration-specifiers/" class="btn btn-neutral float-left" title="Declaration Specifiers" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../practical-declarations/" class="btn btn-neutral float-right" title="Practical Declarations" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="declarators">
+<h1>Declarators<a class="headerlink" href="#declarators" title="Link to this heading"></a></h1>
+<p>Following the declaration specifiers, a comma-separated list of declarators introduce identifiers for objects and functions, or corresponding type aliases when the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code> specifier is used. Each declarator may individually derive pointer, array, and function types from the base type in the declaration specifiers. The declarator grammar allows for recursive, repeated derivation of the pointer, array, and function types from already derived types,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">init-declarator-list</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">init-declarator</span></p>
+<p>[ <span class="syn-term">,</span> <span class="syn-nonterm">init-declarator</span> ]…</p>
+</div>
+</div>
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">init-declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declarator</span></p>
+<p>[ <span class="syn-term">=</span> <span class="syn-nonterm">initializer</span> ]…</p>
+</div>
+</div>
+</div>
+<section id="type-derivation">
+<h2>Type Derivation<a class="headerlink" href="#type-derivation" title="Link to this heading"></a></h2>
+<div class="compound">
+<p>As mentioned previously, derivation of pointer, array, and function types is performed in each individual declarator. The most basic declarator is just the name of the identifier being declared,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">identifier</span></p>
+</div>
+</div>
+</div>
+</div>
+<p class="rubric">Grouping</p>
+<div class="compound">
+<p>Any declarator may be enclosed in parentheses, so that any derivations inside the parentheses are carried out before any derivations outside the parentheses.</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">(</span> <span class="syn-nonterm">declarator</span> <span class="syn-term">)</span></p>
+</div>
+</div>
+</div>
+</div>
+<p class="rubric">Pointer Derivation</p>
+<div class="compound">
+<p>Any declarator may be modified by prepending an asterisk (<code class="code highlight c c99 docutils literal highlight-c99"><span class="o">*</span></code>) and optional type qualifiers, to derive a pointer type,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">*</span></p>
+<p><span class="syn-nonterm">type-qualifier</span>…</p>
+<p><span class="syn-nonterm">declarator</span></p>
+</div>
+</div>
+</div>
+<p>The type qualifiers apply to the pointer, itself, rather than the object it points at, which may have its own type qualifiers.</p>
+</div>
+<p class="rubric">Array Derivation</p>
+<div class="compound">
+<p>Any declarator may be modified by appending square brackets, optionally enclosing a size expression, to derive an array type,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declarator</span> <span class="syn-term">[</span> <span class="syn-term">]</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declarator</span> <span class="syn-term">[</span> <span class="syn-nonterm">size-expression</span> <span class="syn-term">]</span></p>
+</div>
+</div>
+</div>
+</div>
+<p>If a size expression is not provided, the array type is incomplete.</p>
+<p class="rubric">Function Derivation</p>
+<div class="compound">
+<p>Any declarator may be modified by appending parentheses, optionally enclosing a list of types and/or declarations representing parameters, to derive a function type,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declarator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declarator</span> <span class="syn-term">(</span> <span class="syn-term">)</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">declarator</span> <span class="syn-term">(</span> <span class="syn-nonterm">type-or-declaration-list</span> <span class="syn-term">)</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h2>
+<p>Initialization is a special form of assignment that may be performed when an object is declared. Any objects declared as <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code> must be initialized, since it is illegal to later change their values. Additionally, aggregate types can be list-initialized to assign many members or elements–an operation that would normally require assignment of each element or member, individually.</p>
+<p class="rubric">Scalar initialization</p>
+<div class="compound">
+<p>A declarator for an object may provide an initial value as an assignment expression for scalar types, in the form,</p>
+</div>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">initializer</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">expression</span></p>
+</div>
+</div>
+</div>
+<p>As mentioned, this is <em>required</em> for any <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code> objects so that they have an initial value.</p>
+<p class="rubric">Aggregate initialization</p>
+<p>Aggregate types are initialized using brace-enclosed list-initialization,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">initializer</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">{</span> <span class="syn-nonterm">initializer-list</span> <span class="syn-term">}</span></p>
+</div>
+</div>
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">initializer-list</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-nonterm">designated-initializer</span></p>
+<p>[ <span class="syn-term">,</span> <span class="syn-nonterm">designated-initializer</span> ]…</p>
+</div>
+</div>
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">designated-initializer</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p>[ <span class="syn-nonterm">designator</span> <span class="syn-term">=</span> ]</p>
+<p><span class="syn-nonterm">initializer</span></p>
+</div>
+</div>
+</div>
+<p>Successive elements or members of an array or structure are assigned using values from the initializer list. Specific elements or members may be designated and initialized as well.</p>
+<div class="compound">
+<p>For an array, elements are designated by their indices enclosed in square brackets,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">designator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">[</span> <span class="syn-nonterm">index-expression</span> <span class="syn-term">]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="compound">
+<p>For a structure, members are designated as a <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">.</span></code> (dot) followed by then name of the member,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">designator</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">.</span> <span class="syn-nonterm">member-identifier</span></p>
+</div>
+</div>
+</div>
+</div>
+<p>As with enumerations, assignment of successive elements starts from the designated element. Remaining members or elements are zero-initialized. Note, if an initializer is not provided, then the values are <strong>indeterminate</strong>; to zero-initialize an entire array or structure, use <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span></code>.</p>
+<div class="compound">
+<p>For example,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">num_list</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="cm">/* num_list[1] implicitly assigned 0 */</span>
+
+<span class="cm">/* num_list contains: 1, 0, 2, 3, 5; */</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">cartesian</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">cartesian</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="cm">/* Member designators */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">cartesian</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="cm">/* `x` explicitly 0, y implictly 0 */</span>
+</pre></div>
+</div>
+</div>
+<p class="rubric">Automatically sized Arrays</p>
+<div class="compound">
+<p>Recall that an array derivation with no size expression is an incomplete type. One way the type can be completed is by providing an initializer–the number of elements is deduced from the initializer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The size of values is implied to be 3 elements */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">values</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p class="rubric">Initializing character arrays</p>
+<div class="compound">
+<p>Finally, there is a special mechanism for initializing arrays of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code> (<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[]</span></code>), where a string may be used in place of a brace-enclosed initializer list. If the array size is specified it must be large enough to hold the string; otherwise the implicit size is one character longer than the string, to add a terminating null byte,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
+<span class="cm">/* is equivalent to... */</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;!&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
+<span class="cm">/* is equivalent to... */</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;!&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../declaration-specifiers/" class="btn btn-neutral float-left" title="Declaration Specifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../practical-declarations/" class="btn btn-neutral float-right" title="Practical Declarations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

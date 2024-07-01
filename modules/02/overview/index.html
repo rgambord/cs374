@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Type System" href="../type-system/" />
+    <link rel="prev" title="Assignments" href="../assignments/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Introduction to C Programming</a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../assignments/" class="btn btn-neutral float-left" title="Assignments" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../type-system/" class="btn btn-neutral float-right" title="Type System" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>The C programming language can be organized into the following major topics, each of which is intricately linked with the others,</p>
+<dl class="simple">
+<dt>Type System</dt><dd><p>The type system establishes how data is organized and represented through several fundamental types and provides additional methods of constructing derived types.</p>
+</dd>
+<dt>Object Model</dt><dd><p>The object model describes the representation of program state as a collection of objects, each containing a value of a particular type.</p>
+</dd>
+<dt>Identifiers</dt><dd><p>Identifiers are names which refer to program entities such as objects and functions; C provides mechanisms for introducing identifiers, controlling the contexts in which those identifiers are visible, and linking identifiers in separate locations to refer to the same underlying object.</p>
+</dd>
+<dt>Expressions</dt><dd><p>Expressions encompass a set of operators and their rules for evaluation which, when evaluated, produce values, designate objects, or modify program state.</p>
+</dd>
+<dt>Abstract Machine Model</dt><dd><p>The abstract machine model specifies the rules that govern the procedural structure and execution of a C program, and its externally visible behavior, regardless of the environment in which it is executed.</p>
+</dd>
+<dt>Preprocessor Language</dt><dd><p>The preprocessor language is a macro-replacement language that consists of a set of directives and macros that are used to manipulate and modify source code before it is compiled.</p>
+</dd>
+<dt>Standard Library</dt><dd><p>The standard library is a set of functions, derived types, and objects which provide a uniform interface for a variety of programming tasks across different environments, ensuring portability of programs which rely on these features.</p>
+</dd>
+</dl>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>Even in a simple <em>Hello World!</em> program, each of the above concepts can be observed extensively,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cm">/* This program prints &quot;Hello World!&quot; to standard output */</span>
+<span class="linenos">2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="linenos">5</span><span class="p">{</span>
+<span class="linenos">6</span><span class="w">   </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="linenos">7</span><span class="p">}</span>
+</pre></div>
+</div>
+<dl>
+<dt>Type System</dt><dd><p>Line 4 showcases the C type system. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code> keywords, abbreviations for <em>integer</em> and <em>character</em>, refer to two of the most important fundamental types. Additionally, two derived types are visible; <code class="docutils literal notranslate"><span class="pre">argv</span></code> is declared with type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="p">[]</span></code>–an array of pointers to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code>–and <code class="docutils literal notranslate"><span class="pre">main</span></code> is declared with type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">[])</span></code>–a function which returns an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>, and takes to parameters of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and array of pointers to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code>.</p>
+</dd>
+<dt>Object Model</dt><dd><p>Line 4 also touches on the object model; declarations of <code class="docutils literal notranslate"><span class="pre">argc</span></code> and <code class="docutils literal notranslate"><span class="pre">argv</span></code> in the function parameter list each allocate <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="o">*</span><span class="p">[]</span></code> objects, respectively, on execution of <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code>. These objects are discarded when <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code> returns.</p>
+<p>Furthermore, on line 6, the string literal <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World!&quot;</span></code> allocates a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span></code> object at the start of the program, filled with the literal characters and a null-terminator (<code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;</span><span class="se">\0</span><span class="sc">&#39;</span></code>). This array is destroyed when the program terminates.</p>
+</dd>
+<dt>Identifiers</dt><dd><p>Line 4 showcases the declaration syntax of the C language, and includes a declaration for the <code class="docutils literal notranslate"><span class="pre">main</span></code> function, along with each of its parameters, <code class="docutils literal notranslate"><span class="pre">argc</span></code> and <code class="docutils literal notranslate"><span class="pre">argv</span></code>.</p>
+<p>The identifiers, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">args</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argv</span></code> are all declared on line 4. Additionally, the identifier <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> is evaluated as part of an expression on line 6; the declaration for <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> is hidden in the included <code class="file docutils literal notranslate"><span class="pre">stdio.h</span></code> header file.</p>
+</dd>
+<dt>Expressions</dt><dd><p>Line 6 contains the function-call expression <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span></code> which can further be broken down into two sub-expressions, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World!&quot;</span></code>.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> expression yields a function designator referring to a function of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="p">)</span></code>. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World!&quot;</span></code> expression yields an object designator referring to the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span></code> array mentioned earlier.</p>
+<p>When the function call operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">()</span></code> is evaluated, the function designator that precedes it is implicitly converted to a function pointer <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="p">)</span></code> and the object designator for its first argument is implicitly converted to the type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>, and then to the type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span></code>, through the process of <em>pointer decay</em> and <em>argument conversion</em>.</p>
+<p>The overall expression yields the return value of the call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code>, which is unused.</p>
+</dd>
+<dt>Abstract Machine Model</dt><dd><p>The abstract machine model dictates the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code> function as the program entry point, and that it should take either no parameters, or two parameters of the types shown here, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="o">*</span><span class="p">[]</span></code>. The name <code class="docutils literal notranslate"><span class="pre">argc</span></code> is short for argument count, and contains the number of command-line arguments to the program. The name <code class="docutils literal notranslate"><span class="pre">argv</span></code> is short for argument vector, and is an array of pointers, each of which points to the beginning of each command-line argument string.</p>
+<p>Within the body of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code> function, the expression statement <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span></code> is procedurally evaluated when <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code> is called. The abstract machine model requires that data referenced in the call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> is written to standard output by program termination, assuming successful execution.</p>
+</dd>
+<dt>Preprocessor Language</dt><dd><p>The preprocessor converts the comment <code class="code highlight c c99 docutils literal highlight-c99"><span class="cm">/* ... */</span></code> on line 1 into a &lt;space&gt; character, and it directly inserts the contents of <code class="file docutils literal notranslate"><span class="pre">stdio.h</span></code> at the location of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="cp">#include</span></code> directive on line 2.</p>
+</dd>
+<dt>Standard Library</dt><dd><p>The inclusion of the <code class="file docutils literal notranslate"><span class="pre">stdio.h</span></code> header file, which is short for “Standard I/O”, exposes many declarations for file input/output related facilities, such as the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">puts</span></code> function. All functions declared in standard library headers have external linkage and are defined separately in the system’s implementation of the standard library, which allows them to be referenced here.</p>
+</dd>
+</dl>
+</section>
+<section id="c-standard">
+<h2>C Standard<a class="headerlink" href="#c-standard" title="Link to this heading"></a></h2>
+<p>This course is based on the 1999 edition of the C language standard, called ISO/IEC 9899:1999, or C99, for short. While the C language has been revised since then, most revisions have been minor and/or irrelevant to operating systems, so C99 remains the most widely used major revision of the language. While the C99 standard is available for sale from ISO, the latest working draft prior to its official publication is available for free, online, and is essentially identical to the finalized version. This draft is hosted at the <a class="reference external" href="https://www.open-std.org/jtc1/sc22/wg14/" rel="noopener noreferrer" target="_blank">JTC1/SC22/WG14 home page</a>, as <a class="reference external" href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf" rel="noopener noreferrer" target="_blank">document N1256</a>, and is known as 9899:TC3, where TC3 stands for “Technical Corrigendum 3”.</p>
+<p>A digitized version of this standard is available at <a class="reference external" href="https://rgambord.github.io/c99-doc/index.html#main-index" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">C99 Language Standard</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../assignments/" class="btn btn-neutral float-left" title="Assignments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../type-system/" class="btn btn-neutral float-right" title="Type System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

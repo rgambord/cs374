@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Builtins &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Alias Substitution" href="aliases/" />
+    <link rel="prev" title="Function Definition" href="../control_flow/function_definition/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">The Shell Command Language</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">The Shell Command Language</a></li>
+      <li class="breadcrumb-item active">Builtins</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../control_flow/function_definition/" class="btn btn-neutral float-left" title="Function Definition" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aliases/" class="btn btn-neutral float-right" title="Alias Substitution" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="builtins">
+<h1>Builtins<a class="headerlink" href="#builtins" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Shell scripting makes extensive use of shell built-in utilities, which are part of the shell, itself. Built-ins always override the command search and execution for standalone utilities of the same name. There are two types of built-ins, regular and special.</p>
+<section id="regular-built-ins">
+<h2>Regular Built-ins<a class="headerlink" href="#regular-built-ins" title="Link to this heading"></a></h2>
+<p>Regular built-ins are utilities that are provided as shell built-ins but must also be available as standalone programs that can be executed directly through mechanisms outside the shell; to execute a standalone utility instead of its built-in version, a path to the utility must be given as the command name.</p>
+<p>Any utility can be implemented as regular built-in, but there are 17 utilities that modify the shell environment and are <em>always</em> implemented as built-ins due to their tight coupling with the shell. These are:</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><strong class="program">alias</strong></p></li>
+<li><p><strong class="program">bg</strong></p></li>
+<li><p><strong class="program">cd</strong></p></li>
+<li><p><strong class="program">command</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">false</strong></p></li>
+<li><p><strong class="program">fc</strong></p></li>
+<li><p><strong class="program">fg</strong></p></li>
+<li><p><strong class="program">getopts</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">jobs</strong></p></li>
+<li><p><strong class="program">kill</strong></p></li>
+<li><p><strong class="program">newgrp</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">pwd</strong></p></li>
+<li><p><strong class="program">read</strong></p></li>
+<li><p><strong class="program">true</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">umask</strong></p></li>
+<li><p><strong class="program">unalias</strong></p></li>
+<li><p><strong class="program">wait</strong></p></li>
+</ul>
+</td></tr></table>
+<p>Regular built-ins are overridden by functions with the same name.</p>
+<p class="rubric">Details</p>
+<p>The <strong class="program">bg</strong>, <strong class="program">fg</strong>, and <strong class="program">jobs</strong> utilities are used as part of job control to manage shell jobs, generally as part of an interactive shell session.</p>
+<p>The <strong class="program">alias</strong> and <strong class="program">unalias</strong> utilities are used to manage <a class="reference internal" href="aliases/"><span class="doc">aliases</span></a>.</p>
+<p>The <strong class="program">cd</strong> utility is used to change the current working directory, which is used in relative pathname resolution (paths which do not begin with a slash ‘/’). The non-built-in <strong class="program">pwd</strong> utility can be used to query the current directory; additional non-built-in utilities such as <strong class="program">basename</strong> and <strong class="program">dirname</strong> can be used to process path strings.</p>
+<p>The <strong class="program">command</strong> utility is used to explicitly ignore shell functions when performing command search and execution, in order to run actual system utilities that are shadowed by functions of the same name.</p>
+<p>The <strong class="program">false</strong> and <strong class="program">true</strong> utilities are provided to avoid the overhead of searching for and executing standalone processes, since the shell can just update <code class="docutils literal notranslate"><span class="pre">?</span></code> to the appropriate value.</p>
+<p>The <strong class="program">getopts</strong> utility is used to implement portable <a class="reference internal" href="getopts/"><span class="doc">command-line option processing</span></a> in shell scripts.</p>
+<p>The <strong class="program">kill</strong> utility is used to send signals to processes or process groups.</p>
+<p>The <strong class="program">newgrp</strong> and <strong class="program">umask</strong> utilities are used to alter the shell session’s primary group and the file mode creation mask, which influence <a class="reference internal" href="file_access_and_creation/"><span class="doc">file access and creation</span></a>.</p>
+<p>The <strong class="program">wait</strong> utility is used to wait on a background process or job to complete and retrieve its exit status.</p>
+</section>
+<section id="special-built-ins">
+<h2>Special Built-Ins<a class="headerlink" href="#special-built-ins" title="Link to this heading"></a></h2>
+<p>Special built-ins differ from regular built-ins in two important ways:</p>
+<ol class="arabic simple">
+<li><p>Syntax errors in special built-ins can cause the shell to abort instead of having a non-zero exit status.</p></li>
+<li><p>Variable assignments specified with a special built-in command persist in the shell environment after the special built-in completes.</p></li>
+</ol>
+<p>Additionally, special built-ins cannot be overridden by functions of the same name.</p>
+<p>There are a total of 15 special built-ins:</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><strong class="program">break</strong></p></li>
+<li><p><strong class="program">colon (:)</strong></p></li>
+<li><p><strong class="program">continue</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">dot (.)</strong></p></li>
+<li><p><strong class="program">eval</strong></p></li>
+<li><p><strong class="program">exec</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">exit</strong></p></li>
+<li><p><strong class="program">export</strong></p></li>
+<li><p><strong class="program">readonly</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">return</strong></p></li>
+<li><p><strong class="program">set</strong></p></li>
+<li><p><strong class="program">shift</strong></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><strong class="program">times</strong></p></li>
+<li><p><strong class="program">trap</strong></p></li>
+<li><p><strong class="program">unset</strong></p></li>
+</ul>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Two special utilities have descriptive names that differ from their actual command names. The <strong class="program">colon</strong> special built-in is invoked with the command name <code class="code highlight shell docutils literal highlight-shell">:</code>, and the <strong class="program">dot</strong> special built-in is invoked with the command name <code class="code highlight shell docutils literal highlight-shell">.</code>.</p>
+</div>
+<p class="rubric">Details</p>
+<p>The <strong class="program">break</strong>, <strong class="program">continue</strong>, <strong class="program">exit</strong>, and <strong class="program">return</strong> special built-ins are used in advanced control flow. <strong class="program">break</strong> and <strong class="program">continue</strong> can be used to either break out, or start the next iteration, of any level of nested loops. The <strong class="program">exit</strong> built-in causes the shell to exit with a specified exit status, while the <strong class="program">return</strong> built-in causes the current function to complete execution with the specified exit status.</p>
+<p>The <strong class="program">colon (:)</strong> special built-in is the “null” utility. It is used as a placeholder when a command is needed, such as in the body of an empty loop, and always returns zero, similar to the <strong class="program">true</strong> utility. It differs from <strong class="program">true</strong> in that it is a special built-in with the properties described above; for example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">0</span>
+<span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nb">true</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">0</span>
+<span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>:
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>The <strong class="program">dot (.)</strong> special built-in is also called the “source” utility. It accepts the name of a shell script as its argument, and executes it in the <em>current</em> environment, rather than in a separate process,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;echo &quot;My PID is: $$&quot;; x=1;\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>script.sh
+<span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">0</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Parent PID is: </span><span class="nv">$$</span><span class="s2">&quot;</span>
+<span class="go">Parent PID is 26753</span>
+<span class="gp">$ </span>sh<span class="w"> </span>--<span class="w"> </span>script.sh
+<span class="go">My PID is 26754</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">0</span>
+<span class="gp">$ </span>.<span class="w"> </span>script.sh
+<span class="go">My PID is 26753</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because a script executed with <strong class="program">dot (.)</strong> executes in the current shell environment the <strong class="program">exit</strong> utility causes the invoking shell to exit. A dot-sourced script can instead use the <strong class="program">return</strong> utility to complete the current <strong class="program">dot (.)</strong> command with a specified exit status. This is the only context where <strong class="program">return</strong> may be used <em>outside</em> of a function body.</p>
+</div>
+<p>The <strong class="program">eval</strong> special built-in is used for metaprogramming. <strong class="program">eval</strong> can be used to perform certain tasks that are not otherwise possible. For example, variable indirection, where a variable’s value is the name of another variable, can only be portably accomplished with <strong class="program">eval</strong>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">var_name</span><span class="o">=</span>my_name
+<span class="gp">$ </span><span class="nb">eval</span><span class="w"> </span><span class="nv">$varname</span><span class="o">=</span>bennyb<span class="w">  </span><span class="c1"># executes &quot;my_name=bennyb&quot;</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$my_name</span>
+<span class="gp">$ </span>bennyb
+</pre></div>
+</div>
+<p>The <strong class="program">exec</strong> special built-in is used to <em>replace</em> the shell process with a specified command, rather than execute it as a separate child process.</p>
+<p>The <strong class="program">export</strong>, <strong class="program">readonly</strong>, <strong class="program">set</strong>, <strong class="program">shift</strong> and <strong class="program">unset</strong> special built-in utilities are used to manipulate <a class="reference internal" href="parameters_and_options/"><span class="doc">shell parameters and options</span></a>.</p>
+<p>The <strong class="program">times</strong> special built-in provides data about the accumulated user and system time (time spent executing in user space, and in system calls) that has been consumed by the shell and by its child processes since the shell was invoked.</p>
+<p>The <strong class="program">trap</strong> special built-in is used for managing <a class="reference internal" href="signals/"><span class="doc">signal handling</span></a> in the shell.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../control_flow/function_definition/" class="btn btn-neutral float-left" title="Function Definition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aliases/" class="btn btn-neutral float-right" title="Alias Substitution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

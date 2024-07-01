@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expansion &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Variable Assignment and Redirection" href="../variable_assignment_and_redirection/" />
+    <link rel="prev" title="Quoting" href="../quoting/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">The Interactive Shell</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quoting/">Quoting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">The Interactive Shell</a></li>
+      <li class="breadcrumb-item active">Expansion</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../quoting/" class="btn btn-neutral float-left" title="Quoting" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../variable_assignment_and_redirection/" class="btn btn-neutral float-right" title="Variable Assignment and Redirection" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expansion">
+<h1>Expansion<a class="headerlink" href="#expansion" title="Link to this heading"></a></h1>
+<p>Before a command is executed, each of the command words undergo a process called <em>expansion</em>, where recognized special sequences of text within the word are replaced with an evaluated value. During this process, each word is split into  fields, and all quoting characters are removed; these fields ultimately become the command name and arguments.</p>
+<p>Expansion is fairly intuitive in simple cases; for example, the following expansion substitutes the value of the shell variable <code class="docutils literal notranslate"><span class="pre">HOME</span></code> into a command before the command is executed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>My<span class="w"> </span>home<span class="w"> </span>directory<span class="w"> </span>is:<span class="w"> </span><span class="nv">$HOME</span>
+<span class="go">My home directory is: /home/bennyb</span>
+</pre></div>
+</div>
+<p>The above example demonstrates parameter expansion; there are four other types of expansions which can occur, namely tilde expansion, command substitution, arithmetic expansion, and finally pathname expansion. Expansion is carried out in four distinct phases:</p>
+<ol class="arabic simple">
+<li><p>Tilde expansion, parameter expansion, command substitution, and arithmetic expansion are performed in a left-to-right order on each word.</p></li>
+<li><p>The result of the preceding step undergoes field splitting where each expansion occurred to produce zero or more fields.</p></li>
+<li><p>Pathname expansion is performed on each resulting field, potentially generating additional fields.</p></li>
+<li><p>Quote removal is performed on each field.</p></li>
+</ol>
+<p>If any fields result at the end of this process, the first will be interpreted as a command name, and the remaining fields as its arguments.</p>
+<section id="tilde-expansion">
+<span id="id1"></span><h2>Tilde Expansion<a class="headerlink" href="#tilde-expansion" title="Link to this heading"></a></h2>
+<p>Whenever an unquoted tilde appears at the beginning of a word, the tilde and any characters following it up to the next slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>), if there is one, form a <em>tilde prefix</em>. For example, <code class="docutils literal notranslate"><span class="pre">~bennyb/documents/final_exam.pdf</span></code> contains the tilde-prefix <code class="docutils literal notranslate"><span class="pre">~bennyb</span></code>. The tilde prefix is replaced with the path to the named user’s home directory, which is queried from the system’s user database file <code class="file docutils literal notranslate"><span class="pre">/etc/passwd</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>~bennyb/documents/final_exam.pdf
+<span class="go">/home/bennyb/documents/final_exam.pdf</span>
+</pre></div>
+</div>
+<p>If a name is omitted (e.g. <code class="docutils literal notranslate"><span class="pre">~/documents/final_exam.pdf</span></code>), then the tilde prefix is replaced with the value of the <code class="docutils literal notranslate"><span class="pre">HOME</span></code> environment variable, which conventionally contains the pathname of the user’s own home directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>~/documents/final_exam.pdf
+<span class="go">/home/bennyb/documents/final_exam.pdf</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Implicit tilde-expansion is subtly different from explicitly naming oneself, in that the value of the <code class="docutils literal notranslate"><span class="pre">HOME</span></code> variable can be set arbitrarily, while the explicit version of tilde expansion always queries <code class="file docutils literal notranslate"><span class="pre">/etc/passwd</span></code>. This difference is sometimes exploited to implement switching between multiple configuration environments by storing each in a separate directory and modifying the value of <code class="docutils literal notranslate"><span class="pre">HOME</span></code> to point to the appropriate one for a particular environment.</p>
+</div>
+<p>If a tilde appears anywhere else in a word, or is quoted by any of the mechanisms described above, it retains its literal value:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>Hello~World!
+<span class="go">Hello~World!</span>
+</pre></div>
+</div>
+<p>The implicit form of tilde expansion is used frequently to refer to one’s own files, while the explicit form is generally used by administrators to quickly access particular users’ home directories.</p>
+</section>
+<section id="parameter-expansion">
+<span id="id2"></span><h2>Parameter Expansion<a class="headerlink" href="#parameter-expansion" title="Link to this heading"></a></h2>
+<p>Parameter expansion takes the form <code class="docutils literal notranslate"><span class="pre">${expression}</span></code>; in the simplest case, <em>expression</em> is the name of a shell parameter, and the sequence is replaced with the value of that parameter:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>My<span class="w"> </span>home<span class="w"> </span>directory<span class="w"> </span>is:<span class="w"> </span><span class="se">\&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="se">\&quot;</span>
+<span class="go">My home directory is: &quot;/home/bennyb&quot;</span>
+</pre></div>
+</div>
+<p>All parameters have values that are represented as strings, which may be zero length; parameters may also be unset, which often has the same effect as, but is subtly different from, having a zero-length value. There are three classes of shell parameters, namely the positional parameters, shell special parameters, and shell variables.</p>
+<section id="positional-and-special-parameters">
+<h3>Positional and Special Parameters<a class="headerlink" href="#positional-and-special-parameters" title="Link to this heading"></a></h3>
+<p>The positional parameters are numbered starting from 1, and represent each of the parameters that the shell, itself, was invoked with; in general, no positional parameters are set in interactive shell sessions, so these variables are largely reserved for shell scripting, and their uses will be discussed in the next module.</p>
+<p>There are eight shell special parameters, each of which is used to query information about the shell, and these are represented by single-character parameter names: <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, and <code class="docutils literal notranslate"><span class="pre">0</span></code>. As with the positional parameters, these are rarely used outside of shell scripts, so we will discuss these in the next module as well.</p>
+<p>The curly braces are optional for positional parameters 1 through 9, and for all of the special parameters, but required for positional parameters with more than one digit.</p>
+</section>
+<section id="shell-variables">
+<h3>Shell Variables<a class="headerlink" href="#shell-variables" title="Link to this heading"></a></h3>
+<p>Finally, shell variables are the set of user-defined, named<a class="footnote-reference brackets" href="#xbd-name" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> parameters. The curly braces are optional for variable names, in which case the shell matches the longest valid name following the <code class="docutils literal notranslate"><span class="pre">$</span></code>. We will see in a moment how <a class="reference internal" href="../variable_assignment_and_redirection/#variable-assignment"><span class="std std-ref">Variable Assignment</span></a> and parameter expansion facilitate storing and manipulating the results of expressions in order to be used later on.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="xbd-name" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>Shell variable names consist of upper-and-lower-case letters, underscores, and digits; they may not begin with a digit.</p>
+</aside>
+</aside>
+</section>
+<section id="modified-parameter-expansion">
+<h3>Modified Parameter Expansion<a class="headerlink" href="#modified-parameter-expansion" title="Link to this heading"></a></h3>
+<p>As mentioned at the beginning of this subsection, the simplest case of parameter expansion is when <em>expression</em> is the name of a parameter; there are several expansion modifiers that can be added to a parameter expansion, which influence its behavior. These are used more often in shell scripting, but sometimes come in handy when working interactively; in all cases, <em>word</em> undergoes recursive expansion before being used:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>parameter Set and Not Null</p></th>
+<th class="head"><p>parameter Set But Null</p></th>
+<th class="head" colspan="2"><p>parameter Unset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>:-</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>substitute <em>word</em></p></td>
+<td colspan="2"><p>substitute <em>word</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>-</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>substitute null</p></td>
+<td colspan="2"><p>substitute <em>word</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>:=</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>assign <em>word</em></p></td>
+<td colspan="2"><p>assign <em>word</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>=</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>substitute null</p></td>
+<td colspan="2"><p>assign <em>word</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>:?</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>error, exit</p></td>
+<td colspan="2"><p>error, exit</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>?</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>parameter</em></p></td>
+<td><p>substitute null</p></td>
+<td colspan="2"><p>error, exit</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>:+</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>word</em></p></td>
+<td><p>substitute null</p></td>
+<td colspan="2"><p>substitute null</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>+</strong><em>word</em><strong>}</strong></p></td>
+<td><p>substitute <em>word</em></p></td>
+<td><p>substitute <em>word</em></p></td>
+<td colspan="2"><p>substitute null</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${#</strong><em>parameter</em><strong>}</strong></p></td>
+<td colspan="3"><p> substitute string length of the value of <em>parameter</em></p></td>
+<td><p>substitute 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>%</strong><em>word</em><strong>}</strong></p></td>
+<td colspan="4"><p> substitute <em>parameter</em> with <strong>shortest suffix</strong> matching <em>word</em> removed.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>%%</strong><em>word</em><strong>}</strong></p></td>
+<td colspan="4"><p> substitute <em>parameter</em> with <strong>longest suffix</strong> matching <em>word</em> removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>${</strong><em>parameter</em><strong>#</strong><em>word</em><strong>}</strong></p></td>
+<td colspan="4"><p> substitute <em>parameter</em> with <strong>shortest prefix</strong> matching <em>word</em> removed.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>${</strong><em>parameter</em><strong>##</strong><em>word</em><strong>}</strong></p></td>
+<td colspan="4"><p> substitute <em>parameter</em> with <strong>longest prefix</strong> matching <em>word</em> removed.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="command-substitution">
+<span id="id4"></span><h2>Command Substitution<a class="headerlink" href="#command-substitution" title="Link to this heading"></a></h2>
+<p>Command substitution takes two forms, <strong>$(</strong><em>command</em><strong>)</strong>, and <strong>`</strong><em>command</em><strong>`</strong>, with the major difference that the latter (backtick) version cannot nest. The contents of <em>command</em> are executed in a subshell<a class="footnote-reference brackets" href="#subshell" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> environment, and the resulting output to stdout is substituted, with any trailing newline characters removed.</p>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>My<span class="w"> </span>name<span class="w"> </span>is:<span class="w"> </span><span class="se">\&quot;</span><span class="k">$(</span>whoami<span class="k">)</span><span class="se">\&quot;</span>
+<span class="go">My name is: &quot;bennyb&quot;</span>
+</pre></div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="subshell" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>A subshell is a temporary forked copy of the main shell process, so that any environmental changes within the subshell do not propagate to the main shell process. We will learn more about subshells in the next module.</p>
+</aside>
+</aside>
+</section>
+<section id="arithmetic-expansion">
+<span id="id6"></span><h2>Arithmetic Expansion<a class="headerlink" href="#arithmetic-expansion" title="Link to this heading"></a></h2>
+<p>Arithmetic expansion takes the form <strong>$((</strong><em>expression</em><strong>))</strong>, and evaluates to a string representation of the result of <em>expression</em>. Arithmetic expansion supports a subset of the C language’s operators, mostly covering integer and bitwise arithmetic. The tokens within <em>expression</em> are recursively expanded prior to evaluation.</p>
+<p>If a shell variable contains a value that forms a valid integer constant, then it may be used in the <em>expression</em> by its ordinary name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">123</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="k">))</span>
+<span class="go">128</span>
+</pre></div>
+</div>
+<p>The values of shell variables may be modified by the use of assignment operators:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">123</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span><span class="k">))</span>
+<span class="go">246</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">246</span>
+</pre></div>
+</div>
+</section>
+<section id="field-splitting">
+<span id="id7"></span><h2>Field Splitting<a class="headerlink" href="#field-splitting" title="Link to this heading"></a></h2>
+<p>Any characters that resulted from expansion and which are not enclosed in double quotes can be recognized as field delimiters or separators. The special shell variable <code class="docutils literal notranslate"><span class="pre">IFS</span></code> (Internal Field Separators) contains a list of characters which are recognized as such. If unset, <code class="docutils literal notranslate"><span class="pre">IFS</span></code> defaults to &lt;space&gt;&lt;tab&gt;&lt;newline&gt;.</p>
+<p>The IFS whitespace characters, &lt;space&gt;, &lt;tab&gt;, and &lt;newline&gt;, if present in <code class="docutils literal notranslate"><span class="pre">IFS</span></code> are treated as field <em>separators</em>: any sequence of these characters at the beginning or end of the word are removed, and any sequence found within a word separate two fields.</p>
+<p>Any non-IFS whitespace characters present in <code class="docutils literal notranslate"><span class="pre">IFS</span></code> are treated as field <em>delimiters</em>: any individual occurrence of one of these characters, along with any adjacent IFS whitespace characters, delimits a field.</p>
+<p>For example, the special shell variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> contains a colon-delimited list of paths to directories containing system utilities; typically something like <code class="docutils literal notranslate"><span class="pre">/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin</span></code>. We can see how changing the contents of <code class="docutils literal notranslate"><span class="pre">IFS</span></code> can be used to split the results of the expansion of the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PATH</span>
+<span class="go">/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin</span>
+<span class="gp">$ </span><span class="nv">IFS</span><span class="o">=</span>:
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PATH</span>
+<span class="go">/bin /sbin /usr/bin/ usr/sbin /usr/local/bin /usr/local/sbin</span>
+</pre></div>
+</div>
+<p>We can closely inspect the effects of field splitting with the <strong class="command">printf</strong> utility. This utility takes a format string as its first argument and then consumes subsequent arguments to according to the format specifiers present in the format string. It repeatedly processes the format string until its arguments are exhausted, as shown in the below example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;[%s]\n&#39;</span><span class="w"> </span>a<span class="w"> </span>b<span class="w"> </span>c<span class="w"> </span>d
+<span class="go">[a]</span>
+<span class="go">[b]</span>
+<span class="go">[c]</span>
+<span class="go">[d]</span>
+<span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s %s\n&#39;</span><span class="w"> </span>a<span class="w"> </span>b<span class="w"> </span>c<span class="w"> </span>d
+<span class="go">a b</span>
+<span class="go">c d</span>
+</pre></div>
+</div>
+<p>With the example with <code class="docutils literal notranslate"><span class="pre">PATH</span></code> above, we can use the <code class="docutils literal notranslate"><span class="pre">%s\n</span></code> format specifier to print each field as a separate line instead of separated by spaces as with the <strong class="command">echo</strong> utility:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s\n&#39;</span><span class="w"> </span><span class="nv">$PATH</span>
+<span class="go">/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin</span>
+<span class="gp">$ </span><span class="nv">IFS</span><span class="o">=</span>:
+<span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s\n&#39;</span><span class="w"> </span><span class="nv">$PATH</span>
+<span class="go">/bin</span>
+<span class="go">/sbin</span>
+<span class="go">/usr/bin</span>
+<span class="go">/usr/sbin</span>
+<span class="go">/usr/local/bin</span>
+<span class="go">/usr/local/sbin</span>
+</pre></div>
+</div>
+<p>In most cases, field splitting is undesirable and can lead to confusing or unexpected results, such as when substituting in variables that contain whitespace. However, once mastered, it can be very useful for certain tasks. Generally, portions of words that contain expansions should be enclosed in double quotes to suppress field splitting, or the <code class="docutils literal notranslate"><span class="pre">IFS</span></code> variable should be set to a null string.</p>
+</section>
+<section id="pathname-expansion">
+<span id="id8"></span><h2>Pathname Expansion<a class="headerlink" href="#pathname-expansion" title="Link to this heading"></a></h2>
+<p>Pathname expansion, also known as globbing or wildcard expansion, is a final expansion step where the shell treats each field that resulted from field splitting as a pattern. The presence of an unquoted <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, or <code class="docutils literal notranslate"><span class="pre">[</span></code> in a field cause the shell to attempt to match it against file paths. An asterisk, <code class="docutils literal notranslate"><span class="pre">*</span></code>, matches any sequence of 0-or-more characters; a question mark, <code class="docutils literal notranslate"><span class="pre">?</span></code>, matches exactly one character, and a bracket expression enclosed in <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> matches one of the enclosed characters. Additionally, a bracket expression may be negated in the form <code class="docutils literal notranslate"><span class="pre">[!...]</span></code>.</p>
+<p>Matches occur between slashes, <code class="docutils literal notranslate"><span class="pre">/</span></code>, and none of the above pattern elements can match a slash; if a slash appears after a <code class="docutils literal notranslate"><span class="pre">[</span></code>, but before the terminating <code class="docutils literal notranslate"><span class="pre">]</span></code>, then the <code class="docutils literal notranslate"><span class="pre">[</span></code> is treated as an ordinary character. If any matching file paths are found, the field is replaced with one field for each matching file. Otherwise, it is left unchanged.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">*</span></code> matches any file in the current directory, while <code class="docutils literal notranslate"><span class="pre">*/*</span></code> matches any file in any subdirectory, and so on. Something like <code class="docutils literal notranslate"><span class="pre">???</span></code> matches any file with a three-character name, while <code class="docutils literal notranslate"><span class="pre">???*</span></code> matches any file with <em>at least</em> three characters in its name. Something like <code class="docutils literal notranslate"><span class="pre">file[[:digit:]].txt</span></code> matches <code class="docutils literal notranslate"><span class="pre">file1.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">file2.txt</span></code>, and so on, but not <code class="docutils literal notranslate"><span class="pre">file10.txt</span></code>, because <code class="docutils literal notranslate"><span class="pre">[[:digit:]]</span></code> can only match exactly one character.</p>
+<p>One caveat is that files beginning with a dot, ‘.’, character are <em>only</em> matched by patterns that also begin with a ‘.’ character. This is because UNIX’s convention is that filenames beginning with a dot are hidden files, so they are ignored unless explicitly matched.</p>
+</section>
+<section id="quote-removal">
+<span id="id9"></span><h2>Quote Removal<a class="headerlink" href="#quote-removal" title="Link to this heading"></a></h2>
+<p>Finally, any quote characters (backslash, single-, and double-quote) are removed if they are not, themselves, quoted.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quoting/" class="btn btn-neutral float-left" title="Quoting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../variable_assignment_and_redirection/" class="btn btn-neutral float-right" title="Variable Assignment and Redirection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

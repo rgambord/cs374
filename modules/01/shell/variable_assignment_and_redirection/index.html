@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variable Assignment and Redirection &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Command Execution" href="../command_execution/" />
+    <link rel="prev" title="Expansion" href="../expansion/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">The Interactive Shell</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../expansion/">Expansion</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">The Interactive Shell</a></li>
+      <li class="breadcrumb-item active">Variable Assignment and Redirection</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../expansion/" class="btn btn-neutral float-left" title="Expansion" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../command_execution/" class="btn btn-neutral float-right" title="Command Execution" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="variable-assignment-and-redirection">
+<h1>Variable Assignment and Redirection<a class="headerlink" href="#variable-assignment-and-redirection" title="Link to this heading"></a></h1>
+<p>Along with command words, a simple command can include special variable assignment words as well as redirection operators. These are processed after command word expansion has occurred, just before a command is executed.</p>
+<section id="variable-assignment">
+<span id="id1"></span><h2>Variable Assignment<a class="headerlink" href="#variable-assignment" title="Link to this heading"></a></h2>
+<p>At the beginning of a command, any words of the form, <code class="docutils literal notranslate"><span class="pre">name=value</span></code>, are treated as variable assignment words. The name preceding the <code class="docutils literal notranslate"><span class="pre">=</span></code> is treated as the name of a variable, and the remainder of the word following the <code class="docutils literal notranslate"><span class="pre">=</span></code> is the value that is assigned, which may be empty (e.g <code class="docutils literal notranslate"><span class="pre">X=</span></code>). The value undergoes , <a class="reference internal" href="../expansion/#parameter-expansion"><span class="std std-ref">Parameter Expansion</span></a>, <a class="reference internal" href="../expansion/#command-substitution"><span class="std std-ref">Command Substitution</span></a>, and <a class="reference internal" href="../expansion/#arithmetic-expansion"><span class="std std-ref">Arithmetic Expansion</span></a>, but not <a class="reference internal" href="../expansion/#field-splitting"><span class="std std-ref">Field Splitting</span></a> or <a class="reference internal" href="../expansion/#pathname-expansion"><span class="std std-ref">Pathname Expansion</span></a>. The expanded value is assigned to the named variable.</p>
+<p>If no command name is present after expanding the command words, the variable assignment affects the current shell environment and becomes a shell variable; otherwise, if a command name is present, the variable assignment affects that particular command only, and is added to that command’s environment variables before execution occurs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">12</span><span class="w">              </span><span class="c1"># No command name -&gt; x becomes a shell variable!</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span>
+<span class="go">12</span>
+<span class="gp">$ </span><span class="nv">x</span><span class="o">=</span><span class="m">13</span><span class="w"> </span>printenv<span class="w"> </span>x<span class="w">   </span><span class="c1"># x=13 adds &quot;x=13&quot; to the environment of `printenv`; does not modify shell environment</span>
+<span class="go">x=13</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$x</span><span class="w">           </span><span class="c1"># The shell variable &#39;x&#39; is still 12.</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+</section>
+<section id="redirection">
+<h2>Redirection<a class="headerlink" href="#redirection" title="Link to this heading"></a></h2>
+<p>Recall that every program expects the standard in, out, and error–file descriptors 0, 1, and 2–to already be open when it is executed. Since processes inherit these file descriptors from their parent, any executed commands will read and write to the same locations that the parent shell process is reading and writing from; in the case of an interactive session, this would be the terminal device.</p>
+<p>This behavior is often undesirable; the user may not want to interactively provide input to a program, but instead want to pass a file as input. Likewise, a user may want to write output to a file rather than to the terminal. This is accomplished through a shell feature called redirection.</p>
+<p>Redirection is a mechanism by which the shell opens new files for reading and/or writing just before executing a command, so that the command inherits the newly opened files rather than the ones the shell itself has open.</p>
+<section id="file-redirection">
+<h3>File Redirection<a class="headerlink" href="#file-redirection" title="Link to this heading"></a></h3>
+<p>There are five redirection operators which can be used to open files with different access modes:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Access Mode</p></th>
+<th class="head"><p>Creates File if Missing?</p></th>
+<th class="head"><p>Truncates Existing File?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Write</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes, if noclobber unset<a class="footnote-reference brackets" href="#noclobber" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;|</span></code></p></td>
+<td><p>Write</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Read</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code></p></td>
+<td><p>Read+Write</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
+<td><p>Append</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="noclobber" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>If the <code class="docutils literal notranslate"><span class="pre">noclobber</span></code> (default: unset) shell option is set, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will fail if the file already exists.</p>
+</aside>
+</aside>
+<p>Each redirection operator takes the word following it as a filename argument, which designates the file to be opened. This filename word undergoes all of the expansion steps that command words go through, except that field splitting is not performed, and pathname expansion may be performed <em>only</em> if it results in a single field (matched filename).</p>
+<p>Additionally, an optional io-number can be prepended to the operator to specify the file descriptor number that should be associated with the open file. If the optional io-number is omitted, it is implicitly 1 (stdout) for all operators that begin with ‘&gt;’, and 0 (stdin) for all operators that begin with ‘&lt;’.</p>
+<p>For example, the following command runs the <strong class="program">cut</strong> utility to print the first field (column) of a tab-delimited file called <code class="file docutils literal notranslate"><span class="pre">gradebook</span></code>, and writes the output to a file called <code class="file docutils literal notranslate"><span class="pre">roster</span></code>, using the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> redirection operators, with their implied io numbers of 0 and 1:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;gradebook<span class="w"> </span>&gt;roster
+</pre></div>
+</div>
+<p>, which is exactly equivalent to:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>&lt;gradebook<span class="w"> </span><span class="m">1</span>&gt;roster
+</pre></div>
+</div>
+<p>The redirection operators are processed from left to right, and the operators and their operands are removed from the command words before the command is executed. In the above command, the shell opens the file <code class="file docutils literal notranslate"><span class="pre">gradebook</span></code> on file descriptor number 0 (stdin) for reading.  Next, it opens the file <code class="file docutils literal notranslate"><span class="pre">roster</span></code> on file descriptor number 1 (stdout) for writing. Finally, it executes the <strong class="program">cut</strong> utility with two arguments, <code class="docutils literal notranslate"><span class="pre">-f</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. The <strong class="program">cut</strong> utility is unaware that redirection has occurred.</p>
+<p>Redirection operators and their operands may appear anywhere in a command, intermixed with regular command words. For example, the above command is equivalent to <code class="code highlight shell docutils literal highlight-shell">&lt;gradebook<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span>&gt;roster<span class="w"> </span><span class="m">1</span></code>. Conventionally, redirections are placed at the end of a command for readability. Rarely I find them written at the front of a very long command, since a reader may care more about where the i/o occurs rather than the contents of many long arguments to the command in question:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;input_file<span class="w"> </span>&gt;output_file<span class="w"> </span><span class="m">2</span>&gt;err_log<span class="w"> </span>a_very_long_command<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>lot<span class="w"> </span>of<span class="w"> </span>arguments...
+</pre></div>
+</div>
+</section>
+<section id="duplication">
+<h3>Duplication<a class="headerlink" href="#duplication" title="Link to this heading"></a></h3>
+<p>Two additional redirection operators can be used to duplicate existing file descriptors: <code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;&amp;</span></code>. The filename argument in this case is interpreted as an io number, and the left side is made a copy of the right side. The two operators are essentially interchangeable when provided with an explicit io number (left operand), differing only in that their default io numbers are 1 and 0, respectively, following the rule described above. The <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> versions do not affect read/write/append properties of any of the open files; the duplicated file descriptor retains the access mode of the original.</p>
+</section>
+<section id="here-documents">
+<h3>Here Documents<a class="headerlink" href="#here-documents" title="Link to this heading"></a></h3>
+<p>The last two redirection operators are <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;&lt;-</span></code>, the here-document operators. These operators interpret their filename arguments, subject to <a class="reference internal" href="../expansion/#quote-removal"><span class="std std-ref">Quote Removal</span></a> as an end-of-file token. The shell reads lines of input following the current line of input until reaching a line that contains exactly the end-of-file token it encountered earlier. All of the additional lines read up to that point–called the here-document–are treated as the contents of a temporary file that is opened on the specified file descriptor number.</p>
+<p>The two operators are the same except that the <code class="docutils literal notranslate"><span class="pre">&lt;&lt;-</span></code> version discards leading &lt;tab&gt; indentation in the here-document. The contents of the here-document also undergo <a class="reference internal" href="../expansion/#tilde-expansion"><span class="std std-ref">Tilde Expansion</span></a>, <a class="reference internal" href="../expansion/#parameter-expansion"><span class="std std-ref">Parameter Expansion</span></a>, <a class="reference internal" href="../expansion/#command-substitution"><span class="std std-ref">Command Substitution</span></a>, and <a class="reference internal" href="../expansion/#arithmetic-expansion"><span class="std std-ref">Arithmetic Expansion</span></a>, if the filename argument does not contain any quoted characters. Otherwise all of the here-document text is treated as literal text.</p>
+<p>Examples:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>&lt;&lt;EOF
+<span class="go">&gt; Hello!</span>
+<span class="go">&gt; My name is Benny Beaver!</span>
+<span class="go">&gt; Nice to meet you :)</span>
+<span class="go">&gt; EOF</span>
+<span class="go">Hello!</span>
+<span class="go">My name is Benny Beaver!</span>
+<span class="go">Nice to meet you :)</span>
+<span class="gp">$ </span>cat<span class="w"> </span>&lt;&lt;EOF
+<span class="go">&gt; Expanded \$HOME: &quot;$HOME&quot;</span>
+<span class="go">&gt; EOF</span>
+<span class="go">Expanded $HOME: &quot;/home/bennyb&quot;</span>
+<span class="gp">$ </span>cat<span class="w"> </span>&lt;&lt;<span class="se">\E</span>OF<span class="w">  </span><span class="c1"># filename contains a quoted character -- expansion is suppressed</span>
+<span class="go">&gt; Expanded \$HOME: &quot;$HOME&quot;</span>
+<span class="go">&gt;EOF</span>
+<span class="go">Expanded \$HOME: &quot;$HOME&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../expansion/" class="btn btn-neutral float-left" title="Expansion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../command_execution/" class="btn btn-neutral float-right" title="Command Execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

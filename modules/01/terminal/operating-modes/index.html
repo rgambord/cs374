@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Operating Modes &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Control Codes" href="../control-codes/" />
+    <link rel="prev" title="Terminal Interface" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">Terminal Interface</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">Terminal Interface</a></li>
+      <li class="breadcrumb-item active">Terminal Operating Modes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Terminal Interface" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../control-codes/" class="btn btn-neutral float-right" title="Control Codes" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="terminal-operating-modes">
+<h1>Terminal Operating Modes<a class="headerlink" href="#terminal-operating-modes" title="Link to this heading"></a></h1>
+<p>Terminal behavior varies based on a set of configurable terminal parameters. There are five classes of terminal parameters,</p>
+<ul class="simple">
+<li><p>Control Characters</p></li>
+<li><p>Input Modes</p></li>
+<li><p>Output Modes</p></li>
+<li><p>Control Modes</p></li>
+<li><p>Local Modes</p></li>
+</ul>
+<p>The input, output, and control mode settings are fairly irrelevant in a modern terminal interface. We will discuss just a handful of relevant control characters and local mode settings, which you will want to be familiar with, below.</p>
+<section id="local-modes">
+<h2>Local Modes<a class="headerlink" href="#local-modes" title="Link to this heading"></a></h2>
+<p>Local modes control the local behavior of the terminal; i.e. what the user sees, and what the terminal does with input <em>before</em> sending it to applications. Many applications change these settings, and they are relevant to your use of an interactive terminal. There are three that are particularly important:</p>
+<dl class="simple">
+<dt>ECHO</dt><dd><p>If set, input characters are <em>visually</em> printed to the terminal. Commonly turned off to capture and process input without displaying it to the screen, such as when entering passwords, or in an interactive application.</p>
+</dd>
+<dt>ICANON</dt><dd><p>Controls whether the terminal is in canonical mode or non-canonical mode. In canonical mode, input is buffered into units of lines, and applications can read up to the end of a line in a single read operation. In non-canonical mode, input is available for reading immediately as soon as it is entered. This is called a terminal’s line discipline.</p>
+</dd>
+<dt>ISIG</dt><dd><p>Controls whether the signal control characters send signals or not.</p>
+</dd>
+<dt>IXON/IXOFF</dt><dd><p>Controls whether flow control is enabled. Flow control allows input or output to be temporarily frozen so that users can stop and read fast moving output, among other things.</p>
+</dd>
+</dl>
+<p>The terminal is usually switched between two modes, called “raw” and “cooked”. In raw mode, these flags are disabled, along with some other settings. In cooked mode, all of these flags are enabled. When entering input into the command line, your terminal is in cooked mode; when working inside an interactive text editor like <strong class="program">vim</strong>, your terminal is in raw mode and the text editor is processing your input on a character-by-character basis.</p>
+</section>
+<section id="control-characters">
+<h2>Control Characters<a class="headerlink" href="#control-characters" title="Link to this heading"></a></h2>
+<p>Control characters are a set of specially recognized characters; listed below are their names, default values, and description. You should be familiar with these characters in order to properly use a terminal interface.</p>
+</section>
+<section id="input-characters-which-generate-signals">
+<h2>Input characters which generate signals<a class="headerlink" href="#input-characters-which-generate-signals" title="Link to this heading"></a></h2>
+<p>These characters are relevant when signal mode (ISIG) is turned on.</p>
+<dl class="simple">
+<dt>INTR &lt;ctrl-c&gt;</dt><dd><p>A SIGINT (interrupt) signal is sent to the foreground process group.</p>
+</dd>
+<dt>QUIT &lt;ctrl-\&gt;</dt><dd><p>A SIGQUIT (quit) signal is sent to the foreground process group.</p>
+</dd>
+<dt>SUSP (ctrl-z)</dt><dd><p>A SIGTSTP (terminal stop) signal is sent to the foreground process group.</p>
+</dd>
+</dl>
+</section>
+<section id="input-characters-which-control-the-line-buffer">
+<h2>Input characters which control the line buffer<a class="headerlink" href="#input-characters-which-control-the-line-buffer" title="Link to this heading"></a></h2>
+<p>These characters are relevant when canonical mode (ICANON) is turned on.</p>
+<dl class="simple">
+<dt>ERASE &lt;backspace&gt;</dt><dd><p>Erases the previous character in the line buffer up to most recent NL, EOF, or EOL character.</p>
+</dd>
+<dt>KILL &lt;ctrl-u&gt;</dt><dd><p>Erases the entire line buffer up to the most recent NL, EOF, or EOL character.</p>
+</dd>
+<dt>EOF &lt;ctrl-d&gt;</dt><dd><p>All waiting bytes in the line buffer are immediately passed to the application without waiting for a &lt;newline&gt;. If there are no bytes waiting, this causes the application to read zero bytes, which represents end-of-file.</p>
+</dd>
+<dt>NL &lt;newline&gt;</dt><dd><p>This is the line delimiter &lt;newline&gt;. It causes the current line to be available to the application for reading. It cannot be changed.</p>
+</dd>
+<dt>EOL</dt><dd><p>This is a secondary custom line delimiter character. Usually unset.</p>
+</dd>
+</dl>
+</section>
+<section id="flow-control-characters">
+<h2>Flow control characters<a class="headerlink" href="#flow-control-characters" title="Link to this heading"></a></h2>
+<p>These characters are relevant when flow control (IXON/IXOFF) is turned on.</p>
+<dl class="simple">
+<dt>STOP (ctrl-s)</dt><dd><p>Suspends output temporarily (freezes the terminal). Used to prevent output from disappearing before it can be read. Unwary programmers often freeze their terminals when pressing ctrl-s to instinctively save an open text file. Input and output is buffered while the terminal is frozen, not lost.</p>
+</dd>
+<dt>START (ctrl-q)</dt><dd><p>Resume output (unfreezes the terminal). You’ll want to remember this one.</p>
+</dd>
+</dl>
+</section>
+<section id="terminal-demonstration">
+<h2>Terminal Demonstration<a class="headerlink" href="#terminal-demonstration" title="Link to this heading"></a></h2>
+<p>You can explore how the “cooked” vs “raw” setting, as well as how the “echo” flag affects the behavior of a terminal. The below example shows what is displayed to the user, what is sent to the program, and the contents of the line buffer as input is entered.</p>
+<template id="terminal-example">
+<style>
+table {
+  margin: auto;
+}
+
+td, th {
+  padding: 1px 20px;
+  text-align: left;
+}
+
+
+#mode {
+  font-family: monospace;
+}
+#modestr {
+  font-family: monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "left right"
+    "bottom bottom";
+}
+
+.grid2 {
+  display: grid;
+  grid-template-areas:
+    "cooked raw"
+    "echo reset";
+  width: max-content;
+  grid-gap: 0 10px;
+}
+ 
+textarea {
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow: auto;
+}
+</style>
+
+  <form onsubmit="return false;">
+    <div style="padding: 0; margin: auto;" class="grid">
+      <fieldset style="grid-area: top" id="settings">
+        <legend>Mode</legend>
+        <div class="grid2">
+        <label><input type="radio" name="mode" id="cooked" value="cooked" checked>Cooked</input></label>
+        <label style="display: inline-block;"><input type="checkbox" id="echo" checked>Echo</input></label>
+        <label><input type="radio" name="mode" id="raw" value="raw">Raw</input></label>
+        <button id="reset">reset</button>
+        </div>
+      </fieldset>
+      <fieldset style="grid-area: left;">
+        <legend>Input to Terminal</legend>
+        <textarea rows="23" style="resize: none; width: 100%;" id="input-box"></textarea>
+        <label>Line Buffer<textarea rows="1" style="resize: none; width: 100%" id="linebuffer-box" readonly disabled></textarea></label>
+      </fieldset>
+      <fieldset style="grid-area: right;">
+        <legend>Output to Application</legend>
+        <textarea rows="23" style="resize: none; width: 100%;" id="output-box" readonly disabled></textarea>
+        <label>Signals<textarea rows="1" style="resize: none; width: 100%;" id="signal-box" readonly disabled></textarea></label>
+      </fieldset>
+      <fieldset style="grid-area: bottom; display: grid; grid-template-columns: auto auto auto auto;">
+        <legend>Send Control Keys</legend>
+        <button  id="ctrl-c" name="Interrupt">  Ctrl-c (INTR)</button>
+        <button  id="ctrl-\" name="Quit">      Ctrl-\ (QUIT)</button>
+        <button  id="ctrl-z" name="Suspend">    Ctrl-z (SUSP)</button>
+        <button  id="ctrl-u" name="Kill">       Ctrl-u (KILL)</button>
+        <button  id="ctrl-d" name="End of File">Ctrl-d (EOF)</button>
+        <button  id="ctrl-s" name="Stop">       Ctrl-s (STOP)</button>
+        <button  id="ctrl-q" name="Start">      Ctrl-q (START)</button>
+      </fieldset>
+    </div>
+  </form>
+</template>
+<script>
+  customElements.define(
+  "terminal-example",
+  class extends HTMLElement {
+    constructor() {
+      super();
+      let template = document.getElementById("terminal-example");
+      let templateContent = template.content;
+
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(templateContent.cloneNode(true));
+
+      function printable(c) {
+        if (c.length == 1) {
+          return true;
+        } else if (c == "Enter") {
+          return true;
+        } else if (c == "Backspace") {
+          return true;
+        }
+      };
+
+      let self=this;
+
+      self.echo = shadowRoot.getElementById("echo")
+      self.cooked = shadowRoot.getElementById("cooked")
+
+      self.input = shadowRoot.getElementById("input-box")
+      self.output = shadowRoot.getElementById("output-box")
+      self.linebuffer = shadowRoot.getElementById("linebuffer-box")
+      self.signal = shadowRoot.getElementById("signal-box")
+
+      self.echoed_input = ""
+      self.frozen = false
+
+      self.cooked_on = self.cooked.checked
+      self.echo_on = self.echo.checked
+
+      self.input.addEventListener("keydown", function(event) {
+        let c = event.key
+        let ctrl = event.ctrlKey
+
+        if (!printable(c)) return;
+
+        event.stopPropagation()
+        event.preventDefault()
+        
+        self.do_input(c, ctrl)
+      })
+
+
+      for (let [c, id] of [ ['c', "ctrl-c"],
+                        ['\\', "ctrl-\\"],
+                        ['z', "ctrl-z"],
+                        ['u', "ctrl-u"],
+                        ['d', "ctrl-d"],
+                        ['s', "ctrl-s"], 
+                        ['q', "ctrl-q"] ]
+      ) {
+        shadowRoot.getElementById(id).addEventListener("click", function (event) { self.do_input(c, true); }); 
+      }
+
+      shadowRoot.getElementById("settings").addEventListener("click", function(event) { self.update(); });
+      shadowRoot.getElementById("reset").addEventListener("click", function(event) { self.reset(); });
+
+
+
+      self.reset();
+      self.update()
+   }
+
+      update() {
+        this.cooked_on = this.cooked.checked
+        this.echo_on = this.echo.checked
+        if (!this.cooked_on) {
+          if (this.echo_on) this.echoed_input += this.linebuffer.value
+          this.output.value += this.linebuffer.value
+          this.linebuffer.value = ""
+        }
+        if (!this.frozen) {
+          if (this.echo_on) {
+            this.input.value = this.echoed_input + this.linebuffer.value
+          } else {
+            this.input.value = this.echoed_input
+          }
+        }
+      }
+
+      reset() {
+        // console.log("reset")
+        this.cooked.checked = true
+        this.echo.checked = true
+        this.input.value = ""
+        this.echoed_input = ""
+        this.linebuffer.value = ""
+        this.output.value = ""
+        this.signal.value = ""
+        this.signal.placeholder = ""
+        this.update()
+      }
+
+      do_input(c, ctrl) {
+        // console.log("do_input(%s, %s)", c, ctrl ? "true" : "false")
+        this.signal.value = ""
+
+        if (this.cooked_on) {
+          if (ctrl) {
+            if (c == 'c') {
+              this.signal.value = "SIGINT (Interrupt)"
+              this.linebuffer.value = ""
+            } else if (c == 'z') {
+              this.signal.value = "SIGTSTP (Terminal Stop)"
+            } else if (c == '\\') {
+              this.signal.value = "SIGQUIT (Quit)"
+              this.linebuffer.value = ""
+            } else if (c == 's') {
+              this.signal.placeholder = "Terminal Frozen (Press ctrl-q to resume)"
+              this.input.style.background = "#c8c8c8"
+              this.frozen = true
+            } else if (c == 'u') {
+              this.linebuffer.value = ""
+            }else if (c == 'd') {
+              if (this.linebuffer.value) {
+                if (this.echo_on) this.echoed_input += this.linebuffer.value
+                this.output.value += this.linebuffer.value
+                this.linebuffer.value = ""
+              } else {
+                this.output.value += '<EOF>'
+                this.signal.value = "End of file indicator embedded in stream"
+              }
+            } else if (c == 'q') {
+              this.input.style.background = ""
+              this.signal.placeholder = ""
+              this.signal.value = "Terminal Unfrozen"
+              this.frozen = false
+            } else {
+              this.signal.value = "Unrecognized ctrl sequence"
+            }
+          } else {
+            if (c.length == 1) {
+              this.linebuffer.value += c
+            } else if (c == "Enter") {
+              this.linebuffer.value += '\n'
+              if (this.echo_on) {
+                this.echoed_input += this.linebuffer.value
+              }
+              this.output.value += this.linebuffer.value
+              this.linebuffer.value = ""
+            } else if (c == "Backspace") {
+              this.linebuffer.value = this.linebuffer.value.slice(0, -1)
+            }
+          }
+        } else {
+          if (!ctrl) {
+            if (c.length == 1) this.linebuffer.value += c;
+            else {
+              if (c == 'Enter') this.linebuffer.value += '^M';
+              else if (c == 'Backspace') this.linebuffer.value += '^?';
+            }
+          } else {
+            this.linebuffer.value += '^' + c.toUpperCase()
+          }
+          this.output.value += this.linebuffer.value
+          if (this.echo_on) this.echoed_input += this.linebuffer.value
+          this.linebuffer.value = ''
+        }
+        if (!this.frozen) {
+          if (this.echo_on) {
+            this.input.value = this.echoed_input + this.linebuffer.value
+          } else {
+            this.input.value = this.echoed_input
+          }
+        }
+      }
+
+  },
+);
+</script>
+<terminal-example></terminal-example>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some browsers intercept certain control keys. Manual buttons are provided to simulate control-key events.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Terminal Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../control-codes/" class="btn btn-neutral float-right" title="Control Codes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

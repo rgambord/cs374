@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Additional Concepts &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Terminal Interface" href="../../terminal/" />
+    <link rel="prev" title="The Filesystem Hierarchy Standard" href="../fhs/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">File Systems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../">File Systems</a></li>
+      <li class="breadcrumb-item active">Additional Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../fhs/" class="btn btn-neutral float-left" title="The Filesystem Hierarchy Standard" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../terminal/" class="btn btn-neutral float-right" title="Terminal Interface" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="additional-concepts">
+<h1>Additional Concepts<a class="headerlink" href="#additional-concepts" title="Link to this heading"></a></h1>
+<p>When working with file systems, there are several special concepts that are worth understanding in order to more effectively manage files and directories. These concepts include dot and dot-dot hard links, hidden files, special device files, and the home directory.</p>
+<section id="relative-and-absolute-paths">
+<h2>Relative and Absolute Paths<a class="headerlink" href="#relative-and-absolute-paths" title="Link to this heading"></a></h2>
+<p>In Unix systems, a path may either be relative to the current working directory of a process, or absolute to the root directory of the file system. Absolute paths always start with a forward slash (<code class="file docutils literal notranslate"><span class="pre">/</span></code>) while relative paths do not. So, <code class="file docutils literal notranslate"><span class="pre">/file</span></code> refers to “file” in the root directory, while <code class="file docutils literal notranslate"><span class="pre">file</span></code> refers to “file” in the current working directory.</p>
+</section>
+<section id="hidden-files-dotfiles">
+<h2>Hidden Files (Dotfiles)<a class="headerlink" href="#hidden-files-dotfiles" title="Link to this heading"></a></h2>
+<p>In Unix, files and directories that begin with a dot (.) are considered hidden files. These files are typically used for configuration data, and are not displayed by default in directory listings. Wildcard filename expansion also doesn’t produce the names of hidden files, by default, except when a leading dot is explicitly provided (e.g. <code class="file docutils literal notranslate"><span class="pre">.*</span></code> matches hidden files, but <code class="file docutils literal notranslate"><span class="pre">*</span></code> does not).</p>
+</section>
+<section id="dot-and-dot-dot">
+<h2>Dot (<code class="file docutils literal notranslate"><span class="pre">.</span></code>) and Dot-Dot (<code class="file docutils literal notranslate"><span class="pre">..</span></code>)<a class="headerlink" href="#dot-and-dot-dot" title="Link to this heading"></a></h2>
+<p>Recall that most modern file systems do not allow the explicit creation of additional hard links to directories, as this could result in circular references which would lead to orphaned directory nodes. It also ensures that every directory has exactly one parent directory (note, the <code class="file docutils literal notranslate"><span class="pre">/</span></code> root directory is its own parent!).</p>
+<p>Within every directory, two special system-managed hard links are created, called dot (<code class="file docutils literal notranslate"><span class="pre">.</span></code>), which points at the directory, and dot-dot (<code class="file docutils literal notranslate"><span class="pre">..</span></code>), which points at the parent directory. These don’t have any of the issues that arbitrary hard links to directories would have, since they are managed automatically by the system. When a directory is removed, the system deletes these two links before unlinking the directory from its parent directory, ensuring that reference counts are handled correctly.</p>
+<p>The <code class="file docutils literal notranslate"><span class="pre">.</span></code> directory doesn’t show up often, but a common use for it is to explicitly refer to a file in the current directory. Sometimes this is necessary because the name of a file matches a reserved word or has some other special meaning. Prepending <code class="file docutils literal notranslate"><span class="pre">./</span></code> to the file name still refers to the same file–e.g. <code class="file docutils literal notranslate"><span class="pre">./test</span></code> instead of <code class="file docutils literal notranslate"><span class="pre">test</span></code>–and disambiguates it from a reserved word or other special meaning.</p>
+<p>The <code class="file docutils literal notranslate"><span class="pre">..</span></code> directory can be very useful for navigation, since moving up to a parent directory would otherwise require entering in the entire path to the parent directory again.</p>
+</section>
+<section id="special-device-files">
+<h2>Special Device Files<a class="headerlink" href="#special-device-files" title="Link to this heading"></a></h2>
+<p>Special device files provide access to hardware devices and other system resources. These files are located in the <code class="file docutils literal notranslate"><span class="pre">/dev</span></code> directory and are implemented as driver code in the kernel. When a program reads from or writes to a device file, the kernel calls the driver’s custom read and write methods to process the data. This allows programs to interact with devices using the same methods used to read and write regular files.</p>
+<p>Device files make it easier for developers to access and manage hardware devices and system resources by abstracting the underlying implementation details of the device. Instead of having to write custom code to communicate with each device, developers can use the standard file I/O operations that are familiar to them. This makes it easier to write portable and maintainable code that can work with a wide range of hardware devices and system resources.</p>
+<p>Many device files represent a one-to-one relationship with a piece of physical hardware, but many others are actually entirely virtual, emulated devices, that exist only as driver code. Their contents are generated on-the-fly. These devices are frequently encountered by regular users, so they are worth mentioning.</p>
+<dl class="simple">
+<dt>/dev/zero</dt><dd><p>This device generates an endless stream of null (value of zero) bytes, and discards any bytes written to it. This is useful for initializing files to a certain size, overwriting a file with all zeros, and to test programs with large inputs.</p>
+</dd>
+<dt>/dev/random</dt><dd><p>This device generates an endless stream of random bytes, and discards any data written to it. This is useful for generating cryptographic keys. <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code> takes entropy from various sources like keyboard and mouse events, disk activity, and other hardware-based random noise. Because of this, it’s a good source of cryptographically secure data, but it can be slow to read from when it runs out of entropy and needs to accumulate more.</p>
+</dd>
+<dt>/dev/urandom</dt><dd><p>This device works just like <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code>, except that it does not wait for entropy to accumulate – it will produce more random bytes using a deterministic pseudo-random number generation algorithm when available entropy runs out. This makes it a faster, but theoretically less secure, source of randomness. This is often used to generate things like temporary file names or to test random inputs to programs, but should probably not be used for high-security cryptographic purposes.</p>
+</dd>
+<dt>/dev/null</dt><dd><p>This device always returns eof (end-of-file) when read from, and discards data written to it. It’s commonly nicknamed the “black hole” device. <code class="file docutils literal notranslate"><span class="pre">/dev/null</span></code> is used very frequently to discard the output of a program or to feed an “empty” file to a program that requires a file to read from.</p>
+</dd>
+<dt>/dev/pts/*</dt><dd><p>The device files in this directory are pseudo-terminal slave (PTS) devices. Various applications need to emulate the behavior of an old-school physical terminal – notably, terminal emulators. We will learn more about how this works later in the course.</p>
+</dd>
+</dl>
+</section>
+<section id="home-directory">
+<h2>Home Directory (<code class="file docutils literal notranslate"><span class="pre">~/</span></code>)<a class="headerlink" href="#home-directory" title="Link to this heading"></a></h2>
+<p>The tilde (<code class="file docutils literal notranslate"><span class="pre">~</span></code>) is shorthand for the current user’s home directory. This is the default location for storing user-specific files, and regular users have very limited permissions outside of their home directories.</p>
+<p>Note that the expansion of <code class="file docutils literal notranslate"><span class="pre">~</span></code> into a user’s home directory path is actually handled by the shell before it runs a command, so it’s not a true file path that other system interfaces and utilities understand directly.</p>
+<p>A less well-known feature of tilde expansion is that it can be used to locate other user’s home directories by appending their username after the tilde. For example, <code class="file docutils literal notranslate"><span class="pre">~root</span></code> expands to the root user’s home directory, which is typically <code class="file docutils literal notranslate"><span class="pre">/root</span></code>. This is often used by system administrators to quickly access other users’ directories without having to navigate through the file system.</p>
+<p>Now, why <code class="file docutils literal notranslate"><span class="pre">~</span></code>, of all characters? For that we have to go all the way back to the ADM-3A terminal of 1976, an influential terminal that was used by many of the people who developed Unix and the programs that would eventually become part of the operating system. Here is a diagram of the ADM-3A keyboard layout; notice that the <code class="docutils literal notranslate"><span class="pre">Home</span></code> key in the upper right hand corner doubles as the <code class="docutils literal notranslate"><span class="pre">~</span></code> key:</p>
+<figure><a title="No machine-readable author provided. StuartBrady assumed (based on copyright claims)., CC BY-SA 3.0 &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:KB_Terminal_ADM3A.svg"><img width="512" alt="KB Terminal ADM3A" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/KB_Terminal_ADM3A.svg/512px-KB_Terminal_ADM3A.svg.png"></a><figcaption>ADM-3A Terminal Keyboard Layout</figcaption></figure></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../fhs/" class="btn btn-neutral float-left" title="The Filesystem Hierarchy Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../terminal/" class="btn btn-neutral float-right" title="Terminal Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

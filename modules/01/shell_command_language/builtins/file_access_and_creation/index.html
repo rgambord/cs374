@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Access and Creation &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../../search/" />
+    <link rel="next" title="Parameters and Options" href="../parameters_and_options/" />
+    <link rel="prev" title="Options Processing" href="../getopts/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">The Shell Command Language</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">Builtins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getopts/">Options Processing</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../">Operating Systems Fundamentals</a></li>
+          <li class="breadcrumb-item"><a href="../../">The Shell Command Language</a></li>
+          <li class="breadcrumb-item"><a href="../">Builtins</a></li>
+      <li class="breadcrumb-item active">File Access and Creation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../getopts/" class="btn btn-neutral float-left" title="Options Processing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../parameters_and_options/" class="btn btn-neutral float-right" title="Parameters and Options" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-access-and-creation">
+<h1>File Access and Creation<a class="headerlink" href="#file-access-and-creation" title="Link to this heading"></a></h1>
+<p>Recall from the previous module that access to each file is governed by a set of permission mode bits. There are three types of permissions, <em>read</em>, <em>write</em> and <em>execute</em>, and three categories of access, <em>user</em>, <em>group</em>, and <em>other</em>. Additionally, the <em>sticky</em>, <em>suid</em>, and <em>sgid</em> special mode bits modify certain aspects of file permissions.</p>
+<section id="file-mode-creation-mask-umask">
+<h2>File Mode Creation Mask (umask)<a class="headerlink" href="#file-mode-creation-mask-umask" title="Link to this heading"></a></h2>
+<p>When a file is created by a process, the process specifies a file <em>mode</em> to create that file with. Many programs use permissive mode values of 0666 (“rw-rw-rw”) for regular files, and 0777 (“rwxrwxrwx”) for directories by default.</p>
+<p>A file mode creation mask, called the umask, is then applied over the specified mode, which <em>removes</em> permissions specified in the umask. For example, a typical umask value is 0022 (”—-w–w-“), which removes write permissions for the <em>group</em> and <em>other</em> access categories. Another typical value is 0077 (”—rwxrwx”) which removes all permissions for the <em>group</em> and <em>other</em> access categories.</p>
+<p>The file mode creation mask is a property of the process itself, and is inherited from its parent process. A shell script can view or set its umask value with the <strong class="program">umask</strong> utility, which affects how future files and directories are created, such as with the shell’s redirection operators, or other file system management utilities.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a general expectation that utilities do not create files with less restrictive access modes than those which they inherit from their parent processes. Utilities which violate this expectation should be well-documented to do so.</p>
+</div>
+<p class="rubric">Example</p>
+<p>$ umask 0022
+$ touch testfile
+$ stat -c ‘%A’ testfile
+-rw-r–r–
+$ rm testfile
+$ umask 0077
+$ touch testfile
+$ stat -c ‘%A’ testfile
+-rw——-</p>
+<p>A user may also use the <strong class="program">chmod</strong> utility to modify the mode of an existing file.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Compared to creating a file and then changing its mode with <strong class="program">chmod</strong>, changing the umask first with <strong class="program">umask</strong>, and <em>then</em> creating the file avoids a race condition where the file temporarily exists with an undesired mode.</p>
+</div>
+</section>
+<section id="group-selection">
+<h2>Group Selection<a class="headerlink" href="#group-selection" title="Link to this heading"></a></h2>
+<p>Each user has a username, a primary group, and a list of additional secondary group memberships. The primary group is typically a group with the same name as that user, and of which they are the only member. Secondary groups are used to manage access to privileged resources; for example, the secondary group <code class="docutils literal notranslate"><span class="pre">sound</span></code> is often used to manage access to sound card resources, or the group <code class="docutils literal notranslate"><span class="pre">video</span></code> manages access to displays.</p>
+<p>A running process has one user and one primary group associated with it; in the case of an interactive shell, this would typically be the currently logged in user and their primary group. The <strong class="program">newgrp</strong> utility can be used to change the shell’s primary group to another group that user is also a member of. This affects which group ownership is applied to newly created files.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>groups<span class="w">  </span><span class="c1"># list available groups</span>
+<span class="go">bennyb audio</span>
+<span class="gp">$ </span>id<span class="w"> </span>-ng<span class="w">  </span><span class="c1"># list primary group</span>
+<span class="go">bennyb</span>
+<span class="gp">$ </span>touch<span class="w"> </span>testfile
+<span class="gp">$ </span>stat<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;%G&#39;</span><span class="w"> </span>testfile<span class="w">  </span><span class="c1"># list testfile group ownership</span>
+<span class="go">bennyb</span>
+<span class="gp">$ </span>rm<span class="w"> </span>testfile
+<span class="gp">$ </span>newgrp<span class="w"> </span>audio<span class="w">  </span><span class="c1"># change primary group to audio</span>
+<span class="gp">$ </span>id<span class="w"> </span>-ng<span class="w">  </span><span class="c1"># confirm primary group</span>
+<span class="go">audio</span>
+<span class="gp">$ </span>touch<span class="w"> </span>testfile
+<span class="gp">$ </span>stat<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;%G&#39;</span><span class="w"> </span>testfile<span class="w">  </span><span class="c1"># list testfile group ownership</span>
+<span class="go">audio</span>
+</pre></div>
+</div>
+<p>A user may also use the <strong class="program">chgrp</strong> utility to modify the group ownership of an existing file.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Compared to creating a file and then changing its group ownership with <strong class="program">chgrp</strong>, changing the shell’s primary group with <strong class="program">newgrp</strong> and <em>then</em> creating a file avoids a race condition where the file temporarily exists with an undesired group ownership.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getopts/" class="btn btn-neutral float-left" title="Options Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../parameters_and_options/" class="btn btn-neutral float-right" title="Parameters and Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

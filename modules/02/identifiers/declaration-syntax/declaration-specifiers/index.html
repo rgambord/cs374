@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declaration Specifiers &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../../search/" />
+    <link rel="next" title="Declarators" href="../declarators/" />
+    <link rel="prev" title="Declaration Syntax" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../object-model/">Object Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">Identifiers</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../">Declaration Syntax</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../">Introduction to C Programming</a></li>
+          <li class="breadcrumb-item"><a href="../../">Identifiers</a></li>
+          <li class="breadcrumb-item"><a href="../">Declaration Syntax</a></li>
+      <li class="breadcrumb-item active">Declaration Specifiers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Declaration Syntax" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../declarators/" class="btn btn-neutral float-right" title="Declarators" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="declaration-specifiers">
+<h1>Declaration Specifiers<a class="headerlink" href="#declaration-specifiers" title="Link to this heading"></a></h1>
+<p>The declaration specifiers name a base type and can also include specifiers that alter the behavior of the entire declaration. These may appear in any order, but a simplified grammar is shown below,</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-definition docutils container">
+<p><span class="syn-nonterm">declaration-specifiers</span>:</p>
+</div>
+<div class="syntax-rule docutils container">
+<p>[ <span class="syn-nonterm">storage-class-specifier</span> ]</p>
+<p>[ <span class="syn-nonterm">function-specifier</span> ]</p>
+<p><span class="syn-nonterm">type-specifier…</span></p>
+<p>[ <span class="syn-nonterm">type-qualifier…</span> ]</p>
+</div>
+</div>
+</div>
+<section id="type-specifiers">
+<h2>Type Specifiers<a class="headerlink" href="#type-specifiers" title="Link to this heading"></a></h2>
+<div class="compound">
+<p>Every declaration must name a base type, which is specified by a sequence of type specifiers. These may name one of the <a class="reference internal" href="../../../type-system/"><span class="doc">scalar types</span></a>, a type alias, or denote a structure, union, or enumeration type as described below:</p>
+<div class="syntax-block docutils container">
+<div class="syntax-production docutils container">
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">struct</span></p>
+<p><span class="syn-nonterm">tag-name</span></p>
+<p><span class="syn-term">{</span> <span class="syn-nonterm">member-declaration-list</span> <span class="syn-term">}</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">union</span></p>
+<p><span class="syn-nonterm">tag-name</span></p>
+<p><span class="syn-term">{</span> <span class="syn-nonterm">member-declaration-list</span> <span class="syn-term">}</span></p>
+</div>
+<div class="syntax-rule docutils container">
+<p><span class="syn-term">enum</span></p>
+<p><span class="syn-nonterm">tag-name</span></p>
+<p><span class="syn-term">{</span> <span class="syn-nonterm">enumerator-list</span> <span class="syn-term">}</span></p>
+</div>
+</div>
+</div>
+</div>
+<p>This results in a declaration of <em>tag-name</em> with the given definition. Either <em>tag-name</em> or the definition may be omitted, as described in <a class="reference internal" href="../../practical-declarations/types/"><span class="doc">User-Defined Types</span></a></p>
+<p>Importantly, neither pointer, array, nor function types can be specified as part of type specifiers–these are instead derived from the base type in each declarator, individually.</p>
+</section>
+<section id="type-qualifiers">
+<h2>Type Qualifiers<a class="headerlink" href="#type-qualifiers" title="Link to this heading"></a></h2>
+<p>The base type denoted in the type specifiers may additionally be <em>cvr</em>-qualified using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code> keywords, all of which affect the compiler’s ability to optimize accesses to qualified objects.</p>
+<dl class="simple">
+<dt>Const Qualification</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code> qualifier denotes a type which produces undefined behavior when modified by the program. A compiler might optimize accesses to const-qualified objects under the assumption that their values do not change. Additionally, const-qualified objects may be placed in read-only memory, which is faster to access on some systems.</p>
+</dd>
+<dt>Volatile Qualification</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">volatile</span></code> qualifier denotes a type which produces <a class="reference internal" href="../../../../../meta/glossary/c/#term-side-effect"><span class="xref std std-term">side effects</span></a> when its value is <em>accessed</em>. This implies that its value may “spontaneously” change between accesses, such as in an object which represents memory-mapped I/O in a device driver. This prevents the compiler from assuming that it knows the value of an object and from performing related optimizations.</p>
+</dd>
+<dt>Restrict Qualification</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">restrict</span></code> qualifier denotes a pointer which does not <a class="reference internal" href="../../../../../meta/glossary/c/#term-aliasing"><span class="xref std std-term">alias</span></a> another pointer. A compiler might optimize accesses through a restrict-qualified pointer under the assumption that no modifications through <em>another</em> pointer could have changed the value of the pointed-at object. Many library functions restrict-qualify their parameters.</p>
+</dd>
+</dl>
+<p>These qualifiers are often mistaken for compiler-enforced constraints, with disastrous results. While modern compilers may warn of constraint violations in <em>some</em> situations, most cases are impossible for the compiler to detect. It is the programmer’s responsibility to obey cvr-qualification. Modifying a const-qualified object, aliasing a restrict-qualified pointer, or failing to volatile-qualify an externally modified object can all lead to undefined behavior.</p>
+</section>
+<section id="storage-class-specifiers">
+<h2>Storage Class Specifiers<a class="headerlink" href="#storage-class-specifiers" title="Link to this heading"></a></h2>
+<p>The storage class specifier modifies the overall behavior of a declaration. There are five storage class specifiers, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">auto</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">register</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code>. The validity and effects of storage class specifiers are context dependent, based on the location of the declaration, and whether the declaration is for an object, or function.</p>
+<dl class="simple">
+<dt>No Storage Class</dt><dd><p>File scope object declarations have external linkage and static storage duration. All other object declarations have no linkage and automatic storage duration. Function declarations have external linkage.</p>
+</dd>
+<dt>Auto Storage Class</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">auto</span></code> specifier may be applied to declarations of block-scope objects only, and its effects are redundant, so it should not be used. It is a legacy from earlier versions of C that supported an implied type specification, such that declarations like <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">;</span></code> were once valid.</p>
+</dd>
+<dt>Register Storage Class</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">register</span></code> specifier may be applied to block-scope object declarations and function parameter declarations only. It is an error to access the address of objects declared with the register storage class, which enables the compiler to store these objects in registers rather than memory, for faster access. Unlike the cvr-qualifiers mentioned above, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">register</span></code> is enforced by the compiler.</p>
+</dd>
+<dt>Typedef Storage Class</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span></code> specifier may be applied to block- or file-scope declarations, and modifies the entire declaration so that each declarator declares a type alias, rather than an object or function. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">();</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as an object of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>, and <code class="docutils literal notranslate"><span class="pre">f</span></code> as a function returning <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>. On the other hand, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">typedef</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">();</span></code> declares <code class="docutils literal notranslate"><span class="pre">x</span></code> as an alias for <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>, and <code class="docutils literal notranslate"><span class="pre">f</span></code> as an alias for <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="p">()</span></code>.</p>
+</dd>
+<dt>Static Storage Class</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code> specifier may only be used for file-scope declarations of objects and functions, and for block-scope declarations of objects. At file-scope, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">static</span></code> changes the linkage of declared identifiers from external to internal linkage. At block-scope, it changes the declared object’s storage duration from automatic to static, but the object still has no linkage.</p>
+</dd>
+<dt>Extern Storage Class</dt><dd><p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">extern</span></code> specifier may be used for block- or file-scope declarations to specify external linkage of declared identifiers.</p>
+</dd>
+</dl>
+<p>The subsections of <a class="reference internal" href="../../practical-declarations/"><span class="doc">Practical Declarations</span></a> each cover how these specifiers are used in practice.</p>
+</section>
+<section id="function-specifiers">
+<h2>Function Specifiers<a class="headerlink" href="#function-specifiers" title="Link to this heading"></a></h2>
+<p>There is only one function specifier, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">inline</span></code>, and it is used to provide an alternative function definition for an otherwise externally linked function. This allows the compiler to directly inline the function, which means it replaces the function call with the actual code of the function, which is generally faster. Function inlining is an advanced topic that will not be covered in more detail in this class.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Declaration Syntax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../declarators/" class="btn btn-neutral float-right" title="Declarators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

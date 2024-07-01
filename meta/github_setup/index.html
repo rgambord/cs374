@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Configuration &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GitHub Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="github-configuration">
+<h1>GitHub Configuration<a class="headerlink" href="#github-configuration" title="Link to this heading"></a></h1>
+<p>GitHub Classroom will allow you to easily create your own private forks of the provided skeleton code for the BigShell assignment. You can then work on your BigShell assignment directly in your web browser, using the GitHub codespaces IDE, in your favorite local editor, or on the class <strong>os1</strong> server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We cannot guarantee that code which compiles and runs correctly on your local system, os1, or on a GitHub codespace, will also compile and run identically in the Gradescope testing environment. Test your code regularly on Gradescope!</p>
+</div>
+<p>In order to use GitHub classroom, you will need to have a GitHub Account. You can create an account <a class="reference external" href="https://github.com/join" rel="noopener noreferrer" target="_blank">here</a>.</p>
+<p>Later in the course, I will give you a link to the GitHub classroom assignment for BigShell. Clicking one of this link will prompt you to accept the assignment, which will create a new private repository in the Classroom environment that only you and instructors can access.</p>
+<section id="github-codespace">
+<h2>GitHub Codespace<a class="headerlink" href="#github-codespace" title="Link to this heading"></a></h2>
+<p>Once you have forked the repository, you can work on the project directly in your browser by setting up a Codespace. See the following screenshots for how to create a Codespace for a repository:</p>
+<a class="framed"
+               data-lightbox="group-codespace"
+               href="../../_images/img_1.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_1.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-codespace"
+               href="../../_images/img_2.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_2.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-codespace"
+               href="../../_images/img_3.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_3.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-codespace"
+               href="../../_images/img_4.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_4.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-codespace"
+               href="../../_images/img_5.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_5.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a></section>
+<section id="working-on-os1">
+<h2>Working on os1<a class="headerlink" href="#working-on-os1" title="Link to this heading"></a></h2>
+<p>I strongly recommend that you set this up, even if you don’t use it, just so you have the option in case something goes wrong.</p>
+<p>First, you need to create a public/private key pair <em>on</em> <strong>os1</strong>, so go ahead and log into <strong>os1</strong> and run the <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519</code> command again. You will use this generated key to pull/push to GitHub.</p>
+<p>Register this key with GitHub, following these steps:</p>
+<a class="framed"
+               data-lightbox="group-os1_ssh"
+               href="../../_images/img_6.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_6.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-os1_ssh"
+               href="../../_images/img_7.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_7.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-os1_ssh"
+               href="../../_images/img_8.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_8.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><a class="framed"
+               data-lightbox="group-os1_ssh"
+               href="../../_images/img_9.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_9.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p>Next, go to your repository for the assignment and copy the <strong>SSH</strong> URL of your repository:</p>
+<a class="framed"
+               data-lightbox="group-os1_ssh"
+               href="../../_images/img_10.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_10.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p>On <strong>os1</strong>, run the <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>clone</code> command with the repository URL,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:osu-cs374/base64-benny-beaver.git<span class="w"> </span>base64
+<span class="go">Cloning into &#39;base64&#39;...</span>
+<span class="go">remote: Enumerating objects: 25, done.</span>
+<span class="go">remote: Counting objects: 100% (13/13), done.</span>
+<span class="go">remote: Compressing objects: 100% (8/8), done.</span>
+<span class="go">remote: Total 25 (delta 3), reused 13 (delta 3), pack-reused 12</span>
+<span class="go">Receiving objects: 100% (25/25), 9.13 KiB | 1.30 MiB/s, done.</span>
+<span class="go">Resolving deltas: 100% (3/3), done.</span>
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>base64
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$ </span>make
+<span class="go">  [...]</span>
+</pre></div>
+</div>
+<p>From here you can work on the assignment. To commit your changes, first you need to add any modified files to the commit. To see a list of your modified files, use <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>status</code>. You can stage files with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>path/to/file</code>, or you can just simply do <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>-A</code> to add all modified files. Then, you can write a commit with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>commit</code>, and push your changes to the remote repository on GitHub with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>push</code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$</span>vim<span class="w"> </span>src/base64.c
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$</span>git<span class="w"> </span>status
+<span class="go">On branch main</span>
+<span class="go">Your branch is up to date with &#39;origin/main&#39;.</span>
+
+<span class="go">Changes not staged for commit:</span>
+<span class="gp gp-VirtualEnv">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="gp gp-VirtualEnv">(use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="go">      modified:   src/base64.c</span>
+
+<span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$</span>git<span class="w"> </span>add<span class="w"> </span>-A
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$</span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Bug Fix&quot;</span>
+<span class="go">[main e7ec72b] Bug Fix</span>
+<span class="go">1 file changed, 2 insertions(+)</span>
+
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="gp">$</span>git<span class="w"> </span>push
+<span class="go">Enumerating objects: 7, done.</span>
+<span class="go">Counting objects: 100% (7/7), done.</span>
+<span class="go">Delta compression using up to 96 threads</span>
+<span class="go">Compressing objects: 100% (4/4), done.</span>
+<span class="go">Writing objects: 100% (4/4), 373 bytes | 373.00 KiB/s, done.</span>
+<span class="go">Total 4 (delta 3), reused 0 (delta 0), pack-reused 0</span>
+<span class="go">remote: Resolving deltas: 100% (3/3), completed with 3 local objects.</span>
+<span class="go">To github.com:osu-cs374/base64.git</span>
+<span class="go">   b382ea8..e7ec72b  main -&gt; main</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <em>not</em> use the HTTPS address to clone your repository. GitHub long ago deprecated username and password authentication via the HTTPS links–these can now only be used to clone read-only copies of public repositories:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/osu-cs374/base64-benny-beaver.git<span class="w"> </span>base64
+<span class="go">Cloning into &#39;base64-benny-beaver&#39;...</span>
+<span class="go">Username for &#39;https://github.com&#39;: benny-beaver</span>
+<span class="go">Password for &#39;https://benny-beaver@github.com&#39;: **************************</span>
+<span class="go">remote: Support for password authentication was removed on August 13, 2021.</span>
+<span class="go">remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.</span>
+<span class="go">fatal: Authentication failed for &#39;https://github.com/osu-cs374/base64-benny-beaver.git/&#39;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="submitting-to-gradescope">
+<h2>Submitting To Gradescope<a class="headerlink" href="#submitting-to-gradescope" title="Link to this heading"></a></h2>
+<p>After pushing your changes to your GitHub repository, you can submit it to Gradescope:</p>
+<a class="framed"
+               data-lightbox="group-submit"
+               href="../../_images/img_11.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/img_11.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

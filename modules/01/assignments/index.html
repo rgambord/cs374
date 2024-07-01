@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignments &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Introduction to C Programming" href="../../02/" />
+    <link rel="prev" title="Executable Shell Scripts" href="../shell_command_language/executable_scripts/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Assignments</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../shell_command_language/executable_scripts/" class="btn btn-neutral float-left" title="Executable Shell Scripts" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../02/" class="btn btn-neutral float-right" title="Introduction to C Programming" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="assignments">
+<h1>Assignments<a class="headerlink" href="#assignments" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Watch the 1982 short film, <a class="reference external" href="https://youtu.be/tc4ROCJYbm0" rel="noopener noreferrer" target="_blank">The UNIX System: Making Computers More Productive</a> from the AT&amp;T Tech Archives, which illustrates many of the groundbreaking contributions UNIX made to the world of computing–many of which we take for granted, today.</p></li>
+<li><p>Read the <a class="reference external" href="https://doi.org/10.1145/361011.361061" rel="noopener noreferrer" target="_blank">The UNIX Time-Sharing System</a> paper which describes the basic design of UNIX, in the creators’ own words.</p></li>
+<li><p>Read the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html" rel="noopener noreferrer" target="_blank">POSIX Shell Command Language</a>, which details the design of the POSIX Shell.</p></li>
+<li><p>Optional: Watch the film, <a class="reference external" href="https://youtu.be/2XLZ4Z8LpEE" rel="noopener noreferrer" target="_blank">Using a 1930 Teletype as a Linux Terminal</a>, which demonstrates how a teletype machine can still interface with a modern Linux operating system due to the legacy terminal interface that it supports.</p></li>
+</ol>
+<section id="posix-standards">
+<h2>POSIX Standards<a class="headerlink" href="#posix-standards" title="Link to this heading"></a></h2>
+<p>Ensure that you are referring to the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/" rel="noopener noreferrer" target="_blank">POSIX.1-2008</a> version of the standard. Skim through the following sections, and be prepared to refer back to them throughout the course:</p>
+<p class="rubric">Within the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/idx/xbd.html" rel="noopener noreferrer" target="_blank">Base Definitions</a> volume, read:</p>
+<ul>
+<li><p>Section 5: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap05.html" rel="noopener noreferrer" target="_blank">File Format Notation</a></p></li>
+<li><p>Section 8: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap08.html" rel="noopener noreferrer" target="_blank">Environment Variables</a>.</p>
+<ul class="simple">
+<li><p><strong>Skip</strong> <em>8.2 Internationalization Variables</em>.</p></li>
+</ul>
+</li>
+<li><p>Section 9: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap09.html" rel="noopener noreferrer" target="_blank">Regular Expressions</a>.</p>
+<ul class="simple">
+<li><p><strong>Skip</strong> <em>9.5 Regular Expression Grammar</em>;</p></li>
+</ul>
+</li>
+<li><p>Section 11: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap11.html" rel="noopener noreferrer" target="_blank">General Terminal Interface</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Skip</strong> <em>11.1.1 Opening a Terminal Device File</em>. Managing terminals is an advanced topic.</p></li>
+<li><p><strong>Skip</strong> <em>11.1.3 The Controlling Terminal</em>; a controlling terminal is just the terminal that a process is associated with. Managing terminals is an advanced topic.</p></li>
+<li><p>In <em>11.2 Parameters that Can be Set</em>, <strong>only</strong> read about the following important terminal mode flags:</p>
+<ul>
+<li><p><em>11.2.2 Input Modes</em>: BRKINT, IXANY, IXOFF, and IXON</p></li>
+<li><p><em>11.2.5 Local Modes</em>: ECHO, ICANON, and TOSTOP</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Section 12: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/V1_chap12.html" rel="noopener noreferrer" target="_blank">Utility Conventions</a></p></li>
+</ul>
+<p class="rubric">Within the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/idx/xcu.html" rel="noopener noreferrer" target="_blank">Shell &amp; Utilities</a> volume, read:</p>
+<ul class="simple">
+<li><p>Section 1.4: <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/utilities/V3_chap01.html#tag_17_04" rel="noopener noreferrer" target="_blank">Utility Description Defaults</a></p></li>
+</ul>
+</section>
+<section id="man-pages">
+<h2>Man Pages<a class="headerlink" href="#man-pages" title="Link to this heading"></a></h2>
+<p>You will be required to read many man pages throughout this course. Always read manpages on the system you are programming on, since they are specific to a particular system and its software versions! Manpages are referenced in the form <em class="manpage">name(section)</em> such as <em class="manpage">bash(1)</em>. To view a particular man page run the command <code class="code highlight shell docutils literal highlight-shell">man<span class="w"> </span><span class="o">[</span>section<span class="o">]</span><span class="w"> </span>name</code>. The section number is optional, and the man pager will select the first page it finds that matches the given page name, if omitted. The arguments to <strong class="program">man</strong> are case-insensitive.</p>
+<p>In general, skim over <em>SYNOPSIS</em>, <em>OPTIONS</em>, <em>ENVIRONMENT</em> sections, and ignore the <em>VERSIONS</em>, <em>CONFORMING TO</em>, <em>AUTHORS</em> sections. Any other sections should generally be read fully as they contain important information about usage, exit status or return value, and other important notes. It is important to learn how to quickly find relevant information in man pages, and the only way to do that is by practicing!</p>
+<ul class="simple">
+<li><p>Read the man page for <strong class="program">man</strong> itself, <em class="manpage">MAN(1)</em> (<code class="code highlight shell docutils literal highlight-shell">man<span class="w"> </span><span class="m">1</span><span class="w"> </span>man</code>). This page explains in detail the functionalities that <strong class="program">man</strong> offers as well as the basic layout of information in manpages. Pay close attention to the list of section numbers–you will want to remember these!</p></li>
+<li><p>Read the POSIX shell manpage, <em class="manpage">SH(1P)</em> (<code class="code highlight shell docutils literal highlight-shell">man<span class="w"> </span>1p<span class="w"> </span>sh</code>). Skip the <em>EXTENDED DESCRIPTION</em> section; you won’t be using vi-mode. Bash and most other shells implement their own line editing functionality, usually based off <strong class="program">emacs</strong>, that is more intuitive for modern users, using familiar control-character chords.</p></li>
+</ul>
+<p>Notice that some man pages are in sections suffixed with “p”, such as “1p”. The “p” here means “POSIX”, and the man pages in these sections are verbatim duplicates of their corresponding sections in the POSIX standards. The non-“p” sections contain pages which are specific to that particular system’s implementations. So, for example, <em class="manpage">sh(1p)</em> describes the POSIX shell, while <em class="manpage">sh(1)</em> might describe the system’s installed shell implementation, such as <strong class="program">bash</strong> or <strong class="program">zsh</strong>. Generally, the “p” pages are used when writing software to be maximally portable across POSIX systems, while the non-“p” versions are used when working with software only on a particular system.</p>
+<p>Also, when you are working on an assignment inside <strong class="program">vim</strong>, you can easily open a manpage with <strong class="program">vim</strong>’s internal manpage viewer with the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command. Run <code class="docutils literal notranslate"><span class="pre">:h</span> <span class="pre">Man</span></code> in <strong class="program">vim</strong> to see more about its usage. Note that the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command is capitalized in <strong class="program">vim</strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../shell_command_language/executable_scripts/" class="btn btn-neutral float-left" title="Executable Shell Scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../02/" class="btn btn-neutral float-right" title="Introduction to C Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

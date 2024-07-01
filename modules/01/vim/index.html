@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Development in Vim &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="The Shell Command Language" href="../shell_command_language/" />
+    <link rel="prev" title="Background Commands" href="../shell/background/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Software Development in Vim</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../shell/background/" class="btn btn-neutral float-left" title="Background Commands" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../shell_command_language/" class="btn btn-neutral float-right" title="The Shell Command Language" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-development-in-vim">
+<h1>Software Development in Vim<a class="headerlink" href="#software-development-in-vim" title="Link to this heading"></a></h1>
+<p>The vast majority of remote development targets have <strong class="program">vim</strong> installed alongside the POSIX standard utility <strong class="program">vi</strong>. Proficiency in <strong class="program">vim</strong> is not only an important skill to develop in order to become a more versatile software developer, but it will also introduce you to an unusual but amazingly pervasive and influential interface paradigm.</p>
+<p>As you begin to master <strong class="program">vim</strong>, you may find yourself instinctively hammering out commands in other applications. You’ll certainly experience a new feeling of frustration that you have to delete your mess of keystrokes, reach for your mouse, and do things <em>the slow way</em>. But, there will be sublime moments when you hit <kbd class="kbd docutils literal notranslate">/</kbd> in your web browser and a search box pops up, or <kbd class="kbd docutils literal notranslate">k</kbd> in your email client and the next email opens. You’ll have learned an almost secret language, and once you’ve really learned it, it’ll be such a pleasure to use the software that speaks it–and torture to use that which doesn’t.</p>
+<p>In this course we use a popular ground-up re-implementation of Vim called NeoVim (<strong class="program">nvim</strong>). The two are very similar from an end-user perspective, but NeoVim has a Lua based API for plugins and configuration, rather than the domain-specific <em>vim script</em>, and is designed for modern systems without a lot of arcane baggage associated with the older <strong class="program">vim</strong>. This has led to its widespread adoption, supplanting <strong class="program">vim</strong> as a primary IDE among systems programmers over the last few years. Unfortunately, it won’t be pre-installed on most rem  ote systems, but any skills you learn with NeoVim will translate nicely to any of the times you come across <strong class="program">vim</strong> or <strong class="program">vi</strong> in the wild.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On <strong>os1</strong>, once you’ve got your environment set up correctly, <strong class="program">vim</strong> is a soft-link to <strong class="program">nvim</strong>, so you should be able to run NeoVim with <code class="code highlight shell docutils literal highlight-shell">vim</code>. You can confirm that you are set up correctly by checking the version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>vim<span class="w"> </span>--version
+<span class="go">NVIM v0.8.0</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</div>
+<p>Vim has a notoriously steep learning curve, but it’s more of a running joke than a reality. It takes most users no more than few hours to start to learn the basics that allow them to edit text nearly as quickly as on a more typical editor. We also have a nicely setup configuration with lots of plugins (such as code completion and an LSP server) to make the environment friendlier and easier for a beginner.</p>
+<section id="vimtutor">
+<h2>Vimtutor<a class="headerlink" href="#vimtutor" title="Link to this heading"></a></h2>
+<p>The first place to start is with the comprehensive <strong class="program">vimtutor</strong>, which is actually just a text file that you open in <strong class="program">vim</strong>. It will walk you through many of the basic <strong class="program">vim</strong> features. By the end of it, you should be able to perform basic editing tasks.</p>
+<p>To get started, log into <strong>os1</strong>, and run <strong class="program">vimtutor</strong>!</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../../_images/vimtutor.png"><img alt="Vimtutor screenshot" src="../../../_images/vimtutor.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong class="program">vimtutor</strong> opens an interactive text file in <strong class="program">vim</strong> so you can lean by doing!</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="video-resources">
+<h2>Video Resources<a class="headerlink" href="#video-resources" title="Link to this heading"></a></h2>
+<p>YouTuber, ThePrimeagan, published a comprehensive and entertaining series of videos demonstrating various <strong class="program">vim</strong> concepts:</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=wW5TfFH1XMtW_oyw&amp;list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p><p>MIT also released a series of videos called the “Missing Semester” which cover various topics CS students are usually expected to learn on their own. Lecture 3: Editors, covers the use of <strong class="program">vim</strong>:</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/a6Q8Na575qc?si=4tHz7l_IuLU8x5at" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p></section>
+<section id="other-tips">
+<h2>Other tips<a class="headerlink" href="#other-tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Leaving <strong class="program">vim</strong> to do something in the shell, like test your code? Instead of <code class="docutils literal notranslate"><span class="pre">:wq</span></code> and then having to reopen your file after, try <code class="docutils literal notranslate"><span class="pre">:w</span></code> and then press <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> to stop <strong class="program">vim</strong> in the background. When you’re ready to return to editing, execute the <strong class="program">fg</strong> utility to move <strong class="program">vim</strong> back into the foreground without losing your place.</p></li>
+<li><p>You can access <strong class="program">man</strong> pages directly from inside <strong class="program">vim</strong>, with the <code class="docutils literal notranslate"><span class="pre">:Man</span></code> command (note, capital ‘M’), such as <code class="docutils literal notranslate"><span class="pre">:Man</span> <span class="pre">vim</span></code>.</p></li>
+<li><p>Want to focus on writing instead of formatting? Type up your C program and then press <code class="docutils literal notranslate"><span class="pre">\f</span></code> in normal mode to run the language server formatter (clang format) and reformat your code to a consistent style (this is only set up for C at the moment). If you want to customize the automatic formatting, you can create a file in your home directory or root of your project called <code class="file docutils literal notranslate"><span class="pre">.clang-format</span></code> with options you can find in the <strong class="program">clang-format</strong> documentation online.</p></li>
+<li><p>Scrolling up and down a lot to reference an earlier part of your code? Open a split (<code class="docutils literal notranslate"><span class="pre">:sp</span></code>) of the current buffer. Now you can simultaneously view two locations of the same file.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../shell/background/" class="btn btn-neutral float-left" title="Background Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../shell_command_language/" class="btn btn-neutral float-right" title="The Shell Command Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

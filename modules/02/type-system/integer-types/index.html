@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integer Types &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Special Integer Types" href="../special-integer-types/" />
+    <link rel="prev" title="Type System" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">Type System</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Introduction to C Programming</a></li>
+          <li class="breadcrumb-item"><a href="../">Type System</a></li>
+      <li class="breadcrumb-item active">Integer Types</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Type System" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../special-integer-types/" class="btn btn-neutral float-right" title="Special Integer Types" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integer-types">
+<span id="index-0"></span><h1>Integer Types<a class="headerlink" href="#integer-types" title="Link to this heading"></a></h1>
+<p>C includes several integer types each with a successively larger range of values. For each signed integer type, there is corresponding (but different) unsigned integer type.</p>
+<p>The rules for these types are somewhat complex to account for the wide variety of systems where C is implemented, but can be summarized as follows,</p>
+<section id="representation">
+<h2>Representation<a class="headerlink" href="#representation" title="Link to this heading"></a></h2>
+<p>Every integer type is consists value, padding, and sign bits.</p>
+<dl id="index-1">
+<dt>Value bit</dt><dd><p>Value bits are assigned successive powers of 2 (i.e. <img class="math" src="../../../../_images/math/27d9b51afbf202d892328b90749bad913e661a90.svg" alt="2^0, 2^1, 2^2, ..."/>) and contribute to the integer’s value. The order of value bits is unspecified (intended to account for <a class="reference external" href="https://en.wiktionary.org/wiki/endianness" rel="noopener noreferrer" target="_blank">endianness</a>).</p>
+<p>The number of value bits in an integer is called its <a class="reference internal" href="../../../../meta/glossary/c/#term-precision"><span class="xref std std-term">precision</span></a>.</p>
+</dd>
+</dl>
+<dl class="simple" id="index-2">
+<dt>Padding bit</dt><dd><p>Padding bits do not contribute to the value of an integer. Two integers may compare equal even when their padding bits differ.</p>
+</dd>
+</dl>
+<dl id="index-3">
+<dt>Sign bit</dt><dd><p>A bit which indicates that a signed integer is positive, when unset, or negative, when set. Signed integers have one signed bit, while unsigned integers do not have a signed bit.</p>
+<p>Signed integers must be represented using one of the following implementations, where <img class="math" src="../../../../_images/math/3bfb3a64189a14b2704f4610827762d5e3145114.svg" alt="N"/> is its <a class="reference internal" href="../../../../meta/glossary/c/#term-precision"><span class="xref std std-term">precision</span></a>:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Implementation</p></th>
+<th class="head"><p>Sign Bit Value</p></th>
+<th class="head"><p>Minimum Value</p></th>
+<th class="head"><p>Maximum Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Sign and Magnitude</p></th>
+<td><p>Negates Value Bits</p></td>
+<td><p><img class="math" src="../../../../_images/math/f472782481a2318784f7f244f2e0b0bba50c0962.svg" alt="-2^N + 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/d1a575bb7c566c41a6e07bca3205653658d2b822.svg" alt="2^N - 1"/></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>One’s Complement</p></th>
+<td><p><img class="math" src="../../../../_images/math/3caec0cb9b7aa7985481d98f304914202afba737.svg" alt="-2^N - 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/f472782481a2318784f7f244f2e0b0bba50c0962.svg" alt="-2^N + 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/d1a575bb7c566c41a6e07bca3205653658d2b822.svg" alt="2^N - 1"/></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Two’s Complement</p></th>
+<td><p><img class="math" src="../../../../_images/math/7d4c97cff1cff18cc035b8d403405c209da1305b.svg" alt="-2^N"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/7d4c97cff1cff18cc035b8d403405c209da1305b.svg" alt="-2^N"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/d1a575bb7c566c41a6e07bca3205653658d2b822.svg" alt="2^N - 1"/></p></td>
+</tr>
+</tbody>
+</table>
+<p>Positive signed values are required to have the exact same representation as the same value in the corresponding unsigned type. An integer’s <em>width</em> is the number of sign and value bits, which is always equal to or one more than its <em>precision</em>, for unsigned and signed integers, respectively.</p>
+</div></blockquote>
+</dd>
+</dl>
+</section>
+<section id="minimum-range-and-size">
+<h2>Minimum Range and Size<a class="headerlink" href="#minimum-range-and-size" title="Link to this heading"></a></h2>
+<p>Every integer type has a defined minimum range of values, which implies a minimum width. These values correspond to familiar AMD64 register sizes:</p>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Corresponding Register</p></th>
+<th class="head"><p>Width</p></th>
+<th class="head"><p>Signed Range</p></th>
+<th class="head"><p>Unsigned Max</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code></p></td>
+<td><p><code class="code highlight asm docutils literal highlight-asm"><span class="nf">al</span></code> and <code class="code highlight asm docutils literal highlight-asm"><span class="nf">ah</span></code></p></td>
+<td><p>8</p></td>
+<td><p><img class="math" src="../../../../_images/math/993d7e904e829550d10083ea8a8ef2d1030fb985.svg" alt="\pm 2^{7} - 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/74d5e98b5d06ee34b081090a44f7a7227e23626f.svg" alt="2^{8} - 1"/></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">short</span></code></p></td>
+<td><p><code class="code highlight asm docutils literal highlight-asm"><span class="nf">ax</span></code></p></td>
+<td><p>16</p></td>
+<td><p><img class="math" src="../../../../_images/math/5e1d290ceb5bbd11522557fb769d172ccf9e69d5.svg" alt="\pm 2^{15} - 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/702833d8010edb2b3db8434d4e3ae4fbf38bd7a9.svg" alt="2^{16} - 1"/></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span></code></p></td>
+<td><p><code class="code highlight asm docutils literal highlight-asm"><span class="nf">eax</span></code></p></td>
+<td><p>32</p></td>
+<td><p><img class="math" src="../../../../_images/math/5bc53c3b22b82f99f7d0c383538cf37d56a7ad1c.svg" alt="\pm 2^{31} - 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/170ef95d272ae2756457b026f0af8b5af647714b.svg" alt="2^{32} - 1"/></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span><span class="w"> </span><span class="k">long</span></code></p></td>
+<td><p><code class="code highlight asm docutils literal highlight-asm"><span class="nf">rax</span></code></p></td>
+<td><p>64</p></td>
+<td><p><img class="math" src="../../../../_images/math/f92783a3ac676ea5c10d20ab4d68d41f937d569e.svg" alt="\pm 2^{63} - 1"/></p></td>
+<td><p><img class="math" src="../../../../_images/math/81cee35683f7af54e285d71e610f020aed797299.svg" alt="2^{64} - 1"/></p></td>
+</tr>
+</tbody>
+</table>
+<p id="index-4">The actual implemented size of each type depends on the chosen <em>data model</em>, which defines the size of each of these types along with the size of a pointer (memory address) of a particular system. The two most common x86-64 data models are LLP64 (Windows) and LP64 (Unix) are almost equivalent, differing only in the size of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span></code>:</p>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Environment</p></th>
+<th class="head stub"><p>Data Model</p></th>
+<th class="head"><p>short</p></th>
+<th class="head"><p>int</p></th>
+<th class="head"><p>long</p></th>
+<th class="head"><p>long long</p></th>
+<th class="head"><p>Pointer Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Windows</p></th>
+<th class="stub"><p>LLP64</p></th>
+<td><p>16</p></td>
+<td><p>32</p></td>
+<td><p><strong>32</strong></p></td>
+<td><p>64</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Unix</p></th>
+<th class="stub"><p>LP64</p></th>
+<td><p>16</p></td>
+<td><p>32</p></td>
+<td><p><strong>64</strong></p></td>
+<td><p>64</p></td>
+<td><p>64</p></td>
+</tr>
+</tbody>
+</table>
+<p>The exact range that each type supports on a particular system is exposed through various macros defined in the <code class="file docutils literal notranslate"><span class="pre">limits.h</span></code> header.</p>
+</section>
+<section id="integer-rank">
+<span id="index-5"></span><h2>Integer Rank<a class="headerlink" href="#integer-rank" title="Link to this heading"></a></h2>
+<p>The precision of each type can be greater than the minimum specified, but the following ranking of precision must be observed so that each type can represent any value of a type that it outranks:</p>
+<p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">signed</span><span class="w"> </span><span class="k">char</span></code> ≤ <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">short</span></code> ≤ <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> ≤ <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span></code> ≤ <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">long</span><span class="w"> </span><span class="k">long</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Type System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../special-integer-types/" class="btn btn-neutral float-right" title="Special Integer Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

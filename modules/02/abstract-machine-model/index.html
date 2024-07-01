@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abstract Machine Model &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Statements and Structure" href="statements-and-structure/" />
+    <link rel="prev" title="Expressions" href="../expressions/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/">Expressions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Introduction to C Programming</a></li>
+      <li class="breadcrumb-item active">Abstract Machine Model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../expressions/" class="btn btn-neutral float-left" title="Expressions" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="statements-and-structure/" class="btn btn-neutral float-right" title="Statements and Structure" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="abstract-machine-model">
+<h1>Abstract Machine Model<a class="headerlink" href="#abstract-machine-model" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/2/3/index.html#p1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">C abstract model</span></a> is a conceptual model that describes how a C program is executed. It consists of a set of rules and assumptions that define the <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/4/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">behavior</span></a> of C programs without specifying how they should be implemented on a particular computer or operating system, or concerning itself with optimization or performance.</p>
+<p>Understanding the abstract model is very important, because of the “as-if” rule–the compiler can optimize code as long as the end result of the program’s execution appears “as if” the program had executed according to the original source code. This means the compiler can rearrange, eliminate, and optimize a C program as long as the outcome of the program is consistent. Programmers without a firm understanding of the standards as applied through the as-if rule often rely on certain side effects, undefined behavior, and implementation details that lead to unexpected behavior when the same program is compiled or executed in another environment.</p>
+<p>According to the abstract model, accessing a volatile object, modifying an object or file, or calling a function that does so, is called a <em>side effect</em> because it changes the state of the execution environment. A program is broken up into a series of <em>sequence points</em>, each of which marks a stable, <em>settled</em>, state in the program where all prior side effects have been resolved, and all following side effects have not yet occurred. Otherwise, the order of side effects that occur between sequence points is indeterminate.</p>
+<p>From the external perspective, the main requirements of a program’s execution are that:</p>
+<ul class="simple">
+<li><p>At each sequence point, volatile objects are stable and any accesses to such objects have completely occurred, or have not yet begun.</p></li>
+<li><p>At program termination, all data written to files must be identical to what would be expected if the program executed exactly as described in the C standard. For example,</p></li>
+<li><p>The dynamic input and output characteristics of the system are as described in the standard, such that file I/O and externally visible memory accesses occur in an order specified by the standards. For example, it must be possible to ensure that a prompt message is actually printed prior to querying input from a terminal, or to ensure that a read operation precedes a write operation on memory-mapped I/O.</p></li>
+</ul>
+<section id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Link to this heading"></a></h2>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/12/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">implementation</span></a> is the (set of) software that facilitates <em>translation</em> of C source code into an executable format, and the subsequent <em>execution</em> of functions in the translated executable. The contexts in which these two tasks are accomplished are called the <em>translation environment</em> and the <em>execution environment</em>.</p>
+<p>In many cases, a single system encompasses both of these environments, but in others they may be separated and further divided across two or more systems, such as when building software on a development machine (translation environment) that is meant to be deployed on a separate embedded system (execution environment) that lacks its own facilities to translate code into executables.</p>
+<p>The distinction between the translation and execution environments is one of the reasons C is such a versatile language – many other high level languages like Python and Java require runtime support, such as an interpreter, which may be infeasible to deploy onto a resource constrained target system such as an embedded device.</p>
+<section id="translation-environment">
+<h3>Translation Environment<a class="headerlink" href="#translation-environment" title="Link to this heading"></a></h3>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/1/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">translation environment</span></a> is the portion of the implementation that supports conversion of C source code into an executable that can be run on the target system (the execution environment). Translation begins with a C source file and any other associated source files, libraries, and header files, which are collectively called a <em>preprocessing translation unit</em>. There are <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/1/2/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">eight phases</span></a> of translation, but they can be grouped into three main stages: preprocessing, compilation, and linking.</p>
+<p class="rubric">Preprocessing</p>
+<p>The first six translation phases involve various text-processing steps that operate on the preprocessing translation unit in a purely syntactic manner, such as replacing comments with spaces, concatenating adjacent string literals, evaluating preprocessing directives, and performing pre-processor macro expansions. The output of this stage is called the <em>translation unit</em>, consisting of a sequence of syntactic <em>preprocessor tokens</em>, grouped into categories such as <em>identifiers</em>, <em>numbers</em>, <em>strings</em>, <em>punctuations</em>, and so on.</p>
+<p>Preprocessing is a form of meta-programming, which has three main uses:</p>
+<ul class="simple">
+<li><p>Injecting the contents of other source files directly into the current translation unit, using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="cp">#include</span></code> directive.</p></li>
+<li><p>Injecting compile-time configuration parameters into source code, using preprocessor macros, such as to inject version information.</p></li>
+<li><p>Conditionally compiling code in response to configuration parameters, such as to target a particular operating system.</p></li>
+<li><p>Generating C source code at compile-time using macros.</p></li>
+</ul>
+<p class="rubric">Compilation</p>
+<p>In the seventh phase translation phase, the syntactic tokens are further reinterpreted semantically as elements of the C programming <em>language</em>; compilation takes place, producing a <em>compiled translation unit</em>. The output of this stage is native machine bytecode, which is also known as <em>object code</em>.</p>
+<p>Object code may contain references to identifiers that have been declared as external to the current translation unit, and are instead defined in another translation unit; these references remain unresolved following compilation, and prevent execution of functions which depend on them.</p>
+<p class="rubric">Linking</p>
+<p>In the final phase, compiled translation units and library components needed to satisfy external references are collected to form a <em>program image</em> that contains all the information needed for execution in its execution environment. In other words, this produces an executable, or <em>loadable</em>, program from the pieces contained in object files that compilation produced.</p>
+</section>
+<section id="execution-environment">
+<h3>Execution Environment<a class="headerlink" href="#execution-environment" title="Link to this heading"></a></h3>
+<p>The <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/5/1/2/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">execution environment</span></a> is the system on which the compiled program is actually run. This more or less refers to the operating system (or lack thereof), and any additional support utilities (such as a loader/dynamic linker) or other running programs that affect the execution of a program. The most fundamental property of the execution environment is whether it is <em>hosted</em> or <em>freestanding</em>.</p>
+<p class="rubric">Hosted execution environment</p>
+<p>A hosted environment provides an operating system along with a full implementation of the C standard library. A hosted environment manages program startup by calling into the standardized <em>entry point</em> of the program, a function called <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span><span class="p">()</span></code>, which is passed a list of strings, called its argument vector. The hosted environment also supports program termination and allows the program to return an <em>exit</em> status to the environment when it does so. This is generally facilitated by a small amount of system-specific code written in assembly, which handles the entry and exit of a C program, called the C-runtime (CRT).</p>
+<p class="rubric">Freestanding execution environment</p>
+<p>On the other hand, a freestanding environment provides only a minimal subset of the standard library, and the entry point of a program is defined by the implementation. This allows for C programs to be written for a wide variety of systems, including embedded systems, where an operating system is not present. In fact, operating systems, themselves, are written for, and execute within, the context of a freestanding environment. This high degree of control and flexibility is what earned C the moniker “portable assembly”, and led to its widespread adoption as the <em>de facto</em> systems programming language.</p>
+</section>
+</section>
+<section id="behavior">
+<h2>Behavior<a class="headerlink" href="#behavior" title="Link to this heading"></a></h2>
+<p>The external effects of a program are called its <em>behavior</em>. A program which strictly conforms to the C standards always exhibits well-defined, specific, behavior when executed on any conforming implementation. However, many useful programs conform to the standards while invoking additional non-standardized features such as system calls, compiler extensions, and internationalization; these programs may execute correctly while exhibiting behaviors that are unspecified, implementation-defined, and locale-specific, and may not be portable to other otherwise conforming implementations that lack support for those additional features.</p>
+<p>Additionally, nonconforming programs exhibit undefined behavior, which is completely unpredictable, though often produces silent bugs that are difficult to diagnose.</p>
+<p class="rubric"><a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/4/4/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">Unspecified Behavior</span></a></p>
+<p>In many situations, the standard provides for more than one possible behavior, but places no further restrictions on which behavior is chosen in any instance. This is called <em>unspecified behavior</em>. An example of this is that the individual arguments to a function call are each evaluated, but the order in which they are evaluated is unspecified. If one argument has some side effect when evaluated, it is indeterminate whether that side effect will have happened before, or after, another argument is evaluated.</p>
+<p class="rubric"><a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/4/1/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">Implementation-defined Behavior</span></a></p>
+<p>Implementation-defined behavior is like unspecified behavior, except that the implementation is required to choose a consistent choice between several possible behaviors and document that choice. For example, the result of many operations involving signed integers, such as out-of-range results, are implementation-defined behavior.</p>
+<p class="rubric"><a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/4/2/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">Locale-specific Behavior</span></a></p>
+<p>Locale-specific behavior is that which depends on the specific localization of the execution environment, taking into account aspects of nationality, culture, and language. For example, many of the library functions used to process or categorize text exhibit locale-specific behaviors.</p>
+<p class="rubric"><a class="reference external" href="https://rgambord.github.io/c99-doc/sections/3/4/3/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">Undefined Behavior</span></a></p>
+<p>Undefined behavior (UB) is the boogeyman of C-programming, and is a fairly unique aspect of the language that often frustrates and amazes learners. UB is a catch-all category for everything that doesn’t fall into one of the above categories, and invoking undefined behavior can have any result at all, famously referred to as <a class="reference external" href="http://en.wiktionary.org/wiki/nasal_demon" rel="noopener noreferrer" target="_blank">nasal demons</a>.</p>
+<p>Undefined behavior exists for two very important reasons. First, because there are few restrictions and safety mechanisms in place, it’s much easier to implement the C language than it is other <em>safer</em> languages. This is the primary reason why C became as ubiquitous and enduring as it is, because it was so simple to port a C compiler to different systems, at a time when every system ran proprietary hardware and operating systems that were all mutually incompatible.</p>
+<p>The second reason UB is so powerful is because it enables incredible amounts of optimizations. The compiler is free to assume that UB does not exist–that the programmer never makes such a mistake, and thus can optimize in extremely clever ways. Without UB, compilers would have a much more difficult time ensuring programs run quickly while also remaining correct.</p>
+<hr class="docutils" />
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Unspecified Behavior Types</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>Constrained</p></th>
+<th class="head"><p>Consistent</p></th>
+<th class="head"><p>Documented</p></th>
+<th class="head"><p>Portable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Unspecified</p></th>
+<td><p><strong>Yes</strong></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Implementation-defined</p></th>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Locale-Specific</p></th>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Locale-dependent</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Undefined</p></th>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../expressions/" class="btn btn-neutral float-left" title="Expressions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="statements-and-structure/" class="btn btn-neutral float-right" title="Statements and Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

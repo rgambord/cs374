@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expressions &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Abstract Machine Model" href="../abstract-machine-model/" />
+    <link rel="prev" title="User-Defined Types" href="../identifiers/practical-declarations/types/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Introduction to C Programming</a></li>
+      <li class="breadcrumb-item active">Expressions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../identifiers/practical-declarations/types/" class="btn btn-neutral float-left" title="User-Defined Types" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../abstract-machine-model/" class="btn btn-neutral float-right" title="Abstract Machine Model" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expressions">
+<h1>Expressions<a class="headerlink" href="#expressions" title="Link to this heading"></a></h1>
+<p>Expressions consist of sequences of operators and operands that specifies the computation of a value, designates an object or function, and/or produces side effects. There are essentially three important components of expressions; these are the operators themselves, the implicit conversions that expressions undergo, and the rules surrounding the order of evaluation and sequencing of side-effects.</p>
+<p>The basic concepts of expressions should be familiar to students in this class. What follows is a basic summary of the syntax and use of expressions in C. Additional required readings at the end of this module cover this topic in greater depth.</p>
+<section id="constants-and-literals">
+<h2>Constants and Literals<a class="headerlink" href="#constants-and-literals" title="Link to this heading"></a></h2>
+<p>A constant is a scalar value, while a literal is a representation of an object. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">42</span></code> is a constant integer, while <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello world!&quot;</span></code> is a string literal which represents an array of thirteen characters (<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span></code>).</p>
+<section id="integer-constants">
+<h3>Integer Constants<a class="headerlink" href="#integer-constants" title="Link to this heading"></a></h3>
+<p>An integer constant begins with a digit, and there are three recognized bases: base 10–decimal, base 8–octal, and base 16–hexadecimal.</p>
+<p>If the first digit is non-zero, the constant is interpreted in base 10. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">42</span></code> is equal to 42.</p>
+<p>If the first character is “0”, followed by a digit, then the constant is interpreted in base 8. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="mo">052</span></code> is equal to <img class="math" src="../../../_images/math/5420375f4f6d5b3b61c733417bfb002457ec7389.svg" alt="((5 \times 8^1) + (2 \times 8^0)) = 40 + 2 = 42"/>.</p>
+<p>If the first two characters are “0x”, then the remaining digits are interpreted in base 16, using the (case-insensitive) letters ‘a’ through ‘f’ to represent values 10 through 15. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="mh">0x2a</span></code> is equal to <img class="math" src="../../../_images/math/58f2331a325c23af9c015c1bb653153ee16371e9.svg" alt="((2 \times 16^1) + (10 \times 16^0)) = 32 + 10 = 42"/>.</p>
+<p>An additional “u” suffix may be added to specify an unsigned type, and an “l” or “ll” suffix to specify a long or long long integer type. These suffixes may also be capitalized–“U”, “L”, and “LL”. The actual type used, for a given suffix combination, is the smallest type capable of holding the specified value listed in this <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/6/4/4/1/index.html#p5" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">table</span></a> in the C standards.</p>
+</section>
+<section id="floating-constants">
+<h3>Floating Constants<a class="headerlink" href="#floating-constants" title="Link to this heading"></a></h3>
+<p>Floating constants are recognized by the presence of a decimal “.” or an exponent part with the letter ‘e’. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="mf">1.2</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="mf">1e10</span></code> are both recognized as floating point values. See <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/6/4/4/2/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">Floating Constants</span></a> for more information. As mentioned earlier, floating point arithmetic will not be covered in this class.</p>
+</section>
+<section id="enumeration-constants">
+<h3>Enumeration Constants<a class="headerlink" href="#enumeration-constants" title="Link to this heading"></a></h3>
+<p>These were previously described–an enumeration constant is an identifier that has been declared in an enumeration declaration, and has type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>.</p>
+</section>
+<section id="character-constants">
+<h3>Character Constants<a class="headerlink" href="#character-constants" title="Link to this heading"></a></h3>
+<p>A character constant is enclosed in single quotes, as in <code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;a&#39;</span></code>, and has type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>–not <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code>. Character constants are mapped in an implementation-defined manner to values in the execution character set. Typically, the ASCII character encoding is used to map character constants to integer values, which can be referenced via the <em class="manpage">ASCII(1)</em> man page. Many modern compilers also support unicode UTF-8 character constants, as well.</p>
+<p>As with most programming languages, several well-known escape sequences for special characters are recognized, as <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/6/4/4/4/index.html#p3" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span class="xref std std-ref">described in the C standards</span></a>.</p>
+</section>
+<section id="string-literals">
+<h3>String Literals<a class="headerlink" href="#string-literals" title="Link to this heading"></a></h3>
+<p>String literals are sequences of characters enclosed in double quotes, as in <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World!&quot;</span></code>. During compilation, a string literal has a null-byte appended to it, and the result is stored in a static character array. The string literal is an lvalue reference to that array and has type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></code>, where <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">n</span></code> is the number of characters, including the null-byte.</p>
+<p>The arrays holding string literals are immutable–modifying them produces undefined behavior. It is also unspecified whether they overlap. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World&quot;</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;World&quot;</span></code> may point into different locations in the same underlying character array, so that the expression <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;World&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span></code> might or might not evaluate as true depending on the compiler and any optimizations. Additionally, multiple string literals with the same contents may or may not refer to the same array.</p>
+<p>Recall that, as a special case, when initializing character arrays with a string literal–e.g <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span></code>–the string literal is a shorthand for a brace-enclosed initializer list with an implied terminating null byte–e.g. <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;W&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">}</span></code>. No string literal object is created in this context, which is explicitly different from the behavior of string literals in all other contexts, and often a source of confusion for beginners.</p>
+</section>
+<section id="compound-literals">
+<h3>Compound Literals<a class="headerlink" href="#compound-literals" title="Link to this heading"></a></h3>
+<p>C supports one other type of literal called a compound, or object, literal. Compound literals represent unnamed (anonymous) objects. A compound literal names a type, enclosed in parentheses, followed by a brace-enclosed initializer list; for example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="kt">int</span><span class="p">[]){</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span></code>, which evaluates to type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span></code> and contains the initialized values. Compound literals can also be structs and unions, such as <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="nf">struct</span><span class="w"> </span><span class="n">coordinates</span><span class="p">){</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span></code>.</p>
+<p>The contents of a compound literal are modifiable, unless the type is <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">const</span></code>-qualified, and the lifetime of a compound object is the same as it would be had the object in question been explicitly declared in the same location.</p>
+</section>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<section id="basic-operators">
+<h3>Basic Operators<a class="headerlink" href="#basic-operators" title="Link to this heading"></a></h3>
+<p>These basic operators are available in most programming languages with consistent behavior. Familiarity with each of the operators mentioned in this section is an expectation of this class; remedial self-study may be required for some students.</p>
+<dl>
+<dt>Scalar Arithmetic</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">+</span><span class="n">a</span></code></p></td>
+<td><p>Unary addition</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">-</span><span class="n">a</span></code></p></td>
+<td><p>Unary subtraction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Addition</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Subtraction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Multiplication</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Division</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Remainder</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Bitwise operators</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">~</span><span class="n">a</span></code></p></td>
+<td><p>Bitwise not</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise and</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise or</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise xor</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise shift left</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w">  </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise shift right</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-code-smell admonition">
+<p class="admonition-title">Code Smell</p>
+<p>These operators give inconsistent results, or produce undefined or implementation defined behavior, when supplied with operands that are negative values. In general, they should only ever be used with unsigned types, or used very carefully with signed values which are provably non-negative.</p>
+</div>
+</dd>
+<dt>Assignment Operators</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Assignment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Addition assignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Subtraction assignment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Multiplication assignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Division assignment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Remainder assignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise and assignment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise or assignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise xor assignment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise shift left assignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w">  </span><span class="n">b</span></code></p></td>
+<td><p>Bitwise shift right assignment</p></td>
+</tr>
+</tbody>
+</table>
+<p>For all of the assignment operators of the form <code class="docutils literal notranslate"><span class="pre">&#64;=</span></code>, where <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is a placeholder for an operator, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#64;=</span> <span class="pre">b</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">&#64;</span> <span class="pre">b</span></code> except that <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> is only evaluated once–this may be relevant if the evaluation of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> produces side-effects.</p>
+<p>The result of an assignment operator is whatever the right-hand side evaluates to, so assignment expressions can be embedded in larger expressions. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span></code> assigns <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span></code>, then <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span></code>, then <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span></code>.</p>
+</dd>
+<dt>Boolean Operators</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">!</span><span class="n">a</span></code></p></td>
+<td><p>Logical not</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Logical or</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Logical and</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Equality</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Inequality</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Less than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Greater than</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Less than or equal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Greater than or equal</p></td>
+</tr>
+</tbody>
+</table>
+<p>All of these operators evaluate to an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> value of either 1 or 0.</p>
+<p>The operators <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">||</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">&amp;&amp;</span></code> perform short-circuit evaluation: The left-hand side is evaluated first; the right-hand side is then evaluated <em>only if</em> its outcome affects the overall result of the expression. Thus, the order of the operands is significant, affecting both program behavior and performance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Signed integer overflow is undefined behavior. This can occur with the addition, subtraction, multiplication, division, and left shift operators. On the other hand, unsigned integer overflow simply wraps around so that <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">UINT_MAX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span></code> equals 0, and converting -1 to an unsigned type results in the largest value that type can hold.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="c-specific-operators">
+<h3>C-specific Operators<a class="headerlink" href="#c-specific-operators" title="Link to this heading"></a></h3>
+<dl>
+<dt>Member access operators</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="p">]</span></code></p></td>
+<td><p>Array subscript</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">*</span><span class="n">a</span></code></p></td>
+<td><p>Pointer dereference</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="o">&amp;</span><span class="n">a</span></code></p></td>
+<td><p>Address of</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="o">.</span><span class="n">b</span></code></p></td>
+<td><p>Member access</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="o">-&gt;</span><span class="n">b</span></code></p></td>
+<td><p>Member access <em>through pointer</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>The array subscript operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="p">]</span></code> is <em>exactly</em> equivalent to <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span></code>.</p>
+<p>The pointer dereference operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">*</span><span class="n">a</span></code> designates the object that <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> points to. The operand <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> must be a pointer type, <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="o">*</span></code>, and the result is an lvalue of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>. It is undefined behavior to dereference a pointer that does not point at a valid object.</p>
+<p>The address of operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">&amp;</span><span class="n">a</span></code> evaluates to the address of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>. If <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> is type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>, the result is type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span><span class="o">*</span></code>.</p>
+<p>The member access operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="o">.</span><span class="n">b</span></code> designates the member <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span></code> of the structure or union <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>, while <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="o">-&gt;</span><span class="n">b</span></code> designates the member <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span></code> of the structure or union <em>pointed at</em> by <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="o">-&gt;</span><span class="n">b</span></code> operator is exactly equivalent to <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">b</span></code>.</p>
+</dd>
+<dt>Other operators</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code></p></td>
+<td><p>Function call operator</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span></code></p></td>
+<td><p>Comma operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="n">a</span></code></p></td>
+<td><p>Cast operator</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">c</span></code></p></td>
+<td><p>Ternary operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code></p></td>
+<td><p>Size of operator</p></td>
+</tr>
+</tbody>
+</table>
+<p>The function call operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code> requires <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> be a type <em>pointer to function</em>, and its enclosed arguments must be convertible to the types of the parameters of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>.</p>
+<p>The comma operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span></code> evaluates <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>, discards its result, then evaluates <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span></code>. The comma operator is used rarely.</p>
+<p>The cast operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="n">a</span></code> converts <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> to type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>. The result of the conversion is described below.</p>
+<p>The ternary operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">c</span></code> evaluates <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code>. If true, the expression evaluates <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span></code>, otherwise <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">c</span></code>. Equivalent to python’s <code class="code highlight py python docutils literal highlight-python"><span class="n">c</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span></code> ternary operator, with the operands in a different order.</p>
+<p>The size of operator <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code> evaluates to the size of a particular type or object, and there are two forms:</p>
+<ul class="simple">
+<li><p>For a given type, <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="kt">T</span><span class="p">)</span></code> evaluates to the size, in bytes, of <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>.</p></li>
+<li><p>For an expression, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">e</span></code>, which evaluates to a value of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span><span class="w"> </span><span class="n">e</span></code> evaluates to the size, in bytes, of <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code>.</p></li>
+</ul>
+<div class="admonition-code-smell admonition">
+<p class="admonition-title">Code Smell</p>
+<p>Avoid using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="kt">T</span><span class="p">)</span></code> form, where <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">T</span></code> is a typename. There is usually an expression that could be used instead. This way, if the type of the expression were ever to change, each <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code> operand referring to it would be automatically updated. A common example is when dynamically allocating an array of objects with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">malloc</span></code>, as in,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">my_array</span><span class="p">;</span>
+<span class="cm">/* ... */</span>
+<span class="n">my_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="o">*</span><span class="n">my_array</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">array_size</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>which automatically updates the size expression if the type of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">my_array</span></code> changes, vs. <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">my_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">)</span></code>, which does not. This is an example of a programming principle called DRY–Don’t Repeat Yourself.</p>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+<section id="implicit-conversions">
+<h2>Implicit Conversions<a class="headerlink" href="#implicit-conversions" title="Link to this heading"></a></h2>
+<p>Implicit type conversion is performed automatically without requiring an explicit cast. There are three basic types of implicit conversions that occur,</p>
+<dl>
+<dt>Type Coercion</dt><dd><p>Type coercion refers to the process of converting the types of each operand of an expression into appropriate types to carry out each operation. In C, type coercion occurs when assigning, passing, and initializing where the value type differs from the target type, and when performing arithmetic with operands of different types.</p>
+</dd>
+<dt>Type Promotion</dt><dd><p>When integer values with an integer type with rank less than or equal to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> are evaluated, they are usually implicitly converted to a value of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">unsigned</span><span class="w"> </span><span class="k">int</span></code>. If <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> can represent the entire range of values of the original type, the value is converted to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>; otherwise, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">unsigned</span><span class="w"> </span><span class="k">int</span></code> is used.</p>
+<div class="admonition-implementation-detail admonition">
+<p class="admonition-title">Implementation Detail</p>
+<p>This is a reflection of the physical notion of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> being the native word size of the target architecture. Promoting values to the native word size ensures that calculations are performed as efficiently as possible. Additionally, some systems may be physically incapable of performing certain operations on data types smaller than <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>.</p>
+</div>
+</dd>
+<dt>Type Decay</dt><dd><p>Type decay refers to the process by which certain types are automatically converted to another type with some loss of information. In C, array types automatically decay into pointers to their first elements, function types automatically decay into pointers to the functions themselves, and <a class="reference internal" href="../../../meta/glossary/c/#term-lvalue"><span class="xref std std-term">lvalues</span></a> automatically decay into <a class="reference internal" href="../../../meta/glossary/c/#term-rvalue"><span class="xref std std-term">rvalues</span></a>. There are certain contexts where decay does not occur, such as when taking the address of an object or when using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code> operator on an array.</p>
+</dd>
+</dl>
+</section>
+<section id="order-of-evaluation">
+<h2>Order of Evaluation<a class="headerlink" href="#order-of-evaluation" title="Link to this heading"></a></h2>
+<p>Within an expression, it is important to understand the order in which actual sub-expressions are evaluated. In C, a sequence point represents a settled state where all objects have well-defined values and no calculations are in progress. Between any two sequence points, there may be multiple sub-expressions that are evaluated in an indeterminate order.</p>
+<p>In general, there is a sequence point before a function is called, after each full expression, and after each declarator. Additionally, there is a sequence point after the left-hand operand of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">||</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">&amp;&amp;</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">?:</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">,</span></code> operators is evaluated.</p>
+<p>If an object is modified and separately accessed between sequence points, the behavior is undefined. Common examples of this are,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
+<span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../identifiers/practical-declarations/types/" class="btn btn-neutral float-left" title="User-Defined Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../abstract-machine-model/" class="btn btn-neutral float-right" title="Abstract Machine Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

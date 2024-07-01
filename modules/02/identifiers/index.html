@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Identifiers &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Declaration Syntax" href="declaration-syntax/" />
+    <link rel="prev" title="Object Model" href="../object-model/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Introduction to C Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../object-model/">Object Model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Introduction to C Programming</a></li>
+      <li class="breadcrumb-item active">Identifiers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../object-model/" class="btn btn-neutral float-left" title="Object Model" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="declaration-syntax/" class="btn btn-neutral float-right" title="Declaration Syntax" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="identifiers">
+<h1>Identifiers<a class="headerlink" href="#identifiers" title="Link to this heading"></a></h1>
+<p>Identifiers are names that can refer to the following program entities:</p>
+<ul class="simple">
+<li><p>objects</p></li>
+<li><p>functions</p></li>
+<li><p>structures, unions, and enumerations, along with their members</p></li>
+<li><p>type aliases</p></li>
+<li><p>labels</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p>Every identifier has a name, belongs to a namespace, is restricted by its scope, and may be linked to other identifiers via linkage. Identifiers are introduced to the program through declarations and label statements.</p>
+<section id="name">
+<h2>Name<a class="headerlink" href="#name" title="Link to this heading"></a></h2>
+<p>A valid identifier consists of any combination of upper-and-lower-case letters, digits, and underscores (‘_’) that does not begin with a digit. There are, however, some particular identifiers or patterns of identifiers that are off-limits, called <em>reserved identifiers</em>; these are the keywords listed in <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/6/4/1/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span>6.4.1 Keywords</span></a> and several classes of identifiers listed in <a class="reference external" href="https://rgambord.github.io/c99-doc/sections/7/1/3/index.html#id1" rel="noopener noreferrer" target="_blank" title="(in C99 Language Standard)"><span>7.1.3 Reserved identifiers</span></a>.</p>
+<p>Some broad classes of identifiers are reserved, summarized below,</p>
+<ul class="simple">
+<li><p>Identifiers beginning with an underscore followed by an upper-case letter or by a second underscore are always reserved.</p></li>
+<li><p>File-scope identifiers beginning with an underscore are reserved at file-scope, but may be freely used in all other scopes.</p></li>
+<li><p>Identifiers beginning with <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">to</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">is</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">str</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">mem</span></code>, or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wcs</span></code>, and followed by any lower-case letter are reserved.</p></li>
+<li><p>Identifiers beginning with <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">E</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">LC_</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">SIG</span></code>, or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">SIG_</span></code>, and followed by an upper-case letter are reserved.</p></li>
+</ul>
+<p>Declaring reserved identifiers in a program can cause conflicts with the library and other aspects of the C implementation, leading to undefined program behavior.</p>
+</section>
+<section id="namespace">
+<h2>Namespace<a class="headerlink" href="#namespace" title="Link to this heading"></a></h2>
+<p>Each identifier is part of a specific namespace, and the namespace an identifier belongs to is determined by its immediate context,</p>
+<dl class="simple">
+<dt>Label Names</dt><dd><p>The label namespace handles identifiers introduced in label statements or used as targets of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">goto</span></code> statement.</p>
+</dd>
+<dt>Tag Names</dt><dd><p>The tag namespace manages identifiers immediately following <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">struct</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">union</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">enum</span></code> keywords, identifying specific structures, unions, or enumerations.</p>
+</dd>
+<dt>Member Names</dt><dd><p>Each structure and union has its own namespace for resolving member names when accessed through the <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">.</span></code> (dot) and <code class="code highlight c c99 docutils literal highlight-c99"><span class="o">-&gt;</span></code> (arrow) operators.</p>
+</dd>
+<dt>Ordinary Identifiers</dt><dd><p>All remaining identifiers, including object and function identifiers, type aliases, and enumeration constants, share the same namespace.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Object oriented languages often have a concept of named namespaces, such as the <code class="code highlight cxx Cpp docutils literal highlight-Cpp"><span class="n">std</span><span class="o">::</span></code> namespace in C++. In C, these do not exist; instead, the convention when writing third-party libraries is to prepend the library name to all identifiers, such as <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">my_library_do_something_func</span><span class="p">()</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">my_library_buffer_size</span></code>, etc.</p>
+</div>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading"></a></h2>
+<p>Identifiers have an associated scope, which is the portion of the program where an identifier is visible and can be accessed:</p>
+<dl class="simple">
+<dt>File Scope</dt><dd><p>Identifiers declared outside of any other scope have file scope which extends from the point of declaration to the end of the file.</p>
+</dd>
+<dt>Block Scope</dt><dd><p>Identifiers declared inside a block or in the list of a function’s parameters have block scope that extends from the point of declaration to the closing brace (‘}’) of the associated block.</p>
+</dd>
+<dt>Function Scope</dt><dd><p>Labels (and only labels) have function scope, and may be referred to from anywhere within the entire body of the function in which they appear–including <em>before</em> the label.</p>
+</dd>
+<dt>Function Prototype Scope</dt><dd><p>Identifiers declared in a <a class="reference internal" href="../../../meta/glossary/c/#term-function-prototype"><span class="xref std std-term">function prototype</span></a>‘s parameter list remain in scope until the end of the prototype declaration.</p>
+</dd>
+</dl>
+<p>Identifiers in inner scopes <a class="reference internal" href="../../../meta/glossary/computer-science/#term-shadowing"><span class="xref std std-term">shadow</span></a> identifiers declared in outer scopes with the same name to resolve naming conflicts.</p>
+</section>
+<section id="linkage">
+<h2>Linkage<a class="headerlink" href="#linkage" title="Link to this heading"></a></h2>
+<p>Identifiers declared more than once in different scopes or in the same scope can be made to refer to the same entity by a process called <em>linkage</em>. There are three types of linkage,</p>
+<dl class="simple">
+<dt>No Linkage</dt><dd><p>Identifiers without linkage can only be referred to within the scope they appear in. Each declaration of an identifier with no linkage denotes a unique entity.</p>
+</dd>
+<dt>Internal Linkage</dt><dd><p>Identifiers with internal linkage can be referred to within the entire translation unit. Each declaration of a particular identifier within the same translation unit denotes the same entity.</p>
+</dd>
+<dt>External Linkage</dt><dd><p>Identifiers with external linkage can be referred to from any translation unit in the entire program. Each declaration of a particular identifier within the set of translation units and libraries that constitutes a program denotes the same entity.</p>
+</dd>
+</dl>
+<p>Only objects can functions can have linkage</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../object-model/" class="btn btn-neutral float-left" title="Object Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="declaration-syntax/" class="btn btn-neutral float-right" title="Declaration Syntax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

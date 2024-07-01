@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="The Interactive Shell" href="../shell/" />
+    <link rel="prev" title="Control Codes" href="../terminal/control-codes/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Operating Systems Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Operating Systems Fundamentals</a></li>
+      <li class="breadcrumb-item active">Utilities</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../terminal/control-codes/" class="btn btn-neutral float-left" title="Control Codes" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../shell/" class="btn btn-neutral float-right" title="The Interactive Shell" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Link to this heading"></a></h1>
+<p>In this section, we will introduce three important classes of system utilities: the shell, text editors, and documentation browsers. Learning to use these utilities effectively is the first step to completing work in this class and mastering systems programming.</p>
+<section id="the-shell">
+<h2>The Shell<a class="headerlink" href="#the-shell" title="Link to this heading"></a></h2>
+<p>The shell, <strong class="command">sh</strong>, provides command-line interface that allows users to interact with the system by entering commands. The shell is the primary interface for many Unix-like operating systems and provides a powerful and flexible way to interact with the system. The shell allows users to navigate the file system, run programs, manage processes, and perform various system tasks. There are many implementations of the shell utility, based on the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/utilities/V3_chap02.html" rel="noopener noreferrer" target="_blank">POSIX Shell Command Language</a>, and which often add many additional features and quirks on top. In this course, we will use an extremely popular implementation of the shell called <strong class="command">bash</strong><a class="footnote-reference brackets" href="#bash" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>At its most basic form, the shell allows a user to enter commands, line-by-line, thus the term command-line interface (CLI). The shell can of course also read its input from a file rather than an interactive terminal, and these files are called shell scripts. When a program is executed, there are three key things that the shell provides to it:</p>
+<dl class="simple">
+<dt>Argument List</dt><dd><p>Every process is invoked with an array of strings, called arguments. The first argument string is always the name of the command or explicit path to an executable that was used to invoke the process, followed by a sequence of arguments that control the behavior of the program being executed. The shell performs considerable processing of its input to parse each command, including word splitting, tokenizing, expansion of special tokens, field splitting, pathname expansion, and so on, in order to produce this list of arguments.</p>
+</dd>
+<dt>Environment Variables</dt><dd><p>Every process is invoked with a second array of strings, called environment variables, which take the form <code class="docutils literal notranslate"><span class="pre">name=value</span></code>. Environment variables are persistent and are automatically inherited by processes without the need to explicitly enter them in as additional arguments. These variables generally hold global configuration settings, such as localization, terminal dimensions, paths to system resources, and more. The shell language provides mechanisms to manage these environment variables, and many are already set by configurable shell scripts when a user first logs in.</p>
+</dd>
+<dt>Standard Streams</dt><dd><p>Processes also inherit open files from their parents, and every process expects to be invoked with three files already open for reading and writing. These are called standard in (<code class="docutils literal notranslate"><span class="pre">stdin</span></code>), standard out (<code class="docutils literal notranslate"><span class="pre">stdout</span></code>), and standard error (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>). Many programs are designed to read input on standard in, process it, and then output the result to standard out. The standard error stream is meant for diagnostic messages such as errors, but also any other informative user-directed output that needs to be separated from regular output. The shell language provides mechanisms to chain the standard output of one process into the standard input of another (called piping), to open and close these files before running a program (called redirection), and even feed explicitly provided input in place of an actual file (called a here-doc).</p>
+</dd>
+</dl>
+<p>Additionally, the shell offers conditional flow control constructs such as conditional statements, switches, and loops, allowing for very powerful shell scripting capabilities.</p>
+<p>These features make the shell an incredibly powerful and flexible way to interact with and manage a system. A lot of the design of the shell went into making it easy to connect multiple small programs together in different ways to perform complex tasks, exemplifying a core Unix philosophy called DOTADIW – Do One Thing, And Do It Well – the idea that each program should perform just one simple task, and that this should form a sort of “tool box” for users and administrators to build things out of.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="bash" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>“Bourne Again Shell”, a play on words, as the original <strong class="command">sh</strong> is based on was written by Stephen Bourne at Bell Labs.</p>
+</aside>
+</aside>
+</section>
+<section id="text-editors">
+<h2>Text Editors<a class="headerlink" href="#text-editors" title="Link to this heading"></a></h2>
+<p>Imagine if, instead of a computer screen, your user interface consisted of a keyboard and a printer. This is not too different than the user experience of early computers that used teletype machines. As you can imagine, this didn’t provide much in the way of immediate feedback through screen updates, like we are used to with modern text editors. Even after the development of electronic terminal screens, the refresh rates and data transmission rates of these screens were very limited, so screen updates had to be carefully managed.</p>
+<section id="line-editors">
+<h3>Line Editors<a class="headerlink" href="#line-editors" title="Link to this heading"></a></h3>
+<p>As a result, the first text editors on Unix implemented what is called <em>line editing</em>, and the standard line editor, <strong class="command">ed</strong> is still shipped with POSIX systems. When the user starts <strong class="command">ed</strong>, they are presented with a prompt where they can enter commands. The most basic command is the <code class="docutils literal notranslate"><span class="pre">p</span></code> command, which prints the current (or a range of) lines to the screen for viewing. The user can then use various other commands to move around the file, insert or delete lines, and perform other editing tasks.</p>
+<p>Here are a few basic <strong class="command">ed</strong> commands to illustrate the functionality of the editor:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: Print the current line number and its contents.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: Append text after the current line (as a new line).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: Insert text before the current line (as a new line).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: Delete the current line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: Substitute text in the current line (using regular expressions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: Change (replace) the current line.</p></li>
+</ul>
+<p>While tedious, this method worked well on early terminals and teletype machines. A user could print out the contents or a range of lines with the <code class="docutils literal notranslate"><span class="pre">n</span></code> command, and then edit particular lines very easily with enough context, or even the full document, on a literal sheet of paper in front of them as a reference.</p>
+<p>A line editing interface can be powerful and efficient for performing text editing tasks, but it can also be challenging to use for beginners, as it requires users to learn a series of commands and to understand how the commands operate on the text file, without actually being able to see much of what they are working on, or receive immediate feedback.</p>
+<p>Although line editors are rarely used in most contexts, they still see use when working on embedded devices with limited memory resources, and they are sometimes used as well when working on remote or old machines over extremely slow or high latency connections where interactive editors are nauseatingly slow. Another common use-case is when writing text-processing scripts, since a program like <strong class="command">ed</strong> can be used to perform many repetitive, sequenced operations that might be difficult using other tools.</p>
+</section>
+<section id="visual-editors">
+<h3>Visual Editors<a class="headerlink" href="#visual-editors" title="Link to this heading"></a></h3>
+<p>Advancements in terminal capabilities ushered in the development of visual, or display, editors that displayed real-time feedback to users as they edited text files. The <strong class="command">vi</strong> editor is based heavily on its predecessor, <strong class="command">ed</strong>, but with an added a visual interface and full-screen display functionality. <strong class="command">vi</strong> implemented what is called a modal interface design, where users switch between two modes of operation. The first mode, command mode, presents a very similar interface to the one that <strong class="command">ed</strong> provided, but with much more powerful commands. The other mode, insert mode, allows direct insertion of text into the document. Unlike the earlier line editors that either removed, replaced, or inserted entire lines at a time, the cursor could be moved to any arbitrary position within a line before inserting or removing text, allowing much more efficient editing.</p>
+<p>Compared to modern IDEs and text editors, however, <strong class="command">vi</strong> is fairly obsolete. Features like syntax highlighting, text selection, and mouse support are missing from the basic <strong class="command">vi</strong> program. Like <strong class="command">ed</strong>, however, it’s still regularly used on systems when no other options are available.</p>
+<p>Eventually, <strong class="command">vi</strong> was reimplemented and improved upon, bringing us <strong class="command">vim</strong> (Vi IMproved). <strong class="command">vim</strong> added additional modes, syntax highlighting, a powerful scripting language (vimscript), plugins, and much more. It continues to be the one of the most popular and widely used text editors and fully-fledged IDEs among systems programmers and system administrators today because of its powerful features, efficient operation, and the fact that it is available almost everywhere.</p>
+<p><strong class="command">vim</strong> offers several different modes for performing different tasks:</p>
+<dl class="simple">
+<dt>Normal (n) mode</dt><dd><p>In normal mode, each key (or key combination) on the keyboard is mapped to different functions which can be used to move the cursor around, search the document, change line indentation, record and play back macros, and so on.</p>
+</dd>
+<dt>Insert (i) mode</dt><dd><p>Insert mode is used for entering text into a document, and is fairly intuitive to use. Some control-key combinations are recognized to perform special tasks, but otherwise this is the basic text editing functionality of <strong class="command">vi</strong>, and where authors spend most of their time.</p>
+</dd>
+<dt>Visual (v) mode</dt><dd><p>Visual mode is used for selecting text in order to use that selection as the target of a command or function, such as copying and pasting, deleting, indenting, performing a search and replace, and so on. There are a few different visual modes for selecting lines of text, adjacent characters, or rectangular blocks of text.</p>
+</dd>
+<dt>Select (s) mode</dt><dd><p>Similar to visual mode, but the selection is immediately replaced with whatever text is typed following selection, rather than acting as the target of a command.</p>
+</dd>
+<dt>Command (c) mode</dt><dd><p>Command mode offers an advanced mechanism of executing commands that can’t be performed in normal mode. Command mode is used for performing regular expression operations such as search and replace, opening, saving, and closing files, remapping keys, and more.</p>
+</dd>
+<dt>Ex (e) mode</dt><dd><p>Ex mode opens the command history as an actual window where all of the other modes can be used to edit the text in the command history and current command line before it is executed. This enables entering multiple commands, editing and copying previous commands, and so on.</p>
+</dd>
+<dt>Replace (r) mode</dt><dd><p>Replace mode works similarly to insert mode, except that input directly overwrites existing characters rather than being inserted at the location of the cursor.</p>
+</dd>
+</dl>
+<p>Of the different modes, users spend the majority of their time in just three: Normal, Insert, and Command mode. Visual mode is used less frequently for selecting text, while Select, Replace, and Ex mode are rarely used at all.</p>
+<p>All key mappings are fully customizable, and many different configuration settings and available plugins allow users to set up their <strong class="command">vim</strong> environment exactly how they want for whatever tasks they regularly work on. <strong class="command">vim</strong> is so popular that it is available as a default-installed package on most systems alongside the basic <strong class="command">vi</strong> and <strong class="command">ed</strong> utilities. In this class, we will be using an even more modern version of this called <strong class="command">neovim</strong>, which was rewritten from the ground up with a Lua-based scripting and plugin interface for more modern systems. <strong class="command">neovim</strong> isn’t as widely available as a pre-installed package, such as on headless servers and embedded devices that developers have to remotely connect to, but it is extremely popular where it is available and the majority of developers have already switched to <strong class="command">neovim</strong> on their personal computers.</p>
+</section>
+</section>
+<section id="documentation-browsers">
+<h2>Documentation Browsers<a class="headerlink" href="#documentation-browsers" title="Link to this heading"></a></h2>
+<p>Documentation browsers are tools used in Unix-like systems to access and navigate documentation. The “manual pager” (<strong class="command">man</strong>) command provides brief summaries of commands and utilities, while the GNU Info (<strong class="command">info</strong>) utility offers a more structured and comprehensive way to organize and present documentation.</p>
+<section id="manual-pager">
+<h3>Manual Pager<a class="headerlink" href="#manual-pager" title="Link to this heading"></a></h3>
+<p>The manual pager (<strong class="command">man</strong>) is a utility for displaying the manual pages for various Unix commands, interfaces, and utilities. The manual pages provide detailed information about each command, including its syntax, options, and examples of usage. The man pager provides a convenient way to access this information from the command line, or from within <strong class="command">vim</strong>.</p>
+<p>The manual consists of eight standard sections,</p>
+<ol class="arabic simple">
+<li><p>Executable programs or shell commands</p></li>
+<li><p>System Calls</p></li>
+<li><p>Library Calls</p></li>
+<li><p>Special Files</p></li>
+<li><p>File formats and conventions</p></li>
+<li><p>Games</p></li>
+<li><p>Miscellaneous</p></li>
+<li><p>System administration commands</p></li>
+</ol>
+<p>An individual page in the manual describes a particular topic, and the shorthand for referring to a man page is to specify its name, followed by the section the page is from in parentheses, such as <em class="manpage">man(1)</em>, which is the man page for the <strong class="command">man</strong> pager, itself. The first three sections are used regularly in systems programming as a reference material, while sections 5 and 7 are more detailed references often used when working with particular types of files or interfaces. For example, <em class="manpage">ip(7)</em> provides detailed description of how to implement sockets over IP in C.</p>
+<p>While the C and POSIX standards specify many of the things contained in the man pages, it is important to always refer to the man pages installed on the system that an application is actually targeted to, since there are often documented variations between the standards and their implementation on a system. It can also be risky to refer to online man pages for the same reasons. For example, there are competing implementations of the C standard library, such as glibc and musl, and using the documentation for one could lead to problems when a program written for one but is linked against the other.</p>
+</section>
+<section id="gnu-info">
+<h3>GNU Info<a class="headerlink" href="#gnu-info" title="Link to this heading"></a></h3>
+<p>GNU Info is a documentation system that provides help for GNU software packages, such as <strong class="command">bash</strong>, the GNU core utilities (coreutils), the GNU Compiler Collection (<strong class="command">gcc</strong>), the GNU C library (glibc), and so on. It is an alternative to the traditional Unix man page system that provides a more comprehensive and structured way to organize and present documentation.</p>
+<p>The Info system is designed to be navigated through a series of hierarchical menus and nodes, with each node containing information on a specific topic. The top-level menu presents a list of all available Info documents on the system, while individual Info documents are organized into sections and subsections. Each subsection contains a summary of the topic and a list of related nodes, which can be followed to navigate to other related topics.</p>
+<p>Info documentation is written in a plain text format that can be easily converted to other formats such as HTML or PDF. It can also include hyperlinks, cross-references, and indices to make it easier to navigate and find information. In general, info pages are written in a conversational, verbose, free-form prose that is intended as a learning, rather than reference, material.</p>
+<p>The GNU Info system includes a command-line utility called <strong class="command">info</strong> that allows users to access and navigate the Info documentation on their system. Users can use the <strong class="command">info</strong> command to search for specific topics, view the table of contents for a document, navigate between different nodes, and more.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../terminal/control-codes/" class="btn btn-neutral float-left" title="Control Codes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../shell/" class="btn btn-neutral float-right" title="The Interactive Shell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

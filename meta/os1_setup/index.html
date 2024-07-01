@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OS1 Server Setup Guide &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Coding Style" href="../style/" />
+    <link rel="prev" title="Schedule" href="../schedule/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OS1 Server Setup Guide</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../schedule/" class="btn btn-neutral float-left" title="Schedule" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../style/" class="btn btn-neutral float-right" title="Coding Style" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="os1-server-setup-guide">
+<h1>OS1 Server Setup Guide<a class="headerlink" href="#os1-server-setup-guide" title="Link to this heading"></a></h1>
+<p>This course relies heavily on access to a linux server called <strong>os1</strong> that is hosted on the OSU network. With the types of programming we will be doing, students can accidentally spawn infinite processes, consume all memory on the system, create billions of files, and so on–the types of things that can cause a server to crash. <strong>os1</strong> was set aside specifically for students in this class as a “systems programming playground” of sorts, and IT really doesn’t want to see anyone working on this class on any of the school servers. They also set up more restrictive limits on the number of process you can spawn, the amount of memory you can use, and so on, to try and keep things from getting too out of control.</p>
+<p>Additionally, <strong>os1</strong> contains a lot of custom software and configurations to enable you to effectively and comfortably learn to do software development in the command-line interface, via remote SSH to a headless development server–an important fundamental skill in software development. If you need some extra motivation: anecdotally, I have heard from a friend who does a lot of hiring of new grads at a major regional employer that more than 90% of their interviewees fail first-round interviews specifically due to a lack of basic proficiency with the command-line interface!</p>
+<p>This guide will walk you through the process of setting up your local system, enabling the appropriate account privileges at OSU, connecting to the server, and setting up your remote environment.</p>
+<section id="osu-account-privileges">
+<h2>OSU Account Privileges<a class="headerlink" href="#osu-account-privileges" title="Link to this heading"></a></h2>
+<p>Before we get started, the <strong>os1</strong> server is hosted by the college of engineering, which requires students to explicitly opt-in to access ENGR servers. This requires activating your account in an online account management system called The Engineering Accounts and Classes Homepage (T.E.A.C.H.). T.E.A.C.H. is a system which predates the introduction of a lot of the online classroom tools we are familiar with today, and once was the tool that students used to submit assignments, and so on. Nowadays, it has been connected to the school’s ONID login system, so that you already have an account with the same username and password–but you need to activate it.</p>
+<p class="rubric">Account Activation</p>
+<p>Visit the <a class="reference external" href="https://teach.engr.oregonstate.edu/aup.php" rel="noopener noreferrer" target="_blank">Acceptable Use Policy</a> page and click the “I Agree” button at the bottom. From here, you will be asked to log-in through ONID. Once you have done so, your account should be activated with the same username and password that you use to login to ONID. You can now <a class="reference external" href="https://teach.engr.oregonstate.edu/teach.php?type=want_auth" rel="noopener noreferrer" target="_blank">log-in to T.E.A.C.H.</a> using your ONID credentials. Once logged in, you will be greeted with the T.E.A.C.H. homepage:</p>
+<a class="framed"
+               data-lightbox="group-941fd927-539d-4fc1-b348-d3af661e0a70"
+               href="../../_images/teach_home.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/teach_home.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p class="rubric">Login Shell Selection</p>
+<p>Before leaving this page, navigate to the “Change Unix Shell” page in the navigation menu, and ensure that your current shell is listed as <strong class="command">/bin/bash</strong>. If not, select it from the dropdown menu and hit submit; after changing the shell, wait about 15 minutes before continuing with the setup guide so that the update can propagate to the school servers. This will change which shell program is spawned when you login to a server–called your login shell. The shell is a program that provides the command-line interface, itself.</p>
+<a class="framed"
+               data-lightbox="group-45814d67-3b78-4dd9-867d-a300f6209f19"
+               href="../../_images/teach_shell.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/teach_shell.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p class="rubric">Killing Runaway Processes</p>
+<p>While you are here, make note of another page in the navigation sidebar titled “Kill Runaway Processes”. If you are ever logged into a school server, or unable to log in, and you see error messages to the effect of,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-bash: fork: retry: Resource temporarily unavailable</span>
+<span class="go">-bash: fork: retry: No child processes</span>
+<span class="go">-bash: fork: retry: Resource temporarily unavailable</span>
+<span class="go">-bash: fork: retry: Resource temporarily unavailable</span>
+<span class="go">-bash: fork: retry: No child processes</span>
+</pre></div>
+</div>
+<p>It means that you have reached your process limit on the server and are unable to spawn a new process, whether it be a new shell process to log in, or run a command while already logged in. This is often the result of a run-away process which is forking (creating new child processes) in an infinite loop, or perhaps creating child processes which each spawn additional child processes in an infinite recursion. To resolve this, you can log into T.E.A.C.H and use the “Kill Runaway Processes” tool to kill all of your processes on that server,</p>
+<a class="framed"
+               data-lightbox="group-11601a5a-dcfc-4392-9c86-b646c6f77bb2"
+               href="../../_images/teach_kill.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/teach_kill.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a></section>
+<section id="local-software-configuration">
+<h2>Local Software Configuration<a class="headerlink" href="#local-software-configuration" title="Link to this heading"></a></h2>
+<p>In order to connect to the remote server, you need a couple of tools,</p>
+<ol class="arabic simple">
+<li><p>A graphical application called a terminal emulator that bridges the GUI-TUI divide so that you can run text-only applications.</p></li>
+<li><p>A minimum set of command-line utilities to enable connection over a remote network using the Secure Shell (SSH) protocol.</p></li>
+</ol>
+<p>A terminal emulator is a graphical application that emulates a physical teletype machine (a terminal). Essentially, it bridges the gap between GUI (Graphical User Interface) and TUI (Text User Interface), allowing you to use TUI applications, like the shell command-line. TUI applications run “inside” (really in parallel to) the terminal emulator, and send their output to it as text and control codes. The terminal emulator is responsible for converting this into a drawing on the screen (text). It also captures user input (keyboard and mouse) and transforms it into a stream of text and control codes that TUI applications can read from.</p>
+<a class="framed"
+               data-lightbox="group-f35e917f-245a-4287-9345-46439c99c5a7"
+               href="../../_images/terminal_emulator.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/terminal_emulator.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p>There are many terminal emulators available; however, in the last few years, a particular terminal emulator called <strong class="program">kitty</strong> has essentially come to dominate the previously stagnant terminal emulator ecosystem and is now the <em>de facto</em> standard terminal emulator used by practically everyone–to the point where many TUI applications rely on features that only <strong class="program">kitty</strong> has. Unfortunately, <strong class="program">kitty</strong> is only available on POSIX systems (MacOS, Linux, BSD, etc.) and is not available as a native application on Windows, and there are no Windows-native terminal emulators that are standards compliant enough to work well.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>In order to use <strong class="program">kitty</strong> on a Windows-only machine, you will need to find a way to run a full graphical Linux desktop environment. You may do this either by installing Linux as a second operating system (dual-boot), or by virtualizing Linux inside of Windows. In general, virtualization is an easier route that works well enough for most students. However, it does not work on all equipment (especially older computers, and some low-end laptops), and sometimes has issues that lead to students choosing to dual boot instead.</p>
+<section id="virtualization">
+<h4>Virtualization<a class="headerlink" href="#virtualization" title="Link to this heading"></a></h4>
+<p>There are essentially three major virtualization options on Windows: VirtualBox, VMware, and WSL. Of the three, WSL (Windows Subsystem for Linux) is the easiest to set up, because it is a Microsoft product that is directly integrated into Windows. On the other hand, it also has the most bugs and some caveats. Between VirtualBox and VMware, VMware is generally considered superior in terms of performance and features. Choose one of the following:</p>
+<p class="rubric">WSL</p>
+<p>WSL is a built-in Linux virtualization tool bundled with Windows. It allows users to quickly and easily install and use various Linux distributions. Most of these are accessed through the command-line only, inside of Windows Terminal. That’s not what we want–we want a graphical desktop, so we can run <strong class="program">kitty</strong>. Thankfully, there is a specific WSL package called Win-Kex which is a turn-key virtual Linux desktop environment for running Linux-native graphical applications like <strong class="program">kitty</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware that there are several known issues with WSL. For example, the AnyConnect VPN and WSL are incompatible with each other. Using both at the same time will cause one to not be able to connect (WSL will have no internet access, or the VPN will not work). Additionally, some students experience instability (random crashes, etc.) and graphical problems (<strong class="program">kitty</strong> is just a black screen, etc.). If you experience these problems, you may need to try one of the other commercial virtualization solutions, or dual-boot.</p>
+</div>
+<p>In order to install Win-Kex, follow the instructions here: <a class="reference external" href="https://www.kali.org/docs/wsl/win-kex/" rel="noopener noreferrer" target="_blank">Win-Kex</a>. Win-Kex has three different modes of operation, and not all of them will work with all combinations of hardware and software.</p>
+<dl class="simple">
+<dt>Window Mode</dt><dd><p>In Window Mode, Win-Kex spawns a Linux desktop environment, and attaches it to a VNC (remote desktop) server, which advertises on the shared Windows-Linux network stack. Then it spawns a VNC viewer application running in Windows, which connects to the VNC server running in Linux. This is the most basic desktop environment experience which works on the most systems.</p>
+</dd>
+<dt>Seamless Mode</dt><dd><p>In Seamless Mode, Win-Kex uses a Windows-native port of the Unix X/windows display server, called VcXsrv, to allow applications to run directly as individual windows in the Windows desktop. This mode relies on VcXsrv functionality, which is incomplete. It may work on most systems, but have display issues on others. Additionally, certain applications may not be able to run in Seamless Mode due to its limited compatibility.</p>
+</dd>
+<dt>Enhanced Session Mode</dt><dd><p>In Enhanced Session Mode, Win-Kex hosts a Linux desktop environment on a server using the Windows Remote Desktop Protocol (RDP), and spawns a RDP viewer in Windows to attach to the server. This is a lot like VNC mode, but with better graphics and support for things like copying and pasting into the environment. However, it is dependent on the Linux-port of RDP server functionality, which, like VcXsrv may have compatibility issues with certain software.</p>
+</dd>
+</dl>
+<p>I would suggest trying Seamless mode first, and then falling back to Enhanced Session Mode, and finally the basic Window Mode.</p>
+<p>Once you have Win-Kex installed, you can proceed with the directions for <a class="reference internal" href="#unix"><span class="std std-ref">MacOS, Linux, BSD, etc.</span></a></p>
+<p class="rubric">VMware/VirtualBox</p>
+<p>Both VMware and VirtualBox are generic virtual machine software, and work in basically the same way. If you have experience with one, use that, otherwise try VMware first since it’s usually better.</p>
+<p>VMware is available <a class="reference external" href="https://www.vmware.com/products/workstation-player.html" rel="noopener noreferrer" target="_blank">here</a>, and VirtualBox is available <a class="reference external" href="https://www.virtualbox.org/" rel="noopener noreferrer" target="_blank">here</a>. Once installed, the setup process is essentially the same–create a new virtual machine in VMware/VirtualBox, find a Linux distribution .iso, and boot the virtual machine from it in order to start the installation process. I would recommend using <a class="reference external" href="https://ubuntu.com/download" rel="noopener noreferrer" target="_blank">ubuntu</a> if it is your first time using Linux, since it is designed specifically for new users coming from Windows. You can install any of the versions available on the downloads page. Once you go through the installation process, you can continue to the directions for <a class="reference internal" href="#unix"><span class="std std-ref">MacOS, Linux, BSD, etc.</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Broadcom recently acquired VMware, and any previous guides may no longer apply. The availability of VMware may change at any moment. A student supplied the following instructions that worked for them:</p>
+<ol class="arabic simple">
+<li><p>Make a free account with Broadcom</p></li>
+<li><p>Visit this site <a class="reference external" href="https://support.broadcom.com/group/ecx/productdetails?productName=VMware%20Workstation%20Pro" rel="noopener noreferrer" target="_blank">https://support.broadcom.com/group/ecx/productdetails?productName=VMware%20Workstation%20Pro</a> or,</p>
+<ul class="simple">
+<li><p>Top right side select VMware Cloud Foundation</p></li>
+<li><p>Menu left side click on All Products and search VMware Workstation Pro</p></li>
+<li><p>Page 5 and click Product Details on VMware Workstation Pro</p></li>
+<li><p>Menu left side click My Downloads you will have VMware Cloud Foundation download list.</p></li>
+<li><p>Find VMware Workstation Pro and select For Personal use</p></li>
+<li><p>Put your address detail and tick agree.</p></li>
+<li><p>Click on HTTP Download</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</section>
+<section id="dual-boot">
+<h4>Dual Boot<a class="headerlink" href="#dual-boot" title="Link to this heading"></a></h4>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>There is always a possibility of irrecoverable data loss when installing an operating system on an existing system. For example, during the setup process you may need to select partitions to format and install Linux on. If you select your Windows partition by accident, you will immediately lose all of that data. It is always recommended that you back up data before attempting to set up dual-boot, and, as always–be careful!</p>
+</div>
+<p>In order to dual-boot, you will need an empty partition to install Linux on. The most convenient way to do this is to just buy a cheap hard drive and install it alongside the one you have Windows on. This is also the safest method because you can disconnect the Windows drive during the install process to ensure that you don’t accidentally wipe the wrong disk. Otherwise, you can use your existing drive by repartitioning it to create room for a Linux install.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Repartitioning can result in irrecoverable data loss if it goes wrong. Back up any important data before partitioning an existing drive.</p>
+</div>
+<p>If this is your first time attempting dual booting, I recommend installing <a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview" rel="noopener noreferrer" target="_blank">ubuntu</a> as it is designed specifically for new users coming from Windows. It also has a graphical installer that helps you avoid mistakes during installation. After setting up dual-boot, continue with the directions for <a class="reference internal" href="#unix"><span class="std std-ref">MacOS, Linux, BSD, etc.</span></a></p>
+</section>
+</section>
+<section id="macos-linux-bsd-etc">
+<span id="unix"></span><h3>MacOS, Linux, BSD, etc.<a class="headerlink" href="#macos-linux-bsd-etc" title="Link to this heading"></a></h3>
+<p>The programs you need to install such as <strong class="program">kitty</strong>, <strong class="program">ssh</strong>, and some others that are nice to have, are all available on every major package manager and can be installed very easily that way. The command to install these depends on which package manager your system uses. Here is a list of common package managers:</p>
+<dl>
+<dt>Debian/Ubuntu/Kali (Win-Kex)</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<span class="gp">[bennyb@local-sys ~]$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kitty<span class="w"> </span>openssh-client<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+<dt>Arch</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>pacman<span class="w"> </span>-Syu<span class="w"> </span>kitty<span class="w"> </span>openssh<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+<dt>Gentoo</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>emerge<span class="w"> </span>--ask<span class="w"> </span>x11-terms/kitty<span class="w"> </span>net-misc/openssh<span class="w"> </span>app-editors/neovim<span class="w"> </span>dev-vcs/git
+</pre></div>
+</div>
+</dd>
+<dt>Fedora</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>kitty<span class="w"> </span>openssh<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+<dt>HomeBrew (MacOS)<a class="footnote-reference brackets" href="#brew" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>brew<span class="w"> </span>update
+<span class="gp">[bennyb@local-sys ~]$ </span>brew<span class="w"> </span>install<span class="w"> </span>kitty<span class="w"> </span>openssh<span class="w"> </span>neovim<span class="w"> </span>git
+</pre></div>
+</div>
+</dd>
+</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="brew" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>MacOS does not have a package manager out of the box. <a class="reference external" href="https://brew.sh/" rel="noopener noreferrer" target="_blank">HomeBrew</a> is the “missing package manager for MacOS”, and I recommend installing it if you aren’t already using it!</p>
+</aside>
+</aside>
+<p>If, for some reason, <strong class="program">kitty</strong> does not work properly (such as if your system does not support GPU acceleration), the following terminal emulators are suggested as acceptable alternatives that students report worked well:</p>
+<ul class="simple">
+<li><p>Alacritty</p></li>
+<li><p>Gnome Terminal</p></li>
+<li><p>Foot</p></li>
+<li><p>iTerm2</p></li>
+</ul>
+<p>The following terminal emulators are known to have major issues:</p>
+<ul class="simple">
+<li><p>Terminal.app (MacOS out-of-box terminal emulator)</p></li>
+<li><p>Terminator</p></li>
+<li><p>ConEmu</p></li>
+<li><p>MobaXterm</p></li>
+<li><p>PuTTY</p></li>
+<li><p>CMD.exe</p></li>
+<li><p>Windows Terminal (Windows out-of-box terminal emulator)</p></li>
+<li><p>Xterm</p></li>
+</ul>
+</section>
+</section>
+<section id="ssh-setup">
+<h2>SSH Setup<a class="headerlink" href="#ssh-setup" title="Link to this heading"></a></h2>
+<p>Secure Shell Protocol (SSH) is used to securely connect to a command-line interface on remote servers, among other things. SSH is secured using public key cryptography. The way this works is that you have two cryptographic keys that are symmetric–a message that is encrypted with one key can only be decrypted with the other. One of these keys is chosen as your private key, which you keep a secret. The other is your public key, which you register with services as proof of identity. When you later connect to a remote server, the server creates a random challenge message and encrypts it with your previously registered public key. Your ssh client then uses your private key to decrypt this message and send it back to the server, which verifies that the decrypted message matches the original challenge message. In this scheme, you are able to prove that you possess the private key, without divulging any information about its contents. This has several significant advantages compared to password authentication:</p>
+<ul class="simple">
+<li><p>Public key cryptography is convenient, allowing password-less logins.</p></li>
+<li><p>Your private key is never exposed, allowing it to be used everywhere, unlike a password.</p></li>
+<li><p>Each local device has its own private key. If a device is compromised, that credential can be revoked without having to update a master password on every other device.</p></li>
+</ul>
+<p>Configuring SSH is a three step process,</p>
+<ol class="arabic simple">
+<li><p>Generate public/private key pair</p></li>
+<li><p>Register public key on remote server(s)</p></li>
+<li><p>Create a local SSH Configuration file</p></li>
+</ol>
+<p class="rubric">Generation a public/private key pair</p>
+<p>The first step is to generate a public/private key. Many students have already created SSH keys in previous classes. You can see if you have any existing SSH keys with the command <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>ssh-add<span class="w"> </span>-l</code>. If the output shows that you already have a key(s), skip to the next step. Otherwise, create a key with the <strong class="command">ssh-keygen</strong> utility, as shown below (don’t forget the argument <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">ed25519</span></code>). You can simply hit enter at each prompt to use the provided defaults.</p>
+<div class="admonition note" id="key-pass">
+<p class="admonition-title">Note</p>
+<p>If you choose to enter a password during key creation, the password is used to encrypt your private key <em>file</em> when it stored on disk. You will need to enter this password in order to use the private key during SSH authentication. Some systems have a program called an ssh-agent which caches this decrypted key so that you don’t need to enter this password again–others do not, in which case you will end up having to enter it twice when logging in (once for <strong>flip</strong>, and again for <strong>os1</strong>). Students who set a password  on their private key are often later confused when they are asked for a password, and mistakenly think that they need to enter their ONID password. Keep this in mind!</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+<span class="go">Generating public/private ed25519 key pair.</span>
+<span class="go">Enter file in which to save the key (/home/bennyb/.ssh/id_ed25519):</span>
+<span class="go">Created directory &#39;/home/bennyb/.ssh&#39;.</span>
+<span class="go">Enter passphrase (empty for no passphrase):</span>
+<span class="go">Enter same passphrase again:</span>
+<span class="go">Your identification has been saved in /home/bennyb/.ssh/id_ed25519</span>
+<span class="go">Your public key has been saved in /home/bennyb/.ssh/id_ed25519.pub</span>
+<span class="go">The key fingerprint is:</span>
+<span class="go">SHA256:9n/wHNEYPolGIDIpnDngE6T860LNdk15/79+5mPtNO8 bennyb@local-sys</span>
+<span class="go">The key&#39;s randomart image is:</span>
+<span class="go">+--[ED25519 256]--+</span>
+<span class="go">| .+o oo.. ..     |</span>
+<span class="go">|.o .* .o .  . .  |</span>
+<span class="go">|..o  o  .  . o = |</span>
+<span class="go">|  ..   o .  o * .|</span>
+<span class="go">|  o.  o S ..   o |</span>
+<span class="go">| . +.. o . .. .  |</span>
+<span class="go">|. ...     . .+ oo|</span>
+<span class="go">| ..        . .++*|</span>
+<span class="go">|  ..        ..+OE|</span>
+<span class="go">+----[SHA256]-----+</span>
+</pre></div>
+</div>
+<p class="rubric">Register public key on remote server(s)</p>
+<p>In order to register your key(s) on the remote server, use the <strong class="program">ssh-copy-id</strong> utility, with your username and the name of the server you want to copy your keys to, in the format <code class="docutils literal notranslate"><span class="pre">user&#64;server</span></code>. Your username is your ONID name (such as “bennyb”), and the server is <strong>access.engr.oregonstate.edu</strong>.</p>
+<p>The first time you connect to a particular server, you will be shown the server fingerprint and IP address, and asked if you want to continue connecting. You may see this prompt several times on different connection attempts, since there are multiple servers in the pool that <strong>access.engr.oregonstate.edu</strong> points to. You can just say “yes”.</p>
+<p>Next, it will ask for your password; this is your ONID password, <em>not</em> <a class="reference internal" href="#key-pass"><span class="std std-ref">the password you might have encrypted your private key with</span></a>.</p>
+<p>Finally, it will ask you to authenticate with Duo. You can either enter a 6-digit passcode (one-time key) from the app, or you can select one of the options shown. In the example below, there are two different devices registered with Duo, so entering “1” will send a Duo push to the device with phone number ending in “1234”, and entering “2” will send a Duo push to the device with phone number ending in “5876”.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>ssh-copy-id<span class="w"> </span>bennyb@access.engr.oregonstate.edu
+<span class="go">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/home/bennyb/.ssh/id_ed25519.pub&quot;</span>
+<span class="go">The authenticity of host &#39;access.engr.oregonstate.edu (128.193.54.182)&#39; can&#39;t be established.</span>
+<span class="go">ED25519 key fingerprint is SHA256:ml5ibITneSw1g9L8uQf6hgGrCFDKX6aMgXd/hxF8z38.</span>
+<span class="go">This key is not known by any other names.</span>
+<span class="go">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span>
+<span class="go">/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed</span>
+<span class="go">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys</span>
+<span class="go">========================================================================</span>
+<span class="go">You Are Accessing an Oregon State University System</span>
+<span class="go">Unauthorized Access Prohibited</span>
+<span class="go">Use Constitutes a Consent to Monitoring</span>
+<span class="go">Users have No Expectation of Privacy</span>
+<span class="go">========================================================================</span>
+
+<span class="gp gp-VirtualEnv">(bennyb@access.engr.oregonstate.edu)</span> <span class="go">Password:</span>
+<span class="gp gp-VirtualEnv">(bennyb@access.engr.oregonstate.edu)</span> <span class="go">Duo two-factor login for bennyb</span>
+
+<span class="go">Enter a passcode or select one of the following options:</span>
+
+<span class="go">1. Duo Push to XXX-XXX-1234</span>
+<span class="go">2. Duo Push to XXX-XXX-5876</span>
+
+<span class="go">Passcode or option (1-2): 1</span>
+<span class="go">Success. Logging you in...</span>
+
+<span class="go">Number of key(s) added: 1</span>
+
+<span class="go">Now try logging into the machine, with:   &quot;ssh &#39;bennyb@access.engr.oregonstate.edu&#39;&quot;</span>
+<span class="go">and check to make sure that only the key(s) you wanted were added.</span>
+</pre></div>
+</div>
+<p>After the operation completes, you should be able to login without entering your ONID password and going through Duo authentication, using the command shown at the end of the <strong class="command">ssh-copy-id</strong> output, e.g. <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>ssh<span class="w"> </span><span class="s1">&#39;bennyb@access.engr.oregonstate.edu&#39;</span></code>. You can logout by pressing <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">d</kbd> (press a second time if nothing happens), or with the command <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span><span class="nb">exit</span></code>. From here on out, pay close attention to which environment you are currently in–local vs remote.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can ignore any warnings you see when loggging in about things like “Unknown Locale” or “Unknown terminal xterm-kitty”, etc.</p>
+</div>
+<p class="rubric">Local SSH Configuration</p>
+<p>In order to more easily connect to the remote server, it is suggested that you create a <strong>local</strong> SSH configuration file.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before starting, run the <strong class="command">hostname</strong> command and ensure that you are <em>not</em> currently connected to the school server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@local-sys ~]$ </span>hostname
+<span class="go">local-sys</span>
+</pre></div>
+</div>
+</div>
+<p>Next, the file you need to create is called <code class="file docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, with the contents shown below. Note that you will need to customize it with your ONID username:</p>
+<pre class="noselect literal-block">Host *
+   ServerAliveInterval 10
+   ServerAliveCountMax 6
+
+Host flip os1
+  User <strong>your-onid-username</strong>
+  LogLevel=error
+
+Host flip
+  Hostname access.engr.oregonstate.edu
+
+Host os1
+  ProxyJump flip</pre>
+<p>You may use the box below to enter your ONID username, then copy and paste the entire command shown below into your terminal in order to create this file.</p>
+<label for="onid-entry" style="font-weight: bold;">ONID Username:</label><input id="onid-entry" type="text" autocomplete="off" oninput="document.getElementById('onid-target').innerText = this.value; document.getElementById('ssh-config').style.userSelect=(this.value.length > 0 ? 'text' : 'none'); document.getElementById('ssh-config').style.opacity=(this.value.length > 0 ? 1 : 0.5);" maxlength="8" placeholder="ONID Username"></input>
+<pre id="ssh-config" style="user-select: none; opacity: 0.5;" class="literal-block">
+mkdir -p ~/.ssh/
+set -- "$(mktemp)" "$@"
+cat - ~/.ssh/config >"$1" 2>/dev/null <<'EOF'
+Host *
+   ServerAliveInterval 10
+   ServerAliveCountMax 6
+
+Host flip os1
+  User <span id="onid-target"></span>
+  LogLevel=error
+
+Host flip
+  Hostname access.engr.oregonstate.edu
+
+Host os1
+  ProxyJump flip
+
+EOF
+if [ -e ~/.ssh/config ]
+then
+  set -- 1 "$@"
+  while
+    [ -e ~/.ssh/config.~$1~ ]
+  do
+    set -- $(($1 + 1)) "$@"
+  done
+  mv -v ~/.ssh/config ~/.ssh/config.~$1~
+  shift $1
+fi
+mv -v "$1" ~/.ssh/config
+shift
+</pre><p>You should now be able to log into <strong>os1</strong> directly with the command <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>ssh<span class="w"> </span>os1</code>, without entering a password, <a class="reference internal" href="#key-pass"><span class="std std-ref">except the password that you might have encrypted your private key with</span></a>.</p>
+</section>
+<section id="remote-setup">
+<h2>Remote Setup<a class="headerlink" href="#remote-setup" title="Link to this heading"></a></h2>
+<p>Now you should be able to log into <strong>os1</strong> and configure your <strong>remote</strong> user account to be able to use the customized software packages and configurations installed on the server.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before starting, run the <strong class="command">hostname</strong> command and ensure that you <em>are</em> currently connected to the <strong>os1</strong> server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@os1.engr.oregonstate.edu ~]$ </span>hostname
+<span class="go">os1.engr.oregonstate.edu</span>
+</pre></div>
+</div>
+</div>
+<p>Run the following setup script to install the class configuration settings.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@os1.engr.oregonstate.edu ~]$ </span>/class/cs374/setup/setup.sh
+</pre></div>
+</div>
+<p>You will need to log out of <strong>os1</strong> and log back in for the changes to take effect. You should now have a colored prompt, and be able to confirm that your versions are the same as shown in the following screenshot (or higher):</p>
+<a class="framed"
+               data-lightbox="group-abdadc4d-89ad-46f4-b815-900e1310b019"
+               href="../../_images/version_info.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../_images/version_info.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p>Congratulations! You have completed the course setup!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The path <code class="file docutils literal notranslate"><span class="pre">/class/cs374/setup/setup.sh</span></code> is an <em>absolute</em> path, because it begins with a forward slash (<code class="file docutils literal notranslate"><span class="pre">/</span></code>) which is the name of the <em>root directory</em> of the file system. No matter what directory you are currently in, an absolute path always points to the same location. Paths that contain a forward slash, but do not begin with a forward slash (e.g. <code class="file docutils literal notranslate"><span class="pre">path/to/file</span></code>) are called <em>relative</em> paths, and they are resolved starting from the current working directory, rather than the filesystem root directory.</p>
+<p>If the first word of a command has no slashes in it, the shell treats it as a command name–it searches a predefined list of system directories, called the environment’s <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, until it finds an executable file with the same name as the command. So, for example, <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>cat</code> causes the shell to look for a file called “cat” in various directories, and might resolve to <code class="file docutils literal notranslate"><span class="pre">/bin/cat</span></code>, or something similar.</p>
+<p>On the other hand, if the first word has at least one slash in it, the shell interprets it as the path to an executable file and does not try to look up a command. You will often see programs executed as in <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>./base64</code>, where the special <code class="file docutils literal notranslate"><span class="pre">./</span></code> dot directory (which is a link to its own parent) is used to explicitly execute the file <code class="file docutils literal notranslate"><span class="pre">./base64</span></code> that is in the current working directory, since running <code class="code highlight shell docutils literal highlight-shell">$<span class="w"> </span>base64</code> will search for a program named “base64” in the system directories, but not the current working directory. The <code class="file docutils literal notranslate"><span class="pre">./</span></code> prefix also shows up in other places, for example if a filename starts with a dash (“-“), a program might interpret it as the beginning of a command-line option rather than a filename, but <code class="file docutils literal notranslate"><span class="pre">./-</span></code> disambiguates it as an actual file path.</p>
+<p>You will also see paths starting with a tilde (<code class="file docutils literal notranslate"><span class="pre">~/</span></code>) a lot. This is your <em>home directory</em>, where your personal files are stored. The tilde is not a real path in the filesystem–it is actually a feature of the shell itself called tilde-expansion. In the shell, the first character of a word is an unquoted tilde, followed by a slash, the <em>shell</em> expands it to the absolute path of your home directory <em>before</em> executing the command, so the command never sees the tilde, it just sees an absolute path to the file in your home directory. To illustrate this,</p>
+<div class="highlight-console:: notranslate"><div class="highlight"><pre><span></span>[bennyb@os1.engr.oregonstate.edu ~]$ echo ~/
+/nfs/stak/users/bennyb/
+[bennyb@os1.engr.oregonstate.edu ~]$ echo &#39;~/&#39;
+~/
+</pre></div>
+</div>
+<p>Tilde expansion also allows you to specify a username, and the shell will expand it to the home directory of that particular user,</p>
+<div class="highlight-console:: notranslate"><div class="highlight"><pre><span></span>[bennyb@os1.engr.oregonstate.edu ~]$ echo ~bennyb/
+/nfs/stak/users/bennyb/
+[bennyb@os1.engr.oregonstate.edu ~]$ echo ~donnyd/
+/nfs/stak/users/donnyd
+[bennyb@os1.engr.oregonstate.edu ~]$ echo ~root/   # root user = System Administrator
+/root/
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../schedule/" class="btn btn-neutral float-left" title="Schedule" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../style/" class="btn btn-neutral float-right" title="Coding Style" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
