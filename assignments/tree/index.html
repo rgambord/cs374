@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 2: Tree &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Assignment 2: Tree</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="assignment-2-tree">
+<h1>Assignment 2: Tree<a class="headerlink" href="#assignment-2-tree" title="Link to this heading"></a></h1>
+<p>In this assignment, you will explore using system calls to access the filesystem, navigate the hierarchical directory structure, and interpret and file metadata.</p>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Describe the API for different operations related to files (Module 2 MLO 3)</p></li>
+<li><p>Describe the API for different operations related to directories (Module 2 MLO 6)</p></li>
+<li><p>How to define and use structures in C (Module 1 MLO 3)</p></li>
+</ul>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading"></a></h2>
+<p>You will write a program which meets the following specification, presented in a man-page format,</p>
+<pre class="literal-block"><strong>NAME</strong>
+  tree - recursively list files and directories
+
+<strong>SYNOPSIS</strong>
+  tree [OPTION]... [DIRECTORY]...
+
+<strong>DESCRIPTION</strong>
+   Recursively list all files found in DIRECTORY(s). If no DIRECTORY is provided,
+   the current directory is used. By default, output is sorted alphabetically.
+
+<strong>LISTING OPTIONS</strong>
+  -a    Print hidden files. By default, tree does not print hidden files--those with
+        filenames beginning with a dot ('.') character. The filesystem constructs <code class="file docutils literal notranslate"><span class="pre">.</span></code>
+        and <code class="file docutils literal notranslate"><span class="pre">..</span></code> are never printed even with the -a option.
+  -d    Print only directories, no files.
+  -L  level
+        Max display depth of the directory tree (default: unlimited)
+
+<strong>FILE OPTIONS</strong>
+  -p    Print permissions according to the mode string format specified for <strong class="program">ls</strong>.
+  -u    Print the username, or UID # if no username is available, of the file.
+  -g    Print the group name, or GID # if no group name is available, of the file.
+  -s    Print the size of each file in bytes.
+
+<strong>SORTING OPTIONS</strong>
+  -r    Sort the output in reverse alphabetic order.
+  -t    Sort the output by last modification time.
+  -U    Do not sort. List files according to directory order.
+
+<strong>GRAPHICS OPTIONS</strong>
+  -i  indent_width
+        Number of spaces printed before each filename, for each level of depth (default: 2)
+
+  -h    Print an informative usage message
+
+<strong>EXIT STATUS</strong>
+   0, if successful.
+
+   &gt;0, if an error occurs.</pre>
+<p>You will write a program named <strong class="program">tree</strong>, which recursively descends a directory hierarchy, printing the names of files that it finds, as it goes.</p>
+</section>
+<section id="selected-topics">
+<h2>Selected Topics<a class="headerlink" href="#selected-topics" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html#tag_20_73_10" rel="noopener noreferrer" target="_blank">ls. Shell &amp; Utilities. POSIX.1-2008.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/dirent.h.html" rel="noopener noreferrer" target="_blank">&lt;dirent.h&gt;. Base Definitions. POSIX.1-2008.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/errno.h.html" rel="noopener noreferrer" target="_blank">&lt;errno.h&gt;. Base Definitions. POSIX.1-2008.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.opengroup.org/onlinepubs/007904875/basedefs/sys/stat.h.html" rel="noopener noreferrer" target="_blank">&lt;sys/stat.h&gt;. Base Definitions. POSIX.1-2008.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/basedefs/time.h.html" rel="noopener noreferrer" target="_blank">&lt;time.h&gt;. Base Definitions. POSIX.1-2008.</a></p></li>
+</ul>
+</section>
+<section id="skeleton-code-tour">
+<h2>Skeleton Code Tour<a class="headerlink" href="#skeleton-code-tour" title="Link to this heading"></a></h2>
+<div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/B9yAW6e3_VE" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+<section id="example-output">
+<h2>Example Output<a class="headerlink" href="#example-output" title="Link to this heading"></a></h2>
+<p>Tree output of the skeleton-code directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>skeleton-code/reference/tree
+<span class="go">.</span>
+<span class="go">  README.rst</span>
+<span class="go">  compile_commands.json</span>
+<span class="go">  makefile</span>
+<span class="go">  reference</span>
+<span class="go">    tree</span>
+<span class="go">  src</span>
+<span class="go">    gprintf.c</span>
+<span class="go">    gprintf.h</span>
+<span class="go">    main.c</span>
+<span class="go">    options.c</span>
+<span class="go">    options.h</span>
+<span class="go">    pathinfo.c</span>
+<span class="go">    pathinfo.h</span>
+<span class="go">    sort.c</span>
+<span class="go">    sort.h</span>
+<span class="go">    tree.c</span>
+<span class="go">    tree.h</span>
+</pre></div>
+</div>
+<p>Initial tree output of the provided test directory <code class="file docutils literal notranslate"><span class="pre">10/</span></code> on <strong>os1</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bennyb@os1:/class/cs374/tree-test-directories] $ </span>./tree<span class="w"> </span>-pugs<span class="w"> </span><span class="m">10</span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<span class="go">[drwxrwxr-x coe_gambordr upg20842 4096] 10/</span>
+<span class="go">[drwx--xr-- coe_gambordr upg20842 19] adapter  [error opening dir]</span>
+<span class="go">[drwx--x--x coe_gambordr upg20842 4096] bahrain  [error opening dir]</span>
+<span class="go">[drwx--xr-x coe_gambordr upg20842 21] bargains</span>
+<span class="go">   [drwxr--r-x coe_gambordr upg20842 52] wrapped</span>
+<span class="go">      [drwxr-x--- coe_gambordr upg20842 34] leading  [error opening dir]</span>
+<span class="go">      [drwxrwxr-x coe_gambordr upg20842 22] naughty</span>
+<span class="go">      [lrwxrwxrwx coe_gambordr upg20842 38] articles -&gt; ./equation/.north/movements/.decisions</span>
+<span class="go">[drwxr----x coe_gambordr upg20842 20] blend  [error opening dir]</span>
+<span class="go">[drwxr-x--x coe_gambordr upg20842 19] boundary  [error opening dir]</span>
+</pre></div>
+</div>
+<p>Each line of output describes a single file, and is formatted as shown above, according to the following rules:</p>
+<ul class="simple">
+<li><p>Each line is indented by <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">indent_width</span></code> &lt;space&gt; characters according to the depth of the current file relative to the start directory. The default indent width is two spaces per level.</p></li>
+<li><p>If the any of the option flags <code class="docutils literal notranslate"><span class="pre">-p</span></code>, <code class="docutils literal notranslate"><span class="pre">-u</span></code>, <code class="docutils literal notranslate"><span class="pre">-g</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">-s</span></code> are specified, the corresponding file metadata is listed as a space-separated list in the order <em>mode</em>, <em>user</em>, <em>group</em>, <em>size</em>, and enclosed in square brackets (<strong>[</strong> and <strong>]</strong>), followed by a space.</p></li>
+<li><p>The file path is listed. For the root directory, this may be a multi-component pathname. For any recursively listed files, this will simply be the file name, as it is always listed relative to the parent directory above it.</p></li>
+<li><p>If the file is a link, its target is listed as in “ -&gt; <em>link_target</em>”.</p></li>
+<li><p>If the file is a directory, and it cannot be opened, or its children cannot be stat()’d, the diagnostic “  [error opening dir]” is listed following the name of the directory. Note the two leading spaces of the diagnostic.</p></li>
+</ul>
+<p>Output is sorted according to the specified sort option flag (<code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">-t</span></code>, or <code class="docutils literal notranslate"><span class="pre">-U</span></code>), or alphabetically if none is provided. For alphabetic and reverse-alphabetic sorting, the current locale’s collation should be used (see <em class="manpage">strcoll(3)</em>). For modification-time sorting, files should be sorted so that more recently-modified files are listed first.</p>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h2>
+<p>In this project, you will continue to develop your C programming skill set by working to complete a partially finished implementation of the above specification. The skeleton code provided for this assignment contains several files implementing different aspects of the overall program. Remember, each source file is a standalone compilation unit, with an external interface and internal implementation facilitated by identifier linkage. You will need to review each provided source file to understand how the pieces fit together. Several of the more complex tasks have been completed for you. While you are studying these files, pay close attention to how certain types of programming tasks are commonly performed in C–handling or propagating errors, initializing different types of data, passing different types of arguments, multi-layered indirection, etc.</p>
+<p>Unlike the previous assignment, certain types of errors are to be handled internally, rather than result in program termination. These are errors that occur due to lack of access permissions, such as when attempting to read the contents of a directory that has <code class="docutils literal notranslate"><span class="pre">-r</span></code> (“minus write”) permissions set. Handling an error in C involves inspecting <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code>, and setting it back to <code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">0</span></code>–the skeleton code displays several examples of this, and you will put it into practice in a few locations of your own. If <strong class="program">tree</strong> is unable to open a directory, or access its contents for some reason, it should print the specified diagnostic (”  [error opening dir]”), and continue to print its output.</p>
+<p>This program also involves considerable allocations of resources, such as open file descriptors, open directory streams (<code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">DIR</span><span class="w"> </span><span class="o">*</span></code>), and lists of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pathinfo</span></code> objects. A final requirement of the assignment is to find and eliminate resource leaks that are scattered throughout the skeleton code, using <strong class="program">valgrind</strong> to identify the causes of resource leaks–these are not annotated with TODO or FIXME comments. It may not be possible to pass some tests without solving resource leaks, due to resource exhaustion.</p>
+</section>
+<section id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Your program must compile to the <code class="docutils literal notranslate"><span class="pre">release</span></code> build target with the provided makefile.</p></li>
+<li><p>When your program encounters an <em>unhandled</em> error it must print an error message to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code>, and exit with a non-zero exit status. These two constraints can be met in a single call of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">err</span><span class="p">()</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">errx</span><span class="p">()</span></code> functions provided by <code class="file docutils literal notranslate"><span class="pre">err.h</span></code>. You can find usage examples in the skeleton code. You do not need to check for errors when writing to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdout</span></code>.</p></li>
+</ol>
+</section>
+<section id="testing-your-program">
+<h2>Testing Your Program<a class="headerlink" href="#testing-your-program" title="Link to this heading"></a></h2>
+<p>A reference implementation is provided with the assignment skeleton code. It has been tested to run in both the GitHub Codespaces environment as well as on <strong>os1</strong>. It is likely to also run on any recent Linux distribution.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <strong class="program">tree</strong> reference program should not be confused with the GNU utility of the same name, which preinstalled on most systems, including <strong>os1</strong>. It uses a different output format with box-drawing characters to denote indentation level, prints additional statistics at the end, and interprets its arguments differently:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree
+<span class="go">.</span>
+<span class="go">├── compile_commands.json</span>
+<span class="go">├── makefile</span>
+<span class="go">├── README.rst</span>
+<span class="go">├── reference</span>
+<span class="go">│   └── tree</span>
+<span class="go">└── src</span>
+<span class="go">    ├── gprintf.c</span>
+<span class="go">    ├── gprintf.h</span>
+<span class="go">    ├── main.c</span>
+<span class="go">    ├── options.c</span>
+<span class="go">    ├── options.h</span>
+<span class="go">    ├── pathinfo.c</span>
+<span class="go">    ├── pathinfo.h</span>
+<span class="go">    ├── sort.c</span>
+<span class="go">    ├── sort.h</span>
+<span class="go">    ├── tree.c</span>
+<span class="go">    └── tree.h</span>
+
+<span class="go">5 directories, 29 files</span>
+</pre></div>
+</div>
+</div>
+<p>Most testing can be done within the project directory, itself. You may want to create a test directory which contains files and directories with random permissions–refer to <em class="manpage">chmod(1)</em>. Certain aspects of the program are difficult to test in an actual environment, because they require the ability to generate arbitrary filesystem structures–such as files owned by other users.</p>
+<p>Some good directories to test with are <code class="file docutils literal notranslate"><span class="pre">/tmp/</span></code>, <code class="file docutils literal notranslate"><span class="pre">/var/spool/</span></code>, since these contain files owned by different users with various permissions and file types. There are also a battery of tests available on <strong>os1</strong> under <code class="file docutils literal notranslate"><span class="pre">/class/cs374/tree-test-directories/</span></code>:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">01/</span></code> contains regular files with random contents.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">02/</span></code> contains regular files with random permissions (and contents).</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">03/</span></code> contains regular files and (empty) directories up to one level deep. All directories have <code class="docutils literal notranslate"><span class="pre">+rx</span></code> permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">04/</span></code> contains regular files and directories up to two levels deep. All directories have <code class="docutils literal notranslate"><span class="pre">+rx</span></code> permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">05/</span></code> contains regular files and directories up to 11 levels deep. All directories have <code class="docutils literal notranslate"><span class="pre">+rx</span></code> permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">06/</span></code> contains regular files and directories to an unspecified depth. Directories have random permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">07/</span></code> contains hidden and non-hidden regular files.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">08/</span></code> contains hidden and non-hidden regular files and directories up to 14 levels deep. All directories have <code class="docutils literal notranslate"><span class="pre">+rx</span></code> permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">09/</span></code> contains special files, as well as regular files and directories, up to one level deep.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">10/</span></code> contains hidden and non-hidden special files, regular files, and directories, up to an unspecified depth. Directories have random permissions.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">edgecases/</span></code> contains various edge case arguments to test with</p></li>
+</ul>
+<p>A reference implementation is also provided in this directory, as <code class="file docutils literal notranslate"><span class="pre">/class/cs374/tree-test-directories/tree</span></code>, which is the same as that provided with the skeleton code.</p>
+<p>These test directories are similar to, but not exactly the same as, those that are used by Gradescope–we are unable to create randomly generated user/group combinations for files on <strong>os1</strong>.</p>
+</section>
+<section id="rubric-grading">
+<h2>Rubric &amp; Grading<a class="headerlink" href="#rubric-grading" title="Link to this heading"></a></h2>
+<p>The rubric tests are described in relation to the test directories listed above. For example, “<code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>tree<span class="w"> </span><span class="m">01</span></code>” means that your program will be tested against a directory similar to <code class="file docutils literal notranslate"><span class="pre">01/</span></code> above, and that output will be compared to that which is produced by the provided reference program under the same test. If a test case produces an error message and non-zero exit status with the reference program, your submission must also produce an error message and non-zero exit status, but the error message and exit status need not match those produced by the reference program in order to pass that test case.</p>
+<p>Due to the nature of the assignment, several rubric items may require completion of prerequisite functionality. Credit will <em>not</em> be manually awarded for components which are “completed” but unable to be tested due to incomplete prerequisites.</p>
+<p>Your submission must compile with the <code class="docutils literal notranslate"><span class="pre">release</span></code> build of the provided makefile in order to receive <em>any</em> credit.</p>
+<section id="sorting-tests">
+<h3>Sorting tests<a class="headerlink" href="#sorting-tests" title="Link to this heading"></a></h3>
+<dl>
+<dt>Single level alphabetic sort test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span><span class="m">03</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Deeply nested alphabetic sort test [10%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Additional sort options test [10%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-r<span class="w"> </span><span class="m">05</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-U<span class="w"> </span><span class="m">05</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-t<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="filtering-tests">
+<h3>Filtering Tests<a class="headerlink" href="#filtering-tests" title="Link to this heading"></a></h3>
+<dl>
+<dt>Show hidden files and directories options test [10%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span><span class="m">08</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-a<span class="w"> </span><span class="m">08</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-d<span class="w"> </span><span class="m">08</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-ad<span class="w"> </span><span class="m">08</span>/
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="metadata-tests">
+<h3>Metadata Tests<a class="headerlink" href="#metadata-tests" title="Link to this heading"></a></h3>
+<dl>
+<dt>Show permissions (mode) option test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-p<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Show user option test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-u<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Show group option test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-g<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Show size option test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-s<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Combined option test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-pugs<span class="w"> </span><span class="m">05</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Special file test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-pugs<span class="w"> </span><span class="m">09</span>/
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="error-handling-tests">
+<h3>Error Handling tests<a class="headerlink" href="#error-handling-tests" title="Link to this heading"></a></h3>
+<dl>
+<dt>Edge cases [10%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>no-such-file
+<span class="gp">$ </span>tree<span class="w"> </span>edgecases/infinite-loop
+<span class="gp">$ </span>tree<span class="w"> </span>edgecases/dir_0700
+<span class="gp">$ </span>tree<span class="w"> </span>edgecases/dir_0711
+<span class="gp">$ </span>tree<span class="w"> </span>edgecases/dir_0744
+<span class="gp">$ </span>tree<span class="w"> </span><span class="m">06</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="miscellaneous-tests">
+<h3>Miscellaneous tests<a class="headerlink" href="#miscellaneous-tests" title="Link to this heading"></a></h3>
+<dl>
+<dt>Comprehensive test [5%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>-pugs<span class="w"> </span><span class="m">10</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-pugsa<span class="w"> </span><span class="m">10</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-pugsd<span class="w"> </span><span class="m">10</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-pugsar<span class="w"> </span><span class="m">10</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-pugsaU<span class="w"> </span><span class="m">10</span>/
+<span class="gp">$ </span>tree<span class="w"> </span>-pugsat<span class="w"> </span><span class="m">10</span>/
+</pre></div>
+</div>
+</dd>
+<dt>Max depth test [5%]</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>depth<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..11<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">   </span>tree<span class="w"> </span>-L<span class="w"> </span><span class="si">${</span><span class="nv">depth</span><span class="si">}</span><span class="w"> </span><span class="m">05</span>/
+<span class="k">done</span>
+</pre></div>
+</div>
+</dd>
+<dt>Indentation test [5%]</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>indent<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">0</span>..8<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">   </span>tree<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">indent</span><span class="si">}</span><span class="w"> </span><span class="m">05</span>/
+<span class="k">done</span>
+</pre></div>
+</div>
+</dd>
+<dt>Memory Leak test [10%]</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>valgrind<span class="w"> </span>tree<span class="w"> </span>--leak-check<span class="o">=</span>full<span class="w"> </span>-pugsar<span class="w"> </span><span class="m">10</span>/<span class="sb">`</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

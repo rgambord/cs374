@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variadic Functions &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Formatted Output" href="../stdio/io/formatted/printf-family/" />
+    <link rel="prev" title="Formatted i/o" href="../stdio/io/formatted/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Data Access and Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../stdio/">The C Standard Input/Output Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../stdio/io/">Input/Output Methods</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../stdio/io/formatted/">Formatted i/o</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Data Access and Storage</a></li>
+          <li class="breadcrumb-item"><a href="../stdio/">The C Standard Input/Output Library</a></li>
+          <li class="breadcrumb-item"><a href="../stdio/io/">Input/Output Methods</a></li>
+          <li class="breadcrumb-item"><a href="../stdio/io/formatted/">Formatted i/o</a></li>
+      <li class="breadcrumb-item active">Variadic Functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../stdio/io/formatted/" class="btn btn-neutral float-left" title="Formatted i/o" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../stdio/io/formatted/printf-family/" class="btn btn-neutral float-right" title="Formatted Output" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="variadic-functions">
+<h1>Variadic Functions<a class="headerlink" href="#variadic-functions" title="Link to this heading"></a></h1>
+<p>All of the formatted i/o functions are variadic, meaning they accept a variable quantity of variably typed parameters. Before discussing formatted i/o, it is necessary to understand the basics of variadic functions.</p>
+<section id="declaration">
+<h2>Declaration<a class="headerlink" href="#declaration" title="Link to this heading"></a></h2>
+<p>Variadic functions are declared like normal functions with a trailing ellipsis (…) in their parameter list, and must have at least one named parameter preceding the ellipsis,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>The header <code class="file docutils literal notranslate"><span class="pre">stdarg.h</span></code> exposes a portable interface for iterating over these additional arguments. It consists of a type, <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">va_list</span></code> which is a handle to the list of variadic arguments, and four macros, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_start</span></code> for initializing the <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">va_list</span></code> object, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_copy</span></code> for duplicating it, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_arg</span></code> for extracting the next argument, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_end</span></code> for destroying it.</p>
+<p>For example, a function which sums an arbitrary quantity of integers might be written as,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
+<span class="w">  </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Initialize the variadic argument list */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Extract next variadic argument, of type int */</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Destroy the variadic argument list */</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="library-implementation">
+<h2>Library Implementation<a class="headerlink" href="#library-implementation" title="Link to this heading"></a></h2>
+<p>The exact implementation of variadic arguments depends on the calling convention of the execution environment; a canonical implementation places the arguments on the stack, in order, so that the variadic arguments follow the last named parameter. The variadic arguments are iterated over using pointer arithmetic, starting from the address immediately after the last named parameter. This requires knowing the size and type of each variadic argument, which are deduced at runtime–typically from some information passed in a named parameter, like the format string of a formatted i/o function, as will be explained later.</p>
+<p>A possible implementation of the <code class="file docutils literal notranslate"><span class="pre">stdarg.h</span></code> header might look like,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="kt">va_list</span><span class="p">;</span>
+<span class="cp">#define va_start(ap, argN) ((ap) = (&amp;(argN) + 1))</span>
+<span class="cp">#define va_arg(ap, type) ((ap) = ((type*)(ap) + 1), *((type*)(ap)) - 1))</span>
+<span class="cp">#define va_copy(dest, src) ((dest) = (src))</span>
+<span class="cp">#define va_end(ap) ((ap) = 0)</span>
+</pre></div>
+</div>
+<p>In the above example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">va_list</span></code> is simply a type alias for the universal pointer, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">void</span><span class="o">*</span></code>. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_start</span></code> macro takes the address of the last named parameter, <em>argN</em>, and points <em>ap</em> to the address immediately following it–i.e. the address of the first variadic argument on the stack. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_arg</span></code> macro first advances <em>ap</em> to point to the next argument, and then evaluates the previously pointed-at location, cast to the requested type; this is an example of the use of the comma operator, <code class="code highlight c c99 docutils literal highlight-c99"><span class="p">,</span></code>, to evaluate two sub-expressions while discarding the result of the first. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_copy</span></code> macro simply copies the pointer value from <em>src</em> to <em>dest</em>, and the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_end</span></code> macro simply sets <em>ap</em> to a null pointer.</p>
+</section>
+<section id="potential-pitfalls">
+<h2>Potential Pitfalls<a class="headerlink" href="#potential-pitfalls" title="Link to this heading"></a></h2>
+<p>Notice, critically, that our example <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">va_arg</span></code> casts <em>ap</em> to a pointer to <em>type</em> (<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">type</span><span class="o">*</span></code>) both to advance <em>ap</em> and to return a value of the requested type. If <em>type</em> does not align with the actual type of the variadic argument, the behavior is undefined; this is different from a regular function call, where the compiler knows the argument type and the parameter type, and automatically converts the value being passed in. Here, the compiler does not know the expected parameter type, since it is calculated at runtime, and is unable to automatically perform the conversion if the types differ. Therefore, the caller is responsible for ensuring that variadic arguments are exactly the expected type.</p>
+<p>For example, calling the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sum</span></code> function above, with an incorrect <em>count</em> or with non-<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> variadic arguments, causes unexpected behavior. In some situations, it might appear to work correctly, and in others, subtle bugs might appear. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span></code> will generally produce a garbage value, since the floating point value <code class="code highlight c c99 docutils literal highlight-c99"><span class="mf">1.0</span></code> is directly interpreted as an integer, which has a completely different object representation.</p>
+<p>Arguments which differ from the types expected by a variadic function <em>must</em> be explicitly cast by the caller to the appropriate types. In the example above, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span></code> would give the desired result.</p>
+<p>As a note, the trailing arguments to a variadic function undergo <em>default argument promotions</em>–integer type values with rank lower than <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> are promoted to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">unsigned</span><span class="w"> </span><span class="k">int</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">float</span></code> values are converted to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">double</span></code>. For example, the following is technically correct because the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span></code> argument is promoted to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> when the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">printf</span></code> function is called with a format specifier for an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code> type argument:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="cm">/* 65 */</span>
+</pre></div>
+</div>
+<p>An argument could be made for either 1) explicitly casting <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">c</span></code> to an <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">int</span></code>–<code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">printf</span><span class="p">(</span><span class="o">%</span><span class="n">dn</span><span class="s">&quot;, (int)c);</span></code>; or 2) using the length modifier <code class="docutils literal notranslate"><span class="pre">hh</span></code>–<code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%hhdn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span></code>; in order to promote clarity of intent. On the other hand, it can be argued that either solution makes the code more cumbersome to read. In actual practice, the former argument usually prevails.</p>
+</section>
+<section id="forwarding-wrappers">
+<h2>Forwarding Wrappers<a class="headerlink" href="#forwarding-wrappers" title="Link to this heading"></a></h2>
+<p>There is no way for a variadic function to forward all of its variadic arguments to another variadic function; however, a variadic function <em>can</em> pass an initialized <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">va_list</span></code> object to another function. For this reason, it is common to separate the interface from the implementation by writing two functions–an implementation that takes a <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">va_list</span></code> parameter, and a variadic wrapper function that provides an interface. Typically, the implementation function is given the same name as the wrapper function, with a ‘v’ prefix:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">vsum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
+<span class="w">   </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vsum</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
+<span class="w">   </span><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This way, the implementation can be re-used in implementing different variadic interfaces.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../stdio/io/formatted/" class="btn btn-neutral float-left" title="Formatted i/o" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../stdio/io/formatted/printf-family/" class="btn btn-neutral float-right" title="Formatted Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working with Strings &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Working with Strings</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="working-with-strings">
+<h1>Working with Strings<a class="headerlink" href="#working-with-strings" title="Link to this heading"></a></h1>
+<p>C does not have a “string” data type like other object-oriented languages. When we say string, what we really mean is an array of characters (<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[]</span></code>), which contains data that is null-terminated–some sequence of non-zero bytes, terminated by a zero byte. In fact, a character array can contain many strings, each following the null-terminator of the string before it.</p>
+<section id="null-terminators">
+<h2>Null-terminators<a class="headerlink" href="#null-terminators" title="Link to this heading"></a></h2>
+<p>In C, arrays are not first-class citizens–they cannot be copied, compared, and so on, except by iterating over each element individually. Since we can’t pass arrays in as arguments to a function, instead we need to pass a pointer and use that. For example, here’s an example implementation of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strlen</span></code> function:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="nf">strlen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">);</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice here that the argument to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strlen</span></code> is a character pointer. It points at the first character of a string. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">for</span></code> loop increments the count, looking at each character in the string, until it finds a byte with the value 0. This is the null-terminator, and marks the end of the string.</p>
+<p>That’s the handy thing about strings–we can describe them using only a pointer to the first character. This is convenient, because otherwise we would need to pass around a pointer to the start and also to the end (or length), of the data. For example, compare an implementation of <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strcpy</span><span class="p">()</span></code>, which copies a string using a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>, to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">memcpy</span><span class="p">()</span></code>, which copies arbitrary data using a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">void</span><span class="w"> </span><span class="o">*</span></code>; <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">memcpy</span><span class="p">()</span></code> needs an extra size argument to know how much data it is dealing with:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="o">*</span><span class="nf">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">dest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">dest</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">strcpy</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">dest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">dest</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="strings-vs-character-arrays">
+<h2>Strings vs Character Arrays<a class="headerlink" href="#strings-vs-character-arrays" title="Link to this heading"></a></h2>
+<p>One quirk about the C language that takes students a while to get used to is that array types automatically convert to pointers to their first elements in most situations. When you call a function like <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code>, where <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">s</span></code> is a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[]</span></code> type, it’s equivalent to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></code>–passing in the address of the 0th element.</p>
+<p>Another quirk is how string literals work. When you see an integer constant, like <code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">2</span></code>, it seems fairly obvious that it represents the integer value two. Recall when we were discussing encoding, that the letter ‘c’ is not actually stored as ‘c’, but as a byte value–so it also might feel intuitive to recognize that the character constant <code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;c&#39;</span></code> is just an alternative way or writing the integer value 99–its codepoint in ASCII (thus, <code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;c&#39;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">99</span></code>!).</p>
+<p>What about string literals, like, <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello World&quot;</span></code>? These are anonymous objects that have type <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[]</span></code>, and contain all the characters of the string, plus a null byte tacked onto the end. However, just like I mentioned above, in almost every situation where its value is evaluated, this <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="p">[]</span></code> immediately decays to a <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code> pointer to the first element. Thus, <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span></code> is assigning this decayed pointer value to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">s</span></code>. It can be written more explicitly as <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="s">&quot;Hello World&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>, just as described above.</p>
+<p>There are a few situations where this decay does not happen. One is when an array is an operand of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span></code> operator–e.g. <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">sizeof</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span></code>. Another is when a string literal is used to initialize a character array–in this situation it is simply a shorthand that is equivalent to listing every character individually,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="w"> </span><span class="cm">/* Equivalent to `char s[] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, ..., &#39;l&#39;, &#39;d&#39;, &#39;\0&#39;}` */</span>
+<span class="nf">assert</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="w"> </span><span class="cm">/* Equivalent to `char *s = &amp;(&quot;Hello World)[0]` */</span>
+<span class="nf">assert</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="n">sp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Another important difference is that the object <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">s</span></code> is a character array that can be modified. On the other hand, while the pointer <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sp</span></code> can be modified to point at some other character, the data it currently points to is  <em>read-only</em>, so attempting to modify the contents of that string would be undefined behavior.</p>
+<p>Keep this important distinction in mind when working with this fickle data type!</p>
+</section>
+<section id="comparing-strings">
+<h2>Comparing Strings<a class="headerlink" href="#comparing-strings" title="Link to this heading"></a></h2>
+<p>Keep in mind, while it is perfectly legal to compare to <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>, what you are comparing is the value of the pointer itself–do both point to the <em>same</em> object. In python this can be thought of as similar to the difference between <code class="code highlight py python docutils literal highlight-python"><span class="n">a</span> <span class="o">==</span> <span class="n">b</span></code> and <code class="code highlight py python docutils literal highlight-python"><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span></code>. Sometimes you want to know if two pointers point to the same object, but usually you want to know if the objects they point to contain the same data. For example, in C, the expression <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;hello&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;hello&quot;</span></code> is comparing two pointers, not two strings! Perhaps the compiler is clever and uses the same data for both pointers (hey, it’s the same read-only data, why not save space? <a class="footnote-reference brackets" href="#overlap" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>), in which case the expression is true. Or, perhaps the compiler decides to have two separate character arrays for each literal–in that case the expression is false.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strcmp</span><span class="p">()</span></code> function can be used to compare to strings. It returns the numeric <strong>difference</strong> between the first different character between two strings. Thus, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">strcmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span></code> returns <strong>0</strong> when <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">a</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">b</span></code> are identical strings, and non-zero when they are not identical. Here is an example implementation,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">int</span><span class="w"> </span><span class="nf">strcmp</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">++</span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Iterate to first difference, or end */</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">puts</span><span class="p">(</span><span class="s">&quot;The file name IS </span><span class="se">\&quot;</span><span class="s">-</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">puts</span><span class="p">(</span><span class="s">&quot;The file name IS NOT </span><span class="se">\&quot;</span><span class="s">-</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="overlap" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Compilers are <em>really</em> clever. Sometimes, even expressions like <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;ello&quot;</span></code> can be true. The compiler stores only one copy of the data “Hello”, and the first string literal points at the ‘H’, and the second points at the ‘e’.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

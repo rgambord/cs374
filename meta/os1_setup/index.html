@@ -171,11 +171,59 @@
 <li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/bigshell-report/">Final Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">External Links</span></p>
 <ul>
@@ -232,7 +280,7 @@
 <p class="rubric">Account Activation</p>
 <p>Visit the <a class="reference external" href="https://teach.engr.oregonstate.edu/aup.php" rel="noopener noreferrer" target="_blank">Acceptable Use Policy</a> page and click the “I Agree” button at the bottom. From here, you will be asked to log-in through ONID. Once you have done so, your account should be activated with the same username and password that you use to login to ONID. You can now <a class="reference external" href="https://teach.engr.oregonstate.edu/teach.php?type=want_auth" rel="noopener noreferrer" target="_blank">log-in to T.E.A.C.H.</a> using your ONID credentials. Once logged in, you will be greeted with the T.E.A.C.H. homepage:</p>
 <a class="framed"
-               data-lightbox="group-941fd927-539d-4fc1-b348-d3af661e0a70"
+               data-lightbox="group-2b0e19e1-034d-4d25-bc0d-167ecc7534bc"
                href="../../_images/teach_home.png"
                title=""
                data-title=""
@@ -245,7 +293,7 @@
                 </a><p class="rubric">Login Shell Selection</p>
 <p>Before leaving this page, navigate to the “Change Unix Shell” page in the navigation menu, and ensure that your current shell is listed as <strong class="command">/bin/bash</strong>. If not, select it from the dropdown menu and hit submit; after changing the shell, wait about 15 minutes before continuing with the setup guide so that the update can propagate to the school servers. This will change which shell program is spawned when you login to a server–called your login shell. The shell is a program that provides the command-line interface, itself.</p>
 <a class="framed"
-               data-lightbox="group-45814d67-3b78-4dd9-867d-a300f6209f19"
+               data-lightbox="group-a8017b2a-b3de-441c-80fd-f5af0c6e4c62"
                href="../../_images/teach_shell.png"
                title=""
                data-title=""
@@ -266,7 +314,7 @@
 </div>
 <p>It means that you have reached your process limit on the server and are unable to spawn a new process, whether it be a new shell process to log in, or run a command while already logged in. This is often the result of a run-away process which is forking (creating new child processes) in an infinite loop, or perhaps creating child processes which each spawn additional child processes in an infinite recursion. To resolve this, you can log into T.E.A.C.H and use the “Kill Runaway Processes” tool to kill all of your processes on that server,</p>
 <a class="framed"
-               data-lightbox="group-11601a5a-dcfc-4392-9c86-b646c6f77bb2"
+               data-lightbox="group-57119081-d1d7-420d-97aa-410877b4e885"
                href="../../_images/teach_kill.png"
                title=""
                data-title=""
@@ -286,7 +334,7 @@
 </ol>
 <p>A terminal emulator is a graphical application that emulates a physical teletype machine (a terminal). Essentially, it bridges the gap between GUI (Graphical User Interface) and TUI (Text User Interface), allowing you to use TUI applications, like the shell command-line. TUI applications run “inside” (really in parallel to) the terminal emulator, and send their output to it as text and control codes. The terminal emulator is responsible for converting this into a drawing on the screen (text). It also captures user input (keyboard and mouse) and transforms it into a stream of text and control codes that TUI applications can read from.</p>
 <a class="framed"
-               data-lightbox="group-f35e917f-245a-4287-9345-46439c99c5a7"
+               data-lightbox="group-271c4862-fb45-4981-83e3-dd86ab04656d"
                href="../../_images/terminal_emulator.png"
                title=""
                data-title=""
@@ -572,7 +620,7 @@ shift
 </div>
 <p>You will need to log out of <strong>os1</strong> and log back in for the changes to take effect. You should now have a colored prompt, and be able to confirm that your versions are the same as shown in the following screenshot (or higher):</p>
 <a class="framed"
-               data-lightbox="group-abdadc4d-89ad-46f4-b815-900e1310b019"
+               data-lightbox="group-644b60bd-53f8-430d-ad39-90ebb07db3d3"
                href="../../_images/version_info.png"
                title=""
                data-title=""

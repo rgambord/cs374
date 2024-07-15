@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BigShell Specification &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="BigShell Command Language" href="shell_command_language/" />
+    <link rel="prev" title="Inter-Process Communication" href="../../modules/05/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BigShell Specification</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../../modules/05/" class="btn btn-neutral float-left" title="Inter-Process Communication" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shell_command_language/" class="btn btn-neutral float-right" title="BigShell Command Language" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bigshell-specification">
+<h1>BigShell Specification<a class="headerlink" href="#bigshell-specification" title="Link to this heading"></a></h1>
+<p>In this assignment, you will explore many important process concepts by implementing a POSIX-like shell program. Your program will:</p>
+<ol class="arabic simple">
+<li><p>Parse command-line input into commands to be executed</p></li>
+<li><p>Execute a variety of external commands (programs) as separate processes</p></li>
+<li><p>Implement a variety of shell built-in commands within the shell itself</p></li>
+<li><p>Perform a variety of i/o redirection on behalf of commands to be executed</p></li>
+<li><p>Assign, evaluate, and export to the environment, shell variables</p></li>
+<li><p>Implement signal handling appropriate for a shell and executed commands</p></li>
+<li><p>Manage processes and pipelines of processes using job control concepts</p></li>
+</ol>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Describe the Unix process API (Module 3, MLO 2)</p></li>
+<li><p>Write programs using the Unix process API (Module 3, MLO 3)</p></li>
+<li><p>Explain the concept of signals and their uses (Module 3, MLO 2)</p></li>
+<li><p>Write programs using the Unix API for signal handling (Module 3, MLO 3)</p></li>
+<li><p>Explain I/O redirection and write programs that can employ I/O redirection (Module 3, MLO 4)</p></li>
+</ul>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>You will write a program, named BigShell, that implements a large subset of the POSIX Shell’s functionality.</p>
+<p>The high-level functionalities you will be tasked with implementing are:</p>
+<ul>
+<li><p>The following built-in shell utilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong class="command">cd</strong> – Change the working directory</p></li>
+<li><p><strong class="command">exit</strong> – Cause the shell to exit</p></li>
+<li><p><strong class="command">unset</strong> – unset values of variables</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Signal handling behavior of the shell, and commands</p></li>
+<li><p>Command execution</p>
+<blockquote>
+<div><ul>
+<li><p>Expansion of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Command words</p></li>
+<li><p>Assignment values</p></li>
+<li><p>Redirection filename operands</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>I/O Redirection of the following operators:</p>
+<blockquote>
+<div><table class="hlist"><tr><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&gt;</code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&lt;</code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&lt;&gt;</code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&gt;&gt;</code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&gt;<span class="p">|</span></code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&gt;<span class="p">&amp;</span></code></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><code class="code highlight bash docutils literal highlight-bash">&lt;<span class="p">&amp;</span></code></p></li>
+</ul>
+</td></tr></table>
+</div></blockquote>
+</li>
+<li><p>Variable assignment</p></li>
+<li><p>Simple commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Foreground commands – <code class="code highlight bash docutils literal highlight-bash"><span class="p">;</span></code></p></li>
+<li><p>Background commands – <code class="code highlight bash docutils literal highlight-bash"><span class="p">&amp;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Shell pipelines – <code class="code highlight bash docutils literal highlight-bash"><span class="p">|</span></code></p></li>
+<li><p>Job control</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="reference-documents">
+<h2>Reference Documents<a class="headerlink" href="#reference-documents" title="Link to this heading"></a></h2>
+<p>The overall assignment is loosely based on the <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/utilities/V3_chap02.html" rel="noopener noreferrer" target="_blank">shell command language specification in POSIX.1-2008</a>, with several features removed or simplified.</p>
+<p class="rubric">Builtins</p>
+<ul>
+<li><p><em class="manpage">cd(1)</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em class="manpage">chdir(3)</em></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em class="manpage">exit(1)</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em class="manpage">exit(3)</em></p></li>
+<li><p><em class="manpage">strtol(3)</em></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em class="manpage">unset(1)</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em class="manpage">getenv(3)</em>/<em class="manpage">setenv(3)</em></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="rubric">Signal Handling</p>
+<ul class="simple">
+<li><p><em class="manpage">sigaction(3)</em></p></li>
+<li><p><em class="manpage">kill(2)</em></p></li>
+<li><p><em class="manpage">signal.h(0)</em></p></li>
+<li><p><em class="manpage">signal(7)</em></p></li>
+</ul>
+<p class="rubric">I/O Redirection</p>
+<ul class="simple">
+<li><p><em class="manpage">dup(2)</em></p></li>
+<li><p><em class="manpage">fcntl(3)</em></p></li>
+<li><p><em class="manpage">open(2)</em></p></li>
+</ul>
+<p class="rubric">Foreground/Background Commands</p>
+<ul class="simple">
+<li><p><em class="manpage">wait(2)</em></p></li>
+</ul>
+<p class="rubric">Pipelines</p>
+<ul class="simple">
+<li><p><em class="manpage">pipe(2)</em></p></li>
+</ul>
+<p class="rubric">Job Control</p>
+<ul class="simple">
+<li><p><em class="manpage">isatty(3)</em></p></li>
+<li><p><em class="manpage">setpgid(3)</em>/<em class="manpage">setpgrp(3)</em></p></li>
+<li><p><em class="manpage">getpgid(3)</em>/<em class="manpage">getpgrp(3)</em></p></li>
+<li><p><em class="manpage">tcsetpgrp(3)</em>/<em class="manpage">tcgetpgrp(3)</em></p></li>
+</ul>
+<p class="rubric">General Purpose</p>
+<ul class="simple">
+<li><p><em class="manpage">ctype.h(0)</em></p></li>
+<li><p><em class="manpage">errno.h(0)</em></p></li>
+</ul>
+</section>
+<section id="command-language">
+<h2>Command Language<a class="headerlink" href="#command-language" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="shell_command_language/">BigShell Command Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#bigshell-introduction">BigShell Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#quoting">Quoting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#escape-character-backslash">Escape Character (Backslash)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#single-quotes">Single-Quotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#double-quotes">Double-Quotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#token-recognition">Token Recognition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#parameters-and-variables">Parameters and Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#special-parameters">Special Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#shell-variables">Shell Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#word-expansions">Word Expansions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#tilde-expansion">Tilde Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#parameter-expansion">Parameter Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#quote-removal">Quote Removal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#redirection">Redirection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#redirecting-input">Redirecting Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#redirecting-output">Redirecting Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#appending-redirected-output">Appending Redirected Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#duplicating-a-file-descriptor">Duplicating a File Descriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#open-file-descriptors-for-reading-and-writing">Open File Descriptors for Reading and Writing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#exit-status">Exit Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#shell-commands">Shell Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#simple-commands">Simple Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="shell_command_language/#command-search-and-execution">Command Search and Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#pipelines">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#asynchronous-lists-background-commands">Asynchronous Lists (Background Commands)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#sequential-lists-foreground-commands">Sequential Lists (Foreground Commands)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#signals-and-error-handling">Signals and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#job-control">Job Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#shell-execution-environment">Shell Execution Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_command_language/#special-built-in-utilities">Special Built-In Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#bg">Bg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#id3">Cd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#exit">Exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#export">Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#fg">Fg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#jobs">Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_command_language/#unset">Unset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h2>
+<p>This program is intended to be a fun project for you to learn fundamental process concepts while also building a featureful program to show off as your portfolio project. Writing a shell is very challenging–the language is difficult to parse, the specification leaves out many important details, and is often ambiguously worded, and the size of a shell’s code-base is very large. Accomplishing this on your own is a huge feat!</p>
+<p>Neither the provided skeleton code, nor reference implementation, are 100% bug free–in fact, I have found several bugs while writing this documentation after having finished the published implementation. Similarly, your program is not expected to handle every edge case or work perfectly in every situation. There may be aspects of the specification which are ambiguous, and edge cases which produce unexpected results. You are always encouraged to use your best judgement in approaching ambiguities, and if in doubt, ask staff for guidance.</p>
+<p>The specification is intended merely as a guideline. Unless explicitly tested by the grading rubric, any other aspects of the program, specified or not, are up to you. The TODOs listed in the skeleton code should serve as a road-map for completion of the assignment. Each TODO should explain in detail what you need to implement in order to get to the same functionality as the reference implementation.</p>
+<p>The suggested order of implementation is:</p>
+<ul class="simple">
+<li><p>Built-in Commands</p></li>
+<li><p>Non-built-in commands</p></li>
+<li><p>Foreground/Background process waiting</p></li>
+<li><p>Redirection</p></li>
+<li><p>Pipelines</p></li>
+<li><p>Variable Assignment</p></li>
+<li><p>Signal Handling</p></li>
+<li><p>Job Control Functionality</p></li>
+</ul>
+</section>
+<section id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Your program must compile to the <code class="docutils literal notranslate"><span class="pre">release</span></code> build target with the provided makefile.</p></li>
+</ol>
+</section>
+<section id="testing-your-program">
+<h2>Testing Your Program<a class="headerlink" href="#testing-your-program" title="Link to this heading"></a></h2>
+<p>A reference implementation is provided with the assignment skeleton code. It has been tested to run in the GitHub Codespaces environment and scores full points on the grading script. It is likely to also run on any recent Linux distribution.</p>
+</section>
+<section id="rubric">
+<h2>Rubric<a class="headerlink" href="#rubric" title="Link to this heading"></a></h2>
+<p>The example expected test output listed below should serve as a guide. You are encouraged to change variable names, try more complex constructions, and different commands. A rubric item may not be tested <em>exactly</em> as shown, but gives a general idea of what to expect–we won’t try and surprise you or throw you any curve-balls.</p>
+<section id="built-in-commands-20">
+<h3>Built-in Commands  [20%]<a class="headerlink" href="#built-in-commands-20" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Does the <strong class="command">exit</strong> built-in work appropriately? [5%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bigshell$<span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">123</span>
+bash$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<span class="m">123</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bigshell$<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;exit 123&#39;</span><span class="w">   </span><span class="c1"># Set the $? variable to 123</span>
+bigshell$<span class="w"> </span><span class="nb">exit</span>
+bash$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<span class="m">123</span>
+</pre></div>
+</div>
+</li>
+<li><p>Does the <strong class="command">cd</strong> built-in work appropriately? [5%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
+/home/bennybeaver
+$<span class="w"> </span><span class="nb">cd</span>
+$<span class="w"> </span><span class="nb">pwd</span>
+/home/bennybeaver
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/bin
+$<span class="w"> </span><span class="nb">pwd</span>
+/bin
+</pre></div>
+</div>
+</li>
+<li><p>If the <em>HOME</em> variable is modified, does the <strong class="command">cd</strong> utility respond appropriately? [5%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span>
+$<span class="w"> </span><span class="nb">pwd</span>
+/home/donnyduck
+$<span class="w"> </span><span class="nv">HOME</span><span class="o">=</span>/home/bennybeaver<span class="w">   </span><span class="c1"># Supposing that /home/bennybeaver is a directory that exists</span>
+$<span class="w"> </span><span class="nb">cd</span>
+$<span class="w"> </span><span class="nb">pwd</span>
+/home/bennybeaver
+</pre></div>
+</div>
+</li>
+<li><p>Does the <strong class="command">unset</strong> built-in work appropriately? [5%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
+/home/bennybeaver
+$<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>HOME
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
+
+$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="m">12</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$X</span>
+<span class="m">12</span>
+$<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>X
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$X</span>
+
+$
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="parameters-and-variables-24">
+<h3>Parameters and Variables [24%]<a class="headerlink" href="#parameters-and-variables-24" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>If a variable is set with no command words, does it persist as an internal (not exported) shell variable? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>X<span class="w">       </span><span class="c1"># Ensure X isn&#39;t set yet</span>
+$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="m">123</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$X</span><span class="w">       </span><span class="c1"># Show that X is expanded</span>
+<span class="m">123</span>
+$<span class="w"> </span>printenv<span class="w"> </span>X<span class="w">    </span><span class="c1"># Show that X is not exported</span>
+$
+</pre></div>
+</div>
+</li>
+<li><p>If a variable is exported with the <strong class="command">export</strong> utility, does a child process that is executed have that variable set in its environment? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>X
+$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="m">123</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span>X
+$<span class="w"> </span>printenv<span class="w"> </span>X
+<span class="m">123</span>
+</pre></div>
+</div>
+</li>
+<li><p>If a variable is set as part of a command, does the child process that is executed have that variable set in its environment (and only its environment)? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>printenv<span class="w"> </span>X<span class="w">        </span><span class="c1"># Show that X is unset in the shell</span>
+$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="m">123</span><span class="w"> </span>printenv<span class="w"> </span>X<span class="w">  </span><span class="c1"># Show that X is added to the environment of the printenv command</span>
+<span class="m">123</span>
+$<span class="w"> </span>printenv<span class="w"> </span>X<span class="w">        </span><span class="c1"># Show that X remains unset in the shell</span>
+$
+</pre></div>
+</div>
+</li>
+<li><p>If a foreground command is executed, does the <code class="docutils literal notranslate"><span class="pre">$?</span></code> special parameter get updated appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">true</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<span class="m">0</span>
+$<span class="w"> </span><span class="nb">false</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<span class="m">1</span>
+$<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;exit 123&#39;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<span class="m">123</span>
+</pre></div>
+</div>
+</li>
+<li><p>If a background command is executed, does the <code class="docutils literal notranslate"><span class="pre">$!</span></code> special parameter get updated appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$!</span>
+<span class="m">29483</span>
+$<span class="w"> </span>pgrep<span class="w"> </span>sleep
+<span class="m">29483</span>
+</pre></div>
+</div>
+</li>
+<li><p>If a foreground command is executed, does it <strong>not</strong> modify <code class="docutils literal notranslate"><span class="pre">$!</span></code>? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>pgrep<span class="w"> </span>sleep
+<span class="m">29483</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
+hello<span class="w"> </span>world
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$!</span>
+<span class="m">29483</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable is changed, does it affect command lookup? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">test</span>
+<span class="nb">test</span>
+$<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">test</span>
+bigshell:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</pre></div>
+</div>
+</li>
+<li><p>Does the <strong class="command">cd</strong> built-in update the <code class="docutils literal notranslate"><span class="pre">PWD</span></code> shell variable? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span>
+$<span class="w"> </span>printenv<span class="w"> </span>PWD
+/home/bennybeaver
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/bin
+$<span class="w"> </span>printenv<span class="w"> </span>PWD
+/bin
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="word-expansions-6">
+<h3>Word Expansions [6%]<a class="headerlink" href="#word-expansions-6" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Are command words expanded properly? [2%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="nb">echo</span>
+$<span class="w"> </span><span class="nv">$X</span><span class="w"> </span><span class="nb">test</span>
+<span class="nb">test</span>
+$<span class="w"> </span><span class="nv">Y</span><span class="o">=</span>hello
+$<span class="w"> </span><span class="nv">Z</span><span class="o">=</span>world
+$<span class="w"> </span><span class="nv">$X</span><span class="w"> </span><span class="nv">$Y</span><span class="w"> </span><span class="nv">$Z</span>
+hello<span class="w"> </span>world
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">X</span><span class="o">=</span>testfile
+$<span class="w"> </span><span class="nv">DIR</span><span class="o">=</span>~/<span class="nv">$X</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$DIR</span>
+/home/bennybeaver/testfile
+</pre></div>
+</div>
+</li>
+<li><p>Are assignment values expanded properly? [2%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">X</span><span class="o">=</span><span class="m">1234</span>
+$<span class="w"> </span><span class="nv">Y</span><span class="o">=</span>~/<span class="nv">$X</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$Y</span>
+/home/bennybeaver/1234
+</pre></div>
+</div>
+</li>
+<li><p>Are redirection filenames expanded properly? [2%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">X</span><span class="o">=</span>outfile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>~/<span class="nv">$X</span>
+$<span class="w"> </span>cat<span class="w"> </span>/home/bennybeaver/outfile
+hello<span class="w"> </span>world
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="redirection-18">
+<h3>Redirection [18%]<a class="headerlink" href="#redirection-18" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each of the tests shown in this section assume that the file(s) being redirected do not initially exist.</p>
+</div>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> operator creates a new file, and doesn’t overwrite existing file? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>&gt;<span class="w"> </span>testfile
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+<span class="nb">test</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span>testfile
+<span class="o">[[</span>some<span class="w"> </span>error<span class="w"> </span>message<span class="o">]]</span>
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+<span class="nb">test</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;|</span></code> operator creates a new file, and <strong>does</strong> overwrite existing file? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>testfile
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+<span class="nb">test</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>testfile
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+test2
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> operator works appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo test &gt; testfile&#39;</span>
+$<span class="w"> </span>&lt;<span class="w"> </span>testfile<span class="w"> </span>cat
+<span class="nb">test</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> operator works appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo test &gt; testfile&#39;</span>
+$<span class="w"> </span>&lt;&gt;testfile<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;cat; echo test2 &gt;&amp;0&#39;</span>
+<span class="nb">test</span>
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+<span class="nb">test</span>
+test2
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operator works appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo hello &gt; testfile&#39;</span>
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+hello
+$<span class="w"> </span>&gt;&gt;<span class="w"> </span>testfile<span class="w">  </span><span class="nb">echo</span><span class="w"> </span>world
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+hello
+world
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code> operator works appropriately? [4%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="m">5</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo ERROR! &gt;&amp;5&#39;</span>
+ERROR!
+</pre></div>
+</div>
+</li>
+<li><p>Multiple redirections work appropriately? [4%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>&gt;testfile<span class="w"> </span><span class="m">5</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="m">6</span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo HELLO &gt;&amp;5; echo WORLD &gt;&amp;6&#39;</span>
+WORLD
+$<span class="w"> </span>cat<span class="w"> </span>testfile
+HELLO
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="pipelines-6">
+<h3>Pipelines [6%]<a class="headerlink" href="#pipelines-6" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Pipelines work appropriately? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world!<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/hello/goodbye/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>-v
+goodbye<span class="w"> </span>world!
+</pre></div>
+</div>
+</li>
+<li><p>Pipelines work with redirects? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="m">5</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo hello world! &gt;&amp;5&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/hello/goodbye/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>-v
+goodbye<span class="w"> </span>world!
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="synchronous-commands-15">
+<h3>Synchronous Commands [15%]<a class="headerlink" href="#synchronous-commands-15" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Synchronous commands run in foreground (BigShell waits on them)? [5%]</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sleep</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">               </span><span class="cp"># ...waiting...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sending stop signal to synchronous commands causes them to be stopped and placed in the background? [5%]</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="sc">&#39;sleep 5; killall -SIGSTOP sleep;&#39;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="mi">29347</span>
+<span class="n">$</span><span class="w"> </span><span class="n">sleep</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">               </span><span class="cp"># ... 5 seconds later ...</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="n">Stopped</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">Done</span>
+<span class="n">$</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sending kill signal to synchronous commands causes them to exit, and <code class="docutils literal notranslate"><span class="pre">$?</span></code> is updated appropriately? [5%]</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="sc">&#39;sleep 5; killall -SIGKILL sleep;&#39;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="mi">23959</span>
+<span class="n">$</span><span class="w"> </span><span class="n">sleep</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">               </span><span class="cp"># ... 5 seconds later ...</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">Done</span>
+<span class="n">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="n">$</span><span class="o">?</span>
+<span class="mi">137</span>
+<span class="w">               </span><span class="cp"># 137 = 128 + 9 (SIGKILL is signal # 9)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="signals-6">
+<h3>Signals [6%]<a class="headerlink" href="#signals-6" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>BigShell ignores the <code class="docutils literal notranslate"><span class="pre">SIGTSTP</span></code>, <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code>, and <code class="docutils literal notranslate"><span class="pre">SIGTTOU</span></code> signals? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-s<span class="w"> </span>SIGTSTP<span class="w"> </span><span class="nv">$$</span>
+$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-s<span class="w"> </span>SIGINT<span class="w"> </span><span class="nv">$$</span>
+$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-s<span class="w"> </span>SIGTTOU<span class="w"> </span><span class="nv">$$</span>
+$
+</pre></div>
+</div>
+</li>
+<li><p>Child processes don’t ignore these signals? [3%]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">100</span>
+^C$<span class="w">           </span><span class="c1"># ctrl-C -- SIGINT</span>
+$
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="job-control">
+<h3>Job Control<a class="headerlink" href="#job-control" title="Link to this heading"></a></h3>
+<p>Entirely optional–an extra exercise if you want to push your understanding, it won’t be tested in the grading script.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../modules/05/" class="btn btn-neutral float-left" title="Inter-Process Communication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shell_command_language/" class="btn btn-neutral float-right" title="BigShell Command Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

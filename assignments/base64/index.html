@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 1: Base64 &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Assignment 1: Base64</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="assignment-1-base64">
+<h1>Assignment 1: Base64<a class="headerlink" href="#assignment-1-base64" title="Link to this heading"></a></h1>
+<p>In this assignment, you will write a simple base64 encoding utility to familiarize yourself with the basics of C programming. You will be using, exclusively, a small subset of the C standard library to accomplish this task. You will practice:</p>
+<ul class="simple">
+<li><p>Parsing command-line arguments</p></li>
+<li><p>Using the standard io library features</p></li>
+<li><p>Handling errors</p></li>
+<li><p>Manipulating data and working with arrays</p></li>
+<li><p>Reading and understanding man-page documentation</p></li>
+</ul>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>How to write a C program to solve a problem? (Module 1 MLO 4)</p></li>
+<li><p>How can programs invoke OS services using system calls? (Module 1 MLO 5)</p></li>
+<li><p>How do you interact with the user in C programs? (Module 1 MLO 6)</p></li>
+<li><p>How are C programs transformed into an executable form? (Module 1 MLO 7)</p></li>
+</ul>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading"></a></h2>
+<p>You will write a program which meets the following specification, presented in a man-page format,</p>
+<pre class="literal-block"><strong>NAME</strong>
+   base64 - Base64 encode data and print to standard output
+
+<strong>SYNOPSIS</strong>
+   base64 [FILE]
+
+<strong>DESCRIPTION</strong>
+   Base64 encode FILE, or standard input, and output to standard output.
+
+   With no FILE, or if FILE is -, read from standard input.
+
+   Encoded lines are wrapped every 76 characters.
+
+   The data are encoded according to the standard algorithm and standard base64 alphabet described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc4648" rel="noopener noreferrer" target="_blank">RFC 4648</a>.
+
+<strong>STDIN</strong>
+   The standard input shall be used only if no FILE operand is specified, or if the FILE operand is -.
+
+<strong>STDOUT</strong>
+   The standard output shall contain the base64 encoded output, wrapped to 76 characters.
+
+<strong>STDERR</strong>
+   The standard error shall be used only for error reporting. All errors must be reported to standard error.
+
+<strong>EXIT STATUS</strong>
+   0, if successful.
+
+   &gt;0, if an error occurs.</pre>
+<p>Please refer to <em class="manpage">man(1)</em> for a detailed breakdown of how man pages are structured. If you are not familiar with man pages, they are locally installed operating system documentation, and can be accessed using the <strong class="program">man</strong> command while logged into <strong>os1</strong>. The first place to start learning to read man pages is to read the documentation on the man pager, itself: <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>man<span class="w"> </span><span class="m">1</span><span class="w"> </span>man</code>. Please note, man pages are specific to the system they are on–while online man pages can be a great quick reference, always double check local man pages for things that may differ. There are often critical differences between the two.</p>
+<p>You will write a program named <strong class="program">base64</strong>, which performs base 64 encoding on its input. Input to be base 64 encoded may be provided either via standard input, or via a file where the name of the file is provided as a command-line argument. As a special case, if the file name is “-”, standard input will be used. This is a widely held convention with POSIX utilities–in the event that a user wished to actually provide the file named <code class="file docutils literal notranslate"><span class="pre">-</span></code> as input, they would simply need to disambiguate by providing additional path information, as in <code class="file docutils literal notranslate"><span class="pre">./-</span></code>.</p>
+<p>Some starter code is provided</p>
+</section>
+<section id="selected-topics">
+<h2>Selected Topics<a class="headerlink" href="#selected-topics" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arguments/">Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streams/">Standard Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exit_status/">Exit Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encoding/">Understanding Encoding</a></li>
+</ul>
+</div>
+</section>
+<section id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Your program may not use a feature of the C language called Variable Length Arrays (VLAs). There are arrays that are declared with extents that are not compile-time constant expressions; for example,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">strlen</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="k">char</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="cm">/* &lt;- Prohibited! */</span>
+<span class="nf">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>VLAs are generally considered a bad programming practice, and are a common cause of serious bugs and security holes–they can also be a source of difficult-to-diagnose issues in your own program, so we will avoid using them. Additionally, many compilers just don’t support them because they are complicated to implement with a lot of edge cases. You can use the compiler option <code class="docutils literal notranslate"><span class="pre">-Werror=vla</span></code> when compiling your code (the makefile will do this automatically for you) to emit an error if you accidentally use a VLA.</p>
+<p>Note that, macros are commonly used to avoid magic numbers in array extents, as in,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#define BUF_SIZE 1024</span>
+<span class="cm">/* ... */</span>
+<span class="k">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>The above is <em>not</em> an example of VLA, because macro replacement happens during preprocessing–by the time the C compiler is involved, all it sees is <code class="code highlight c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span></code>–and <code class="code highlight c c99 docutils literal highlight-c99"><span class="mi">1024</span></code> is a compile-time constant expression. The rule of thumb is, if you reference an actual variable (not a macro), or call a function, it’s not a compile-time constant expression!</p>
+</li>
+<li><p>Your program must run in constant, O(1), space complexity–this means, regardless of the size of the input provided, your program must use the same amount of memory to process it. This precludes, for example, buffering the entire input into a dynamically resized array and then processing it–don’t use <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">malloc</span><span class="p">()</span></code>, you don’t need it!</p></li>
+<li><p>Your program must compile against the c99 language standard, using the compiler option <code class="docutils literal notranslate"><span class="pre">-std=c99</span></code> (the makefile will also handle this for you). We are not using the gnu99 standard in this class, as it is more relaxed on constraints and less likely to help you catch common programming mistakes.</p></li>
+<li><p>When your program encounters an error (such as failure to open a file, input, or output error) it must print an error message to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code>, and exit with a non-zero exit status. These two constraints can be met in a single call of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">err</span><span class="p">()</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">errx</span><span class="p">()</span></code> functions provided by <code class="file docutils literal notranslate"><span class="pre">err.h</span></code>. You can find usage examples in the skeleton code.</p></li>
+</ol>
+</section>
+<section id="common-programming-tasks-in-c">
+<h2>Common Programming Tasks in C<a class="headerlink" href="#common-programming-tasks-in-c" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="strings/">Working with Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_tricks/">I/O Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bits/">Bitwise Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mod_arithmetic/">Modular Arithmetic</a></li>
+</ul>
+</div>
+</section>
+<section id="testing-your-program">
+<h2>Testing Your Program<a class="headerlink" href="#testing-your-program" title="Link to this heading"></a></h2>
+<p>There is a system <strong class="program">base64</strong> utility on the <strong>os1</strong> server, which you can use as a reference program. It has additional features, but by default it also wraps its output every 76 characters, and accepts input on standard in, or as a filename argument.</p>
+<p>If you run the command <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>base64</code>, the shell will search system binary directories and run the system utility. To run <em>your</em> program, you must explicitly specify a path to it (containing at least one forward slash). For example, <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>release/base64</code>. If you want to run <em>your</em> program when it is in the current directory, you simply need to explicitly prepend a <code class="file docutils literal notranslate"><span class="pre">./</span></code> to make a path rather than a command: <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>./base64</code>.</p>
+<p>To provide input to your program, you should use shell redirection or pass a filename argument. Don’t try to test it by providing input directly into the terminal–you will get confused by how terminals represent input to programs that try to read from them.</p>
+<p>For example, you can pipe the output of <strong class="command">printf</strong> into your program to test short test messages; e.g. <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>./base64</code>. The Base64 RFC provides several reference strings to test your program against (“f”, “fo”, “foo”, …, “foobar”).</p>
+<p>For longer inputs, you can save them to a file and use shell redirection; e.g. <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>./base64<span class="w"> </span>&lt;<span class="w"> </span>input1</code>. Or, once you’ve implemented the filename argument feature, <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>./base64<span class="w"> </span>input1</code>.</p>
+<p>Once you think you have it working, try testing with random binary data. The special device file <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code> acts like an infinite source of random bytes. You can retrieve any number of random bytes using the <strong class="program">head</strong> utility; e.g. <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">1000</span><span class="w"> </span>/dev/random<span class="w"> </span><span class="p">|</span><span class="w"> </span>./base64</code> to read 1000 bytes and pipe them into your program. You can also write random bytes to a file, <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">1234</span><span class="w"> </span>/dev/random<span class="w"> </span>&gt;<span class="w"> </span>rand_input.data</code>, and then use that to compare your program’s output against the built-in utility. You can use the <strong class="program">cmp</strong> utility to compare the contents of two files, as shown here:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">1234</span><span class="w"> </span>/dev/random<span class="w"> </span>&gt;<span class="w"> </span>rand_input
+<span class="gp">$ </span>base64<span class="w"> </span>&lt;<span class="w"> </span>rand_input<span class="w"> </span>&gt;<span class="w"> </span>ref_output
+<span class="gp">$ </span>./base64<span class="w"> </span>&lt;<span class="w"> </span>rand_input<span class="w"> </span>&gt;<span class="w"> </span>my_output
+<span class="gp">$ </span>cmp<span class="w"> </span>-b<span class="w"> </span>ref_output<span class="w"> </span>my_output
+<span class="go">ref_output my_output differ: byte 1, line 1 is  56 .  75 =</span>
+<span class="gp">$</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong class="program">cmp</strong> utility produces no output if the two files are identical–you will only see output if the files are different. Be sure to read the man page <em class="manpage">cmp(1)</em> before using it!</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>One other thing to be aware of is, when you open a file and edit it in <strong class="program">vim</strong>, or when you produce input using utilities like <strong class="program">echo</strong>, these add a newline (<code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;</span><span class="se">\n</span><span class="sc">&#39;</span></code>) to the end of the data, which is character code 10, or 0xA. This often confuses students who have correctly implemented programs but didn’t notice the extra newline.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">printf</span><span class="w"> </span>foobar<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
+<span class="go">Zm9vYmFy</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>foobar<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
+<span class="go">Zm9vYmFyCg==</span>
+</pre></div>
+</div>
+<p>If you are seeing the following unexpected trailing outputs: “Cg==”, “o=”, or “K”, they are likely coming from a newline character you didn’t realise was there. The <strong class="program">printf</strong> utility never adds any extra newlines, so it’s much safer to use.</p>
+</div>
+<p>Do note, the skeleton code repository also contains a test script that you can use to test your program–it does not test many things, and you should add your own tests to it as you make progress. Talk to your classmates and share your testing strategies–you are allowed to collaborate and openly share any test scripts or unit tests you come up with.</p>
+</section>
+<section id="building-and-submitting">
+<h2>Building and Submitting<a class="headerlink" href="#building-and-submitting" title="Link to this heading"></a></h2>
+<p>The provided makefile compiles with the appropriate options, and you do not need to modify it; it will automatically pick up any source files you have in the <code class="file docutils literal notranslate"><span class="pre">src/</span></code> directory and compile them into a <strong class="command">base64</strong> executable. When you run the program <strong class="program">make</strong>, it will search the directory for your makefile and run the recipes needed to build the provided targets. It will display the exact commands it is executing when it compiles your program. Refer to the README file provided with the skeleton code for some more detailed information.</p>
+<p>You can directly submit your project to Gradescope using GitHub integration. This makes it very easy to work on <strong>os1</strong>, commit your changes, and then immediately upload to Gradescope for grading. Gradescope will supply its own makefile, and it will ignore any files that aren’t in the <code class="file docutils literal notranslate"><span class="pre">src/</span></code> directory, so you don’t need to have a separate branch for submitting or anything.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make <strong>ABSOLUTELY</strong> certain that your fork of the skeleton code repository on GitHub is set to <strong>PRIVATE</strong>. Using the skeleton code link to our GitHub classroom should result in a private repository (which you won’t be able to publish, even if you want to). It does <em>not</em> need to be public in order to submit to Gradescope. Every term, students are caught copying each other, and it is <em>very</em> difficult to prove that you accidentally made your code public–while we try to be sympathetic, unfortunately some students have abused this excuse and fabricated entire GitHub repositories in order to frame the other, innocent, student. If your code is public, someone <em>will</em> find it and copy it, and you will both be reported. It’s not fun :( Please be careful!</p>
+</div>
+<p class="rubric">Frequently Asked Questions</p>
+<ul class="simple">
+<li><p>You can submit as many times as you wish before the assignment is closed. There is no submission limit.</p></li>
+<li><p>You can “activate” a previous submission to have that be your grade on the assignment, up until the assignment is closed.</p></li>
+<li><p>There are no hidden tests–what you see is what your grade is (unless you are caught cheating, or something).</p></li>
+<li><p>You may submit up to one week late. A 10% penalty per day (prorated) will be applied for late submissions. No questions asked!</p></li>
+</ul>
+<section id="common-pitfalls">
+<h3>Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Link to this heading"></a></h3>
+<p>Be sure to devise tests that can answer the following questions:</p>
+<ul class="simple">
+<li><p>Does your program work with empty input?</p></li>
+<li><p>Does your program implement padding correctly for inputs of different lengths?</p></li>
+<li><p>Does your program work with non-text input?</p></li>
+<li><p>Does your program properly handle files that can’t be opened?</p></li>
+<li><p>Does your program properly handle read/write failures?</p></li>
+<li><p>Does your program clean up allocated resources?</p></li>
+</ul>
+</section>
+</section>
+<section id="rubric">
+<h2>Rubric<a class="headerlink" href="#rubric" title="Link to this heading"></a></h2>
+<p>In order to receive a grade, your submission <em>must</em> compile to the release build successfully.</p>
+<pre class="literal-block">* [ 5 points] Correct output for 0 - 57 input bytes in multiples of 3
+* [ 5 points] Correct output for 0 - 57 input bytes
+* [15 points] Correct formatting (line wrapping) for (random) input of any length
+* [20 points] Correct output for (random) input of any length that is a multiple of 3
+* [15 points] Correct output for (random) input of any (random) length
+* [ 5 points] Recognizes &quot;-&quot; FILE argument and reads from STDIN
+* [ 5 points] Ignores any input on stdin if FILE argument is provided
+* [ 5 points] Handles incorrect argument number error
+* [ 5 points] Handles input errors<a class="footnote-reference brackets" href="#stdin-err" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+* [ 5 points] Handles file open errors
+* [ 5 points] No memory/resource leaks detected
+* [10 points] Never crashes during testing</pre>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="stdin-err" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This test often confuses students. The test is <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>./base64<span class="w"> </span><span class="m">0</span>&lt;<span class="p">&amp;</span>-</code>. This uses shell redirection with the special operand <code class="docutils literal notranslate"><span class="pre">&amp;-</span></code> which <em>closes</em> file descriptor 0 (<code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code>). This will cause errors when you attempt to read from <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code>. It simulates, for example, a scenario where a previously open file is no longer readable, such as if the file were on a flash drive that was suddenly removed during processing. Programs should always gracefully handle such situations.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

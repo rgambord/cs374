@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Access and Operations &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Input/Output Methods" href="../io/" />
+    <link rel="prev" title="Motivation" href="../motivation/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Data Access and Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">The C Standard Input/Output Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Data Access and Storage</a></li>
+          <li class="breadcrumb-item"><a href="../">The C Standard Input/Output Library</a></li>
+      <li class="breadcrumb-item active">File Access and Operations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../motivation/" class="btn btn-neutral float-left" title="Motivation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../io/" class="btn btn-neutral float-right" title="Input/Output Methods" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-access-and-operations">
+<h1>File Access and Operations<a class="headerlink" href="#file-access-and-operations" title="Link to this heading"></a></h1>
+<p>As mentioned previously, files are referred to by their filenames–arbitrary strings–with no concept of multi-component paths or any other file system structure. Opening a file allocates and populates a <em>stream</em> object, consisting of additional state information and stream buffers wrapped around the underling raw file access, and produces a stream handle–a pointer to the opaque <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span></code> data type; i.e. <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="o">*</span></code>. Stream handles are passed to different standard I/O methods to perform operations on that stream.</p>
+<section id="removing-and-renaming-files">
+<h2>Removing and Renaming Files<a class="headerlink" href="#removing-and-renaming-files" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">oldname</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">newname</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A file may be removed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">remove</span></code> function, and renamed with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">rename</span></code> function.</p>
+<p>For example, a portable <strong class="program">mv</strong> utility might be implemented as so,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="k">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Missing file operand</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Missing destination operand</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Too many arguments</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="nv">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Operation failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And a portable <strong class="program">rm</strong> (remove) utility might be implemented as so,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="k">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Missing file operand</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Too many arguments</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="nv">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">fprintf</span><span class="p">(</span><span class="nv">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: Operation failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="temporary-files">
+<h2>Temporary Files<a class="headerlink" href="#temporary-files" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">tmpfile</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">tmpnam</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpfile</span></code> function creates a new file, opens it with mode <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;w+&quot;</span></code>, and returns a handle to that open stream; the file is automatically deleted when the last reference to it is closed.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code> function, on the other hand, generates a unique, valid file name that is not the same as any existing file. This provides more control over which access mode a temporary file is opened with, and prevents automatic deletion on program exit when all open streams are closed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">tmpnam</span></code> function is subject to a race condition: Between the time that a filename is generated and the time that the program opens that file, another process could potentially create and modify file with the same name, leading to conflicts. Safer alternatives are often provided as system-specific functions, such as the POSIX <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">mkstemp</span></code> function, which atomically creates <em>and</em> opens a temporary file with a unique name.</p>
+</div>
+</section>
+<section id="opening-and-closing-files">
+<h2>Opening and Closing Files<a class="headerlink" href="#opening-and-closing-files" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="n">File</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fopen</span></code> function is used to open a file with a particular access mode, and returns a stream handle for the open file. The access mode is a string, with the following significance,</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Access Mode</p></th>
+<th class="head"><p>Mode string</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Read</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;r&quot;</span></code></p></td>
+<td><p>Open a file for reading</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Write</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;w&quot;</span></code></p></td>
+<td><p>Truncate (or create) a file for writing</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Append</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a&quot;</span></code></p></td>
+<td><p>Open (or create) a file for appending</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Extended read</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;r+&quot;</span></code></p></td>
+<td><p>Open a file for read/write</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Extended write</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;w+&quot;</span></code></p></td>
+<td><p>Truncate (or create) a file for read/write</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Extended append</p></th>
+<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a+&quot;</span></code></p></td>
+<td><p>Open (or create) a file for read/appending</p></td>
+</tr>
+</tbody>
+</table>
+<p>When a file is opened in append mode, the position is always set to the end of the file before a write operation. The meaning of reading on a file opened with <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;a+&quot;</span></code> is not well-specified, and varies between implementations.</p>
+<p>An additional ‘b’ may be added to any of the above mode strings, such as <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;rb&quot;</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="s">&quot;rb+&quot;</span></code>. This sets the stream to binary mode; otherwise the stream is in text mode by default. A binary mode stream treats its contents as a sequence of bytes, while a text mode stream treats its contents as a series of lines, and may discard non-text bytes or any whitespace at the end of a line. Binary mode is usually preferred since it does not alter underlying data. Under POSIX, the ‘b’ character has no effect–all files behave as binary files, but the ‘b’ is important to ensure program portability to non-POSIX systems.</p>
+</section>
+<section id="standard-streams">
+<h2>Standard Streams<a class="headerlink" href="#standard-streams" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stdin</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Standard Input */</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stdout</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Standard Output */</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stderr</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Standard Error */</span>
+</pre></div>
+</div>
+<p>The standard streams are already opened and ready to be accessed when a program is invoked, and need not be closed when a program exits. These are accessed via the <em>macros</em> <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdout</span></code>, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code> which expand to expressions of type <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span><span class="o">*</span></code> just as any other stream. Importantly, these are <em>not</em> actual objects–they are macros–and do not necessarily expand to <a class="reference internal" href="../../../../meta/glossary/c/#term-lvalue"><span class="xref std std-term">lvalues</span></a> that can be directly modified. Attempting to reassign one of the standard streams–e.g. <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fopen</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span></code>–will result in undefined behavior.</p>
+</section>
+<section id="reopening-streams">
+<h2>Reopening Streams<a class="headerlink" href="#reopening-streams" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">freopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As mentioned previously, the standard streams cannot be simply reassigned–but it is often desirable to do so. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">freopen</span></code> function is provided specifically to handle this situation; it operates the same as <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fopen</span></code>, except that it repurposes the internal <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">FILE</span></code> object of an existing stream handle rather than create a new one. For example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code> could be changed from whatever the program inherited when invoked to instead to read from a particular file, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">freopen</span><span class="p">(</span><span class="s">&quot;input_file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">stdin</span><span class="p">);</span></code>.</p>
+</section>
+<section id="closing-a-file">
+<h2>Closing a file<a class="headerlink" href="#closing-a-file" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fclose</span></code> function closes the provided <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">stream</span></code> argument and frees any of its resources. This also has the effect of flushing any pending data to be written–because data may be held in an internal stream buffer, a program that exits without closing its open streams might produce incomplete output. Therefore it is important to close all opened streams before a program terminates in order to avoid resource leaks and data loss.</p>
+<p>As part of the normal program exit process, the standard library flushes and closes open streams; this behavior should not, however, be relied on–all explicitly opened streams should be explicitly closed before program termination.</p>
+</section>
+<section id="stream-status-indicators">
+<h2>Stream Status Indicators<a class="headerlink" href="#stream-status-indicators" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">feof</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ferror</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">clearerr</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Each stream has two boolean status indicators: end-of-file (eof), and error (err). When attempting to read past the end of a file, the end-of-file indicator is set; when an error occurs, the error indicator is set. Each indicator can be queried with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">feof</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">ferror</span></code> functions, respectively. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">clearerr</span></code> function may be used to clear both status indicators.</p>
+<p>These functions never fail and do not modify <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code>, so it is safe to check the error indicator on a stream before checking <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span></code> for any additional implementation-defined error information.</p>
+</section>
+<section id="buffering">
+<h2>Buffering<a class="headerlink" href="#buffering" title="Link to this heading"></a></h2>
+<p>As mentioned previously, standard i/o streams use an i/o buffer to move data between program memory and the external environment in large, efficient chunks.</p>
+<section id="buffering-modes">
+<h3>Buffering Modes<a class="headerlink" href="#buffering-modes" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">setvbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">setbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>There are three buffering modes that a stream can have–fully buffered, line buffered, and unbuffered. In fully buffered mode, a stream has a fixed-size output buffer which is automatically flushed to external storage whenever it is filled; this is also referred to as <em>block</em> buffering, because data is written in large blocks. Line buffering is the same as full buffering, except that output is also automatically flushed whenever a newline (<code class="code highlight c c99 docutils literal highlight-c99"><span class="sc">&#39;n&#39;</span></code>) character is written to the stream. In unbuffered mode, data is written to external storage as soon as it is available.</p>
+<p>When a file is opened, as with <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fopen</span></code>, it is buffered by default. If it refers to an interactive device, such as a terminal, it is line buffered; otherwise, it is fully buffered. By default, the standard streams <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdin</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stdout</span></code> are line buffered, and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">stderr</span></code> is unbuffered.</p>
+<p>After a file is opened, but <strong>before</strong> any other operations have been performed on it, its buffering mode may be modified with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">setvbuf</span></code> function.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">mode</span></code> argument must be either, <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOFBF</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOLBF</span></code>, or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IONBF</span></code>, each of which causes i/o to be fully buffered, line buffered, or unbuffered, respectively. If <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOFBF</span></code> or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">_IOLBF</span></code> is specified, the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">buf</span></code> argument should point to a buffer of at least <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">size</span></code> bytes, which will be used as the buffer. It may also be a null pointer, in which case the library will allocate a suitable buffer on the next i/o operation. The contents of the buffer while it is in use are indeterminate.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Recall that one of the effects of closing a stream is that it flushes pending output. If <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">setvbuf</span></code> is used to assign a buffer to a stream, that buffer must have a lifetime that extends at least until the stream is closed; otherwise the behavior is undefined.</p>
+</div>
+<p>An additional <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">setbuf</span></code> convenience function is exactly equivalent to,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">setbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">setvbuf</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">_IOFBF</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">_IONBF</span><span class="p">,</span><span class="w"> </span><span class="n">BUFSIZ</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In other words, if <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">buf</span></code> is null, the stream is set to unbuffered mode. Otherwise, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">buf</span></code> must be a pointer to an array at least <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">BUFSIZ</span></code> bytes, and the stream is set to fully buffered mode.</p>
+</section>
+<section id="alternating-i-o">
+<h3>Alternating I/O<a class="headerlink" href="#alternating-i-o" title="Link to this heading"></a></h3>
+<p>One important thing to note is that the same buffer is used for <em>both</em> input <em>and</em> output. Stream input methods will cause any buffered output to be flushed, and then the buffer will be filled with input data from the external storage. Similarly, stream output methods will <em>discard</em> any buffered input before placing the output data in the buffer. There is no difference between line and full buffering when the buffer is used for input–it is always completely filled with input data whenever it is depleted.</p>
+<p>Because of input prefetching, the <em>real</em> file position can move ahead of the <em>perceived</em> file position. This only becomes a problem if an output method is used after an input method, and data is discarded from the buffer–those discarded bytes represent the difference between the real and perceived file positions.</p>
+<p>If the underlying file supports seeking, then the library will update the real file position to the perceived position when switching the buffer from input to output. However, not all file types support seeking, such as a terminal device file, and will result in errors due to the failed seek operations. For this reason, it is generally unsafe to perform an output operation after an input operation on a buffered stream.</p>
+</section>
+<section id="flushing-a-buffer">
+<h3>Flushing a Buffer<a class="headerlink" href="#flushing-a-buffer" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fflush</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fflush</span></code> function explicitly flushes (writes) any pending output in a stream’s buffer.</p>
+</section>
+</section>
+<section id="repositioning">
+<h2>Repositioning<a class="headerlink" href="#repositioning" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">long</span><span class="w"> </span><span class="nf">ftell</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fseek</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">whence</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">rewind</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Streams support a very basic positioning mechanism, which, as mentioned above, may not be available if the underlying storage does not support seeking.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">ftell</span></code> function returns the value of the file position indicator, and the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fseek</span></code> function sets the file position indicator relative to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">whence</span></code>, which may be <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_SET</span></code>–the beginning of the file; <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_CUR</span></code>–the current position; or <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_END</span></code>–the end of the file.</p>
+<p>Text mode streams can only be repositioned with an offset of 0 or with an offset equal to the return value of a previous <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">ftell</span></code>, with <em>whence</em> set to <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SEEK_SET</span></code>.</p>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">rewind</span></code> function is equivalent to:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">rewind</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">fseek</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="mf">0L</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_SET</span><span class="p">);</span>
+<span class="w">  </span><span class="n">clearerr</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="wide-streams">
+<h3>Wide Streams<a class="headerlink" href="#wide-streams" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fgetpos</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="n">pos</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fsetpos</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="n">pos</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As an extension to the standard i/o library, streams can support multi-byte, or <em>wide</em>, character encodings such as unicode. The methods for this are exposed through the additional <code class="file docutils literal notranslate"><span class="pre">whchar.h</span></code> header, and most are direct analogues of the <em>byte</em>-oriented methods that will be covered in this module; for example, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">getwchar</span></code> is the wide-oriented analogue of <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">getchar</span></code> byte-oriented method. Wide streams have an associated parse state, so simply using the above repositioning methods could cause the stream to be repositioned to a location where the current parse state is invalid; it is only safe to rewind a wide stream using these methods.</p>
+<p>A pair of functions <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fgetpos</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fsetpos</span></code> are provided as a means to save and then restore a file position <em>and</em> its parse state. These are the only safe mechanism for seeking to a location that is not the beginning of a wide stream. They can also be used on narrow streams, where they are essentially equivalent to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">ftell</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fseek</span></code>.</p>
+<p>Wide streams are an advanced topic that will not be discussed further in this course.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../motivation/" class="btn btn-neutral float-left" title="Motivation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../io/" class="btn btn-neutral float-right" title="Input/Output Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

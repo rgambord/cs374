@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File System Structure &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="The C Standard Input/Output Library" href="../../stdio/" />
+    <link rel="prev" title="File System History" href="../background/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Data Access and Storage</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../">File System Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../background/">File System History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../">Data Access and Storage</a></li>
+          <li class="breadcrumb-item"><a href="../">File System Concepts</a></li>
+      <li class="breadcrumb-item active">File System Structure</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../background/" class="btn btn-neutral float-left" title="File System History" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../stdio/" class="btn btn-neutral float-right" title="The C Standard Input/Output Library" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-system-structure">
+<h1>File System Structure<a class="headerlink" href="#file-system-structure" title="Link to this heading"></a></h1>
+<p>In Unix, the file system is organized into three layers–physical, virtual, and logical. Each layer builds upon the previous, with increasing degree of abstraction. The physical layer is responsible for implementing each actual file system–that is, translating the actual data that makes up a file system into a standardized file system interface. The virtual layer is responsible for combining multiple physical file systems into one coherent structure. Finally, the logical layer is responsible for providing the user-and-application-facing interface to the file system.</p>
+<section id="physical-file-system">
+<h2>Physical File System<a class="headerlink" href="#physical-file-system" title="Link to this heading"></a></h2>
+<p>The physical file system consists of all the lower-level aspects of the file system ranging from actual physical hardware and device drivers, up to the file system driver in the kernel which interprets the raw file system data and produces a uniform file system interface consisting of abstract file system objects and operations. These abstract objects mirror traditional Unix file system structure on a physical data level–driver code for <em>local</em> file system implementations like the <em>ext</em> family of file systems often simply transfers this data directly to and from physical storage. In contrast, other file systems such as FAT or NFS, as well as virtualized file systems–which are dynamically generated in memory–may require significant on-the-fly translation into or generation of the appropriate structures that are understood by the upper layers of the file system stack.</p>
+<section id="superblock">
+<h3>Superblock<a class="headerlink" href="#superblock" title="Link to this heading"></a></h3>
+<p>The superblock, also known as the file system metadata, is an object that describes the basic features and structure of a particular file system. The superblock contains important information such as:</p>
+<ul class="simple">
+<li><p>The file system type, volume name, and mount location</p></li>
+<li><p>The locations and sizes of blocks and inodes</p></li>
+<li><p>The maximum filename length and file size</p></li>
+<li><p>The location of the root inode</p></li>
+</ul>
+<p>Additionally, the superblock exposes several file system operations, mostly centered around manipulating inodes and synchronizing the file system with storage.</p>
+</section>
+<section id="inode">
+<h3>Inode<a class="headerlink" href="#inode" title="Link to this heading"></a></h3>
+<p>An inode (index node) abstracts a file on disk. It contains meta-data about a particular file, such as its size, access rights, ownership, timestamps, and a list of block pointers that point to the actual data the file contains. Each inode has a unique numeric id, called the inode number or file serial number. Inodes 0-10 are reserved for special file system purposes; in particular, inode 2 usually corresponds to the root directory of a file system.</p>
+<figure class="align-center" id="id1" style="width: 70%">
+<img alt="Inode Table Diagram" src="../../../../_images/inode_table.svg" /><figcaption>
+<p><span class="caption-text">Each inode contains metadata and data block pointers for a particular file.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An inode does <em>not</em> contain a filename. File names are an aspect of dentry objects, described below.</p>
+</div>
+</section>
+<section id="dentry">
+<h3>Dentry<a class="headerlink" href="#dentry" title="Link to this heading"></a></h3>
+<p>In Unix, a directory is just a special type of file that contains a list of named references to other files. These references are abstractly represented by dentry (directory entry) objects, each of which associates a file name string with a superblock and inode number. Additionally, dentry objects contain lists of references to both parent and child dentry objects, allowing navigation across the file system as a connected tree of dentry objects.</p>
+</section>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Link to this heading"></a></h3>
+<p>A file object represents an open file, and exposes an abstract interface for various file operations such as seeking, reading, writing, opening and closing. Additional operations are also provided for special files like directories and symbolic links. The file structure contains information such as the cursor position, the access mode of the file, and a reference to the underlying inode.</p>
+</section>
+</section>
+<section id="virtual-file-system">
+<h2>Virtual File System<a class="headerlink" href="#virtual-file-system" title="Link to this heading"></a></h2>
+<p>The virtual file system (VFS) acts as the intermediary between the physical file system and the logical file system that user-space applications interact with. The main purpose of the VFS is to merge multiple physical file systems into one coherent file system through a mechanism called mounting.</p>
+<p>For example, a typical system installation might be spread across each of a boot, system, and user data partition. Additionally, the kernel generates several pseudo file systems to represent things like virtual and physical hardware devices, running processes, and runtime data. These distinct file systems are each mounted to particular paths, examples of some of which are shown in the following table:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File System</p></th>
+<th class="head"><p>Mount Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>system</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>boot</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/boot</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>devices</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/dev</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>user data</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/home</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>running processes</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/proc</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>runtime data</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">/run</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="vfs-cache">
+<h3>VFS Cache<a class="headerlink" href="#vfs-cache" title="Link to this heading"></a></h3>
+<p>It would be impracticable to load all of the superblock, inode, and dentry objects for all mounted filesystems into memory all at once. Likewise, it would not be performant to make requests to the physical file system for every file operation. An important task of the VFS is in managing a cache of objects that were recently retrieved from the physical file system. As different locations in the VFS are accessed, the VFS seamlessly fills in missing entries in the cache by querying the appropriate physical file system.</p>
+<p>In order to mount a file system, the VFS generates a dentry object that points to the root directory of that file system, and adds it to the VFS cache. The root file system is mounted by creating a dentry for <code class="file docutils literal notranslate"><span class="pre">/</span></code> that points to that file system’s root inode. Subsequent file systems are then mounted by creating dentry objects for their respective locations within the virtual file system. These explicitly generated dentry objects act to link together each file system into a unified tree structure, rooted at <code class="file docutils literal notranslate"><span class="pre">/</span></code>.</p>
+</section>
+</section>
+<section id="logical-file-system">
+<h2>Logical File System<a class="headerlink" href="#logical-file-system" title="Link to this heading"></a></h2>
+<p>The logical file system is the familiar user-facing view of the file system. In the logical file system, a file is known by its path, which is a string consisting of path components delimited by the path separator <code class="file docutils literal notranslate"><span class="pre">/</span></code>, such as <code class="file docutils literal notranslate"><span class="pre">/bin/env/bash</span></code>, which consists of the components <code class="file docutils literal notranslate"><span class="pre">/</span></code>, <code class="file docutils literal notranslate"><span class="pre">bin/</span></code>, and <code class="file docutils literal notranslate"><span class="pre">bash</span></code>. Files also have properties, called file <em>stats</em>, such as permissions, timestamps, and size. When a file is opened within the logical file system, a structure called a file descriptor is allocated, and the open file is assigned a file descriptor number, which is used as a handle to perform further operations on that file.</p>
+<p>Each of these components has a direct analogue within the VFS:</p>
+<ul class="simple">
+<li><p>Each component of a path corresponds to a dentry object.</p></li>
+<li><p>A file’s stats correspond to fields of its inode object.</p></li>
+<li><p>An open file descriptor is a direct analogue of a file object.</p></li>
+</ul>
+<p>The VFS translates logical file system operations into the appropriate operations on these underlying structures, and then returns the results in formats understood by the logical file system.</p>
+<section id="logical-file-types">
+<h3>Logical File Types<a class="headerlink" href="#logical-file-types" title="Link to this heading"></a></h3>
+<p>In the logical file system, there are six standard types of files, each of which provides a unique interface.</p>
+<p class="rubric">Regular Files</p>
+<p>A regular file is a persistent data storage unit that remains unchanged unless modified. Regular files support operations such as reading, writing, and seeking. This type of file is commonly used to store various types of data, such as text, images, or program code.</p>
+<p class="rubric">Directories</p>
+<p>A directory contains a list of directory entries (dirents) which reference other files. The logical layer exposes a special interface for iterating over this list  and does not provide direct access to the data contained within a directory.</p>
+<blockquote>
+<div><p class="rubric">FIFOs</p>
+</div></blockquote>
+<p>FIFOs, also called <em>named pipes</em>, represent transient streams of data and are used for inter-process communication. Data written to a FIFO is made available on a first-in, first-out basis when reading. As data is read from a FIFO, it is discarded. As a result, FIFOs do not support seeking, only reading and writing.</p>
+<p>Unlike other types of files, the data contained in a FIFO is stored in-memory by the kernel; when data is written to a FIFO, the kernel allocates a fixed-size buffer to hold the data, and services later read requests from this buffer.</p>
+<p class="rubric">Symbolic Links</p>
+<p>A symbolic link is a type of file that contains a pathname and act as logical references to other files. Symbolic links transparently forward normal file operation to the pointed-at file. Special additional operations are provided for accessing the pathname stored in the symbolic link, itself.</p>
+<p class="rubric">Special Files</p>
+<p>Special files, also called devices, are similar to regular files, except that they override normal file operations with custom driver code. These are used to represent hardware devices and pseudo devices using the standard file i/o interfaces. There are two types of special files: block and character.</p>
+<p>Block devices are typically used to represent raw i/o on hardware storage, such as a hard disk drive, and they behave a lot like regular files–data is stable, and seeking is supported.</p>
+<p>Character devices, on the other hand, represent a duplexed data stream, similar to a FIFO. These might be tied to i/o ports on a device, or represent dynamically generated data from pseudo devices like <code class="file docutils literal notranslate"><span class="pre">/dev/random</span></code>, <code class="file docutils literal notranslate"><span class="pre">/dev/zero</span></code>, <code class="file docutils literal notranslate"><span class="pre">/dev/null</span></code>, and so on.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../background/" class="btn btn-neutral float-left" title="File System History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../stdio/" class="btn btn-neutral float-right" title="The C Standard Input/Output Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Encoding &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modules/03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/04/">Processes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/05/">Inter-Process Communication</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Understanding Encoding</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="understanding-encoding">
+<h1>Understanding Encoding<a class="headerlink" href="#understanding-encoding" title="Link to this heading"></a></h1>
+<blockquote class="epigraph">
+<div><p>There are 10 types of people in the world, those who understand binary, and those who don’t.</p>
+<p class="attribution">—Confucious</p>
+</div></blockquote>
+<p>From the perspective of a computer, all data–photos, text, videos, and more–is simply a sequence of bytes. Let’s take a text file, for example, one which contains the text “Hello World”. Except, it doesn’t really “contain” any text at all, because files cannot contain text–they contain bytes. In this case, it might contain a sequence of bytes with values 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100. Here, each byte represents a single character, mapped to a particular value, according the American Standard Code for Information Interchange (ASCII) encoding scheme, one of two major encoding schemes used to represent text data (the other major encoding scheme for text is an extension of ASCII called UTF-8).</p>
+<p>There are other less common encodings used to represent text data, such as UTF-16, which are not compatible with ASCII. In UTF-16, each character is represented by a two-byte sequence of values, and the message “Hello World” would instead be encoded as the byte value sequence 0, 72, 0, 101, 0, 108, 0, 108, 0, 111, 0, 32, 0, 87, 0, 111, 0, 114, 0, 108, 0, 100.</p>
+<p>What would happen then, if you tried to open the file containing “Hello World” encoded in ASCII/UTF-8 in a text editor that is expecting UTF-16 data and vice versa? The ASCII/UTF-8 byte sequence 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100 decodes to 䡥汬漠坯牬搡 when interpreted as UTF-16 data. That’s not quite the message we were hoping to send! Likewise, if we were to interpret the UTF-16 encoded message as ASCII/UTF-8, we would see something like “␀H␀e␀l␀l␀o␀ ␀W␀o␀r␀l␀d”.</p>
+<p>What about other types of data–suppose you were given a file with unknown contents, and when you opened it in a text editor you saw BM�i6(Mxi����������������…? this file contains bitmap image data, but it’s not very useful to view in a text editor, because the text editor does not understand that encoding, but an image viewer does!</p>
+<p>These examples serve to illustrate that data has no inherent meaning, it is all just a sequence of bytes that must be interpreted to be of any use; and this requires knowing how that data was stored–its encoding. Let’s suppose, however, that you don’t care what type of data a file contains–you just want to store, view, or send that data. For example, you are probably familiar with file compression such as ZIP and other variants, which aim to store arbitrary data in a smaller amount of space. Or, perhaps you want to view the contents of a file as raw data–there are many tools that can display and/or manipulate byte values in numeric representations such as hexadecimal, octal, and binary representations.</p>
+<section id="motivation-for-basen-encoding">
+<h2>Motivation for BaseN Encoding<a class="headerlink" href="#motivation-for-basen-encoding" title="Link to this heading"></a></h2>
+<p>Following on the previous theme of content-agnostic re-encoding, suppose you want to store or send arbitrary data–perhaps a text file, an image, or anything else, but you don’t know ahead of time what type of data it is going to be, so you need a method that works on any type of data. If the storage or communication medium supports raw data bytes, this is no problem, as that is the native format of the data itself. But, what if it doesn’t? Many important internet protocols, such as HTTP and Email, transmit data solely as printable plaintext. In the ASCII character set, there are only 96 printable characters: the 26 characters of the Latin alphabet in both majuscule and miniscule scripts, the ten decimal digits, and various punctuation and whitespace characters, along with 32 non-printable control characters. These 128 character code points are represented in the lower half of byte values, 0-127; any values in the upper half (128-255) of the byte range are not even valid ASCII characters. <a class="footnote-reference brackets" href="#ascii" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>You may have encountered this before, for example, with urlencoding. Did you ever notice that certain characters in a URL are represented with escape codes? For example, the ‘ ‘ &lt;space&gt; character is not a valid URL character, so it is converted to the sequence “%20”, which is the hexadecimal codepoint of the ASCII space character. This is one method of encoding data that is popular on the web, but it is very inefficient whenever the data to be encoded consists of a lot of non-printable character values, requiring anywhere from 1x to 3x as much space to encode data–efficient for data that is mostly text, but terrible for data that is arbitrary bytes.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ascii" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>ASCII was originally developed for teletype–electronic typewriters connected via telephony. This was long before the advent of computers and 8-bit bytes. A message encoded in 7-bit characters was 12.5% faster to send, and this was a big deal when speeds were slow and users paid by the minute! Early computers adopted these teletype machines as their main operating interface. These machines were quite large, and often housed in a piece of furniture, along with additional controls, called the console–even today we refer to the local administrative terminal interface of an operating system as the console.</p>
+</aside>
+</aside>
+</section>
+<section id="binary-and-hexadecimal">
+<h2>Binary and Hexadecimal<a class="headerlink" href="#binary-and-hexadecimal" title="Link to this heading"></a></h2>
+<p>In order to solve this problem, we will need to come up with an algorithm that transforms input data into a textual representation. You are already familiar with some common forms of this, such as binary and hexadecimal output. On one end of the scale, we could encode our data as a sequence of binary digits, the <em>characters</em> ‘0’ and ‘1’. This isn’t very efficient though, because each character digit is, itself, a byte, meaning that each byte of data takes eight bytes of text to represent–that’s much worse than the urlencoding scheme we looked at before. Hexadecimal (base 16) is a bit more compact, and can represent each data byte with only two bytes of text, where each digit represents the upper and lower half of a single byte. Depending on the type of data, this could be slightly better, or a lot worse, than the urlencoding scheme. Here is an example implementation of hexadecimal conversion:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">base16.py</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="k">def</span> <span class="nf">b16encode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;0123456789ABCDEF&#39;</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">hi</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">lo</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xF</span><span class="p">;</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">hi</span><span class="p">])</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">lo</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">b16decode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;0123456789ABCDEF&#39;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+    <span class="c1"># accumulator</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of accumulated bits</span>
+    <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">digval</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span> 
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span> <span class="c1"># Attempt to ignore non-digits</span>
+
+        <span class="c1"># shift digval into ac from right</span>
+        <span class="n">ac</span> <span class="o">&lt;&lt;=</span> <span class="mi">4</span>
+        <span class="n">ac</span> <span class="o">|=</span> <span class="n">digval</span>
+        <span class="n">ac_bits</span> <span class="o">+=</span> <span class="mi">4</span>
+
+        <span class="c1"># Write byte of output</span>
+        <span class="k">if</span> <span class="n">ac_bits</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ac</span><span class="p">)</span>
+            <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">ac_bits</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unmatched [hi] nibble&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">out</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to encode: &quot;</span><span class="p">),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+    <span class="n">encoded_msg</span> <span class="o">=</span> <span class="n">b16encode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">encoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to decode (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">encoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">))),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">encoded_msg</span>
+    <span class="n">decoded_msg</span> <span class="o">=</span> <span class="n">b16decode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Example output</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./base16.py
+<span class="go">Enter a message to encode: Hello World</span>
+<span class="go">Encoded Message: 48656C6C6F20576F726C64</span>
+<span class="go">Enter a message to decode (default: 48656C6C6F20576F726C64): </span>
+<span class="go">Decoded Message: Hello World</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="base-32">
+<h2>Base 32<a class="headerlink" href="#base-32" title="Link to this heading"></a></h2>
+<p>Hexadecimal uses only 16 of the 96 available printable characters, so perhaps we can do even better. Hexadecimal can be extended to a base 32 number system using the characters ‘G’ through ‘V’ to represent values 16 through 31. A more commonly used base 32 alphabet instead uses the letters ‘A’ through ‘Z’ as the first 26 digits, followed by the decimal digits ‘2’ through ‘7’–this is to avoid confusion between 0 (zero) and O (oh), along with 1 (one) and I (eye) that can occur with a simple extended hexadecimal format.</p>
+<p>Base32 introduces a problem that we did not have with hexadecimal. With hexadecimal, a single byte is split in half and encoded as two hexadecimal digits, so each byte can be treated individually. This is because a byte is <em>eight</em> bits, and a hexadecimal digit is <em>four</em> bits. However, in base 32, a digit is <em>five</em> bits, which doesn’t fit neatly into a single eight bit byte. Instead, we have to operate on data in chunks of 40 bits–the least-common-multiple of five and eight. Instead of byte-by-byte, data is processed five bytes at a time, outputting eight base 32 digits. Since it encodes data in chunks of five bytes at a time, base 32 encoding has to handle cases where the data is not an exact multiple of five bytes. When this occurs, on the last chunk of data, the missing bytes are treated as zero during the encoding step, and then the special padding character ‘=’ is used to represent the missing data in the final output. For example,</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte Sequence</p></th>
+<th class="head"><p>Encoding</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>{0}</p></td>
+<td><p>AA======</p></td>
+</tr>
+<tr class="row-odd"><td><p>{0, 0}</p></td>
+<td><p>AAAA====</p></td>
+</tr>
+<tr class="row-even"><td><p>{0, 0, 0}</p></td>
+<td><p>AAAAA===</p></td>
+</tr>
+<tr class="row-odd"><td><p>{0, 0, 0, 0}</p></td>
+<td><p>AAAAAAA=</p></td>
+</tr>
+<tr class="row-even"><td><p>{0, 0, 0, 0, 0}</p></td>
+<td><p>AAAAAAAA</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example implementation of a base32 implementation in python:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">base32.py</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="k">def</span> <span class="nf">b32encode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ234567&#39;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+
+    <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># accumulator</span>
+    <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of accumulated bits</span>
+    <span class="n">byte_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># position, mod 5</span>
+    <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="c1"># Update position, mod 5</span>
+        <span class="n">byte_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">byte_count</span> <span class="o">==</span> <span class="mi">5</span><span class="p">):</span>
+            <span class="n">byte_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Shift byte into ac from right</span>
+        <span class="n">ac</span> <span class="o">&lt;&lt;=</span> <span class="mi">8</span>
+        <span class="n">ac</span> <span class="o">|=</span> <span class="n">byte</span>
+        <span class="n">ac_bits</span> <span class="o">+=</span> <span class="mi">8</span>
+
+        <span class="k">while</span> <span class="n">ac_bits</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="c1"># Take upper 5 bits</span>
+            <span class="n">ac_bits</span> <span class="o">-=</span> <span class="mi">5</span>
+            <span class="c1"># Convert to digit</span>
+            <span class="n">digit</span> <span class="o">=</span> <span class="n">digits</span><span class="p">[</span><span class="n">ac</span> <span class="o">&gt;&gt;</span> <span class="n">ac_bits</span><span class="p">]</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+            <span class="c1"># Mask off remaining bits</span>
+            <span class="n">ac</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">ac_bits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Handle leftover bits in ac</span>
+    <span class="k">if</span> <span class="n">ac_bits</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Here we shift to the left as if there were </span>
+        <span class="c1"># infinite 0 bytes after the data</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">ac</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="n">ac_bits</span><span class="p">)])</span>
+        <span class="c1"># Add padding to indicate end of data</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="p">((</span><span class="mi">5</span> <span class="o">-</span> <span class="n">byte_count</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">//</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">b32decode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ234567&#39;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># accumulator</span>
+    <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of accumulated bits</span>
+    <span class="n">byte_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># position, mod 8</span>
+    <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">digit</span> <span class="o">==</span> <span class="s1">&#39;=&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Get the digit&#39;s numeric value</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">digval</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">continue</span> <span class="c1"># Attempt to ignore non-digits</span>
+        
+        <span class="c1"># Shift digval into ac from right</span>
+        <span class="n">ac</span> <span class="o">&lt;&lt;=</span> <span class="mi">5</span>
+        <span class="n">ac</span> <span class="o">|=</span> <span class="n">digval</span>
+        <span class="n">ac_bits</span> <span class="o">+=</span> <span class="mi">5</span>
+
+        <span class="k">while</span> <span class="n">ac_bits</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="c1"># Take upper 8 bits</span>
+            <span class="n">ac_bits</span> <span class="o">-=</span> <span class="mi">8</span>
+            <span class="c1"># Convert to byte</span>
+            <span class="n">byte</span> <span class="o">=</span> <span class="n">ac</span> <span class="o">&gt;&gt;</span> <span class="n">ac_bits</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+            <span class="c1"># Mask off remaining bits</span>
+            <span class="n">ac</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">ac_bits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to encode: &quot;</span><span class="p">),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+    <span class="n">encoded_msg</span> <span class="o">=</span> <span class="n">b32encode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">encoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to decode (default: previous encoded message): &quot;</span><span class="p">),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">encoded_msg</span>
+    <span class="n">decoded_msg</span> <span class="o">=</span> <span class="n">b32decode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="base-64">
+<h2>Base 64<a class="headerlink" href="#base-64" title="Link to this heading"></a></h2>
+<p>Following in the footsteps of hexadecimal and base 32, the base64 encoding scheme uses 64 printable characters of the 96 that are available. It is the most compact textual representation of arbitrary binary data in common use, using only four characters to represent 3 bytes, a cost of 1.3x expansion. <a class="footnote-reference brackets" href="#whynot96" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> The base 64 scheme is described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc4648" rel="noopener noreferrer" target="_blank">RFC 4648</a>, and it is important for you to get used to reading technical documentation, so have at it!</p>
+<p>Base 64 is similar to base 32 in that it also uses padding. However, base 64 is actually much less complex because it only needs to read data in 3-byte chunks, rather than the 5 that base 32 uses; this is because <img class="math" src="../../../_images/math/302c364aaaffb6ee237c1ddc903a9d3f8e272581.svg" alt="2^6 = 64"/>, and <img class="math" src="../../../_images/math/e719e53efd2cab54b2af0a476a24c5cd7db491b7.svg" alt="\text{lcm}(6, 8) = 24"/> bits (3 bytes).</p>
+<p>Here’s an example implementation of base64 encoding in python; notice how it is essentially an identical algorithm to base32,</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">base64.py</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="k">def</span> <span class="nf">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy0123456789+/&#39;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+
+    <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># accumulator</span>
+    <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of accumulated bits</span>
+    <span class="n">byte_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># position, mod 3</span>
+    <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="c1"># Update position, mod 3</span>
+        <span class="n">byte_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">byte_count</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">byte_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Shift byte into ac from right</span>
+        <span class="n">ac</span> <span class="o">&lt;&lt;=</span> <span class="mi">8</span>
+        <span class="n">ac</span> <span class="o">|=</span> <span class="n">byte</span>
+        <span class="n">ac_bits</span> <span class="o">+=</span> <span class="mi">8</span>
+
+        <span class="k">while</span> <span class="n">ac_bits</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="c1"># Take upper 6 bits</span>
+            <span class="n">ac_bits</span> <span class="o">-=</span> <span class="mi">6</span>
+            <span class="c1"># Convert to digit</span>
+            <span class="n">digit</span> <span class="o">=</span> <span class="n">digits</span><span class="p">[</span><span class="n">ac</span> <span class="o">&gt;&gt;</span> <span class="n">ac_bits</span><span class="p">]</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+            <span class="c1"># Mask off remaining bits</span>
+            <span class="n">ac</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">ac_bits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Handle leftover bits in ac</span>
+    <span class="k">if</span> <span class="n">ac_bits</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Here we shift to the left as if there were </span>
+        <span class="c1"># infinite 0 bytes after the data</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">ac</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="n">ac_bits</span><span class="p">)])</span>
+        <span class="c1"># Add padding to indicate end of data</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="p">((</span><span class="mi">3</span> <span class="o">-</span> <span class="n">byte_count</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">//</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">b64decode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy0123456789+/&#39;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># accumulator</span>
+    <span class="n">ac_bits</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of accumulated bits</span>
+    <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">digit</span> <span class="o">==</span> <span class="s1">&#39;=&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Get the digit&#39;s numeric value</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">digval</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">continue</span> <span class="c1"># Attempt to ignore non-digits</span>
+        
+        <span class="c1"># Shift digval into ac from right</span>
+        <span class="n">ac</span> <span class="o">&lt;&lt;=</span> <span class="mi">6</span>
+        <span class="n">ac</span> <span class="o">|=</span> <span class="n">digval</span>
+        <span class="n">ac_bits</span> <span class="o">+=</span> <span class="mi">6</span>
+
+        <span class="k">while</span> <span class="n">ac_bits</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="c1"># Take upper 8 bits</span>
+            <span class="n">ac_bits</span> <span class="o">-=</span> <span class="mi">8</span>
+            <span class="c1"># Convert to byte</span>
+            <span class="n">byte</span> <span class="o">=</span> <span class="n">ac</span> <span class="o">&gt;&gt;</span> <span class="n">ac_bits</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+            <span class="c1"># Mask off remaining bits</span>
+            <span class="n">ac</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">ac_bits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to encode: &quot;</span><span class="p">),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+    <span class="n">encoded_msg</span> <span class="o">=</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">encoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a message to decode (default: previous encoded message): &quot;</span><span class="p">),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">encoded_msg</span>
+    <span class="n">decoded_msg</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decoded Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decoded_msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<p>Interestingly, an equivalent implementation in C can be much simpler, because of the way C works with data–these examples in python should serve to help you understand the way the algorithm works, but not necessarily be a guide for how to implement the same scheme in another language.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="whynot96" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Why not just skip straight to the end: base 96? Although it is technically possible to represent the contents of a file in any numeric base, converting between bases that aren’t powers of two is very difficult, and not <em>just</em> for programmers! Notice that in all of our examples we are using bit shifting. This is equivalent to multiplying or dividing by a power of two, but it’s much, much faster than generic multiplication and division as far as a processor is concerned. In order to do more general base conversion, we actually have to perform repeated division by the target base to extract each digit of the output, until the input value equals 0. Worse yet, we have to perform long division (with carry) over the entire input data as if it were a gigantic number. Likewise, the generalized conversion back from a base requires repeated multiplication instead of simple binary shift operations. In general, conversion between any two bases <img class="math" src="../../../_images/math/b3e65e3b6408fcfa00452530b73f55d1755f9965.svg" alt="a"/> and <img class="math" src="../../../_images/math/68c7c8c65602677ab56cf7fd88002023f0edc575.svg" alt="b"/> is “easy” if they satisfy, <img class="math" src="../../../_images/math/f95f026de842600737fa2a9d1003dfec4e74da9b.svg" alt="\frac{\log(a)}{\log(b)} \in \mathbb{Q}"/>. For this reason, many calculators actually store all of their numbers in a format called Binary Coded Decimal (BCD), where numbers are stored not as simple binary values, but as arrays of decimal digits, where each digit is stored as a 4-bit value. This avoids the costly conversion between any binary formats and decimal.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
