@@ -27,7 +27,9 @@
         <script src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
-    <link rel="search" title="Search" href="../../search/" /> 
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="BigShell Report" href="../../assignments/bigshell-report/" />
+    <link rel="prev" title="BigShell Command Language" href="../../assignments/bigshell/shell_command_language/" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -214,13 +216,14 @@
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../assignments/bigshell/">Specification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GitHub/os1 Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments/bigshell-report/">Final Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">External Links</span></p>
@@ -258,7 +261,10 @@
       <li class="breadcrumb-item active">GitHub Configuration</li>
       <li class="wy-breadcrumbs-aside">
       </li>
-  </ul>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../../assignments/bigshell/shell_command_language/" class="btn btn-neutral float-left" title="BigShell Command Language" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../assignments/bigshell-report/" class="btn btn-neutral float-right" title="BigShell Report" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -269,7 +275,7 @@
 <p>GitHub Classroom will allow you to easily create your own private forks of the provided skeleton code for the BigShell assignment. You can then work on your BigShell assignment directly in your web browser, using the GitHub codespaces IDE, in your favorite local editor, or on the class <strong>os1</strong> server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>We cannot guarantee that code which compiles and runs correctly on your local system, os1, or on a GitHub codespace, will also compile and run identically in the Gradescope testing environment. Test your code regularly on Gradescope!</p>
+<p>We cannot guarantee that code which compiles and runs correctly on your local system, os1, or on a GitHub codespace, will also compile and run identically in the Gradescope testing environment. I personally have not found any differences between my own local environment, os1, and GitHub codespaces. However, bugs related to undefined behavior (e.g. indexing past the end of an array, using uninitialized variables) may have different effects in different contexts. Please test your code on Gradescope regularly, since that is where your grade is assigned.</p>
 </div>
 <p>In order to use GitHub classroom, you will need to have a GitHub Account. You can create an account <a class="reference external" href="https://github.com/join" rel="noopener noreferrer" target="_blank">here</a>.</p>
 <p>Later in the course, I will give you a link to the GitHub classroom assignment for BigShell. Clicking one of this link will prompt you to accept the assignment, which will create a new private repository in the Classroom environment that only you and instructors can access.</p>
@@ -334,8 +340,8 @@
                 </a></section>
 <section id="working-on-os1">
 <h2>Working on os1<a class="headerlink" href="#working-on-os1" title="Link to this heading"></a></h2>
-<p>I strongly recommend that you set this up, even if you don’t use it, just so you have the option in case something goes wrong.</p>
-<p>First, you need to create a public/private key pair <em>on</em> <strong>os1</strong>, so go ahead and log into <strong>os1</strong> and run the <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519</code> command again. You will use this generated key to pull/push to GitHub.</p>
+<p>If you prefer to try working on os1, or want both set ups ready to go, follow the steps below. These instructions also apply generally for a local system running MacOS or Linux–you may need to install requisite software like <strong class="program">git</strong>.</p>
+<p>First, you need to create a public/private key pair <em>on</em> <strong>os1</strong>, so go ahead and log into <strong>os1</strong> and run the <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519</code> command that you used on your local machine when doing the SSH setup earlier in the course. You will use this generated key to pull/push to GitHub.</p>
 <p>Register this key with GitHub, following these steps:</p>
 <a class="framed"
                data-lightbox="group-os1_ssh"
@@ -395,8 +401,8 @@
                      alt=""/>
                 </a><p>On <strong>os1</strong>, run the <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>clone</code> command with the repository URL,</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
-<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:osu-cs374/base64-benny-beaver.git<span class="w"> </span>base64
-<span class="go">Cloning into &#39;base64&#39;...</span>
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:osu-cs374/BigShell-benny-beaver.git<span class="w"> </span>BigShell
+<span class="go">Cloning into &#39;BigShell&#39;...</span>
 <span class="go">remote: Enumerating objects: 25, done.</span>
 <span class="go">remote: Counting objects: 100% (13/13), done.</span>
 <span class="go">remote: Compressing objects: 100% (8/8), done.</span>
@@ -405,18 +411,18 @@
 <span class="go">Resolving deltas: 100% (3/3), done.</span>
 
 <span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>base64
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>BigShell
 
-<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
 <span class="gp">$ </span>make
 <span class="go">  [...]</span>
 </pre></div>
 </div>
 <p>From here you can work on the assignment. To commit your changes, first you need to add any modified files to the commit. To see a list of your modified files, use <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>status</code>. You can stage files with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>path/to/file</code>, or you can just simply do <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>-A</code> to add all modified files. Then, you can write a commit with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>commit</code>, and push your changes to the remote repository on GitHub with <code class="code highlight console docutils literal highlight-console"><span class="gp">$ </span>git<span class="w"> </span>push</code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
-<span class="gp">$</span>vim<span class="w"> </span>src/base64.c
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
+<span class="gp">$</span>vim<span class="w"> </span>src/BigShell.c
 
-<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
 <span class="gp">$</span>git<span class="w"> </span>status
 <span class="go">On branch main</span>
 <span class="go">Your branch is up to date with &#39;origin/main&#39;.</span>
@@ -424,19 +430,19 @@
 <span class="go">Changes not staged for commit:</span>
 <span class="gp gp-VirtualEnv">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
 <span class="gp gp-VirtualEnv">(use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
-<span class="go">      modified:   src/base64.c</span>
+<span class="go">      modified:   src/BigShell.c</span>
 
 <span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
 
-<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
 <span class="gp">$</span>git<span class="w"> </span>add<span class="w"> </span>-A
 
-<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
 <span class="gp">$</span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Bug Fix&quot;</span>
 <span class="go">[main e7ec72b] Bug Fix</span>
 <span class="go">1 file changed, 2 insertions(+)</span>
 
-<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/base64</span>
+<span class="go">benny-beaver@os1.engr.oregonstate.edu:~/BigShell</span>
 <span class="gp">$</span>git<span class="w"> </span>push
 <span class="go">Enumerating objects: 7, done.</span>
 <span class="go">Counting objects: 100% (7/7), done.</span>
@@ -445,7 +451,7 @@
 <span class="go">Writing objects: 100% (4/4), 373 bytes | 373.00 KiB/s, done.</span>
 <span class="go">Total 4 (delta 3), reused 0 (delta 0), pack-reused 0</span>
 <span class="go">remote: Resolving deltas: 100% (3/3), completed with 3 local objects.</span>
-<span class="go">To github.com:osu-cs374/base64.git</span>
+<span class="go">To github.com:osu-cs374/BigShell.git</span>
 <span class="go">   b382ea8..e7ec72b  main -&gt; main</span>
 </pre></div>
 </div>
@@ -453,13 +459,13 @@
 <p class="admonition-title">Warning</p>
 <p>Do <em>not</em> use the HTTPS address to clone your repository. GitHub long ago deprecated username and password authentication via the HTTPS links–these can now only be used to clone read-only copies of public repositories:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">benny-beaver@os1.engr.oregonstate.edu:~/</span>
-<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/osu-cs374/base64-benny-beaver.git<span class="w"> </span>base64
-<span class="go">Cloning into &#39;base64-benny-beaver&#39;...</span>
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/osu-cs374/BigShell-benny-beaver.git<span class="w"> </span>BigShell
+<span class="go">Cloning into &#39;BigShell-benny-beaver&#39;...</span>
 <span class="go">Username for &#39;https://github.com&#39;: benny-beaver</span>
 <span class="go">Password for &#39;https://benny-beaver@github.com&#39;: **************************</span>
 <span class="go">remote: Support for password authentication was removed on August 13, 2021.</span>
 <span class="go">remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.</span>
-<span class="go">fatal: Authentication failed for &#39;https://github.com/osu-cs374/base64-benny-beaver.git/&#39;</span>
+<span class="go">fatal: Authentication failed for &#39;https://github.com/osu-cs374/BigShell-benny-beaver.git/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -484,7 +490,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../assignments/bigshell/shell_command_language/" class="btn btn-neutral float-left" title="BigShell Command Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../assignments/bigshell-report/" class="btn btn-neutral float-right" title="BigShell Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
