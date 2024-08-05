@@ -7,7 +7,7 @@
   <title>Motivation &mdash; CS 374 - Operating Systems  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=2e9965fa" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/brand.css?v=629ae113" />
 
@@ -209,7 +209,30 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../04/">Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="../../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../05/assignments/">Assignments</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +310,8 @@
 <p>The standard i/o library takes care of this by allocating an internal buffer for each open file. The i/o methods exposed by the stdio library pass through this buffer. When a read operation is performed, data is pulled from the buffer; if the buffer is depleted, it is refilled with a <em>single</em> <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">read</span><span class="p">()</span></code> system call. Likewise, when a write operation is performed, data is added to the buffer; when the buffer is filled, its contents are written with a <em>single</em> <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">write</span><span class="p">()</span></code> system call.</p>
 <p>The following chart demonstrates the transfer rates of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">read</span><span class="p">()</span></code> (system call) and its equivalent <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fread</span><span class="p">()</span></code> (stdio) method; in almost all situations, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fread</span><span class="p">()</span></code> outperforms <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">read</span><span class="p">()</span></code> by an order of magnitude. Only for relatively large data transfers do the two approach parity.</p>
 <figure class="align-center" id="id1" style="width: 100%">
-<img alt="System Call vs Standard I/O performance" src="../../../../_images/syscall_vs_stdio_perf.svg" /><figcaption>
+<img alt="System Call vs Standard I/O performance" src="../../../../_images/syscall_vs_stdio_perf.svg" />
+<figcaption>
 <p><span class="caption-text">The standard i/o <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">fread</span><span class="p">()</span></code> function is approximately ten times faster than the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">read</span><span class="p">()</span></code> system call for transfers up to approximately 512 bytes, when data transfer begins to dominate request times.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>

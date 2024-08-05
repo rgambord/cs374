@@ -7,7 +7,7 @@
   <title>Inter-Process Communication &mdash; CS 374 - Operating Systems  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=2e9965fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/brand.css?v=629ae113" />
 
@@ -28,7 +28,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="BigShell Specification" href="../../assignments/bigshell/" />
+    <link rel="next" title="Signals" href="signals/" />
     <link rel="prev" title="Processes" href="../04/" /> 
 </head>
 
@@ -209,7 +209,30 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04/">Processes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Inter-Process Communication</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assignments/">Assignments</a></li>
 </ul>
 </li>
 </ul>
@@ -261,7 +284,7 @@
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="../04/" class="btn btn-neutral float-left" title="Processes" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../assignments/bigshell/" class="btn btn-neutral float-right" title="BigShell Specification" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="signals/" class="btn btn-neutral float-right" title="Signals" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -270,20 +293,20 @@
              
   <section id="inter-process-communication">
 <h1>Inter-Process Communication<a class="headerlink" href="#inter-process-communication" title="Link to this heading"></a></h1>
-<p>In this module, we will study the various mechanisms that operating systems provide to enable processes to communicate with each other quickly and efficiently. Inter-process communication (IPC) is a critical cornerstone of modern operating systems as it allows for modularization of complex programs into small standalone utilities that interact across well-defined application interfaces.</p>
+<p>Inter-process communication (IPC) is a critical operating system abstraction that allows processes to interact with each other to share data and signal events. It allows programmers to write modular programs that perform simple tasks, so that more complex programs may be developed using composition of these smaller, simple utilities, in line with the core UNIX philosophy of “Do One Thing, and Do It Well”.</p>
+<p>In the previous modules, we touched on some fundamental IPC concepts, such as the filesystem, which allows processes to store and share data via different types of files, and signals, which can be used to notify processes of different types of events. In this module, we will take a closer look at these mechanisms as well as some others that have not been introduced yet, such as shared memory. By the end of this module, you should be familiar with several different types of IPC, and be able to select and use the appropriate method(s) to achieve different programming outcomes.</p>
 <p class="rubric">Module Learning Outcomes</p>
-<section id="explorations">
-<h2>Explorations<a class="headerlink" href="#explorations" title="Link to this heading"></a></h2>
+<p>After successful completion of this module, you should be able to</p>
+<ol class="arabic simple">
+<li><p>Demonstrate a comprehensive understanding of fundamental IPC mechanisms, including signals, file systems, shared memory, and sockets.</p></li>
+<li><p>Compare and contrast different IPC techniques in terms of their use cases, advantages, and limitations, particularly within the context of POSIX-compliant systems.</p></li>
+<li><p>Demonstrate the ability to implement both asynchronous and synchronous signal handling in C.</p></li>
+<li><p>Apply IPC techniques to develop C programs that effectively utilize signals, pipes, shared memory, and sockets to enable communication between processes.</p></li>
+<li><p>Establish and manage TCP/IP connections using networking sockets in C, including the setup of client-server communication and the handling of multiple concurrent connections.</p></li>
+<li><p>Identify and resolve common IPC-related problems, such as deadlocks, race conditions, and synchronization issues, using appropriate programming strategies and tools.</p></li>
+</ol>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-<section id="assignments">
-<h2>Assignments<a class="headerlink" href="#assignments" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Guided Exercise: HTTP Server</p></li>
-<li><p>Bigshell: Pipelines and Job Control</p></li>
-</ul>
-</section>
 </section>
 
 
@@ -291,7 +314,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../04/" class="btn btn-neutral float-left" title="Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../assignments/bigshell/" class="btn btn-neutral float-right" title="BigShell Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="signals/" class="btn btn-neutral float-right" title="Signals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
