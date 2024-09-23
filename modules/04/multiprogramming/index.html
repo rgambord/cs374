@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiprogramming &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Inter-Process Communication" href="../../05/" />
+    <link rel="prev" title="Execution Times" href="../execution-times/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processes-and-the-file-system/">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Multiprogramming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Processes</a></li>
+      <li class="breadcrumb-item active">Multiprogramming</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../execution-times/" class="btn btn-neutral float-left" title="Execution Times" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiprogramming">
+<h1>Multiprogramming<a class="headerlink" href="#multiprogramming" title="Link to this heading"></a></h1>
+<p>Multiprogramming is the ability of an operating system to hold more than
+one process running in memory at the same time. When we open a text
+editor to write a program, and at the same time we open a Web Browser to
+review a website, while listening to music from our favorite streaming
+service, all done in the same computer, we are using multiprogramming.
+Each one of these activities may generate one or more processes that are
+trying to run on the computer. From the point of view of the user, all
+these processes may appear to be running at the same time, but all of
+them require access to a CPU to perform their instructions. In the
+simplest case with a single CPU in the computer, all processes will take
+turns accessing it. The operating system is the one deciding which
+process accesses the CPU at any given time and for how long. Therefore,
+the decisions that it makes will affect the performance of each one of
+the applications running in the system. This is one of the main
+responsibilities for the operating system, as a CPU scheduler.</p>
+<section id="forking">
+<h2>Forking<a class="headerlink" href="#forking" title="Link to this heading"></a></h2>
+<p>In Linux, multiprogramming is achieved by a technique called
+<strong>forking</strong>. This requires that a process “clones” itself using the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">fork</span></code> system call with no parameters. When a process makes this
+call, the kernel creates a copy of the current process that will run
+independently and concurrently with the original process and all other
+processes already in the system. The newly created process (called the
+child process) receives copies of all segments from the original process
+(called the parent process), as well as copies of the file descriptors.
+After the call to fork, both processes may begin execution of the next
+sentence in the program. If no allowances are made, both processes may
+execute the same sentences when they take control of the CPU. However,
+the call to fork returns different values for parent and child
+processes. The parent process receives the process ID from the children
+just created, however the children process receives a value of zero.
+This fact can be used to request each process to perform different
+instructions. <a class="reference internal" href="#simple-fork-c"><span class="std std-ref">simple_fork.c</span></a> shows a process that forks. The value this system call returns is
+used in a switch statement to assign different instructions to parent
+and child processes. Notice that if the call to fork returns a -1 if the
+call fails. The fork system call is declared in the <code class="file docutils literal notranslate"><span class="pre">unistd.h</span></code>
+header.</p>
+<div class="literal-block-wrapper docutils container" id="simple-fork-c">
+<div class="code-block-caption"><span class="caption-text">simple_fork.c</span><a class="headerlink" href="#simple-fork-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="k">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">fork_result</span><span class="p">;</span><span class="w"> </span><span class="c1">// status of the fork</span>
+
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">fork_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">-1</span><span class="o">:</span><span class="w"> </span><span class="cm">/* error */</span>
+<span class="w">      </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fork&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* The child proc sees the return value from fork() as 0 */</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
+<span class="w">      </span><span class="cm">/* Child Zone */</span>
+<span class="w">      </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<span class="w">      </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;I am the child process.</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">             </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">The fork gave me a %d, but my PID is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="n">fork_result</span><span class="p">,</span>
+<span class="w">             </span><span class="n">pid</span><span class="p">);</span>
+
+<span class="w">      </span><span class="cm">/* Typically, the child has its own exit path distinct from the parent,</span>
+<span class="cm">       * though it could also be allowed to continue executing past the switch</span>
+<span class="cm">       * block */</span>
+<span class="w">      </span><span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* The parent proc sees the return value from fork() as the child&#39;s pid */</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="cm">/* Parent zone */</span>
+<span class="w">      </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<span class="w">      </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;I am the parent process.</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">             </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">The fork gave me my child PID (%d), but my own PID is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="n">fork_result</span><span class="p">,</span>
+<span class="w">             </span><span class="n">pid</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="cm">/* Parent waits for child to exit */</span>
+<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="cm">/* Parent exit */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>When the program runs, it produces a result like:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./simple_fork
+<span class="go">I am the parent process.</span>
+<span class="go">	The fork gave me my child PID (97160), but my own PID is 97159</span>
+<span class="go">I am the child process.</span>
+<span class="go">	The fork gave me a 0, but my PID is 97160</span>
+</pre></div>
+</div>
+<p>Since the parent and child run in parallel after forking, it is also possible to observe,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./simple_fork
+<span class="go">I am the parent process.</span>
+<span class="go">	The fork gave me my child PID (97160), but my own PID is 97159</span>
+<span class="go">I am the child process.</span>
+<span class="go">	The fork gave me a 0, but my PID is 97160</span>
+</pre></div>
+</div>
+<p>As previously indicated, copies of the file descriptors from a parent
+process are given to the child process. Because they are copies, if any
+of the processes modifies the attributes of the files they reference,
+like offset placement or access mode, all these changes will be visible
+and relevant to both processes. If the programmer wants to keep
+different attributes, they should create <em>new</em> file descriptors after fork.</p>
+<p>Even though a child process should receive copies of the page table after fork, this is actually done only when the children require a change in any of them. This strategy is called “copy-on-write” (CoW) and it avoids doing copies of resources that may not be needed. Before that, both parent process and children process just keep references to the same segments. If any of the processes requires to update the stack or heap, or maybe load a different set of instructions for the text, this is when the kernel will generate the copy with the appropriate change. This is particularly useful in cases where a child is created to run a different program than the one in the parent process, as we will see later, since it avoids expensive copying of a process image that is about to be replaced.</p>
+<p>A typical application of forking is to have a main program that
+generates tasks, each one to be handled by a different child process.
+The parent process waits for these processes to complete. The following
+listing shows the basic structure of such an application in a program
+called <a class="reference internal" href="#fork-cycle-c"><span class="std std-ref">fork_cycle.c</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="fork-cycle-c">
+<div class="code-block-caption"><span class="caption-text">fork_cycle.c</span><a class="headerlink" href="#fork-cycle-c" title="Link to this code"></a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fork_limit</span><span class="p">;</span><span class="w">       </span><span class="cm">/* Number of requested forks */</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">child_exit_pid</span><span class="p">;</span><span class="w"> </span><span class="cm">/* PID of returning child */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">child_exit_count</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Number of children finishing its tasks */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">         </span><span class="cm">/* Sleeping time for a child process */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">                </span><span class="cm">/* Counter */</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">((</span><span class="n">fork_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Usage: %s FORK_LIMIT&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="cm">/* Create fork_count child processes */</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fork_limit</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">fork</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">-1</span><span class="p">:</span>
+<span class="w">        </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fork&quot;</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="c1">// Child prints, sleeps and exits</span>
+<span class="w">        </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span>
+<span class="w">                </span><span class="s">&quot;Process %d created. Waiting %d seconds.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">pid</span><span class="p">,</span>
+<span class="w">                </span><span class="n">fork_limit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sleep</span><span class="p">(</span><span class="n">fork_limit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">child_exit_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">child_exit_pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">child_exit_pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ECHILD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* No more children */</span>
+<span class="w">        </span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">child_exit_count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Child #%d (PID %d) exited</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">           </span><span class="n">child_exit_count</span><span class="p">,</span>
+<span class="w">           </span><span class="n">child_exit_pid</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;All children have exited!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./fork_cycle<span class="w"> </span><span class="m">7</span>
+<span class="go">Process 98716 created. Waiting 6 seconds.</span>
+<span class="go">Process 98715 created. Waiting 7 seconds.</span>
+<span class="go">Process 98717 created. Waiting 5 seconds.</span>
+<span class="go">Process 98718 created. Waiting 4 seconds.</span>
+<span class="go">Process 98720 created. Waiting 2 seconds.</span>
+<span class="go">Process 98719 created. Waiting 3 seconds.</span>
+<span class="go">Process 98721 created. Waiting 1 seconds.</span>
+<span class="go">Child #1 (PID 98721) exited</span>
+<span class="go">Child #2 (PID 98720) exited</span>
+<span class="go">Child #3 (PID 98719) exited</span>
+<span class="go">Child #4 (PID 98718) exited</span>
+<span class="go">Child #5 (PID 98717) exited</span>
+<span class="go">Child #6 (PID 98716) exited</span>
+<span class="go">Child #7 (PID 98715) exited</span>
+<span class="go">All children have exited!</span>
+</pre></div>
+</div>
+<p>This program expects an integer parameter to indicate the number of
+children to be created. A loop creates these children. Each one could be
+performing a different task, but in this program, they just pause for a
+different number of seconds with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sleep</span></code> system call and then exit.
+The parent process waits for them with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code> system call in a loop; <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code> returns the process id of the exiting child process. If no more children remain, it fails and sets <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">ECHILD</span></code>. The parent process increments the count of returning
+children after any new one is received. The loop ends when all children
+have returned.</p>
+</section>
+<section id="the-exec-system-call">
+<h2>The exec() system call<a class="headerlink" href="#the-exec-system-call" title="Link to this heading"></a></h2>
+<p>Sometimes it is necessary for a child process to forgo the sets of
+instructions it inherited from its parent process and open a complete
+new program.This can be done with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">exec</span></code> system call. Once this
+call is made, the kernel will reload the virtual memory address space of
+the child process with a new program and update the registers to start
+the process. However, many other elements inherited from the parent
+process will remain in place. The process will keep its PID, as well as
+its parent ID, process group IDs, and session ID. It also keeps all the
+environment variables inherited from the parent process and the file
+descriptors with all its settings.The process will execute the new code
+and when it ends, it will exit and never come back to the parent
+process. There will be no notification of completion or return to the
+parent process.</p>
+<p>In reality, the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">exec</span></code> system call does not exist. This is just the
+generic name for a set of system calls, all beginning with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">exec</span></code>
+prefix. The most basic system call is <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execve</span></code>. All other variants
+are convenient ways to prepare the call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execve</span></code> with different
+parameters. Basically, all these system calls require three main
+parameters: 1.The location and name of the program to be executed, 2.
+The set of all the strings containing the arguments for the program to
+be executed, just like the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argv</span></code> parameter that would be created for
+that program, and 3.The environment variables that are passed to the
+program to be executed.The variants of this system call prepare these
+parameters in different ways. It is easier to remember all of them if we
+relate their names with the parameters they request as described below.</p>
+<p>The first decision a programmer has to make on selecting an <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">exec</span></code>
+system call is to decide if the arguments for the program to be executed
+are going to be supplied together arranged inside an array (just like
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argv</span><span class="p">[]</span></code>) or if they are going to be supplied separately in an
+explicit list. In the first case we must select a system call starting
+with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execv</span></code> prefix, for a vector (another name for an array). In
+the second case we must select a system call starting with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execl</span></code>
+prefix, for a list. These system calls have the following prototypes:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">execv</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">execl</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="w">               </span><span class="cm">/*, (char *) NULL */</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Both require a pointer to the pathname and filename of the program to be executed as the first parameter. The pathname can be absolute or relative. The arguments are passed in either as an array of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>, or as a variadic list of <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>. The first argument should be the name of the program–usually the same as <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pathname</span></code>. Next follow the remaining arguments, and finally a null pointer to indicate the end of the array or argument list. Notice that there is no “number of arguments” argument–these functions have no way to know when they’ve reached the end of the list if you forget a null pointer! (this is a very common mistake).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases, the first argument is not the same as the file path. For example, some monolithic programs present themselves as two separate programs. An example is the program <strong class="program">vim</strong> which will change its behavior when executed with its first argument as <strong class="program">vi</strong>. This is also used in other cases, such as to have a single utility implement both <strong class="program">zip</strong> and <strong class="program">unzip</strong>. Taken to an extreme, the BusyBox project packages an entire set of POSIX utilities into a single monolithic program for use on resource-constrained embedded systems. All utilities in <code class="file docutils literal notranslate"><span class="pre">/bin/</span></code> are just links to this one program, which basically has a massive lookup table based on the value of <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>.</p>
+</div>
+<p>Aside from <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execl</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execv</span></code>, there are two other sets of functions in the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">exec</span></code> family; the first are <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execlp</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execvp</span></code>. These two are the most commonly used in practice; they differ from those above in that they perform command lookup by searching the directories listed in the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable–just like the shell does–if the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pathname</span></code> argument doesn’t contain any slashes (<code class="docutils literal notranslate"><span class="pre">/</span></code>). Otherwise the behavior is identical.</p>
+<p>The second set of functions are <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execle</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execve</span></code>. These functions allow the caller to pass in a custom set of environment variables, rather than have them inherited by the child process. They both have the same function signature as the previous functions, with an additional final argument which is a pointer to a null-terminated list of null-terminated environment strings. These are typically used for security purposes, to empty the environment of a child process before it is executed, so that things such as the user’s name and other configuration settings aren’t leaked to untrusted processes,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">execle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="cm">/*, (char *) NULL, char *const envp[] */</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">execve</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">envp</span><span class="p">[]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execle</span></code> takes a variadic list of arguments, but it requires an array of environment strings, like <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execve</span></code></p>
+</div>
+<p>Finally, there is one more pair of functions, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execvpe</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execlpe</span></code> which combine the properties of the <code class="docutils literal notranslate"><span class="pre">e</span></code> functions with the properties of the <code class="docutils literal notranslate"><span class="pre">p</span></code> functions, accepting an additional environment variable argument, and performing command lookup if the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pathaname</span></code> argument doesn’t contain any slashes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">execvpe</span></code> is a nonstandard GNU-extension.</p>
+</div>
+<p>Consider the following program, <a class="reference internal" href="#xargs-c"><span class="std std-ref">xargs.c</span></a>, which is a basic implementation of the <strong class="program">xargs</strong> utility. It repeatedly executes the command that is passed to it, with any prefix arguments, followed by additional arguments taken as white-space separated tokens on standard input, up to the argument limit <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">ARG_MAX</span></code>,</p>
+<div class="literal-block-wrapper docutils container" id="xargs-c">
+<div class="code-block-caption"><span class="caption-text">xargs.c</span><a class="headerlink" href="#xargs-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctype.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;wait.h&gt;</span>
+
+<span class="cm">/* Maximum arguments to pass to each instance of a child process */</span>
+<span class="cp">#ifndef ARG_MAX</span>
+<span class="cp">#define ARG_MAX 1023</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Command default when argc &lt; 2 */</span>
+<span class="cp">#ifndef DFL_CMD</span>
+<span class="cp">#define DFL_CMD &quot;echo&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="n">ARG_MAX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">DFL_CMD</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span>
+<span class="k">int</span><span class="w"> </span><span class="n">args_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="cm">/** Read one whitespace-delimited token from strem */</span>
+<span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">read_token</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">);</span>
+
+<span class="k">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">memcpy</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nv">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">args_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">argc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">eof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">!</span><span class="n">eof</span><span class="p">;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args_start</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ARG_MAX</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/* Clean up if there is something stored here</span>
+<span class="cm">       * from a previous iteration */</span>
+<span class="w">      </span><span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+<span class="w">      </span><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="nf">tok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_token</span><span class="p">(</span><span class="nv">stdin</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">tok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">feof</span><span class="p">(</span><span class="nv">stdin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="cm">/* On end of input, null-terminate the args array</span>
+<span class="cm">           * and set the eof flag */</span>
+<span class="w">          </span><span class="nf">clearerr</span><span class="p">(</span><span class="nv">stdin</span><span class="p">);</span>
+<span class="w">          </span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">          </span><span class="n">eof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">          </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;read token&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="cm">/* Store a copy of the next token */</span>
+<span class="w">      </span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">strdup</span><span class="p">(</span><span class="nf">tok</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">fork</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">-1</span><span class="o">:</span>
+<span class="w">        </span><span class="cm">/* Error */</span>
+<span class="w">        </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fork&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
+<span class="w">        </span><span class="cm">/* Child process */</span>
+<span class="w">        </span><span class="n">execvp</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<span class="w">        </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;exec&quot;</span><span class="p">);</span><span class="w"> </span><span class="cm">/* catch exec() failure */</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Wait for the child process to finish */</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">errx</span><span class="p">(</span><span class="mi">124</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s: exited with status 255; aborting&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span>
+<span class="n">read_token</span><span class="p">(</span><span class="no">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">stream</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">line_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Skip whitespace */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="nf">isspace</span><span class="p">(</span><span class="o">*</span><span class="n">sp</span><span class="p">);</span><span class="w"> </span><span class="n">sp</span><span class="o">++</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sp</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Found token */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/* Reached EOL; read a new line */</span>
+<span class="w">    </span><span class="kt">ssize_t</span><span class="w"> </span><span class="n">line_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getline</span><span class="p">(</span><span class="o">&amp;</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">line_n</span><span class="p">,</span><span class="w"> </span><span class="nf">stream</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line_len</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nf">assert</span><span class="p">(</span><span class="n">sp</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Sanity check */</span>
+
+<span class="w">  </span><span class="cm">/* Store location of the token */</span>
+<span class="w">  </span><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sp</span><span class="p">;</span>
+
+<span class="w">  </span><span class="cm">/* Scan to end of token */</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="o">!</span><span class="nf">isspace</span><span class="p">(</span><span class="o">*</span><span class="n">sp</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">sp</span><span class="p">);</span>
+<span class="w">  </span><span class="cm">/* Terminate token */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="n">sp</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;</span><span class="se">\0</span><span class="sc">&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">retval</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Compiled with a small <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">ARG_MAX</span></code> value of 3 (program name and two additional arguments), we can see the effect below, when the alphabet is piped into it,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CPPFLAGS</span><span class="o">=</span>-DARG_MAX<span class="o">=</span><span class="m">3</span><span class="w"> </span>make<span class="w"> </span>xargs
+<span class="go">cc  -DARG_MAX=3   xargs.c   -o xargs</span>
+<span class="gp">$</span><span class="nb">echo</span><span class="w"> </span><span class="o">{</span>a..z<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>./xargs
+<span class="go">a b</span>
+<span class="go">c d</span>
+<span class="go">e f</span>
+<span class="go">g h</span>
+<span class="go">i j</span>
+<span class="go">k l</span>
+<span class="go">m n</span>
+<span class="go">o p</span>
+<span class="go">q r</span>
+<span class="go">s t</span>
+<span class="go">u v</span>
+<span class="go">w x</span>
+<span class="go">y z</span>
+</pre></div>
+</div>
+<p>In this output, we can surmise that <strong class="program">echo</strong> is being executed thirteen times, printing two letters of the alphabet each time. The xargs utility is used for performing batch operations. For example, the <strong class="program">find</strong> utility writes a list of files matching a criteria to standard out. Piping this into <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">xargs</span></code> allows one to easily perform operations with those files. Suppose we wish to delete object files after compiling a program, the following operation, <code class="code highlight console docutils literal highlight-console"><span class="go">find . -name &#39;*.o&#39; | xargs rm --</span></code>, invokes <strong class="program">rm</strong> with many file names, repeatedly until exhausting the list. In contrast, removing the files one-by-one would be much less efficient due to the overhead of spawning a new process for each file.</p>
+</section>
+<section id="of-orphans-zombies-and-daemons">
+<h2>Of orphans, zombies and daemons<a class="headerlink" href="#of-orphans-zombies-and-daemons" title="Link to this heading"></a></h2>
+<p>Parent processes usually wait for their children to end execution, and
+when they do, the parent process requests their removal from the table
+of running processes managed by the kernel. Consequently, all resources
+allocated to the children processes are released, to be used by other
+processes, and their entry in the table of running processes is removed.</p>
+<p>Children processes whose parents terminate before themselves are
+considered <strong>orphans</strong>. Because no process may be left without a
+parent, the <strong class="program">init</strong> process “grandfathers” all orphaned children. The
+<strong class="program">init</strong> process becomes the parent ID of these processes. The orphaned
+processes are then “waited” by the <strong class="program">init</strong> process, and when they
+finish, <strong class="program">init</strong> removes them from the table of running processes
+managed by the kernel and deallocates its resources.This is the reason
+why the <strong class="program">init</strong> process is also known as the <strong>reaper process</strong>.</p>
+<p>If a child process terminates before the parent process issues the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code> system call, the kernel will still release its resources, but
+a record of the child process will remain in the table of running
+processes. This allows the parent a chance to issue the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code>
+system call at a later stage and receive a reply from the terminated
+process. Because in practice the child process no longer exists, but
+there is still a record of it in the table of running processes, this
+process becomes what is known as a <strong>zombie</strong> process. Zombie processes
+cannot be killed by normal means, and the only way to eliminate them is
+to issue a call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code>. If zombie processes are not removed from
+the table of running processes they may remain there indefinitely.
+Zombie processes in which the parent terminates without issuing the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">wait</span></code> system call become orphan processes, and therefore are waited
+by the init process that removes them from the table of running
+processes.</p>
+<p>Other important processes in the operation of Linux systems are
+<strong>daemons</strong>. Daemons are special background processes, unconnected to a
+terminal, that provide special services for the system. Because these
+services may be needed at any point of the system operation, they are
+usually running from the system start-up through shut down. Examples of
+daemons are the processes that control networked printers, the ones that
+allow secure remote login to the system, and the ones that handle
+requests to web page servers.</p>
+</section>
+<section id="process-resource-limits">
+<h2>Process Resource Limits<a class="headerlink" href="#process-resource-limits" title="Link to this heading"></a></h2>
+<p>Resources in a computer are limited. For example, there is just a
+certain amount of memory in RAM, a certain storage capacity in files,
+and a certain amount of time to execute programs. All these limits can
+be set, so that all users can fairly share these resources. To do so,
+the following two system calls from <code class="file docutils literal notranslate"><span class="pre">sys/resource.h</span></code> can
+be used:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">getrlimit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">rlimit</span><span class="w"> </span><span class="o">*</span><span class="n">rlp</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">setrlimit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">rlimit</span><span class="w"> </span><span class="o">*</span><span class="n">rlp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getrlimit</span></code> system call retrieves the limits of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">resource</span></code>
+operand into a <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlimit</span></code> structure, while the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setrlimit</span></code> system
+call sets the limits for the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">resource</span></code> operand from the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlimit</span></code>
+structure.</p>
+<p>The various system resources are codified with a number that is also
+identified by a name. Some of the most useful resource names are shown
+below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Resource Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>RLIMIT_CPU</p></th>
+<td><p>CPU time in seconds</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>RLIMIT_AS</p></th>
+<td><p>Process virtual memory size in bytes</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>RLIMIT_STACK</p></th>
+<td><p>Size of the stack segment in bytes</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>RLIMIT_DATA</p></th>
+<td><p>Process data segment in bytes</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>RLIMIT_NOFILE</p></th>
+<td><p>Maximum number of file descriptors plus 1</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>RLIMIT_FSIZE</p></th>
+<td><p>File size in bytes</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>RLIMIT_NPROC</p></th>
+<td><p>Number of processes open for the real user ID</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="k">struct</span><span class="w"> </span><span class="n">rlimit</span></code> type has the following members,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">rlimit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="kt">rlim_t</span><span class="w">  </span><span class="n">rlim_cur</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Soft limit */</span>
+<span class="w">         </span><span class="kt">rlim_t</span><span class="w">  </span><span class="n">rlim_max</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Hard limit (ceiling for rlim_cur) */</span>
+<span class="w">      </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>We use this structure, because every user may have a hard limit for a
+resource over which it cannot go. That is the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlim_max</span></code>. However, a
+user may be using less than that limit, therefore the current limit is
+specified by <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlim_cur</span></code>. Privileged users, like the superuser or root,
+may modify these limits as they see fit, as long as the current limit is
+smaller than or equal to the hard limit. Other users may lower the
+current limit, or raise it up to the hard limit, but cannot go over it.</p>
+<p>The following figure shows the program <a class="reference internal" href="#show-limits-c"><span class="std std-ref">show_limits.c</span></a> that displays
+the soft and hard limits of some resources. This program uses a
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">print_rlimit</span></code> function taken from “<em>The Linux Programming Interface</em>” by
+Michael Kerrisk (recommended textbook for this course). This function
+uses the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getrlimit</span></code> system call to obtain the limits , but before
+printing them, it checks if they are too large, and if so it prints
+“infinite” as the value. Similarly, it also checks if the specific Linux
+implementation has a limit that is beyond the number allowed to be
+stored in the <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">rlim_t</span></code> data type. If that is the case, the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlim_cur</span></code> may
+hold a predefined <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">RLIM_SAVED_CUR</span></code> value, and equivalently, the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rlim_max</span></code> may hold a predefined <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">RLIM_SAVED_MAX</span></code> value. The detection
+of these values will make the function to print “unrepresentable”
+instead. The bottom cell shows the program running for a privileged
+user.</p>
+<div class="literal-block-wrapper docutils container" id="show-limits-c">
+<div class="code-block-caption"><span class="caption-text">show_limits.c</span><a class="headerlink" href="#show-limits-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/resource.h&gt;</span>
+
+<span class="c1">// Function print_r_limit taken from Listing 36-2 Page 758 from</span>
+<span class="c1">// The Linux Programming Interface by Michael Kerrisk</span>
+<span class="k">int</span><span class="w"> </span><span class="n">print_r_limit</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+
+<span class="k">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;CPU Time limits (seconds):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_CPU</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;Process Virtual Memory limits (bytes):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_AS</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;Stack Segment limits (bytes):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_STACK</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;Process Data Segment limits (bytes):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_DATA</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;Number of File Descriptors (+1):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_NOFILE</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;File Size (bytes):&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_FSIZE</span><span class="p">);</span>
+<span class="w">  </span><span class="n">print_r_limit</span><span class="p">(</span><span class="s">&quot;Number of Processes allowed to open:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RLIMIT_NPROC</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Print &#39;msg&#39; followed by limits for &#39;resource&#39; */</span>
+<span class="kt">int</span>
+<span class="n">print_r_limit</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resource</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="n">rlimit</span><span class="w"> </span><span class="n">rlim</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getrlimit</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rlim</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%s soft=&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_cur</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RLIM_INFINITY</span><span class="p">)</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;infinite&quot;</span><span class="p">);</span>
+<span class="cp">#ifdef RLIM_SAVED_CUR </span><span class="cm">/* Not defined on some implementations */</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_cur</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RLIM_SAVED_CUR</span><span class="p">)</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;unrepresentable&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%lld&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_cur</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;; hard=&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_max</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RLIM_INFINITY</span><span class="p">)</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;infinite</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#ifdef RLIM_SAVED_MAX </span><span class="cm">/* Not defined on some implementations */</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_max</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RLIM_SAVED_MAX</span><span class="p">)</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;unrepresentable&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">rlim</span><span class="o">.</span><span class="n">rlim_max</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./show_limits
+<span class="go">CPU Time limits (seconds): soft=infinite; hard=infinite</span>
+<span class="go">Process Virtual Memory limits (bytes): soft=infinite; hard=infinite</span>
+<span class="go">Stack Segment limits (bytes): soft=8388608; hard=infinite</span>
+<span class="go">Process Data Segment limits (bytes): soft=infinite; hard=infinite</span>
+<span class="go">Number of File Descriptors (+1): soft=1024; hard=524288</span>
+<span class="go">File Size (bytes): soft=infinite; hard=infinite</span>
+<span class="go">Number of Processes allowed to open: soft=62720; hard=62720</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../execution-times/" class="btn btn-neutral float-left" title="Execution Times" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

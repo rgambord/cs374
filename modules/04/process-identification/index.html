@@ -7,7 +7,7 @@
   <title>Process Identification &mdash; CS 374 - Operating Systems  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
 
@@ -28,8 +28,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="Inter-Process Communication" href="../../05/" />
-    <link rel="prev" title="What is a Process?" href="../what-is-a-process/" /> 
+    <link rel="next" title="Process Lifecycle" href="../process-lifecyle/" />
+    <link rel="prev" title="Processes and the File System" href="../processes-and-the-file-system/" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -200,23 +200,62 @@
 <li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processes-and-the-file-system/">Processes and the File System</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multiprogramming/">Multiprogramming</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Assignment 3: BigShell</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">External Links</span></p>
 <ul>
@@ -255,8 +294,8 @@
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../what-is-a-process/" class="btn btn-neutral float-left" title="What is a Process?" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../processes-and-the-file-system/" class="btn btn-neutral float-left" title="Processes and the File System" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../process-lifecyle/" class="btn btn-neutral float-right" title="Process Lifecycle" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -265,46 +304,164 @@
              
   <section id="process-identification">
 <h1>Process Identification<a class="headerlink" href="#process-identification" title="Link to this heading"></a></h1>
-<p>Processes can be recognized by their Process Identification Number, commonly known as the PID. This is a unique positive integer that is assigned to each process by the kernel.  The system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpid</span><span class="p">()</span></code> in C returns the PID associated with the calling process. Every process is also a child of another process. For example, when a user requests to run a program from a shell, the process generated by that program becomes a child of the shell. A process may obtain the PID of its parent process from the system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getppid</span><span class="p">()</span></code> (Get Parent Process ID).</p>
-<p>Processes have another ID called their group ID. Related processes can be assigned to the same group ID. Usually, a process inherits its group and group id from its parent process. However, the parent process may decide to assign a different group to its children. This is what usually happens with commands in shells. For example, if a shell creates a pipeline of commands, like <code class="code highlight shell docutils literal highlight-shell">ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort</code>, two processes are created, one for the <code class="code highlight shell docutils literal highlight-shell">ls</code> command and another for the <code class="code highlight shell docutils literal highlight-shell">sort</code> command, both with different PIDs. Because these processes are related to each other as part of a pipeline, the shell assigns them both to a new process group. This affects the delivery of signals, and other operations, which can be made to apply to entire process groups rather than individual processes. For example, the <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> signal that the terminal generates when pressing <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd> is sent to the terminal’s foreground process group, so that each process in that group receives the interrupt signal. One job of the shell, when running interactively, is managing which process group is designated as the foreground process group of the terminal, which will receive signals that the terminal generates, and also have permission to read input from the terminal without receiving the <code class="docutils literal notranslate"><span class="pre">SIGTTIN</span></code> signal. This is called job control, and the shell uses the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">tcsetpgrp</span><span class="p">()</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">tcgetpgrp</span><span class="p">()</span></code> system calls for this functionality.</p>
-<p>In a process, a system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpgrp</span><span class="p">()</span></code> is used to obtain its own group id. To identify the group id for any other process, one may use the system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpgid</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span></code>, where the pid parameter contains the PID of the requested process. A process can also change its own group id, or its child’s group id (under certain circumstances), with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setpgid</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="n">pgid</span><span class="p">)</span></code> system call. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setpgid</span><span class="p">()</span></code> system call can be used to join another existing process group, or create a new one, in which case the process ID of the calling process is used as the new group ID that it is now the sole member of.</p>
-<p>A session is a set of process groups, all of which are assigned to the same session ID. The session ID is the PID of the process that created the session, known as the session leader. For example, when a shell starts running, it creates a session made out of a single group with a single process, the shell itself, using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setsid</span><span class="p">()</span></code> system call. This shell process is the session leader. Every command that runs later on the shell will belong to a group that may be different from the shell group, but they all inherit the same session ID, the session ID of the session leader. The system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getsid</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span></code> returns the session id of a process with the parameter <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code>. When this system call is given a <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> of zero, it returns the session id of the calling process.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Identifier</p></td>
-<td><p>Set</p></td>
-<td><p>Get</p></td>
-</tr>
-<tr class="row-even"><td><p>Process ID (PID)</p></td>
-<td><p>–</p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpid</span><span class="p">()</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Parent Process ID (PPID)</p></td>
-<td><p>–</p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getppid</span><span class="p">()</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Process Group ID (PGID)</p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setpgid</span><span class="p">()</span></code></p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpgid</span><span class="p">()</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Session ID (SID)</p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setsid</span><span class="p">()</span></code></p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getsid</span><span class="p">()</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Terminal Foreground Process Group</p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">tcsetpgrp</span><span class="p">()</span></code></p></td>
-<td><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="n">tcgetpgrp</span><span class="p">()</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<p>Processes can be recognized by their Process Identification Number,
+commonly known as the <strong>PID</strong>. This is a unique positive integer number
+that is assigned to the process by the kernel. The system call
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpid</span></code> in C returns the PID associated with the calling process.
+Every process is also a child of another process. For example, when a
+user requests to run a program from a shell, the process generated by
+that program becomes a child of the shell. A process may obtain the PID
+of its parent process from the system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getppid</span></code>.</p>
+<p>For greater control, related processes belong to a group with a group id. Usually, a process inherits its group and group id from its parent process. However, the parent process may decide to assign a different group to its children. This is what usually happens with commands in shells. For example, if a shell creates a pipe of commands, like <strong class="program">ls | sort</strong>, two processes are created, one for the <strong class="program">ls</strong> command and another for the <strong class="program">sort</strong> command, both with different PIDs. Because these processes are related by working in tandem, the shell makes them both part of a new group and designates the first process (<strong class="program">ls</strong>) as the group leader. Its own PID also becomes the group id.</p>
+<p>In a process, a system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpgrp</span></code> is used to obtain its own
+group id. To identify the group id for any other process, one may use
+the system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getpgid</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span></code>, where the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> parameter
+contains the PID of the requested process.</p>
+<p>A <strong>session</strong> is a set of process groups, all of which are assigned to
+the same session ID. The session ID is the PID of the process that
+created the session, known as the session leader. For example, when a
+shell starts running, it creates a session made out of a single group
+with a single process, the shell itself. This shell process is the
+session leader. Every command that runs later on the shell will belong
+to a group that may be different from the shell group, but they all
+inherit the same session ID, the session ID of the session leader. The
+system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getsid</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span></code> returns the session id of a process with the
+parameter <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code>. When this system call is given a <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> of zero, it
+returns the session id of the calling process.</p>
+<p>The following <a class="reference internal" href="#id-c"><span class="std std-ref">program</span></a> demonstrates this concept,</p>
+<div class="literal-block-wrapper docutils container" id="id-c">
+<div class="code-block-caption"><span class="caption-text">id.c</span><a class="headerlink" href="#id-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+
+<span class="k">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">ppid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getppid</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pgrp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpgrp</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pgid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpgid</span><span class="p">(</span><span class="n">ppid</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getsid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">psid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getsid</span><span class="p">(</span><span class="n">ppid</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Process ID: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Group ID:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pgrp</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Parent Process ID:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ppid</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Parent Group ID:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pgid</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Session ID:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sid</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%-30s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Parent Session ID:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">psid</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Output of `ps&#39;:</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">fflush</span><span class="p">(</span><span class="nv">stdout</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nf">system</span><span class="p">(</span><span class="s">&quot;ps --forest -o pid,pgrp,ppid,pgid,sid,cmd&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong class="program">id</strong> output</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">My Process ID:                 66673</span>
+<span class="go">My Group ID:                   66673</span>
+<span class="go">My Parent Process ID:          56072</span>
+<span class="go">My Parent Group ID:            56072</span>
+<span class="go">My Session ID:                 56072</span>
+<span class="go">My Parent Session ID:          56072</span>
+
+<span class="go">Output of `ps&#39;:</span>
+
+<span class="go">    PID    PGRP    PPID    PGID     SID CMD</span>
+<span class="go">  56072   56072   56058   56072   56072 /bin/bash --posix</span>
+<span class="go">  66673   66673   56072   66673   56072  \_ ./id</span>
+<span class="go">  66674   66673   66673   66673   56072      \_ ps --forest -o pid,pgrp,ppid,pgid,sid,cmd</span>
+</pre></div>
+</div>
+</div>
+<p>The output above also shows how the command <strong class="command">ps</strong> can be used to display the ID of processes currently running by the shell. Notice that the process called <strong class="command">id</strong> is made asleep in the background so the <strong class="command">ps</strong> command can find it and display it. To view all processes in the system the <strong class="command">ps -A</strong> command can be used.</p>
+<p>A session also has a <strong>controlling terminal</strong> that is determined when
+the session is created. The terminal is where user interaction happens,
+where the user may enter commands through the standard input and see
+results from the standard output (if not redirected). A session may have
+control of just one terminal and a terminal may be controlled just by
+one session leader. Every process in the session is associated to the
+terminal, but only one process group is considered to be on the
+<strong>foreground</strong>. This means that this process group is the only one that
+is able to read messages from the standard input, namely to receive
+commands from the terminal. All other groups belonging to the same
+session are considered to be on the <strong>background</strong>.</p>
+<p>The system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setpgid</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="n">pgid</span><span class="p">)</span></code> is used to change the group id of
+the process with the parameter <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> to a value of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pgid</span></code>. This
+system call has the following characteristics:</p>
+<ul class="simple">
+<li><p>If <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> is zero, the change happens to the calling process.</p></li>
+<li><p>If <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pgid</span></code> is zero, the group id of the process with the parameter
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> is changed to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> and becomes that group leader.</p></li>
+<li><p>The parameter <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> may only refer to the calling process itself or
+one of its children and it cannot be a session leader.</p></li>
+<li><p>The calling process, as well as both processes on the parameters
+(<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pid</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pgid</span></code>) must belong to the same session.</p></li>
+</ul>
+<p>Similarly, a session id for a process can also be changed with the
+system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">setsid</span></code>. A process other than the session leader can
+make this call that creates a separate session with a single group. The
+PID of this calling process becomes the group id and session id of the
+new group and the new session. However, this new session will have no
+controlling terminal.</p>
+<p>Every process is also running at the bequest of a user. All users are
+assigned a <strong>user ID</strong>, or <strong>UID</strong>. A process may request the identity
+of its user with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getuid</span></code> system call.The user must have the
+right to run the process either because it is the owner, or because it
+belongs to a group with the right to run that process or because that
+process is available for everyone to run.</p>
+<p>On occasions, the owner of a program may grant its right to run it as a
+process to another user which cannot. To do that, the program must set
+its <strong>set-user-id</strong> and/or <strong>set-group-id</strong> bits. The following figure
+shows how this can be done and the effect it causes in the program.
+Notice in the figure how the privileges for <code class="file docutils literal notranslate"><span class="pre">identify</span></code> are
+changed</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>-l<span class="w"> </span>identify
+<span class="go">-rwxr-xr-x. 1 master master 17824 Jun 14 21:46 identify</span>
+<span class="gp">$ </span>chmod<span class="w"> </span>u+s<span class="w"> </span>identify
+<span class="gp">$ </span>chmod<span class="w"> </span>g+s<span class="w"> </span>identify
+<span class="gp">$ </span>ls<span class="w"> </span>-l<span class="w"> </span>identify
+<span class="go">-rwsr-sr-x. 1 master master 17824 Jun 14 21:46 identify</span>
+</pre></div>
+</div>
+<p>If a user other than <strong>master</strong>, its owner, may run <strong class="program">identify</strong> as a
+process, it will run as if it were the owner. To do that, the kernel
+uses what is called the <strong>effective user ID</strong>, or <strong>EUID</strong> and its
+associated <strong>effective group ID</strong>, or <strong>EGID</strong> instead of its own uid
+and gid. A process may identify its EUID and EGID with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">geteuid</span></code>
+and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getegid</span></code> system calls, respectively. To make multiple uses of
+this program, the EUID and EGID are stored as <strong>set-user-ID</strong>, or
+<strong>SUID</strong>, and the <strong>set-group-ID</strong>, or <strong>SGID</strong>.</p>
+<p>We invite you to read more about credentials for process in the
+credentials page of the man pages.</p>
+</section>
+<section id="the-init-process">
+<h1>The init Process<a class="headerlink" href="#the-init-process" title="Link to this heading"></a></h1>
+<p>We mentioned that every process is a child of another process, for this
+to be possible, there must be a process that was the first. This process
+is known as the <strong class="program">init</strong> process and it is created by the kernel when
+the operating system is at booting stage. This process is the first one
+to appear and it is the last one to go. It remains active from start-up
+to system shutdown. It cannot be destroyed, not even by a superuser,
+because it keeps control of other important processes that allow the
+correct running of the operating system. In particular it is in charge
+of taking care of “orphaned” processes as we will later see. Every
+process in the system is a descendant of init. The process ID for the
+<strong class="program">init</strong> process is the number 1 and it has the highest privileges, as
+if it were run by the superuser.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../what-is-a-process/" class="btn btn-neutral float-left" title="What is a Process?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../processes-and-the-file-system/" class="btn btn-neutral float-left" title="Processes and the File System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../process-lifecyle/" class="btn btn-neutral float-right" title="Process Lifecycle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

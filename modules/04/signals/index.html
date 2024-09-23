@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signals &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Execution Times" href="../execution-times/" />
+    <link rel="prev" title="Process Lifecycle" href="../process-lifecyle/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processes-and-the-file-system/">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multiprogramming/">Multiprogramming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Processes</a></li>
+      <li class="breadcrumb-item active">Signals</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../process-lifecyle/" class="btn btn-neutral float-left" title="Process Lifecycle" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../execution-times/" class="btn btn-neutral float-right" title="Execution Times" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signals">
+<h1>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h1>
+<p><strong>Signals</strong> are messages sent to processes to notify them of certain
+events. These could be sent between processes, but the most common
+signals are sent by the kernel. The kernel will send a signal to a
+process if there is a hardware issue, like an attempt to divide by zero,
+or to access a non-existent address in memory. The kernel will also send
+signals to let processes know of any condition that affects them, like
+the reading of a file being completed, or a terminal being closed; more
+importantly, if the allotted CPU time for a process has concluded and
+needs to be terminated or sent to a waiting state. The kernel may also
+notify the process with a signal if the user pressed specific
+combinations of keys, like <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd> or <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">\</kbd>, that have a special
+meaning for processes as we will see below.</p>
+<p>Signals are codified with integer numbers greater than 1. The kernel
+uses the first 31 signals for specific well known messages. They are
+known as the <strong>standard signals</strong>. Each of these standard signals has a
+name that begins with the prefix <code class="docutils literal notranslate"><span class="pre">SIG</span></code> followed by three or four other
+letters. All of these macros are defined in the <code class="file docutils literal notranslate"><span class="pre">signal.h</span></code> header.</p>
+<p>When an event <strong>generates</strong> a signal, it is <strong>delivered</strong> to the process, if the process is currently running in the CPU, it receives the signal the next time it returns from kernel mode–e.g. returning from a system call, generating a page fault, being scheduled to run, etc. In the time between the generation and the actual delivery of the signal we said that the signal is <strong>pending</strong>. Once the signal is delivered, it normally elicits a <strong>default action</strong> from the process. These default actions could be one of following five:</p>
+<dl class="simple">
+<dt>Ignore</dt><dd><p>Ignore the signal.</p>
+</dd>
+<dt>Terminate</dt><dd><p>Abnormal termination of the process</p>
+</dd>
+<dt>Abort</dt><dd><p>Abnormal termination of the process with additional actions (core dump).</p>
+</dd>
+<dt>Stop</dt><dd><p>Stop the process.</p>
+</dd>
+<dt>Continue</dt><dd><p>Continue the process, if it is stopped; otherwise ignore the signal.</p>
+</dd>
+</dl>
+<p>The list of which signal corresponds to which default action can be found in <em class="manpage">signal.h</em>.</p>
+<p>The <a class="reference internal" href="#run-forever-c"><span class="std std-ref">listing</span></a> below presents a program that simply busy-waits. We can use this program to review
+the four signals above. When the
+program runs in the foreground, we can terminate it by pressing either
+<kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd> or <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">\</kbd>. In the first case the keystrokes makes the
+terminal send a <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> signal. When the program receives it, the process
+terminates. The second case is similar, but the signal sent is <code class="docutils literal notranslate"><span class="pre">SIGQUIT</span></code>,
+and its default action is to terminate, but creating a core dump. We see the same process running, but this time we use the
+ampersand (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) to send it to the background. To terminate this process,
+we need to use the system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">kill</span></code>. Despite its name, the main
+purpose of this system call is to send signals to processes. We can use
+the shell utility <strong class="program">kill</strong></p>
+<div class="literal-block-wrapper docutils container" id="run-forever-c">
+<div class="code-block-caption"><span class="caption-text">run_forever.c</span><a class="headerlink" href="#run-forever-c" title="Link to this code"></a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(;;);</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./run_forever
+<span class="go">^C</span>
+
+<span class="gp">$ </span>./run_forever
+<span class="go">^\Quit (core dumped)</span>
+
+<span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[1] 4823</span>
+<span class="gp">$ </span>ps
+<span class="go">   PID TTY         TIME CMD</span>
+<span class="go">   2605 pts/0    00:00:00 bash</span>
+<span class="go">   4823 pts/0    00:00:03 run_forever</span>
+<span class="go">   4828 pts/0    00:00:00 ps</span>
+<span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="m">4823</span>
+<span class="go">[1]+  Terminated                    run_forever</span>
+<span class="gp">$ </span>ps
+<span class="go">   PID TTY         TIME CMD</span>
+<span class="go">   2605 pts/0    00:00:00 bash</span>
+<span class="go">   4837 pts/0    00:00:00 ps</span>
+</pre></div>
+</div>
+<p>Notice that when a shell process has background processes, it assigns
+them a <strong>job control number</strong> or <strong>JobID</strong>. In the figure above, that
+number is 1 surrounded by square brackets [1]. Use that number to refer
+to this process. We can review all jobIDs with the bash command
+<strong class="program">jobs</strong>. The <strong class="program">fg</strong> and <strong class="program">bg</strong> commands can be used to move jobs
+to/from foreground or background respectively. These jobs also receive
+signals with the <strong class="program">kill</strong> command. The following output demonstrates <a class="reference internal" href="#run-forever-c"><span class="std std-ref">run_forever.c</span></a> run three times on the shell and being handled by
+the these various job control commands:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Running run_forever in the background three times</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[1] 3300</span>
+
+<span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[2] 3394</span>
+
+<span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[3] 3417</span>
+
+<span class="gp">$ </span>ps
+<span class="go"> PID TTY TIME CMD</span>
+<span class="go"> 2647 pts/0 00:00:00 bash</span>
+<span class="go"> 3300 pts/0 00:00:04 run_forever</span>
+<span class="go"> 3394 pts/0 00:00:02 run_forever</span>
+<span class="go"> 3417 pts/0 00:00:01 run_forever</span>
+<span class="go"> 3399 pts/0 00:00:00 ps</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Running run_forever in the background three times</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[1] 3300</span>
+
+<span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[2] 3394</span>
+
+<span class="gp">$ </span>run_forever<span class="w"> </span><span class="p">&amp;</span>
+<span class="go">[3] 3417</span>
+
+<span class="gp">$ </span>ps
+<span class="go"> PID TTY TIME CMD</span>
+<span class="go"> 2647 pts/0 00:00:00 bash</span>
+<span class="go"> 3300 pts/0 00:00:04 run_forever</span>
+<span class="go"> 3394 pts/0 00:00:02 run_forever</span>
+<span class="go"> 3417 pts/0 00:00:01 run_forever</span>
+<span class="go"> 3399 pts/0 00:00:00 ps</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Sending job [2] to the foreground &amp; Stopping it with <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd>.</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">fg</span><span class="w"> </span>%2
+<span class="go">run_forever</span>
+<span class="go">^Z</span>
+<span class="go">[2]+ Stopped run_forever</span>
+
+<span class="gp">$ </span><span class="nb">jobs</span>
+<span class="go">[1] Running run_forever &amp;</span>
+<span class="go">[2]+ Stopped run_forever</span>
+<span class="go">[3]- Running run_forever &amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Sending job [2] to the background again</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">bg</span><span class="w"> </span>%2
+<span class="go">[2]+ run_forever &amp;</span>
+
+<span class="gp">$ </span><span class="nb">jobs</span>
+<span class="go">[1] Running run_forever &amp;</span>
+<span class="go">[2]- Running run_forever &amp;</span>
+<span class="go">[3]+ Running run_forever &amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Stopping job [3] with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGSTOP</span></code> signal</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-STOP<span class="w"> </span>%3
+
+<span class="go">[3]+ Stopped run_forever</span>
+
+<span class="gp">$ </span><span class="nb">jobs</span>
+<span class="go">[1] Running run_forever &amp;</span>
+<span class="go">[2]- Running run_forever &amp;</span>
+<span class="go">[3]+ Stopped run_forever</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Stopping job [3] with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGSTOP</span></code> signal</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-STOP<span class="w"> </span>%3
+
+<span class="go">[3]+ Stopped run_forever</span>
+
+<span class="gp">$ </span><span class="nb">jobs</span>
+<span class="go">[1] Running run_forever &amp;</span>
+<span class="go">[2]- Running run_forever &amp;</span>
+<span class="go">[3]+ Stopped run_forever</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Terminating job [3] with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGTERM</span></code> signal</span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-TERM<span class="w"> </span>%3
+<span class="go">[3]+ Terminated run_forever</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Terminating job [2] with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> signal</span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-INT<span class="w"> </span>%2
+<span class="go">[2]+ Interrupt run_forever</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Terminating job [1] with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGKILL</span></code> signal</span><a class="headerlink" href="#id9" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">kill</span><span class="w"> </span>-KILL<span class="w"> </span>%1
+<span class="go">[1]+ Killed run_forever</span>
+
+<span class="gp">$ </span><span class="nb">jobs</span>
+
+<span class="gp">$</span>
+</pre></div>
+</div>
+</div>
+<p>In general, a process may decide not to take the default action
+requested by a signal, instead it may allow for the signal to be
+ignored, or it may decide to do something else when it receives it. A
+process changing its default action under a signal is said to be
+<strong>changing its signal disposition</strong>. This can be done if the process
+invokes the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code> system call from <code class="file docutils literal notranslate"><span class="pre">signal.h</span></code>
+that has the following prototype:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">int</span><span class="p">)))(</span><span class="kt">int</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This prototype can be a bit confusing to read, made clearer by first defining a <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">sighandler_t</span></code> type,</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The parameters for the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code> system call are the signal number to
+which the process wants to change its disposition and a pointer to a
+<strong>handler function</strong>. The process must have access to the handler
+function and the handler function must receive an integer and return
+void. The handler function will contain the actions the process wants to
+be executed when the signal arrives. A common use of the handler
+function is to tidy up before the process is terminated, by returning
+resources, like memory previously requested with malloc, or close files,
+before calling the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">exit</span></code> system call itself.</p>
+<p>The following listing shows the program
+<a class="reference internal" href="#signal-c"><span class="std std-ref">signal.c</span></a> that changes the signal disposition for the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code>, <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGQUIT</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGTERM</span></code> signals using the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code> system call to the handler function
+named <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sig_handler</span></code> that stores the signal number that was received. We will discuss the purpose of <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigprocmask</span></code> and the <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">sigset_t</span></code> variables in short order.</p>
+<div class="literal-block-wrapper docutils container" id="signal-c">
+<div class="code-block-caption"><span class="caption-text">signal.c</span><a class="headerlink" href="#signal-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#define _POSIX_C_SOURCE 200809L</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdbool.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="cm">/* sig_atomic_t is an async-signal safe data type */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">sig_atomic_t</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* Signal sets for blocking/unblocking signals. */</span>
+<span class="kt">sigset_t</span><span class="w"> </span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="n">oldsigset</span><span class="p">;</span>
+
+<span class="cm">/** Record received signal handler */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span>
+<span class="n">sig_handler</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">errno_sav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">errno</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Cache errno */</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sig</span><span class="p">;</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Reinstall signal handler */</span>
+<span class="w">  </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errno_sav</span><span class="p">;</span><span class="w">        </span><span class="cm">/* Restore errno */</span>
+<span class="p">}</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* Hold pending signals until their handlers are installed */</span>
+<span class="w">  </span><span class="n">sigfillset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldsigset</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Install signal handlers SIGINT, SIGQUIT and SIGTERM */</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGQUIT</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGTSTP</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">last_signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signo</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Unblock signals and sleep until a signal is caught */</span>
+<span class="w">    </span><span class="n">sigsuspend</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oldsigset</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Signal Received: %d (</span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">signo</span><span class="p">,</span><span class="w"> </span><span class="nf">strsignal</span><span class="p">(</span><span class="n">signo</span><span class="p">));</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">signo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">SIGINT</span><span class="o">:</span>
+<span class="w">        </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;I was, in fact, interrupted!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">SIGQUIT</span><span class="o">:</span>
+<span class="w">        </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Ok, time to exit!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">SIGTSTP</span><span class="o">:</span>
+<span class="w">        </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Understood--powering down!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nf">fflush</span><span class="p">(</span><span class="nv">stdout</span><span class="p">);</span>
+<span class="w">        </span><span class="nf">raise</span><span class="p">(</span><span class="no">SIGSTOP</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">last_signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signo</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./signal
+<span class="go">^C	Signal Received: 2 (&quot;Interrupt&quot;)</span>
+<span class="go">I was, in fact, interrupted!</span>
+<span class="go">^Z	Signal Received: 20 (&quot;Stopped&quot;)</span>
+<span class="go">Understood--powering down!</span>
+<span class="go">[2]+  Stopped                 ./signal</span>
+
+<span class="gp">$ </span><span class="nb">fg</span>
+<span class="go">./signal</span>
+<span class="go">^\	Signal Received: 3 (&quot;Quit&quot;)</span>
+<span class="go">Ok, time to exit!</span>
+
+<span class="gp">$</span>
+</pre></div>
+</div>
+<p>Although by the description of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code> system call, it appears to be returning void, it is in fact returning a pointer to the previous disposition the signal had. This is handy when we want to preserve the previous handling conditions to be restored at a later point in time. The following <a class="reference internal" href="#swapping-handlers"><span class="std std-ref">listing</span></a> demonstrates a program that alternates between the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sig_handler</span></code> handler function we previously saw, and the default handling for the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> signal (<kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd>). When the program invokes the <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code> system call to set the disposition to <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sig_handler</span></code> for the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> signal, it returns the default handling of this signal that is stored in a pointer named <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">old_sig_handler</span></code>, with the same signature as the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sig_handler</span></code> function. The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">old_sig_handler</span></code> function is later restored with another call to <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">signal</span></code>. In the output, we see that while <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sig_handler</span></code> is in use, the process cannot be terminated with <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd>, but this behavior stops when the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">old_sig_handler</span></code> is in charge.</p>
+<div class="literal-block-wrapper docutils container" id="swapping-handlers">
+<div class="code-block-caption"><span class="caption-text">swapping_handlers.c</span><a class="headerlink" href="#swapping-handlers" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#define _POSIX_C_SOURCE 200809L</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdbool.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="cm">/* sig_atomic_t is an async-signal safe data type */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">sig_atomic_t</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* Signal sets for blocking/unblocking signals. */</span>
+<span class="kt">sigset_t</span><span class="w"> </span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="n">oldsigset</span><span class="p">;</span>
+
+<span class="cm">/* Pointer to a signal handler function */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">old_sig_handler</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+
+<span class="cm">/** Record received signal handler */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span>
+<span class="n">sig_handler</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">errno_sav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">errno</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Cache errno */</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sig</span><span class="p">;</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="n">old_sig_handler</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Revert signal handler */</span>
+<span class="w">  </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errno_sav</span><span class="p">;</span><span class="w">            </span><span class="cm">/* Restore errno */</span>
+<span class="p">}</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* Hold pending signals until their handlers are installed */</span>
+<span class="w">  </span><span class="n">sigfillset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldsigset</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Install signal handler for SIGINT */</span>
+<span class="w">  </span><span class="n">old_sig_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;signal handler for SIGINT is active</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">fflush</span><span class="p">(</span><span class="nv">stdout</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">last_signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signo</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Unblock signals and sleep until a signal is caught */</span>
+<span class="w">    </span><span class="n">sigsuspend</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oldsigset</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Signal Received: %d (</span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">signo</span><span class="p">,</span><span class="w"> </span><span class="nf">strsignal</span><span class="p">(</span><span class="n">signo</span><span class="p">));</span>
+<span class="w">    </span><span class="nf">fflush</span><span class="p">(</span><span class="nv">stdout</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">swapping_handlers output</span><a class="headerlink" href="#id10" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./swapping_handlers
+<span class="go">signal handler for SIGINT is active</span>
+<span class="go">^C	Signal Received: 2 (&quot;Interrupt&quot;)</span>
+<span class="go">^C</span>
+
+<span class="gp">$</span>
+</pre></div>
+</div>
+</div>
+<p>A process may also block the delivery of a signal. This will do nothing to the signal, but it may allow the process to complete some activity that must be done uninterrupted by the disposition of the signal. To block a signal, the process keeps track of a <strong>blocked set</strong>, this a set of signals with data type <code class="code highlight c c99 docutils literal highlight-c99"><span class="kt">sigset_t</span></code> that collects the numbers of all signals to be blocked by the process. A signal will remain blocked until it is released, at which point is delivered.</p>
+<p>The blocked set must be initialized as empty with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigemptyset</span></code> system call. To which we must add all the signals we wish to block, one by one, with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigaddset</span></code> system call. We will also need the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigprocmask</span></code> system call to manage the blocked set. The prototypes for these system calls are:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">int</span><span class="w"> </span><span class="n">sigemptyset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+<span class="k">int</span><span class="w"> </span><span class="n">sigaddset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+<span class="k">int</span><span class="w"> </span><span class="n">sigprocmask</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">how</span><span class="p">,</span><span class="w"> </span><span class="kt">sigset_t</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">oldset</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The following <a class="reference internal" href="#blocking-signals"><span class="std std-ref">listing</span></a> shows a program that alternates between blocking and unblocking signals,</p>
+<div class="literal-block-wrapper docutils container" id="blocking-signals">
+<div class="code-block-caption"><span class="caption-text">blocking_signals.c</span><a class="headerlink" href="#blocking-signals" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdbool.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="k">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">sig_names</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGHUP&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGINT&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTSTP&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGILL&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTRAP&quot;</span><span class="p">,</span><span class="w">      </span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGABRT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGBUS&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGFPE&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGKILL&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGUSR1&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGSEGV&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGUSR2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGPIPE&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGALRM&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTERM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGSTKFLT&quot;</span><span class="p">,</span><span class="w">   </span><span class="p">[</span><span class="mi">17</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGCHLD&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGCONT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">19</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGSTOP&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTSTP&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">21</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTTIN&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">22</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGTTOU&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">23</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGURG&quot;</span><span class="p">,</span><span class="w">      </span><span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGXCPU&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGXFSZ&quot;</span><span class="p">,</span><span class="w">     </span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGVTALRM&quot;</span><span class="p">,</span><span class="w">   </span><span class="p">[</span><span class="mi">27</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGPROF&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">28</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGWINCH&quot;</span><span class="p">,</span><span class="w">    </span><span class="p">[</span><span class="mi">29</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGIO&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="mi">30</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGPWR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">31</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGSYS&quot;</span><span class="p">,</span><span class="w">      </span><span class="p">[</span><span class="mi">34</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN&quot;</span><span class="p">,</span><span class="w">    </span><span class="p">[</span><span class="mi">35</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">36</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+2&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">37</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+3&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">38</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">39</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+5&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">40</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+6&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">41</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+7&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">42</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+8&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">43</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+9&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">44</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">45</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+11&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">46</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+12&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">47</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+13&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">48</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+14&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">49</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMIN+15&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">50</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-14&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">51</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-13&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">52</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-12&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">53</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-11&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">54</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-10&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">55</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-9&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">56</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">57</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-7&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">58</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-6&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">59</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-4&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">61</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-3&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">62</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="mi">63</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX-1&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">[</span><span class="mi">64</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SIGRTMAX&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="cm">/* sig_atomic_t is an async-signal safe data type */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">sig_atomic_t</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* Signal sets for blocking/unblocking signals. */</span>
+<span class="kt">sigset_t</span><span class="w"> </span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="n">old_sigset</span><span class="p">;</span>
+
+<span class="cm">/** Record received signal handler */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span>
+<span class="n">sig_handler</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">errno_sav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">errno</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Cache errno */</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sig</span><span class="p">;</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Reinstall signal handler */</span>
+<span class="w">  </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errno_sav</span><span class="p">;</span><span class="w">        </span><span class="cm">/* Restore errno */</span>
+<span class="p">}</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* Initializing Blocked set of signals */</span>
+<span class="w">  </span><span class="n">sigemptyset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">);</span><span class="w">        </span>
+<span class="w">  </span><span class="n">sigaddset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="no">SIGINT</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="n">sigaddset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="no">SIGTSTP</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">sigaddset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="no">SIGALRM</span><span class="p">);</span><span class="w"> </span>
+
+<span class="w">  </span><span class="cm">/* Changing the disposition of SIGINT and SIGTSTP */</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">signal</span><span class="p">(</span><span class="no">SIGTSTP</span><span class="p">,</span><span class="w"> </span><span class="n">sig_handler</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Store old signal mask */</span>
+<span class="w">  </span><span class="n">sigprocmask</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">old_sigset</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Loop oscillates between two states</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Blocking signals (5 second sleep)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sigprocmask</span><span class="p">(</span><span class="no">SIG_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Wait for a signal to become pending */</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="n">timespec</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">.</span><span class="n">tv_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">signo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sigtimedwait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sigset</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">timeout</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">signo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Reset errno on timeout */</span>
+
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Signal %d (%s) was pending!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">signo</span><span class="p">,</span><span class="w"> </span><span class="n">sig_names</span><span class="p">[</span><span class="n">signo</span><span class="p">]);</span>
+
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Unblocking signals (5 second sleep)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">alarm</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Wait for a signal to be delivered */</span>
+<span class="w">    </span><span class="n">sigsuspend</span><span class="p">(</span><span class="o">&amp;</span><span class="n">old_sigset</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* sigsuspend always sets errno to EINTR */</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Signal %d (%s) was caught!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">signo</span><span class="p">,</span><span class="w"> </span><span class="n">sig_names</span><span class="p">[</span><span class="n">signo</span><span class="p">]);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">blocking_signals output</span><a class="headerlink" href="#id11" title="Link to this code"></a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./blocking_signals<span class="w"> </span>
+<span class="go">Blocking signals (5 second sleep)</span>
+<span class="go">^C	Signal 2 (SIGINT) was pending!</span>
+<span class="go">Unblocking signals (5 second sleep)</span>
+<span class="go">^Z	Signal 20 (SIGTSTP) was caught!</span>
+<span class="go">Blocking signals (5 second sleep)</span>
+<span class="go">^C	Signal 2 (SIGINT) was pending!</span>
+<span class="go">Unblocking signals (5 second sleep)</span>
+<span class="go">^Z	Signal 20 (SIGTSTP) was caught!</span>
+<span class="go">Blocking signals (5 second sleep)</span>
+<span class="go">^C	Signal 2 (SIGINT) was pending!</span>
+<span class="go">Unblocking signals (5 second sleep)</span>
+<span class="go">^Z	Signal 20 (SIGTSTP) was caught!</span>
+<span class="go">Blocking signals (5 second sleep)</span>
+<span class="go">^\Quit (core dumped)</span>
+
+<span class="gp">$ </span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigprocmask</span></code> system call is used to enable and disable a
+blocking set. It takes a first parameter (named how in the prototype) to
+indicate the action to be taken. This parameter could be one of the
+following values:</p>
+<ul class="simple">
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIG_BLOCK</span></code> to add a set of signals to be blocked</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIG_UNBLOCK</span></code> to remove a set of signals from the blocked set</p></li>
+<li><p><code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIG_SETMASK</span></code> to replace an entire set of blocked signals with
+another set</p></li>
+</ul>
+<p>In state 1 of the loop inside the program, we first use
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigprogmask</span></code> to add the signals in the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">blocked_set</span></code> to the set of
+signals currently blocked. The old set of signals is returned in the
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">default_set</span></code> set of signals. In our case, this <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">defaul_set</span></code> has no
+signals blocked. In state 2 of the loop, <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigprogmask</span></code> is used to
+replace the set of blocked signals with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">default_set</span></code> that was saved
+with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIG_SETMASK</span></code> parameter. Alternatively, it could just unblock
+the same signals with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIG_UNBLOCK</span></code> parameter. The general effect
+of this loop is that initially it blocks the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGQUIT</span></code> signals,
+as can be seen in the bottom cell of the picture. Once the old set of
+blocked signals (<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">default_set</span></code>) is restored in state 2 of the loop,
+SIGINT and <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGQUIT</span></code> are no longer blocked and they are delivered. The
+program uses a handler function that displays the signal that is
+received first, and stops the program naturally with <strong>exit(0)</strong>.</p>
+<p>Before entering into state 2, the program reports which signals were
+pending. To do so, it uses the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigpending</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigismember</span></code>
+system calls that have the following prototypes:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">int</span><span class="w"> </span><span class="n">sigpending</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigpending</span></code> system call retrieves a set of signals that are
+pending. As it can be seen in the bottom cell of the previous figure,
+the user pressed <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd> and <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">\</kbd> twice each, these produce
+the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGQUIT</span></code> signals that are part of the pending signals set
+retrieved by the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigpending</span></code> system call (<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pending_set</span></code>). To verify
+that a signal is part of a set we use the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">sigismember</span></code> system call.
+In our example, it is separately checking if the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGINT</span></code> and <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGQUIT</span></code>
+signals are members of the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">pending_set</span></code> set of signals, and reporting on
+it. Notice here that the pending set only reports once per every
+different signal received. In other words, it does not matter how many
+times a signal is sent, the pending signal set will only contain one
+acknowledgment per each kind of signal.</p>
+<p>It is important to emphasize that the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGKILL</span></code> signal cannot be
+blocked, for the same reason that it cannot be ignored or handled. This
+signal guarantees termination of a process, and, therefore the process
+cannot do anything about it. On the other hand, it should only be used
+as a last resort, because if a process uses a handler to have a clean
+exit, without resources left open or engaged, when the <code class="code highlight c c99 docutils literal highlight-c99"><span class="no">SIGKILL</span></code>
+signal is received, the process will not be able to use the handler at
+all.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../process-lifecyle/" class="btn btn-neutral float-left" title="Process Lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../execution-times/" class="btn btn-neutral float-right" title="Execution Times" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

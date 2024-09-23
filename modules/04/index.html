@@ -28,7 +28,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Inter-Process Communication" href="../05/" />
+    <link rel="next" title="What is a Process?" href="what-is-a-process/" />
     <link rel="prev" title="Assignments" href="../03/assignments/" /> 
 </head>
 
@@ -208,7 +208,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../03/assignments/">Assignments</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Processes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processes-and-the-file-system/">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiprogramming/">Multiprogramming</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../05/">Inter-Process Communication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05/signals/">Signals</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05/signals/sending/">Sending Signals</a></li>
@@ -284,7 +294,7 @@
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="../03/assignments/" class="btn btn-neutral float-left" title="Assignments" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="what-is-a-process/" class="btn btn-neutral float-right" title="What is a Process?" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -293,14 +303,82 @@
              
   <section id="processes">
 <h1>Processes<a class="headerlink" href="#processes" title="Link to this heading"></a></h1>
-<object type="application/pdf" data="../../_static/Module4-Processes.pdf" style="width:100%; height: 100vh"> </object></section>
+<p>In this module, we will learn about processes and process management. A process is an instance of an executing program and process management is a key component of a multiprogramming OS. The OS needs to able to start and shutdown processes, and to manage processes that are already started. The OS exposes this functionality via a number of system calls and C functions. In this module, we will learn the fundamental concepts about processes and learn the OS API that allows us to create, terminate and manage processes. Additionally, we will explore the fundamentals of inter-process communication using signals, shared files, and redirection, in the context of a command-line shell.</p>
+<p class="rubric">Module Learning Outcomes</p>
+<p>After successful completion of this module, you should be able to</p>
+<ol class="arabic simple">
+<li><p>Explain the process abstraction and its centrality for multi-programmed OS (CLO 1)</p>
+<ul class="simple">
+<li><p>What is a process?</p></li>
+<li><p>What are the various components of a process?</p></li>
+<li><p>What are the states a process can be in?</p></li>
+</ul>
+</li>
+<li><p>Describe the Unix process API (CLO 1, CLO 2, CLO3, CLO 7)</p>
+<ul class="simple">
+<li><p>What is a parent process and a child process?</p></li>
+<li><p>How can a process create a child process?</p></li>
+<li><p>What are the different ways in which a process can terminate?</p></li>
+<li><p>How can a parent process manage a child process?</p></li>
+<li><p>What is the API to run a new program?</p></li>
+</ul>
+</li>
+<li><p>Write programs using Unix process API (CLO 1, CLO 2, CLO 3, CLO 7)</p>
+<ul class="simple">
+<li><p>How to use fork() system call to create a new process?</p></li>
+<li><p>How to use an exec() function to run a new program?</p></li>
+</ul>
+</li>
+<li><p>Explain the environment of a process and how it can be manipulated (CLO 2, CLO 3, CLO 7)</p>
+<ul class="simple">
+<li><p>What are environment variables?</p></li>
+<li><p>How can the environment variables be accessed and changed in a Bash shell?</p></li>
+<li><p>How can a program access environment variables?</p></li>
+<li><p>How can a program modify environment variables?</p></li>
+<li><p>What is the relationship between the environment of a parent and a child process?</p></li>
+</ul>
+</li>
+<li><p>Use common shell commands related to processes (CLO3)</p>
+<ul class="simple">
+<li><p>What information can be obtained via the ps command?</p></li>
+<li><p>What is job control?</p></li>
+<li><p>What are foreground and background jobs?</p></li>
+</ul>
+</li>
+<li><p>Explain the concept of signals and their uses (CLO 1, CLO2, CLO3)</p>
+<ul class="simple">
+<li><p>What is a signal?</p></li>
+<li><p>What are the different important signal types?</p></li>
+<li><p>What is the use of different signals?</p></li>
+</ul>
+</li>
+<li><p>Write programs using the Unix API for signal handling (CLO 1, CLO 2, CLO3, CLO 7)</p>
+<ul class="simple">
+<li><p>What are signal sets and how are they used in writing signal handlers?</p></li>
+<li><p>How do we register custom signal handlers?</p></li>
+<li><p>What are reentrant functions and why these should be used in signal handlers?</p></li>
+</ul>
+</li>
+<li><p>Explain important concepts in Unix I/O related to file descriptor inheritance and I/O redirection (CLO 2, CLO 5, CLO 7)</p>
+<ul class="simple">
+<li><p>How and why are file descriptors shared across calls to fork to spawn a child process?</p></li>
+<li><p>How can we stop this sharing through use of dup2 function?</p></li>
+<li><p>What is input redirection?</p></li>
+<li><p>What is output redirection?</p></li>
+<li><p>How can we redirect standard input and standard output?</p></li>
+</ul>
+</li>
+</ol>
+<div class="toctree-wrapper compound">
+</div>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../03/assignments/" class="btn btn-neutral float-left" title="Assignments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../05/" class="btn btn-neutral float-right" title="Inter-Process Communication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="what-is-a-process/" class="btn btn-neutral float-right" title="What is a Process?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Process Lifecycle &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Signals" href="../signals/" />
+    <link rel="prev" title="Process Identification" href="../process-identification/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processes-and-the-file-system/">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multiprogramming/">Multiprogramming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Processes</a></li>
+      <li class="breadcrumb-item active">Process Lifecycle</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../process-identification/" class="btn btn-neutral float-left" title="Process Identification" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../signals/" class="btn btn-neutral float-right" title="Signals" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="process-lifecycle">
+<h1>Process Lifecycle<a class="headerlink" href="#process-lifecycle" title="Link to this heading"></a></h1>
+<section id="process-creation">
+<h2>Process Creation<a class="headerlink" href="#process-creation" title="Link to this heading"></a></h2>
+<p>When a program is to be run, the operating system allocates various
+portions of memory (RAM) to the process. They constitute the <strong>virtual
+memory address space</strong> for the process. The amount of memory to be
+assigned varies from machine to machine and from program to program, and
+it solely depends on what the operating system decides. For this
+discussion, let’s assume that a process is assigned 64Kb of memory. Its
+address space begins with memory at position zero (0x0000 in
+hexadecimal) and its last address is one position before 64Kb (address
+0xFFFF). Certain portions at the beginning and at the end of this
+address space are reserved by the operating system for process
+management and to store kernel references that will be used by the
+process. For this reason, let’s also assume that this leaves us with a
+remaining address space for the process beginning at 16Kb (address
+0x4000) and ending one position before 48Kb (address 0xBFFF).</p>
+<p>The remaining address space is further divided in <strong>segments</strong>. Each
+segment is assigned a different function and contains specific
+information for the process. On this first segment, known as the
+<strong>text</strong>, the operating system loads all the instructions of the
+compiled file (the program code). These are followed by all global and
+static data that are initialized by the program, and after them all
+global and static data that is not initialized. In our example, the text
+will begin at 16Kb (address 0x4000) and will continue until all code and
+global and static data is placed. The actual addresses where the program
+code, the initialized data, and then uninitialized data end, are all
+stored in CPU registers to inform the running of the process.</p>
+<p>A second segment, the <strong>stack,</strong> begins at the other end of the address
+space (address 0xBFFF in our example), and it actually grows backwards
+towards the beginning of the address space. The stack is used to keep
+track of the functions the process calls. A CPU register (labeled as
+%rsp) holds the value of the memory address at the end of the stack.
+This address is known as the <strong>top of the stack</strong>. Every time a function
+is called, a new <strong>stack frame</strong> is added after the top of the stack.
+The stack frame contains information relevant to the function call and
+includes values for the parameters passed to the function call as well
+as places for the values of all the variables that are local to the
+function. Once the stack frame is added, the top of the stack is updated
+to point to the end of this new frame. When the function finishes
+calculations, its return value is stored in a CPU register to be sent to
+the calling function, the memory allocated to the stack frame is
+released, and the top of the stack is moved back to point at the end of
+the previous function call.</p>
+<p>The third and last assigned segment is the <strong>heap</strong>. This usually lies
+right after the memory assigned for the uninitialized data and grows in
+opposite direction to the stack. The heap provides memory for all
+variables that are dynamically allocated when the process runs. The end
+of the heap is known as the <strong>program break</strong>, and the kernel may change
+its location to make it grow or shrink, based on the need and requests
+from the process.</p>
+<p>The following figure shows an example of the placement of these segments
+in the virtual memory address space for a process:</p>
+<a class=""
+               data-lightbox="group-25f22a27-99c0-4b10-9afa-a6ceaa2458e9"
+               href="../../../_images/image21.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../../_images/image21.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><p>It is important to realize that this diagram shows memory from the point
+of view of the process, and likely, it will not represent the actual
+memory arrangement of hardware that the kernel has at its disposal. For
+example, the kernel will not grant access to the physical address 0x0000
+to any process. This is reserved for the operating system. Also, the
+process may assume that all its segments are placed continuously in
+memory, when in fact the kernel usually makes allocations in
+non-contiguous areas. However, the process does not need to worry about
+any misalignment, because a big part of the kernel’s job is to maintain
+the illusion of a unified memory space for every process.</p>
+<p>Once these segments are allocated, the operating system makes some other
+initializations. Every process is associated with three standard files:
+standard input, standard output, and standard error. The standard input
+file is the place from where the process will get external input,
+usually the keyboard. The standard output is the place from where all
+textual output from the process will be written. This is generally the
+screen or terminal from where the process is launched. Finally, the
+standard error is the place where all errors encountered by the process
+while running are to be reported. Most of the time this is also the same
+screen or terminal used for standard output, but there are other
+options, like sending it to a file in disk. The operating system will
+treat each one of these standard files like any other file in the system
+and will set file descriptors for each one of them. If there is
+redirection of these files, the operating system will modify the
+appropriate file descriptor to point to the requested device or file.</p>
+<p>Finally, the operating system must initialize a CPU register with the
+address of the first executable sentence from the program. This register
+is known as the <strong>Instruction Pointer</strong> or <strong>IP</strong> (also known as the
+<strong>program counter</strong> or <strong>PC</strong>).</p>
+<p>As an example of how the kernel assign a program to various segments in
+the process’ memory space, consider the <a class="reference internal" href="#compound-c"><span class="std std-ref">following C program</span></a> that creates
+a small table of compound interest:</p>
+<div class="literal-block-wrapper docutils container" id="compound-c">
+<div class="code-block-caption"><span class="caption-text">compound.c</span><a class="headerlink" href="#compound-c" title="Link to this code"></a></div>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Program: compound.c</span>
+<span class="cm"> * Version: 1.0</span>
+<span class="cm"> * Author: Guillermo Tonsmann Ph.D. */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;err.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+
+<span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">username</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Name of the User &lt;Uninitialized data&gt; */</span>
+<span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Table of Compounded Amounts&quot;</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Title to be Displayed</span>
+<span class="cm">                                                  &lt;Initialized Data&gt; */</span>
+
+<span class="cm">/** Evaluate compounded interest over a number of periods</span>
+<span class="cm"> * Arguments:  &lt;on Stack&gt;</span>
+<span class="cm"> *   array: Pointer to an array of p+1 floats to be filled with compounded</span>
+<span class="cm"> *          amounts</span>
+<span class="cm"> *   a    : initial amount to be compounded.</span>
+<span class="cm"> *   r    : interest rate as a fraction</span>
+<span class="cm"> *   p    : number of periods to be compounded (== size_of_array-1)</span>
+<span class="cm"> */</span>
+<span class="k">float</span>
+<span class="n">compound</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="o">*</span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="cm">/* First position of array contains the initial amount to be</span>
+<span class="cm">                 compounded */</span>
+
+<span class="w">  </span><span class="cm">/* Evaluating the compound interest at each period and placing it in the array</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">array</span><span class="p">));</span><span class="w"> </span><span class="cm">/* &lt;Value returned in a register&gt; */</span>
+<span class="p">}</span>
+
+<span class="cm">/* Display a table of compounded amounts</span>
+<span class="cm"> * Arguments:  &lt;on Stack&gt;</span>
+<span class="cm"> *   array: Pointer to an array of p+1 compounded amounts</span>
+<span class="cm"> *   p    : number of periods to be compounded (== size_of_array-1) */</span>
+<span class="kt">void</span>
+<span class="n">display</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">);</span><span class="w"> </span><span class="cm">/* &lt;from Initialized Data&gt;  */</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t\t</span><span class="s">Created by: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%15s %15s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Amount&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; After Period&quot;</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Table headings */</span>
+<span class="w">  </span><span class="cm">/* Printing each line of the table */</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;%15.2f %8d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Nothing to return */</span>
+<span class="p">}</span>
+
+<span class="cm">/** Gets data from argv, generates an array for compound values</span>
+<span class="cm"> * and ask to be populated and displayed */</span>
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nv">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">environ</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/* Static Variables */</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">float</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span><span class="w">      </span><span class="cm">/* Initial amount to be compounded. No default.</span>
+<span class="cm">                               &lt;Uninitialized Data&gt; */</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">float</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Interest rate as a fraction. Default: 1% as 0.01</span>
+<span class="cm">                             &lt; Initialized Data&gt; */</span>
+
+<span class="w">  </span><span class="cm">/* Local variables &lt;on Stack&gt; */</span>
+<span class="w">  </span><span class="k">int</span><span class="w"> </span><span class="n">periods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">       </span><span class="cm">/* Periods to be compounded. Default: 5 periods */</span>
+<span class="w">  </span><span class="k">float</span><span class="w"> </span><span class="o">*</span><span class="n">compound_array</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Array of compounded amounts (to be created) */</span>
+<span class="w">  </span><span class="k">float</span><span class="w"> </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Accumulated interest over all periods */</span>
+
+<span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;USER&quot;</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Getting a variable from the Environment</span>
+<span class="cm">                                    Array &lt;On Stack&gt; */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;(Unknown)&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="cm">/* Reading and validating parameters from argv &lt;on Stack&gt; */</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nv">argc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="o">:</span>
+<span class="w">      </span><span class="n">periods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">atoi</span><span class="p">(</span><span class="nv">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span>
+<span class="w">      </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">atof</span><span class="p">(</span><span class="nv">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span>
+<span class="w">      </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">atof</span><span class="p">(</span><span class="nv">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Invalid number of parameters</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Usage: %s compound amount rate periods</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">      </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="cm">/* Validating periods */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">periods</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;Periods should be integer with value greater than 1 </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="cm">/* program returns with errors */</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="cm">/* Creation of a dynamic array for the list of compounded amounts &lt;on Heap&gt; */</span>
+<span class="w">  </span><span class="n">compound_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="o">*</span><span class="n">compound_array</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">periods</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">compound_array</span><span class="p">)</span><span class="w"> </span><span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;malloc&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Call to evaluate compounded amounts. Total interest earned is returned. */</span>
+<span class="w">  </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">compound</span><span class="p">(</span><span class="n">compound_array</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="n">periods</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Call to display a table of compounded amounts. */</span>
+<span class="w">  </span><span class="n">display</span><span class="p">(</span><span class="n">compound_array</span><span class="p">,</span><span class="w"> </span><span class="n">periods</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/* Additional information added to the table.  */</span>
+<span class="w">  </span><span class="nf">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Accumulated Interests:%.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">interest</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* program returns successfully */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>After compilation, the program can be executed with parameters 1000, 2,
+and 7, corresponding to an amount of $1000.00 to be compounded at 2% per
+period during 7 periods. This produces the outcome shown in Figure 5.3:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">	Table of Compounded Amounts</span>
+<span class="go">		Created by: ryan</span>
+<span class="go">         Amount    After Period</span>
+<span class="go">        1000.00        0</span>
+<span class="go">        1020.00        1</span>
+<span class="go">        1040.40        2</span>
+<span class="go">        1061.21        3</span>
+<span class="go">        1082.43        4</span>
+<span class="go">        1104.08        5</span>
+<span class="go">        1126.16        6</span>
+<span class="go">        1148.69        7</span>
+<span class="go">	Accumulated Interests:148.69</span>
+</pre></div>
+</div>
+<p>When the operating system receives the request to run the program for
+compound interest, it will initially load the various segments as shown
+in Figure 5.4. Notice that the values of global variable <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">title</span></code> and
+the static variable <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">rate</span></code> are placed in the initialized data section
+of the text segment, while some memory space is left for the global
+variable <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">username</span></code> and the static variable <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">amount</span></code> that will be
+filled with values when the program runs. The first stack frame to be
+loaded on the stack segment contains information for the running of the
+first function in any C program, <code class="code highlight c c99 docutils literal highlight-c99"><span class="nf">main</span></code>. The stack frame is filled in
+the opposite direction than the text segment. At the top of the stack,
+we found the value of <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argc</span></code>, that is the number of arguments passed
+by the shell to the program (4 in this case). This is followed in order
+by the arguments from <code class="code highlight c c99 docutils literal highlight-c99"><span class="nv">argv</span></code> and the environment variables from
+<code class="code highlight c c99 docutils literal highlight-c99"><span class="n">env</span></code>, also received from the shell. Given that these values may have
+different sizes, rather than placing them in that position, they are
+actually located at the end of the stack frame, and only pointers to
+their actual location are stored at the beginning of the stack. The
+stack frame also includes memory to store the contents of the local
+variables from the main function. The stack frame may contain some
+additional memory assigned as padding; because they should be aligned at
+specific word sizes (16 or 32 bytes depending on the architecture).
+Since no dynamic allocation was performed at this stage, the heap may
+not have any actual memory associated with it. Nevertheless, a program
+break will be already set, probably at the end of the text segment.</p>
+<a class=""
+               data-lightbox="group-3c9194af-e768-42a7-8a71-4e76786d0764"
+               href="../../../_images/image31.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../../_images/image31.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a><div class="line-block">
+<div class="line">By the time the program is running and calls the compound function,
+the segments may appear as described by Figure 5.5. By then, the main
+function has requested memory for the contents of the compound_array.
+The operating system will grant this request on the heap, by
+increasing the program break to a size that provides enough space.
+However, the operating system may decide to provide more than the
+requested space, based on its own policies. The compound function will
+add a new stack frame to the stack segment. This stack frame will
+contain enough memory to hold all the parameters for the function and
+its local variables. Some padding memory may also be added. The top of
+the stack is moved accordingly to the end of this stack frame. When
+the function ends running, the value returned by the function will be
+placed on a CPU register for the calling function to take and the
+allocated memory is released by moving the top of the stack back to
+its previous value at the end of the stack frame for the main
+function.</div>
+<div class="line">.. image:: images/image4.png</div>
+</div>
+<p>When the program calls the display function, a new stack frame is added
+on top of the stack segment. This new frame contains memory to hold all
+its parameters, its local variables, and padding memory if required.
+Once again, the top of the stack is moved to the end of this stack
+frame. This function uses the file descriptor for the standard output to
+display the program’s results. When it finishes it does not return any
+value. The top of the stack is moved back to the end of the stack frame
+for the main function.</p>
+<a class=""
+               data-lightbox="group-c2c570fc-6d10-47a9-a513-99909e84f5ae"
+               href="../../../_images/image51.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../../_images/image51.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a></section>
+<section id="process-execution">
+<h2>Process Execution<a class="headerlink" href="#process-execution" title="Link to this heading"></a></h2>
+<p>Once a process is loaded in memory we say that the process is in a
+<strong>ready state</strong>. It is ready for its instructions to be run by the CPU.
+At any given time there could be many processes in ready state trying to
+access the CPU. All these processes constitute a <strong>ready queue</strong> from
+which the kernel decides which process to run next. If the kernel
+decides to run a process from this queue, it updates the <strong>CPU
+context</strong>. This is the set of CPU registers that contain pointers to the
+locations where the process segments for that process are loaded. These
+include the values for program break, base of the stack, bottom of the
+stack, and instruction pointer. The kernel updates the CPU context with
+the appropriate values for the process to be run. The kernel then
+switches to user mode and allows the process to take charge of the
+computer to perform its instructions. This is a second state of the
+process known as the <strong>running state</strong>. The process will remain in this
+stage until one of the following events happens:</p>
+<ol class="arabic simple">
+<li><p>The process completes all its instructions and requests the kernel to
+terminate it.</p></li>
+<li><p>The process does not complete all its instructions, but it is
+terminated by the kernel due to an irrecoverable error while running.</p></li>
+<li><p>The process does not complete all its instructions, but it is
+terminated by the kernel because a predetermined amount of time has
+passed, and the kernel wants to give access to the CPU to other
+processes in the ready queue.</p></li>
+<li><p>The process requires some resource (memory, reading of a file, or
+access to a peripheral, for example), and it is making a request to
+the kernel for that resource.</p></li>
+</ol>
+<p>In all these cases, the process stops operations and the kernel takes
+control in kernel mode. In cases 1 and 2, where the process will no
+longer be active, it is terminated by the kernel, and all the resources
+that were allocated to that process are released at the kernel’s
+disposal. In case 3, when the allotted time for running has expired, the
+kernel places the process back into the ready queue, to wait for a new
+time slot. In case 4, where the process requires a resource, if the
+kernel can satisfy that request quickly, it will grant it, and let the
+process resume operations again in user mode. If on the other hand, the
+process must wait for some resource in a queue, the kernel changes the
+state of the process to a <strong>waiting state</strong> until it can get hold of the
+resource. When this happens, the kernel moves the process back to the
+ready queue to wait for a new time slot, just like in case 3.</p>
+<p>In both cases, 3 and 4, before the process changes state, all registers
+in the CPU context are stored. These stored registers will be used later
+to restore execution of the program when the process is sent back to the
+running state. Therefore, every time that the kernel changes the process
+to be running in the CPU, it saves CPU context of the old process and
+copies the recorded CPU context of the new one (if it exists) on the
+actual CPU registers. This activity is called <strong>context switching</strong>,</p>
+<p>The figure below shows the flow of a process along its possible states:</p>
+<a class=""
+               data-lightbox="group-1fe57295-f21d-4dc9-a7e2-6b0ab9a9914d"
+               href="../../../_images/image61.png"
+               title=""
+               data-title=""
+               
+               ><img src="../../../_images/image61.png"
+                     class=""
+                     width="30%"
+                     height="auto"
+                     alt=""/>
+                </a></section>
+<section id="process-termination">
+<h2>Process Termination<a class="headerlink" href="#process-termination" title="Link to this heading"></a></h2>
+<p>There are two ways in which a process is terminated. In the first one,
+the process itself requests its termination to the kernel by calling the
+system call <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">_exit</span><span class="p">(</span><span class="n">status</span><span class="p">)</span></code>. The underscore is part of the name of
+the system call, and the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">status</span></code> is an integer value, usually between 0
+and 128, known as the exit code. Processes that end successfully usually
+return with an exit code of zero. The process may use a value different
+than zero for the exit code to indicate some possible error that was
+encountered while running. Users and processes expecting the conclusion
+of that process may review this value to determine further actions.
+Within a shell, the exit code of the latest terminated process is stored
+in the environment variable <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">$</span><span class="o">?</span></code>. The second way in which a process
+may be terminated is by using signals.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../process-identification/" class="btn btn-neutral float-left" title="Process Identification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../signals/" class="btn btn-neutral float-right" title="Signals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

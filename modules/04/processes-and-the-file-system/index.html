@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Processes and the File System &mdash; CS 374 - Operating Systems  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=7a06361e"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/js/lightbox-plus-jquery.min.js?v=ffc8af2d"></script>
+        <script src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js?v=12818e64"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Process Identification" href="../process-identification/" />
+    <link rel="prev" title="What is a Process?" href="../what-is-a-process/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #D73F09" >
+
+          
+          
+          <a href="../../../" class="icon icon-home">
+            CS 374 - Operating Systems
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Course Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/syllabus/">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/schedule/">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/os1_setup/">OS1 Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/style/">Style Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../01/">Operating Systems Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/introduction/">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/overview/">Operating Systems Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/history-of-unix/">A Brief History of Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/standards/">Standards and Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/linux-dist/">Linux Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/introduction/c-language/">The C Programming Language</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/processes/">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/virtual-memory/">Virtual Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/system-call-interface/">System Call Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/hierarchy/">Process Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/identity/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/file-system-access/">File System Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/processes/inter-process-communication/">Inter-process Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/filesystem/">File Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/mounting/">Mounting and Unmounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/structure/">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/permissions/">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/metadata/">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/fhs/">The Filesystem Hierarchy Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/filesystem/additional-concepts/">Additional Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/terminal/">Terminal Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/operating-modes/">Terminal Operating Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/terminal/control-codes/">Control Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/utilities/">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell/">The Interactive Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/simple_commands/">Simple Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/quoting/">Quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/expansion/">Expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/variable_assignment_and_redirection/">Variable Assignment and Redirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/command_execution/">Command Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/pipelines/">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell/background/">Background Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/vim/">Software Development in Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/shell_command_language/">The Shell Command Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/noninteractive_shell/">The Non-interactive Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/parameters/">Shell Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/positional_parameters/">Positional Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/parameters/special_parameters/">Special Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/control_flow/">Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/reserved_words_and_operators/">Reserved Words and Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/exit_status/">Exit Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/background/shell_grammar/">Shell Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/grouping_constructs/">Grouping Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/loops/">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/compound_commands/conditional_constructs/">Conditional Constructs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/control_flow/function_definition/">Function Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/builtins/">Builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/aliases/">Alias Substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/getopts/">Options Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/file_access_and_creation/">File Access and Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/parameters_and_options/">Parameters and Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../01/shell_command_language/builtins/signals/">Signal Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/shell_command_language/executable_scripts/">Executable Shell Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/">Introduction to C Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/assignments/">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/overview/">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/type-system/">Type System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/integer-types/">Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-integer-types/">Special Integer Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/floating-types/">Floating Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/special-types/">Special Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/type-system/derived-types/">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/object-model/">Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/identifiers/">Identifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/declaration-syntax/">Declaration Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declaration-specifiers/">Declaration Specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/declaration-syntax/declarators/">Declarators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../02/identifiers/practical-declarations/">Practical Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/functions/">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/objects/">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../02/identifiers/practical-declarations/types/">User-Defined Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/expressions/">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/abstract-machine-model/">Abstract Machine Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02/abstract-machine-model/statements-and-structure/">Statements and Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/preprocessor-language/">Preprocessor Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/standard-library/">Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/">Data Access and Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/file-system-concepts/">File System Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/background/">File System History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/file-system-concepts/structure/">File System Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/stdio/">The C Standard Input/Output Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/motivation/">Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/access/">File Access and Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/stdio/io/">Input/Output Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/character/">Character i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/direct/">Direct i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/string/">String i/o</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../03/stdio/io/formatted/">Formatted i/o</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../03/variadic/">Variadic Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/printf-family/">Formatted Output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../03/stdio/io/formatted/scanf-family/">Formatted Input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/posix-io/">POSIX I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/fcntl/">File Control Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/io/">File I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multiprogramming/">Multiprogramming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://oregonstate.edu" rel="noopener noreferrer" target="_blank">Oregon State University</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://canvas.oregonstate.edu" rel="noopener noreferrer" target="_blank">Canvas</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://edstem.org" rel="noopener noreferrer" target="_blank">Ed Discussions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://teams.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft Teams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/glossary/">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/c/">Glossary of C Language Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/operating-systems/">Glossary of Operating Systems Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../meta/glossary/computer-science/">Glossary of Computer Science Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex/">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #D73F09" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">CS 374 - Operating Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Processes</a></li>
+      <li class="breadcrumb-item active">Processes and the File System</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../what-is-a-process/" class="btn btn-neutral float-left" title="What is a Process?" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../process-identification/" class="btn btn-neutral float-right" title="Process Identification" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="processes-and-the-file-system">
+<h1>Processes and the File System<a class="headerlink" href="#processes-and-the-file-system" title="Link to this heading"></a></h1>
+<p>When a process starts, it is assigned a <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a> that is inherited from its parent process, unless it is a shell process which gets its assignment from the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-home-directory"><span class="xref std std-term">home directory</span></a> of the user who creates the shell. The <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-home-directory"><span class="xref std std-term">home directory</span></a> is part of the information stored for every user in the password file for the system. Processes use their <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a> to discover the location of files within the file hierarchy.</p>
+<p>There are two ways to indicate the placement of files in the file system. The <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-absolute-pathname"><span class="xref std std-term">absolute pathname</span></a> describes the position of a file starting at the root. For example, in the figure above, the absolute pathname for the file <code class="file docutils literal notranslate"><span class="pre">myprog.c</span></code> is <code class="file docutils literal notranslate"><span class="pre">/home/master/myprog.c</span></code> . Notice that an absolute pathname always begins with the slash (<code class="file docutils literal notranslate"><span class="pre">/</span></code>) for the root directory. That is its give away. In an absolute pathname we write the name of every directory in the path from root to the required file, each name separated by slashes. The other way to indicate file placement is with the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-relative-pathname"><span class="xref std std-term">relative pathname</span></a>, and this is where the current working directory is needed. A relative pathname for a process is based on its <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>. For example, if the user named <strong>master</strong> opens a shell, and its <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-home-directory"><span class="xref std std-term">home directory</span></a> is <code class="file docutils literal notranslate"><span class="pre">/home/master</span></code>, then this will also be its <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>. Now, under these circumstances, all that the shell needs to do to refer to the file <code class="file docutils literal notranslate"><span class="pre">myprog.c</span></code> is to name it, because it is already placed in its current working directory. There is no need to add any directory name.If on the other hand, the shell wants to refer to the file named <code class="file docutils literal notranslate"><span class="pre">data</span></code> under the <code class="file docutils literal notranslate"><span class="pre">margaret</span></code> directory, it will have to indicate the path to this file from the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>. This will go something like this: <code class="file docutils literal notranslate"><span class="pre">../margaret/data</span></code> . Notice this time that the relative pathname does not begin with the slash for the root directory, instead it begins with the dot-dot (<code class="file docutils literal notranslate"><span class="pre">..</span></code>), indicating that from the <code class="file docutils literal notranslate"><span class="pre">master</span></code> directory (the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>), the search must go up to its parent directory (<code class="file docutils literal notranslate"><span class="pre">home</span></code>), and from there it should go down to the directory named <code class="file docutils literal notranslate"><span class="pre">margaret</span></code> to find the file <code class="file docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>While in the shell, the user may change its <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a> with the command <strong class="program">cd</strong>. This command takes a pathname as a parameter (absolute or relative) which becomes the new <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>. Used without parameters, <strong class="program">cd</strong> moves the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a> backs to the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-home-directory"><span class="xref std std-term">home directory</span></a>. If a C program wants to retrieve the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>, it may use the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">getcwd</span></code> system call that returns it as string (<code class="code highlight c c99 docutils literal highlight-c99"><span class="k">char</span><span class="w"> </span><span class="o">*</span></code>). The parameters for this function call are a string with enough space to receive the pathname and the size of this string. If that string is not long enough, the function call will fail. To change this <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>, the C program may use the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">chdir</span></code> system call that takes the new pathname as a parameter and returns the integer 0 for success or -1 in error. The prototypes for both system calls are as follows:</p>
+<div class="highlight-c99 notranslate"><div class="highlight"><pre><span></span><span class="k">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">getcwd</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cwdbuf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">chdir</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To access a file, it is not enough to know the placement of a file in a
+file system, we must also be aware of the file permissions granted to
+the file. File permissions are divided in three groups: permissions for
+the owner of a file, permissions for the group to which the file
+belongs, and permissions for anyone else. Each one of these groups may
+have the following permissions: permission to <strong>read</strong> the file,
+permission to <strong>write</strong> on the file and permission to <strong>execute</strong> the
+file (used if the file is a compiled program or a script). The same
+permissions are granted for directories, but with slight different
+meanings. Reading a directory means to be able to see its contents,
+writing in a directory means to be able to modify its contents, but the
+execution permission is actually a search permission. It allows for the
+search of a particular entity inside the directory.</p>
+<p>We can observe the permissions on every file or directory if we use the
+command <strong class="command">ls -la</strong>. The following figure shows samples of this command
+applied to the directories <strong>master</strong> and <strong>margaret</strong> in the file
+system depicted before, by user named <strong>master</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>-la
+<span class="go">drwx------   21 master   master    4096 Jun  5 22:14 .</span>
+<span class="go">drwx-xr--x    3 root     root        20 Apr  2 16:40 ..</span>
+<span class="go">-rw-r--r–     1 master   master    1167 Jul 26 12:36 myprog.c</span>
+
+<span class="gp">$ </span>ls<span class="w"> </span>-la<span class="w"> </span>../margaret
+<span class="go">drwx------    3 margaret margaret  4096 May  6 11:10 .</span>
+<span class="go">drwx-xr--x    3 root     root        20 Apr  2 16:40 ..</span>
+<span class="go">-rw-r--r–     1 margaret margaret 10423 Jun  6 17:14 data</span>
+
+<span class="gp">$</span>
+</pre></div>
+</div>
+<p>The results presented by this command show the permissions on the left
+side. The first character indicates that kind of file being observed
+(<code class="docutils literal notranslate"><span class="pre">-</span></code> for a regular file, <code class="docutils literal notranslate"><span class="pre">d</span></code> for a directory). This is followed by
+three sets of three characters, for user, group and other users. For
+each of these sets there is a character for the read permission (<code class="docutils literal notranslate"><span class="pre">r</span></code>),
+the write permission (<code class="docutils literal notranslate"><span class="pre">w</span></code>) or the execute/search permission(<code class="docutils literal notranslate"><span class="pre">x</span></code>). If
+any of these permissions is not granted, then a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>) is being
+displayed instead. For example, the <code class="file docutils literal notranslate"><span class="pre">myprog.c</span></code> and <code class="file docutils literal notranslate"><span class="pre">data</span></code> files both
+allow read and write permissions for the owners (<strong>master</strong> and
+<strong>margaret</strong>, respectively) , and read only permissions for their group
+and everyone else.</p>
+<p>After the permissions, the results of the command also show the number
+of links the file has, the owner of the file, the group to which it
+belongs, the size in bytes, the last date and time that was modified and
+the file name and extension. With the permissions above, if the <strong>master</strong>
+user wants to read the data file in the <code class="file docutils literal notranslate"><span class="pre">margaret</span></code> directory, it may do so
+because read permissions have been granted to everyone. However, if it
+tries to modify it, it cannot, because it is neither the owner, and it
+does not belong to the same group as the file, and the permissions for
+everyone do not include the write permission.</p>
+<p>Owners and privileged users may change the permissions of a file with
+the <strong class="program">chmod</strong> shell command. The most basic structure of this command is
+as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod [OPTION]... MODE FILE...</span>
+</pre></div>
+</div>
+<p>This command will change the permissions of the files mentioned in the
+files parameter as indicated by the mode. There are two ways to indicate
+the mode, explicitly and implicitly. The explicit mode mentions the
+users affected (<code class="docutils literal notranslate"><span class="pre">u</span></code> for user, <code class="docutils literal notranslate"><span class="pre">g</span></code> for group, <code class="docutils literal notranslate"><span class="pre">o</span></code> for other, or
+<code class="docutils literal notranslate"><span class="pre">a</span></code> for all) followed by an operation symbol (<code class="docutils literal notranslate"><span class="pre">+</span></code> to add, <code class="docutils literal notranslate"><span class="pre">-</span></code> to
+remove, or <code class="docutils literal notranslate"><span class="pre">=</span></code> to set and remove unspecified) followed by the
+previously mentioned symbols for the permissions (<code class="docutils literal notranslate"><span class="pre">r</span></code> to read, <code class="docutils literal notranslate"><span class="pre">w</span></code>
+to write, and <code class="docutils literal notranslate"><span class="pre">x</span></code> to execute/search). For example if the <strong>margaret</strong>
+user is going to allow everyone to read and write in her data file, not
+just the owner, it may use any of the following alternatives:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod g+w,o+w data</span>
+<span class="go">chmod g=rw,o=rw data</span>
+<span class="go">chmod =rw data</span>
+</pre></div>
+</div>
+<p>The implicit mode can only be used to assign all permissions at once. It
+assigns values to the various permissions: 4 to read, 2 to write and 1
+to executer/search. Each one of these values is used at face value if we
+are given permissions to other users, but they are multiplied by 10 if
+we are giving permissions to the group, or by 100 if the permissions are
+granted to the owner. All these values must be added and the final
+number is used as the mode. For example if the margaret user is going to
+grant read and write permissions to everyone we need to add 4+2 for
+everyone with 40+20 for the group and 400+200 for the owner, giving a
+total of 666 that can be used as the mode.</p>
+<p>When creating a file (with the <code class="code highlight c c99 docutils literal highlight-c99"><span class="n">open</span></code> system call) or a directory
+(with <strong class="program">mkdir</strong>) we can specify their permissions with a parameter,
+however, these permissions are modified by the process’s <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-file-mode-creation-mask"><span class="xref std std-term">file mode
+creation mask</span></a>, also known as the <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-umask"><span class="xref std std-term">umask</span></a>. Every process inherits a
+<a class="reference internal" href="../../../meta/glossary/operating-systems/#term-umask"><span class="xref std std-term">umask</span></a> from its parent process. This contains a set of permissions that
+will be eliminated in every file the process creates. A typical <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-umask"><span class="xref std std-term">umask</span></a>
+contains the value 022, representing the write permission for group and
+other users. This eliminates this permissions from all new files and
+directories the process creates.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../what-is-a-process/" class="btn btn-neutral float-left" title="What is a Process?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../process-identification/" class="btn btn-neutral float-right" title="Process Identification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ryan Gambord &lt;Ryan.Gambord@oregonstate.edu&gt;.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

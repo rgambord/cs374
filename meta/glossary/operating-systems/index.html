@@ -208,7 +208,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../modules/03/assignments/">Assignments</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules/04/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/04/">Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/what-is-a-process/">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/processes-and-the-file-system/">Processes and the File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/04/multiprogramming/">Multiprogramming</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../modules/05/">Inter-Process Communication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../modules/05/signals/">Signals</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../modules/05/signals/sending/">Sending Signals</a></li>
@@ -302,6 +312,18 @@
 <dt id="term-program">program<a class="headerlink" href="#term-program" title="Link to this term"></a></dt><dd><p>A set of instructions or code written in a programming language that performs a specific task or set of tasks when executed by a computer.</p>
 </dd>
 <dt id="term-process">process<a class="headerlink" href="#term-process" title="Link to this term"></a></dt><dd><p>A dynamic entity that represents the execution of a program in a computer’s memory. It is the actual running instance of a program.</p>
+</dd>
+<dt id="term-root-directory">root directory<a class="headerlink" href="#term-root-directory" title="Link to this term"></a></dt><dd><p>The toplevel directory of the filesystem tree, denoted by the path <code class="file docutils literal notranslate"><span class="pre">/</span></code>.</p>
+</dd>
+<dt id="term-current-working-directory">current working directory<a class="headerlink" href="#term-current-working-directory" title="Link to this term"></a></dt><dt id="term-cwd">cwd<a class="headerlink" href="#term-cwd" title="Link to this term"></a></dt><dd><p>The path from which a process performs relative file lookups. Inherited by child processes.</p>
+</dd>
+<dt id="term-home-directory">home directory<a class="headerlink" href="#term-home-directory" title="Link to this term"></a></dt><dd><p>A unique directory for each user, where user files are located.</p>
+</dd>
+<dt id="term-absolute-pathname">absolute pathname<a class="headerlink" href="#term-absolute-pathname" title="Link to this term"></a></dt><dd><p>A pathname beginning with a forward slash <code class="file docutils literal notranslate"><span class="pre">/...</span></code> which is resolved beginning from the root directory.</p>
+</dd>
+<dt id="term-relative-pathname">relative pathname<a class="headerlink" href="#term-relative-pathname" title="Link to this term"></a></dt><dd><p>A pathname that is not a <a class="reference internal" href="#term-absolute-pathname"><span class="xref std std-term">absolute pathname</span></a>, which is resolved beginning from the <a class="reference internal" href="#term-current-working-directory"><span class="xref std std-term">current working directory</span></a>.</p>
+</dd>
+<dt id="term-file-mode-creation-mask">file mode creation mask<a class="headerlink" href="#term-file-mode-creation-mask" title="Link to this term"></a></dt><dt id="term-umask">umask<a class="headerlink" href="#term-umask" title="Link to this term"></a></dt><dd><p>A mask which is applied to the file mode of newly created files. Per process.</p>
 </dd>
 </dl>
 </section>

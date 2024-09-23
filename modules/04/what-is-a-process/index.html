@@ -7,7 +7,7 @@
   <title>What is a Process? &mdash; CS 374 - Operating Systems  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=2e9965fa" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/dist/css/lightbox.css?v=5c84f910" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/brand.css?v=629ae113" />
 
@@ -28,7 +28,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="Process Identification" href="../process-identification/" />
+    <link rel="next" title="Processes and the File System" href="../processes-and-the-file-system/" />
     <link rel="prev" title="Processes" href="../" /> 
 </head>
 
@@ -200,23 +200,62 @@
 <li class="toctree-l3"><a class="reference internal" href="../../03/posix-io/stdio/">Standard I/O Extensions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/memory-management/">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/standard-c/">Standard C Allocations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03/memory-management/posix/">POSIX Allocations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/assignments/">Assignments</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Processes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">What is a Process?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processes-and-the-file-system/">Processes and the File System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../process-identification/">Process Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-identification/#the-init-process">The init Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../process-lifecyle/">Process Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signals/">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution-times/">Execution Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multiprogramming/">Multiprogramming</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="../../05/">Inter-Process Communication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/signals/">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/sending/">Sending Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/receiving/">Receiving Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/signals/async-safety/">Asynchronous Signal Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/file-system/">File System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/regular-files/">Regular Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/special-files/">Special Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/drivers/">The Role of Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/fifos/">FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/unix-sockets/">UNIX Domain Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/file-descriptors/">Understanding File Descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/file-system/memory-maps/">Memory Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/networking/">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/stream-sockets/">Stream Sockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-client/">TCP Client Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05/networking/tcp-server/">TCP Server Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/assignments/">Assignments</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<p class="caption" role="heading"><span class="caption-text">BigShell</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Assignment 3: BigShell</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell/">Specification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../assignments/bigshell/shell_command_language/">BigShell Command Language</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gradescope.com/courses/801266/assignments/4646362/submissions" rel="noopener noreferrer" target="_blank">GradeScope</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://classroom.github.com/a/wz3vJVkk" rel="noopener noreferrer" target="_blank">Starter Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meta/github_setup/">GitHub/os1 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/bigshell-report/">Final Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">External Links</span></p>
 <ul>
@@ -256,7 +295,7 @@
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="../" class="btn btn-neutral float-left" title="Processes" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../process-identification/" class="btn btn-neutral float-right" title="Process Identification" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../processes-and-the-file-system/" class="btn btn-neutral float-right" title="Processes and the File System" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -265,10 +304,9 @@
              
   <section id="what-is-a-process">
 <h1>What is a Process?<a class="headerlink" href="#what-is-a-process" title="Link to this heading"></a></h1>
-<p>A <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-process"><span class="xref std std-term">process</span></a> is a program that is running on a computer, also known as a running program. A <strong>program</strong> alone is just a file containing a list of instructions for a computer. It is only when these instructions are being executed on a computer, that we can say that the program is running and becomes a process.</p>
-<p>To write a program, we are probably using a text editor (like vim) that creates a file with the instructions in some predefined computer language (like C). The instructions in this file are later translated to instructions in machine language by a compiler (like gcc). A successful compilation generates another file containing the translated instructions. To run this compiled file in the computer, the operating system must load its instructions in the computer’s memory and make them ready to take control of the computer. It is only then that we can consider it to be a process, and it will remain a process until the operating system terminates it.</p>
+<p>A <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-process"><span class="xref std std-term">process</span></a> is an instance of a <a class="reference internal" href="../../../meta/glossary/operating-systems/#term-program"><span class="xref std std-term">program</span></a> that is running on a computer, also called a running program. To write a program, we are probably using a text editor (like vim) that creates a file with the instructions in some predefined computer language (like C). The instructions in this file are later translated to instructions in machine language by a compiler (like gcc). A successful compilation generates another file containing the translated instructions. To run this compiled file in the computer, the operating system must load its instructions in the computer’s memory and make them ready to take control of the computer. It is only then that we can consider it to be a process, and it will remain a process until the operating system terminates it.</p>
 <p>Notice that we are using other programs and processes to generate our program. The text editor and the compiler are collections of many files with instructions that help us write code and create executable files, respectively. To perform these activities, the files of these programs need to run on the computer. When they are running, they also become processes. Any program running on a computer is a process.</p>
-<p>The operating system has at its core a set of instructions known as the kernel. The kernel is the actual manager of the computer and handles all its operations. Among other things, it decides everything about the processes: when can they run, how to run and for how long. It also allocates resources for these processes: CPU to run, memory, files and peripherals. The kernel itself is not a process.</p>
+<p>The operating system has at its core a set of instructions known as the :term;`kernel`. The kernel is the actual manager of the computer and handles all its operations. Among other things, it decides everything about the processes: when can they run, how to run and for how long. It also allocates resources for these processes: CPU to run, memory, files and peripherals. The kernel itself is not a process.</p>
 <p>While working, the operating system is constantly switching between two modes of operation, the kernel mode and the user mode. In kernel mode, the kernel is in control of all operations. It can perform any activity in the computer without any restriction. When there are processes to run, the kernel selects one of them, loads it in memory, assigns resources to it and switches to user mode, to let the process take control of the computer, but in a restricted fashion. The process can only perform activities over the resources that it has control. If the process were to require more resources, like more memory, or access to a device, or even terminate, it must request the kernel for these actions to be performed. When it does, the kernel regains control of the computer in kernel mode and decides to grant or not these resources, to let the process continue in user mode again, or to grant access to the CPU to another process in user mode again.</p>
 </section>
 
@@ -277,7 +315,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../" class="btn btn-neutral float-left" title="Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../process-identification/" class="btn btn-neutral float-right" title="Process Identification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../processes-and-the-file-system/" class="btn btn-neutral float-right" title="Processes and the File System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
